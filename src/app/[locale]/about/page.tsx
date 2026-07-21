@@ -102,25 +102,6 @@ export default async function AboutPage() {
           </div>
         </div>
       </section>
-
-      <section className="section-pad bg-mist-50">
-        <div className="container-page">
-          <Reveal>
-            <div className="grid items-center gap-12 rounded-3xl bg-white p-10 shadow-sm lg:grid-cols-2 lg:p-14">
-              <div>
-                <h2 className="font-display text-2xl font-bold text-graphite-950 sm:text-3xl">
-                  {t('facility.title')}
-                </h2>
-                <p className="mt-5 leading-relaxed text-mist-700">{t('facility.body')}</p>
-              </div>
-              <div className="relative h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-graphite-700 via-graphite-900 to-graphite-950 lg:h-72">
-                <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 25% 25%, white, transparent 55%)' }} />
-                <Factory size={80} strokeWidth={1} className="absolute bottom-6 end-6 text-white/30" />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </>
   );
 }

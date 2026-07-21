@@ -208,21 +208,11 @@
         ]
       },
       {
-        "id": "otomasyon",
-        "title": "Otomasyon ve Bağlantı Ekipmanları",
-        "desc": "Uzaktan izleme ve otomasyon panoları ile sistemi tamamlayan bağlantı ekipmanları.",
+        "id": "baglanti",
+        "title": "Bağlantı Ekipmanları",
+        "desc": "Sistemi tamamlayan fleks bağlantılar, vanalar, emniyet ekipmanları ve solar transfer sıvısı; güvenli ve uzun ömürlü montaj için gerekli tüm elemanlar.",
         "groups": [
           {
-            "title": "Otomasyon ve Uzaktan İzleme",
-            "items": [
-              { "name": "Kontaktörlü Otomasyon Panosu" },
-              { "name": "Kartlı Otomasyon Panosu" },
-              { "name": "AD598 Otomatik Kontrol Paneli" },
-              { "name": "OEM Otomasyon Panosu" }
-            ]
-          },
-          {
-            "title": "Bağlantı Ekipmanları",
             "items": [
               { "name": "3/4\" Ara Bağlantı Fleksi" },
               { "name": "3/4\" Köşe Bağlantı Fleksi" },
@@ -233,6 +223,21 @@
               { "name": "Paket Sistem Emniyet Kiti" },
               { "name": "Solar Transfer Sıvısı" },
               { "name": "Otomatik Solar Sıvı Besleme Ünitesi" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "otomasyon",
+        "title": "Otomasyon Sistemleri",
+        "desc": "Uzaktan izleme ve otomasyon panolarıyla sistemi akıllı yöneten, performansı veriyle optimize eden kontrol çözümleri.",
+        "groups": [
+          {
+            "items": [
+              { "name": "Kontaktörlü Otomasyon Panosu" },
+              { "name": "Kartlı Otomasyon Panosu" },
+              { "name": "AD598 Otomatik Kontrol Paneli" },
+              { "name": "OEM Otomasyon Panosu" }
             ]
           }
         ]

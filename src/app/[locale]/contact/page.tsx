@@ -1,9 +1,19 @@
 import { getTranslations } from 'next-intl/server';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Briefcase, ArrowUpRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
+
+const HR_EMAIL = 'kariyer@simsekgroup.com';
+const careerPositions = [
+  'Mühendislik',
+  'Üretim',
+  'Satış / Pazarlama',
+  'İdari İşler',
+  'Finans / Muhasebe',
+  'Staj',
+];
 
 export default async function ContactPage() {
   const t = await getTranslations('contact');
@@ -53,6 +63,54 @@ export default async function ContactPage() {
           <Reveal delay={0.1}>
             <ContactForm />
           </Reveal>
+        </div>
+      </section>
+
+      {/* Kariyer — İnsan Kaynakları iletişim ile birleştirildi */}
+      <section id="kariyer" className="scroll-mt-24 bg-mist-50 py-16 sm:py-20">
+        <div className="container-page">
+          <div className="grid items-center gap-10 rounded-3xl bg-graphite-gradient p-9 text-white sm:p-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                Kariyer
+              </p>
+              <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">Ekibimize dahil olun</h2>
+              <p className="mt-4 max-w-lg leading-relaxed text-graphite-200">
+                Enerjiyi geleceğe bırakacağımız en önemli miraslardan biri olarak görüyoruz. Sorumluluk
+                sahibi, öğrenmeye açık ve birlikte başarmaya inanan ekip arkadaşları arıyoruz.
+                Özgeçmişinizi, çalışmak istediğiniz alanı belirterek iletin.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {careerPositions.map((p) => (
+                  <span
+                    key={p}
+                    className="rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-xs font-semibold text-graphite-100"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-7">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-volt-500 text-graphite-950">
+                <Briefcase size={22} strokeWidth={1.75} />
+              </span>
+              <p className="text-sm leading-relaxed text-graphite-200">
+                Başvurularınızı ve staj taleplerinizi doğrudan insan kaynakları ekibimize
+                gönderebilirsiniz.
+              </p>
+              <a
+                href={`mailto:${HR_EMAIL}?subject=Kariyer — İş Başvurusu`}
+                className="inline-flex items-center gap-2 rounded-full bg-solar-gradient px-6 py-3 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
+              >
+                <Mail size={15} />
+                Özgeçmişinizi gönderin
+                <ArrowUpRight size={15} />
+              </a>
+              <p className="font-mono text-[11px] tracking-tight text-graphite-400">{HR_EMAIL}</p>
+            </div>
+          </div>
         </div>
       </section>
     </>

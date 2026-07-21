@@ -22,7 +22,6 @@ const corporateItems = [
   { href: '/group-companies', label: 'Grup Şirketleri' },
   { href: '/about', label: 'Hakkımızda' },
   { href: '/history', label: 'Tarihçe' },
-  { href: '/human-resources', label: 'İnsan Kaynakları' },
 ] as const;
 
 export function Header() {

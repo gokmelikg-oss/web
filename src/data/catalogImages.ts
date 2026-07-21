@@ -37,8 +37,7 @@ export const catalogImages: Record<string, (string | null)[]> = {
     null,
     '/products/sehpa-paket.jpg',
   ],
-  'otomasyon-0': [null, null, null, null],
-  'otomasyon-1': [
+  'baglanti-0': [
     '/products/fleks-ara.jpg',
     '/products/fleks-kose.jpg',
     '/products/kor-tapa.jpg',
@@ -49,6 +48,7 @@ export const catalogImages: Record<string, (string | null)[]> = {
     null,
     null,
   ],
+  'otomasyon-0': [null, null, null, null],
 };
 
 /* One representative photo per family for overview cards. */
@@ -56,5 +56,6 @@ export const familyImages: Record<string, string> = {
   kolektorler: '/products/orion-500.jpg',
   boylerler: '/products/aquarious-740.jpg',
   sehpalar: '/products/sehpa-merkezi-3lu.jpg',
-  otomasyon: '/products/solar-vana.jpg',
+  baglanti: '/products/solar-vana.jpg',
+  otomasyon: '/products/merkezi-sistem-saha.jpg',
 };

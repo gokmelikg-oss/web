@@ -35,7 +35,7 @@ export function Footer() {
             <li><Link href="/group-companies" className="hover:text-white">Grup Şirketleri</Link></li>
             <li><Link href="/about" className="hover:text-white">{t('aboutLink')}</Link></li>
             <li><Link href="/history" className="hover:text-white">Tarihçe</Link></li>
-            <li><Link href="/human-resources" className="hover:text-white">İnsan Kaynakları</Link></li>
+            <li><Link href="/contact#kariyer" className="hover:text-white">Kariyer</Link></li>
             <li><Link href="/projects" className="hover:text-white">{tNav('projects')}</Link></li>
             <li><Link href="/resources" className="hover:text-white">{tNav('resources')}</Link></li>
             <li><Link href="/calculator" className="hover:text-white">{tCalc('eyebrow')}</Link></li>
