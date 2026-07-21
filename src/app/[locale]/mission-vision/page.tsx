@@ -26,11 +26,16 @@ export default function MissionVisionPage() {
                   <Target size={26} strokeWidth={1.75} />
                 </span>
                 <h2 className="mt-6 font-display text-2xl font-bold sm:text-3xl">Misyonumuz</h2>
+                <p className="mt-4 font-display text-lg font-semibold leading-relaxed text-volt-400">
+                  &ldquo;Enerjiyi sadece bir ihtiyaç değil, yaşamı sürdüren görünmez bir güç olarak
+                  görüyoruz.&rdquo;
+                </p>
                 <p className="mt-4 leading-relaxed text-graphite-200">
-                  Güneşin sınırsız enerjisini; dayanıklı, verimli ve erişilebilir sistemlere dönüştürerek
-                  Türkiye&apos;nin 81 ilinde ve ihracat pazarlarında yaşam alanlarına taşımak. Üretimden
-                  kuruluma, mühendislikten satış sonrasına tüm değer zincirini kendi çatımız altında,
-                  uluslararası kalite standartlarıyla yönetmek.
+                  Yenilenebilir enerjiyi herkes için erişilebilir, güvenilir ve dayanıklı hâle getiren
+                  çözümler geliştiriyoruz. Her proje; bir haneye konfor, bir işletmeye istikrar ve
+                  çocukların geleceğine fırsat sunmak demek. Üretimden kuruluma, mühendislikten satış
+                  sonrasına tüm değer zincirini kendi çatımız altında, uluslararası kalite
+                  standartlarıyla yönetiyoruz.
                 </p>
               </div>
             </Reveal>
@@ -40,10 +45,15 @@ export default function MissionVisionPage() {
                   <Eye size={26} strokeWidth={1.75} />
                 </span>
                 <h2 className="mt-6 font-display text-2xl font-bold text-graphite-950 sm:text-3xl">Vizyonumuz</h2>
+                <p className="mt-4 font-display text-lg font-semibold leading-relaxed text-volt-700">
+                  &ldquo;Geleceğin daha temiz, daha özgür ve daha nefes alınabilir bir dünya olduğuna
+                  inanıyoruz.&rdquo;
+                </p>
                 <p className="mt-4 leading-relaxed text-mist-700">
-                  Güneş enerjisi sistemlerinde Türkiye&apos;nin öncüsü, bölgesinin en güvenilir markası olmak;
-                  akıllı enerji teknolojileriyle sıfır karbon yaşam alanlarının standartlarını belirlemek ve
-                  gelecek nesillere daha temiz bir dünya bırakmak.
+                  Evlerin, şehirlerin ve hayatların enerjisini doğanın gücüyle birleştirerek
+                  Türkiye&apos;nin enerji dönüşümüne katkı sağlamak; geliştirdiğimiz teknolojilerle düşük
+                  karbonlu bir gelecek inşa etmek ve akıllı enerji sistemlerinde bölgesinin standartlarını
+                  belirleyen marka olmak.
                 </p>
               </div>
             </Reveal>

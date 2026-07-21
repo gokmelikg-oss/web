@@ -32,6 +32,8 @@ export function Footer() {
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
             <li><Link href="/about" className="hover:text-white">{t('aboutLink')}</Link></li>
+            <li><Link href="/founder" className="hover:text-white">Kurucumuzdan</Link></li>
+            <li><Link href="/history" className="hover:text-white">Tarihçe</Link></li>
             <li><Link href="/group-companies" className="hover:text-white">Grup Şirketleri</Link></li>
             <li><Link href="/mission-vision" className="hover:text-white">Misyon & Vizyon</Link></li>
             <li><Link href="/human-resources" className="hover:text-white">İnsan Kaynakları</Link></li>

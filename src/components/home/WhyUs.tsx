@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
-import { Factory, ShieldCheck, BadgeCheck, Handshake } from 'lucide-react';
+import { Factory, BadgeCheck, ClipboardCheck, Wrench, Layers, Cpu } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
-const icons = [Factory, BadgeCheck, ShieldCheck, Handshake];
+const icons = [Factory, BadgeCheck, ClipboardCheck, Wrench, Layers, Cpu];
 
 export function WhyUs() {
   const t = useTranslations('whyUs');
@@ -21,7 +21,7 @@ export function WhyUs() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-x-8 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, i) => {
             const Icon = icons[i] ?? Factory;
             return (

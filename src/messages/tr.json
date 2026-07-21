@@ -14,7 +14,7 @@
     "getQuote": "Teklif Al"
   },
   "hero": {
-    "eyebrow": "1990'dan beri — 35. yıl",
+    "eyebrow": "1992'den beri — Mersin'den dünyaya",
     "titleLine1": "Enerjiyi doğadan alır,",
     "titleLine2": "geleceğe taşırız.",
     "subtitle": "Şimşek Solar; 35 yılı aşkın üretim birikimiyle güneş enerjisi sistemlerini Mersin'deki entegre tesislerinde tasarlar, üretir ve dünyanın dört bir yanına ulaştırır. Ar-Ge'den üretime, proje mühendisliğinden satış sonrası hizmetlere uzanan tüm değer zinciri tek çatı altında yönetilir.",
@@ -23,46 +23,46 @@
     "stats": [
       { "value": 35, "suffix": "", "label": "Yıllık üretim tecrübesi" },
       { "value": 240000, "suffix": "+", "label": "Sahada çalışan sistem" },
-      { "value": 40, "suffix": "+", "label": "İhracat yapılan ülke" }
+      { "value": 25, "suffix": "+", "label": "İhracat yapılan ülke" }
     ]
   },
   "group": {
-    "eyebrow": "Şirketler Grubu",
+    "eyebrow": "01 · Şirketler Grubu",
     "parentLabel": "Ana şirket",
     "title": "Tek vizyon, dört kuvvet",
-    "body": "Şimşek Solar, Şimşek Grup çatısı altındadır. Bir holding altında birbirini tamamlayan dört şirket: üretimden kuruluma, enerjiden malzemeye zincirin her halkası kendi ellerimizde.",
+    "body": "Şimşek Solar, Şimşek Grup çatısı altındadır. Tasarımdan üretime, saha uygulamasından uzun dönemli bakıma uzanan entegre bir ekosistem: zincirin her halkası kendi ellerimizde.",
     "companies": [
       {
         "id": "solar",
         "name": "Şimşek Solar",
-        "tag": "Güneş Enerjisi Sistemleri",
-        "desc": "35 yılı aşkın tecrübesiyle Türkiye'nin köklü güneş enerjisi üreticilerinden. Orion kolektörler, Aquarious boylerler ve Helios paket sistemleri; Ar-Ge'den üretime, projelendirmeden satış sonrasına uçtan uca mühendislikle buluşturur."
+        "tag": "Solar Termal Sistemler",
+        "desc": "1992'den bu yana solar termal kolektörler, emayeli boylerler, bireysel ve merkezi sıcak su sistemleri üretir. Solar Keymark sertifikalı ürünleriyle konut, otel ve kamu projelerinde kanıtlanmış deneyime sahiptir; 25'ten fazla ülkeye ihracat yapar."
       },
       {
         "id": "lipus",
         "name": "Lipus",
-        "tag": "Akıllı Ev & Enerji Teknolojileri",
-        "desc": "Zero Carbon House vizyonuyla akıllı ev sistemleri geliştirir: enerjisini güneşten üreten, depolayan ve akıllıca yöneten sıfır karbon yaşam alanları tasarlar."
+        "tag": "Yeni Nesil Enerji & İklimlendirme",
+        "desc": "Grubun yeni nesil enerji ve iklimlendirme markası: ısı pompaları, havuz ısıtma, yerden ısıtma altyapısı, enerji depolama, PV entegrasyonu ve araç şarj istasyonlarını tek çatı altında birleştirir; sıfır karbon yaşam alanları tasarlar."
       },
       {
         "id": "yenilenebilir",
-        "name": "Şimşek Yenilenebilir",
-        "tag": "Satış · Servis · Taahhüt",
-        "desc": "Yenilenebilir enerjide satış, servis ve taahhüt hizmetlerini tek elden sunar: güneş santrali projelendirme, anahtar teslim kurulum, periyodik bakım ve işletme."
+        "name": "Şimşek YES",
+        "tag": "Proje · Montaj · Servis",
+        "desc": "Grubun uygulama ve servis gücü: keşif ve projelendirmeden montaja, devreye almadan periyodik bakıma tüm saha süreçlerini tek merkezden yönetir. Konut, otel, kampüs, hastane ve kamu projelerinde görev alır."
       },
       {
         "id": "smk",
-        "name": "SMK Alüminyum",
-        "tag": "Alüminyum & Malzeme Tedariki",
-        "desc": "Hem alüminyum profil üreticisi hem de endüstriyel malzeme tedarik şirketi: grubun ve sektörün alüminyum ve malzeme ihtiyacını tek noktadan karşılar."
+        "name": "SMK Teknik",
+        "tag": "Teknik Üretim & Tedarik",
+        "desc": "Grubun teknik üretim ve tedarik merkezi: bakır, krom ve fleks borular, metal konstrüksiyon ve sehpa sistemleri, kontrol panoları ve projeye özel imalat çözümleri üretir; tedarik zincirini tamamen grup bünyesinde tutar."
       }
     ]
   },
   "vision": {
-    "eyebrow": "Vizyonumuz",
+    "eyebrow": "08 · Vizyonumuz",
     "lines": [
       "Yenilenebilir enerji üretiyoruz.",
-      "Geleceğe yatırım yapıyoruz.",
+      "Geleceğin enerjisini bugünden şekillendiriyoruz.",
       "Güneşi, yarının enerjisine dönüştürüyoruz."
     ],
     "footer": "Doğadan aldığımız gücü; kaliteyle, sorumlulukla ve 35 yıllık mühendislik birikimiyle işliyoruz."
@@ -90,14 +90,14 @@
     }
   },
   "production": {
-    "eyebrow": "Üretim Gücü",
+    "eyebrow": "05 · Üretim Gücü",
     "title": "Üretimin her adımı kendi bünyemizde",
     "body": "Şimşek Solar, Mersin'deki entegre tesislerinde hammadde girişinden paketlemeye kadar üretimin tamamını kendi çatısı altında yürütür. Emaye fırını, CNC boru bükme, lazer kesim ve alüminyum profil hatlarının tek kampüste toplanması; yüksek kapasiteyi istikrarlı kaliteyle, kısa terminlerle ve rekabetçi maliyetle birleştirir. Her ürün, sahaya çıkmadan önce kalite kontrol istasyonlarından geçer.",
     "stats": [
-      { "value": "11.575 m²", "label": "Üretim tesisi alanı" },
+      { "value": "11.575 m²", "label": "Toplam tesis alanı — 2. OSB" },
+      { "value": "5.700 m²", "label": "Kapalı üretim alanı" },
       { "value": "900 / gün", "label": "Kolektör üretim kapasitesi" },
-      { "value": "150 / gün", "label": "Boyler üretim kapasitesi" },
-      { "value": "100.000+", "label": "Tamamlanan proje" }
+      { "value": "150 / gün", "label": "Boyler üretim kapasitesi" }
     ]
   },
   "calculator": {
@@ -130,7 +130,7 @@
     }
   },
   "productsSection": {
-    "eyebrow": "Ürün Ailesi",
+    "eyebrow": "03 · Ürün Ailesi",
     "title": "Kolektörden otomasyona eksiksiz ürün gamı",
     "subtitle": "Orion kolektörler, Aquarious ve Sirius boylerler, merkezi ve paket sistem sehpaları, otomasyon ve bağlantı ekipmanları.",
     "viewAll": "Tüm ürünleri gör"
@@ -240,7 +240,7 @@
     ]
   },
   "wizard": {
-    "eyebrow": "Sistem Sihirbazı",
+    "eyebrow": "02 · Sistem Sihirbazı",
     "title": "Birkaç adımda doğru sistemi bulun",
     "body": "Üç soruya yanıt verin; kullanım tipinize ve tüketiminize göre doğru Şimşek sistemini önerelim.",
     "steps": {
@@ -289,12 +289,14 @@
     "centralModel": "ORION × N + AQUARIOUS"
   },
   "whyUs": {
-    "eyebrow": "Neden Şimşek",
+    "eyebrow": "07 · Neden Şimşek",
     "title": "Sahada kanıtlanmış mühendislik",
     "items": [
-      { "title": "Kendi üretim tesisi", "desc": "Emaye kaplamadan alüminyum profile kadar tüm süreç grup şirketlerimizde, dışarıya bağımlı kalmadan yürütülür." },
+      { "title": "Kendi üretim tesisi", "desc": "Emaye kaplamadan boru imalatına kadar tüm süreç grup şirketlerimizde, dışarıya bağımlı kalmadan yürütülür." },
       { "title": "Sertifikalı kalite", "desc": "Ürünlerimiz CE, TSE ve Solar Keymark testlerinden geçer; her seri numarası geriye dönük izlenebilir." },
-      { "title": "Proje ve saha desteği", "desc": "Mühendislik ekibimiz proje aşamasından saha uygulamasına ve devreye almaya kadar sizinle birlikte çalışır." },
+      { "title": "Anahtar teslim proje", "desc": "Keşiften projelendirmeye, montajdan devreye almaya tüm süreç Şimşek YES ekiplerince tek elden yönetilir." },
+      { "title": "Servis ve yedek parça ağı", "desc": "Türkiye genelindeki servis organizasyonumuz ve yedek parça stoğumuzla sistemleriniz on yıllarca sahada kalır." },
+      { "title": "Esnek montaj çözümleri", "desc": "Çatı, teras ve zemin uygulamalarına özel sehpa sistemleri; projeye özel OEM imalat imkânı." },
       { "title": "Akıllı sistemler", "desc": "Şimşek.ai ve akıllı kontrolörlerimizle sistem performansını uzaktan izler, verimliliği veriyle optimize ederiz." }
     ]
   },
@@ -309,7 +311,7 @@
     ]
   },
   "certs": {
-    "eyebrow": "Belgelerimiz",
+    "eyebrow": "06 · Belgelerimiz",
     "title": "Uluslararası standartlarda belgelendirilmiş kalite",
     "subtitle": "Ürünlerimiz ve yönetim sistemlerimiz, ulusal ve uluslararası akredite kuruluşlar tarafından denetlenir ve belgelendirilir.",
     "items": [
@@ -326,7 +328,7 @@
     ]
   },
   "projectsTeaser": {
-    "eyebrow": "Referanslar",
+    "eyebrow": "04 · Referanslar",
     "title": "Kamu, konut ve otelden ihracata",
     "subtitle": "Askeri tesislerden otellere, toplu konutlardan ihracat pazarlarına: 81 ilde on binlerce projede tercih edilen mühendislik.",
     "cta": "Tüm referansları gör"
@@ -348,10 +350,10 @@
       "body2": "Bugün ürünlerimiz askeri tesisler, oteller ve toplu konutların yanı sıra ihracat pazarlarında da yer alıyor. Ar-Ge ekibimiz, absorban kaplama verimliliğinden emaye reçetesine, akıllı izleme yazılımımıza kadar her bileşeni sürekli geliştiriyor."
     },
     "stats": [
-      { "value": "1990", "label": "Kuruluş" },
+      { "value": "1992", "label": "Kuruluş" },
       { "value": "4", "label": "Grup şirketi" },
       { "value": "240.000+", "label": "Sahada çalışan sistem" },
-      { "value": "40+", "label": "İhracat yapılan ülke" }
+      { "value": "25+", "label": "İhracat yapılan ülke" }
     ],
     "values": {
       "title": "Bizi biz yapan ilkeler",
