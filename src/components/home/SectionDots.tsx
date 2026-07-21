@@ -10,7 +10,6 @@ const SECTIONS = [
   { id: 'urunler', key: 'products' },
   { id: 'referanslar', key: 'projects' },
   { id: 'uretim', key: 'products' },
-  { id: 'vizyon', key: 'vision' },
   { id: 'iletisim', key: 'contact' },
 ] as const;
 

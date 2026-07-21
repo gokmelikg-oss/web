@@ -1,12 +1,25 @@
 import { useTranslations } from 'next-intl';
-import { ShieldCheck, Award, FileCheck2, BadgeCheck, Globe2, Factory } from 'lucide-react';
+import { ShieldCheck, Award, FileCheck2, BadgeCheck, Globe2, Factory, ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
 const icons = [ShieldCheck, Award, FileCheck2, BadgeCheck, Globe2, Factory];
 
+/* items iki biçimi de destekler: düz string (en/ar) veya {label, file} (tr).
+   file varsa kart, PDF'i yeni sekmede açan bir bağlantıya dönüşür. */
+type RawCert = string | { label: string; file?: string };
+interface Cert {
+  label: string;
+  file?: string;
+}
+
+function normalize(raw: RawCert): Cert {
+  return typeof raw === 'string' ? { label: raw } : raw;
+}
+
 export function Certs() {
   const t = useTranslations('certs');
-  const items = t.raw('items') as string[];
+  const items = (t.raw('items') as RawCert[]).map(normalize);
+  const viewLabel = t.has('viewLabel') ? t('viewLabel') : 'PDF';
 
   return (
     <section className="relative overflow-hidden bg-graphite-950 py-20 text-white sm:py-24">
@@ -35,17 +48,42 @@ export function Certs() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3">
             {items.map((item, i) => {
               const Icon = icons[i % icons.length];
+              const inner = (
+                <>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-volt-500/15 text-volt-400 transition-colors group-hover:bg-volt-500 group-hover:text-graphite-950">
+                    <Icon size={18} strokeWidth={1.75} />
+                  </span>
+                  <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-white">{item.label}</span>
+                  {item.file && (
+                    <ArrowUpRight
+                      size={16}
+                      className="mt-0.5 shrink-0 text-graphite-400 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-volt-400"
+                    />
+                  )}
+                </>
+              );
+
+              const cardClass =
+                'group flex h-full items-center gap-3.5 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-volt-500/50 hover:bg-white/[0.08]';
+
               return (
-                <Reveal key={item} delay={i * 0.04}>
-                  <div className="group flex h-full items-center gap-3.5 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-volt-500/50 hover:bg-white/[0.08]">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-volt-500/15 text-volt-400 transition-colors group-hover:bg-volt-500 group-hover:text-graphite-950">
-                      <Icon size={18} strokeWidth={1.75} />
-                    </span>
-                    <span className="text-sm font-semibold leading-snug text-white">{item}</span>
-                  </div>
+                <Reveal key={item.label} delay={i * 0.04}>
+                  {item.file ? (
+                    <a
+                      href={item.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={viewLabel}
+                      className={cardClass}
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className={cardClass}>{inner}</div>
+                  )}
                 </Reveal>
               );
             })}

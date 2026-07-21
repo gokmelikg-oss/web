@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { Factory, ShieldCheck, Globe2 } from 'lucide-react';
+import { Factory, ShieldCheck, Globe2, Target, Eye } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 
@@ -34,6 +34,48 @@ export default async function AboutPage() {
               ))}
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Misyon & Vizyon — Hakkımızda ile birleştirildi */}
+      <section className="section-pad bg-mist-50">
+        <div className="container-page">
+          <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-2">
+            <Reveal>
+              <div className="flex h-full flex-col rounded-3xl bg-graphite-gradient p-9 text-white sm:p-11">
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-volt-500 text-graphite-950">
+                  <Target size={26} strokeWidth={1.75} />
+                </span>
+                <h2 className="mt-6 font-display text-2xl font-bold sm:text-3xl">Misyonumuz</h2>
+                <p className="mt-4 font-display text-lg font-semibold leading-relaxed text-volt-400">
+                  &ldquo;Enerjiyi sadece bir ihtiyaç değil, yaşamı sürdüren görünmez bir güç olarak
+                  görüyoruz.&rdquo;
+                </p>
+                <p className="mt-4 leading-relaxed text-graphite-200">
+                  Yenilenebilir enerjiyi herkes için erişilebilir, güvenilir ve dayanıklı hâle getiren
+                  çözümler geliştiriyoruz. Her proje; bir haneye konfor, bir işletmeye istikrar ve
+                  çocukların geleceğine fırsat sunmak demek.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <div className="flex h-full flex-col rounded-3xl border border-graphite-700/10 bg-white p-9 sm:p-11">
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-volt-100 text-volt-700">
+                  <Eye size={26} strokeWidth={1.75} />
+                </span>
+                <h2 className="mt-6 font-display text-2xl font-bold text-graphite-950 sm:text-3xl">Vizyonumuz</h2>
+                <p className="mt-4 font-display text-lg font-semibold leading-relaxed text-volt-700">
+                  &ldquo;Geleceğin daha temiz, daha özgür ve daha nefes alınabilir bir dünya olduğuna
+                  inanıyoruz.&rdquo;
+                </p>
+                <p className="mt-4 leading-relaxed text-mist-700">
+                  Evlerin, şehirlerin ve hayatların enerjisini doğanın gücüyle birleştirerek
+                  Türkiye&apos;nin enerji dönüşümüne katkı sağlıyor; geliştirdiğimiz teknolojilerle düşük
+                  karbonlu bir gelecek inşa ediyoruz.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 

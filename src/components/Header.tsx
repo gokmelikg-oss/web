@@ -9,20 +9,19 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 /* Consolidated nav: one-page anchors on home + standalone pages. */
 const navItems = [
-  { href: '/#urunler', key: 'products' },
-  { href: '/#referanslar', key: 'projects' },
+  { href: '/products', key: 'products' },
+  { href: '/projects', key: 'projects' },
   { href: '/resources', key: 'resources' },
   { href: '/calculator', key: 'calculator' },
-  { href: '/#iletisim', key: 'contact' },
+  { href: '/contact', key: 'contact' },
 ] as const;
 
 /* Kurumsal alt menüsü (şimdilik Türkçe; diğer diller sonra). */
 const corporateItems = [
-  { href: '/about', label: 'Hakkımızda' },
   { href: '/founder', label: 'Kurucumuzdan' },
-  { href: '/history', label: 'Tarihçe' },
   { href: '/group-companies', label: 'Grup Şirketleri' },
-  { href: '/mission-vision', label: 'Misyon & Vizyon' },
+  { href: '/about', label: 'Hakkımızda' },
+  { href: '/history', label: 'Tarihçe' },
   { href: '/human-resources', label: 'İnsan Kaynakları' },
 ] as const;
 
@@ -134,7 +133,7 @@ export function Header() {
           </Link>
           <LanguageSwitcher dark={dark} />
           <Link
-            href="/#iletisim"
+            href="/contact"
             className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold transition-transform hover:scale-[1.03] xl:px-5 ${
               dark
                 ? 'bg-solar-gradient text-graphite-900 shadow-glow'
@@ -197,7 +196,7 @@ export function Header() {
             <div className="mt-2 flex items-center justify-between px-3">
               <LanguageSwitcher />
               <Link
-                href="/#iletisim"
+                href="/contact"
                 onClick={() => setMobileOpen(false)}
                 className="rounded-full bg-graphite-700 px-5 py-2.5 text-sm font-semibold text-white"
               >

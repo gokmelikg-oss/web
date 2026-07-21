@@ -280,7 +280,7 @@ export function SystemWizard() {
 
                     <div className="mt-7 flex flex-wrap gap-3">
                       <Link
-                        href="/#iletisim"
+                        href="/contact"
                         className="inline-flex items-center gap-2 rounded-full bg-solar-gradient px-6 py-3 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
                       >
                         {t('resultCta')}

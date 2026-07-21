@@ -73,7 +73,7 @@ export default async function GroupCompaniesPage() {
           <Reveal delay={0.2}>
             <div className="mt-12 flex justify-center">
               <Link
-                href="/#iletisim"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-graphite-950 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-graphite-800"
               >
                 Bizimle iletişime geçin

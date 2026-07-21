@@ -82,14 +82,14 @@ export function Hero() {
           className="mt-9 flex flex-wrap items-center justify-center gap-4"
         >
           <Link
-            href="/#urunler"
+            href="/products"
             className="group inline-flex items-center gap-2 rounded-full bg-solar-gradient px-8 py-3.5 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
           >
             {t('ctaPrimary')}
             <ArrowRight size={16} className="rtl:rotate-180" />
           </Link>
           <Link
-            href="/#iletisim"
+            href="/contact"
             className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
           >
             {t('ctaSecondary')}

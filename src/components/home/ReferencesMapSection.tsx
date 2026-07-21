@@ -22,7 +22,7 @@ const highlights = [
   { icon: Map, value: '81', label: 'İlde referans' },
   { icon: Building2, value: 'On binlerce', label: 'Tamamlanan proje' },
   { icon: Home, value: 'Yüz binlerce', label: 'Konut ve tesis' },
-  { icon: Globe2, value: '25+', label: 'İhracat ülkesi' },
+  { icon: Globe2, value: '40+', label: 'İhracat ülkesi' },
 ];
 
 export function ReferencesMapSection() {

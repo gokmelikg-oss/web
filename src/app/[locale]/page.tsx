@@ -1,6 +1,5 @@
 import { Hero } from '@/components/home/Hero';
 import { GroupSection } from '@/components/home/GroupSection';
-import { VisionSection } from '@/components/home/VisionSection';
 import { ProductionSection } from '@/components/home/ProductionSection';
 import { ReferencesMapSection } from '@/components/home/ReferencesMapSection';
 import { SystemWizard } from '@/components/home/SystemWizard';
@@ -22,7 +21,6 @@ export default function HomePage() {
       <ProductionSection />
       <Certs />
       <WhyUs />
-      <VisionSection />
       <HomeContact />
     </>
   );

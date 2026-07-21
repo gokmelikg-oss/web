@@ -69,9 +69,9 @@ const eras: Era[] = [
     milestones: [
       { year: '2018', title: 'Yeni dönemin başlangıcı', desc: "Sinan Şimşek'in şirket hisselerinin tamamına sahip olmasıyla daha vizyoner ve küresel bir büyüme dönemi başladı." },
       { year: '2019', title: 'Dijital dönüşüm ve ihracat atağı', desc: 'Üretimden sevkiyata tüm iş akışları ERP sistemine taşındı; ihracat ağı birçok yeni pazara genişletildi.' },
-      { year: '2022', title: "SMK Teknik'in kuruluşu", desc: 'Bakır boru, krom boru ve sarf malzemeleri grup bünyesinde üretilmeye başlandı; tedarik zinciri tamamen iç kaynaklara taşındı.' },
+      { year: '2022', title: "SMK Alüminyum'un kuruluşu", desc: 'Alüminyum profil, krom ve fleks borular ile sarf malzemeleri grup bünyesinde tedarik edilmeye başlandı; tedarik zinciri tamamen iç kaynaklara taşındı.' },
       { year: '2023', title: 'Lazer kaynak yatırımı', desc: 'Kolektör üretim kalitesini yükselten lazer kaynak makinası devreye alındı.' },
-      { year: '2024', title: "Şimşek YES'in kurulması", desc: 'Proje uygulamaları, montaj, servis ve satış sonrası süreçler tek merkezden yönetilmeye başlandı.' },
+      { year: '2024', title: "Şimşek Yenilenebilir Enerji Sistemleri'nin kurulması", desc: 'Yurt içi satış, proje uygulamaları, montaj, servis ve satış sonrası süreçler tek merkezden yönetilmeye başlandı.' },
       { year: '2025', title: 'Lipus markasının doğuşu', desc: 'Enerji depolama, ısı pompası, havuz ısıtma, PV ve şarj istasyonu teknolojilerini birleştiren yeni nesil enerji markası kuruldu.' },
     ],
   },
@@ -138,7 +138,7 @@ export default function HistoryPage() {
                   Entegre yenilenebilir enerji ekosistemi
                 </h2>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-graphite-200">
-                  Şimşek Grup; Şimşek Solar, SMK Teknik, Şimşek YES ve Lipus markalarıyla bireysel,
+                  Şimşek Grup; Şimşek Solar, SMK Alüminyum, Şimşek Yenilenebilir Enerji Sistemleri ve Lipus markalarıyla bireysel,
                   ticari ve endüstriyel tüm segmentlere entegre çözümler sunan güçlü bir yapı hâline geldi.
                 </p>
                 <Link

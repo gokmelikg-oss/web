@@ -23,7 +23,7 @@
     "stats": [
       { "value": 35, "suffix": "", "label": "Yıllık üretim tecrübesi" },
       { "value": 240000, "suffix": "+", "label": "Sahada çalışan sistem" },
-      { "value": 25, "suffix": "+", "label": "İhracat yapılan ülke" }
+      { "value": 40, "suffix": "+", "label": "İhracat yapılan ülke" }
     ]
   },
   "group": {
@@ -36,25 +36,25 @@
         "id": "solar",
         "name": "Şimşek Solar",
         "tag": "Solar Termal Sistemler",
-        "desc": "1992'den bu yana solar termal kolektörler, emayeli boylerler, bireysel ve merkezi sıcak su sistemleri üretir. Solar Keymark sertifikalı ürünleriyle konut, otel ve kamu projelerinde kanıtlanmış deneyime sahiptir; 25'ten fazla ülkeye ihracat yapar."
+        "desc": "1992'den bu yana solar termal kolektörler, emayeli boylerler, bireysel ve merkezi sıcak su sistemleri üretir. Solar Keymark sertifikalı ürünleriyle konut, otel ve kamu projelerinde kanıtlanmış deneyime sahiptir; 40'tan fazla ülkeye ihracat yapar."
       },
       {
         "id": "lipus",
         "name": "Lipus",
         "tag": "Yeni Nesil Enerji & İklimlendirme",
-        "desc": "Grubun yeni nesil enerji ve iklimlendirme markası: ısı pompaları, havuz ısıtma, yerden ısıtma altyapısı, enerji depolama, PV entegrasyonu ve araç şarj istasyonlarını tek çatı altında birleştirir; sıfır karbon yaşam alanları tasarlar."
+        "desc": "Yeni nesil enerji ve iklimlendirme markası: ısı pompaları, havuz ısıtma, yerden ısıtma altyapısı, enerji depolama, PV entegrasyonu ve araç şarj istasyonlarını tek çatı altında birleştirir; sıfır karbon yaşam alanları tasarlar."
       },
       {
         "id": "yenilenebilir",
-        "name": "Şimşek YES",
-        "tag": "Proje · Montaj · Servis",
-        "desc": "Grubun uygulama ve servis gücü: keşif ve projelendirmeden montaja, devreye almadan periyodik bakıma tüm saha süreçlerini tek merkezden yönetir. Konut, otel, kampüs, hastane ve kamu projelerinde görev alır."
+        "name": "Şimşek Yenilenebilir Enerji Sistemleri",
+        "tag": "Satış · Proje · Montaj · Servis",
+        "desc": "Yenilenebilir enerji sistemlerinde yurt içi satış, projelendirme ve taahhüt gücü. Keşiften montaja, devreye almadan periyodik bakıma tüm saha süreçlerini Mersin'deki fabrika merkezinden yürütür; konut, otel, kampüs, hastane ve kamu projelerinde görev alır."
       },
       {
         "id": "smk",
-        "name": "SMK Teknik",
-        "tag": "Teknik Üretim & Tedarik",
-        "desc": "Grubun teknik üretim ve tedarik merkezi: bakır, krom ve fleks borular, metal konstrüksiyon ve sehpa sistemleri, kontrol panoları ve projeye özel imalat çözümleri üretir; tedarik zincirini tamamen grup bünyesinde tutar."
+        "name": "SMK Alüminyum",
+        "tag": "Alüminyum & Malzeme Tedariki",
+        "desc": "Grup markalarının alüminyum profil, metal konstrüksiyon, sehpa sistemleri, krom ve fleks borular ile otomasyon sistemleri ihtiyacını karşılayan tedarik merkezidir. Standart, izlenebilir ve uzun ömürlü bileşenleri tek noktadan sağlayarak tedarik zincirini güvence altına alır."
       }
     ]
   },
@@ -294,7 +294,7 @@
     "items": [
       { "title": "Kendi üretim tesisi", "desc": "Emaye kaplamadan boru imalatına kadar tüm süreç grup şirketlerimizde, dışarıya bağımlı kalmadan yürütülür." },
       { "title": "Sertifikalı kalite", "desc": "Ürünlerimiz CE, TSE ve Solar Keymark testlerinden geçer; her seri numarası geriye dönük izlenebilir." },
-      { "title": "Anahtar teslim proje", "desc": "Keşiften projelendirmeye, montajdan devreye almaya tüm süreç Şimşek YES ekiplerince tek elden yönetilir." },
+      { "title": "Anahtar teslim proje", "desc": "Keşiften projelendirmeye, montajdan devreye almaya tüm süreç Şimşek Yenilenebilir Enerji Sistemleri ekiplerince tek elden yönetilir." },
       { "title": "Servis ve yedek parça ağı", "desc": "Türkiye genelindeki servis organizasyonumuz ve yedek parça stoğumuzla sistemleriniz on yıllarca sahada kalır." },
       { "title": "Esnek montaj çözümleri", "desc": "Çatı, teras ve zemin uygulamalarına özel sehpa sistemleri; projeye özel OEM imalat imkânı." },
       { "title": "Akıllı sistemler", "desc": "Şimşek.ai ve akıllı kontrolörlerimizle sistem performansını uzaktan izler, verimliliği veriyle optimize ederiz." }
@@ -314,17 +314,17 @@
     "eyebrow": "06 · Belgelerimiz",
     "title": "Uluslararası standartlarda belgelendirilmiş kalite",
     "subtitle": "Ürünlerimiz ve yönetim sistemlerimiz, ulusal ve uluslararası akredite kuruluşlar tarafından denetlenir ve belgelendirilir.",
+    "viewLabel": "Belgeyi görüntüle (PDF)",
     "items": [
-      "TSE Belgesi",
-      "CE Belgesi",
-      "Solar Keymark Belgesi",
-      "Yerli Malı Belgesi",
-      "BAFA List",
-      "Dubai Sertifika",
-      "ISO 9001",
-      "ISO 10002",
-      "ISO 14001",
-      "ISO 45001"
+      { "label": "TSE Belgesi", "file": "/docs/certs/tse.pdf" },
+      { "label": "CE Belgesi", "file": "/docs/certs/ce.pdf" },
+      { "label": "Solar Keymark Sertifikası", "file": "/docs/certs/solar-keymark.pdf" },
+      { "label": "BAFA List", "file": "/docs/certs/bafa.pdf" },
+      { "label": "ISO 9001 Kalite Yönetimi", "file": "/docs/certs/iso-9001.pdf" },
+      { "label": "ISO 10002 Müşteri Memnuniyeti", "file": "/docs/certs/iso-10002.pdf" },
+      { "label": "ISO 14001 Çevre Yönetimi", "file": "/docs/certs/iso-14001.pdf" },
+      { "label": "ISO 45001 İSG Yönetimi", "file": "/docs/certs/iso-45001.pdf" },
+      { "label": "Zero Waste Certificate", "file": "/docs/certs/zero-waste.pdf" }
     ]
   },
   "projectsTeaser": {
@@ -353,7 +353,7 @@
       { "value": "1992", "label": "Kuruluş" },
       { "value": "4", "label": "Grup şirketi" },
       { "value": "240.000+", "label": "Sahada çalışan sistem" },
-      { "value": "25+", "label": "İhracat yapılan ülke" }
+      { "value": "40+", "label": "İhracat yapılan ülke" }
     ],
     "values": {
       "title": "Bizi biz yapan ilkeler",
