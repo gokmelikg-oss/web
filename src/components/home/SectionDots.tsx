@@ -5,11 +5,11 @@ import { useTranslations } from 'next-intl';
 
 const SECTIONS = [
   { id: 'top', key: 'brand' },
-  { id: 'grup', key: 'group' },
-  { id: 'sihirbaz', key: 'products' },
   { id: 'urunler', key: 'products' },
+  { id: 'sihirbaz', key: 'products' },
   { id: 'referanslar', key: 'projects' },
   { id: 'uretim', key: 'products' },
+  { id: 'grup', key: 'group' },
   { id: 'iletisim', key: 'contact' },
 ] as const;
 

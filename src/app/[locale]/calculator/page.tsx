@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { Calculator, ArrowUpRight } from 'lucide-react';
+import { Calculator } from 'lucide-react';
 import { CALC_EMBED_URL } from '@/data/config';
 
 export default async function CalculatorPage() {
@@ -27,25 +27,14 @@ export default async function CalculatorPage() {
        görünür ve araç sayfayla bütünleşir. */
     <div className="-mt-20 flex h-screen flex-col bg-white">
       <div className="bg-graphite-950 pt-20 text-white">
-        <div className="container-page flex items-center justify-between gap-4 py-3.5">
-          <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-volt-500 text-graphite-950">
-              <Calculator size={18} strokeWidth={1.75} />
-            </span>
-            <div>
-              <h1 className="font-display text-base font-bold leading-tight">{t('title')}</h1>
-              <p className="hidden text-xs text-graphite-300 sm:block">{t('subtitle')}</p>
-            </div>
+        <div className="container-page flex items-center gap-3 py-3.5">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-volt-500 text-graphite-950">
+            <Calculator size={18} strokeWidth={1.75} />
+          </span>
+          <div className="min-w-0">
+            <h1 className="font-display text-base font-bold leading-tight">{t('title')}</h1>
+            <p className="hidden truncate text-xs text-graphite-300 sm:block">{t('subtitle')}</p>
           </div>
-          <a
-            href={CALC_EMBED_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-volt-500 hover:text-volt-400"
-          >
-            {t('openFull')}
-            <ArrowUpRight size={15} className="rtl:-scale-x-100" />
-          </a>
         </div>
       </div>
       <iframe

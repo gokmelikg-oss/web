@@ -142,7 +142,7 @@ export default function HistoryPage() {
                   ticari ve endüstriyel tüm segmentlere entegre çözümler sunan güçlü bir yapı hâline geldi.
                 </p>
                 <Link
-                  href="/group-companies"
+                  href="/about#grup-sirketleri"
                   className="mt-7 inline-flex items-center gap-2 rounded-full bg-solar-gradient px-6 py-3 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
                 >
                   Grup şirketlerini keşfedin

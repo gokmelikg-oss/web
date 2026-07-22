@@ -11,12 +11,12 @@ interface CatalogFamily {
   groups: { items: { name: string }[] }[];
 }
 
-const familyVisual: Record<string, { icon: typeof Sun; image: string }> = {
-  kolektorler: { icon: Sun, image: '/products/orion-300.jpg' },
-  boylerler: { icon: Droplets, image: '/products/aquarious-540.jpg' },
-  sehpalar: { icon: Layers, image: '/products/sehpa-merkezi-3lu.jpg' },
-  baglanti: { icon: Cable, image: '/products/solar-vana.jpg' },
-  otomasyon: { icon: Cpu, image: '/products/merkezi-sistem-saha.jpg' },
+const familyVisual: Record<string, { icon: typeof Sun; image: string; accent: string }> = {
+  kolektorler: { icon: Sun, image: '/products/orion-300.jpg', accent: '#f6bc32' },
+  boylerler: { icon: Droplets, image: '/products/aquarious-540.jpg', accent: '#02b7d4' },
+  sehpalar: { icon: Layers, image: '/products/sehpa-merkezi-3lu.jpg', accent: '#2da8ff' },
+  baglanti: { icon: Cable, image: '/products/solar-vana.jpg', accent: '#10b981' },
+  otomasyon: { icon: Cpu, image: '/products/merkezi-sistem-saha.jpg', accent: '#3a4d97' },
 };
 
 export function ProductsSection() {
@@ -50,48 +50,42 @@ export function ProductsSection() {
           </div>
         </Reveal>
 
-        {/* Bento: ilk iki aile geniş, kalan üçü kompakt — 5 ana grup */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+        {/* Açık, katalog düzeni: görsel üstte, bilgi altta — 5 ana grup */}
+        <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-9 md:grid-cols-3 xl:grid-cols-5">
           {families.map((family, i) => {
             const visual = familyVisual[family.id] ?? familyVisual.kolektorler;
             const Icon = visual.icon;
-            const featured = i < 2;
             return (
-              <Reveal
-                key={family.id}
-                delay={i * 0.06}
-                className={featured ? 'lg:col-span-3' : 'lg:col-span-2'}
-              >
-                <Link
-                  href={`/products#${family.id}`}
-                  className={`group relative flex h-full flex-col justify-end overflow-hidden rounded-3xl bg-graphite-950 ${
-                    featured ? 'min-h-[20rem]' : 'min-h-[15rem]'
-                  }`}
-                >
-                  <Image
-                    src={visual.image}
-                    alt={family.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover opacity-75 transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-graphite-950 via-graphite-950/35 to-transparent" aria-hidden />
-                  <span className="absolute end-4 top-4 flex h-9 w-9 items-center justify-center rounded-xl bg-white/95 text-volt-700 backdrop-blur-sm">
-                    <Icon size={17} strokeWidth={1.9} />
-                  </span>
-                  <div className="relative p-6">
-                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-volt-400">
-                      {countOf(family)} {tCatalog('seriesLabel')}
-                    </p>
-                    <h3 className={`mt-1.5 font-display font-bold text-white ${featured ? 'text-2xl' : 'text-xl'}`}>
+              <Reveal key={family.id} delay={i * 0.06}>
+                <Link href={`/products#${family.id}`} className="group flex h-full flex-col">
+                  <div className="relative aspect-square overflow-hidden rounded-2xl bg-mist-50">
+                    <Image
+                      src={visual.image}
+                      alt={family.title}
+                      fill
+                      sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 20vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                    />
+                    <span
+                      className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
+                      style={{ backgroundColor: visual.accent }}
+                      aria-hidden
+                    />
+                  </div>
+
+                  <div className="mt-4 flex flex-1 flex-col">
+                    <div className="flex items-center gap-2">
+                      <Icon size={15} strokeWidth={2} style={{ color: visual.accent }} />
+                      <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
+                        {countOf(family)} {tCatalog('seriesLabel')}
+                      </p>
+                    </div>
+                    <h3 className="mt-1.5 font-display text-lg font-bold leading-snug text-graphite-950 transition-colors group-hover:text-volt-700">
                       {family.title}
                     </h3>
-                    {featured && (
-                      <p className="mt-2 max-w-sm text-sm leading-relaxed text-graphite-200">{family.desc}</p>
-                    )}
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition-colors group-hover:text-volt-400">
+                    <span className="mt-auto inline-flex items-center gap-1 pt-3 text-sm font-semibold text-mist-600 transition-colors group-hover:text-graphite-950">
                       İncele
-                      <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>
                 </Link>
@@ -103,7 +97,7 @@ export function ProductsSection() {
         <Reveal delay={0.1}>
           <Link
             href="/products"
-            className="group mt-8 flex items-center justify-center gap-2 rounded-full border border-graphite-950/15 px-5 py-3 text-sm font-semibold text-graphite-950 transition-colors hover:bg-graphite-950 hover:text-white sm:hidden"
+            className="group mt-10 flex items-center justify-center gap-2 rounded-full border border-graphite-950/15 px-5 py-3 text-sm font-semibold text-graphite-950 transition-colors hover:bg-graphite-950 hover:text-white sm:hidden"
           >
             {t('viewAll')}
             <ArrowRight size={15} className="rtl:rotate-180" />

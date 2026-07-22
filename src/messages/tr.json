@@ -9,7 +9,7 @@
     "products": "Ürünler",
     "projects": "Referanslar",
     "resources": "Kaynaklar",
-    "calculator": "Hesaplama Aracı",
+    "calculator": "Hesaplama",
     "contact": "İletişim",
     "getQuote": "Teklif Al"
   },
@@ -27,28 +27,28 @@
     ]
   },
   "group": {
-    "eyebrow": "01 · Şirketler Grubu",
+    "eyebrow": "07 · Şirketler Grubu",
     "parentLabel": "Ana şirket",
     "title": "Tek vizyon, dört kuvvet",
-    "body": "Şimşek Solar, Şimşek Grup çatısı altındadır. Tasarımdan üretime, saha uygulamasından uzun dönemli bakıma uzanan entegre bir ekosistem: zincirin her halkası kendi ellerimizde.",
+    "body": "Şimşek Solar, Şimşek Grup çatısı altında faaliyet gösterir. Birbirini tamamlayan dört şirketimizle üretimden saha uygulamasına, satıştan uzun dönemli bakıma kadar bütünleşik çözümler sunarız.",
     "companies": [
       {
         "id": "solar",
         "name": "Şimşek Solar",
         "tag": "Solar Termal Sistemler",
-        "desc": "1992'den bu yana solar termal kolektörler, emayeli boylerler, bireysel ve merkezi sıcak su sistemleri üretir. Solar Keymark sertifikalı ürünleriyle konut, otel ve kamu projelerinde kanıtlanmış deneyime sahiptir; 40'tan fazla ülkeye ihracat yapar."
+        "desc": "Solar termal kolektörler, emayeli boylerler ve merkezi sıcak su sistemleri üretiyoruz. Mersin'deki entegre tesisimizde ürettiğimiz Solar Keymark sertifikalı ürünlerimizi 40'tan fazla ülkeye ulaştırıyoruz."
       },
       {
         "id": "lipus",
         "name": "Lipus",
-        "tag": "Yeni Nesil Enerji & İklimlendirme",
-        "desc": "Yeni nesil enerji ve iklimlendirme markası: ısı pompaları, havuz ısıtma, yerden ısıtma altyapısı, enerji depolama, PV entegrasyonu ve araç şarj istasyonlarını tek çatı altında birleştirir; sıfır karbon yaşam alanları tasarlar."
+        "tag": "Zero Carbon House Teknolojileri",
+        "desc": "Zero Carbon House vizyonuyla çalışır: ısı pompaları, enerji depolama, PV entegrasyonu, havuz ve yerden ısıtma ile araç şarj istasyonlarını tek sistemde buluşturur. Enerjisini kendi üreten, depolayan ve akıllıca yöneten yaşam alanları kurar."
       },
       {
         "id": "yenilenebilir",
         "name": "Şimşek Yenilenebilir Enerji Sistemleri",
-        "tag": "Satış · Proje · Montaj · Servis",
-        "desc": "Yenilenebilir enerji sistemlerinde yurt içi satış, projelendirme ve taahhüt gücü. Keşiften montaja, devreye almadan periyodik bakıma tüm saha süreçlerini Mersin'deki fabrika merkezinden yürütür; konut, otel, kampüs, hastane ve kamu projelerinde görev alır."
+        "tag": "Satış · Montaj · Devreye Alma · Bakım",
+        "desc": "Ankara merkezli yapısıyla yurt içi satış, saha montajı, devreye alma ve periyodik bakım hizmetleri sunar. Aynı hizmetler Mersin'deki fabrikamız üzerinden de verilir; konut, otel, kampüs, hastane ve kamu projelerinde görev alır."
       },
       {
         "id": "smk",
@@ -130,7 +130,7 @@
     }
   },
   "productsSection": {
-    "eyebrow": "03 · Ürün Ailesi",
+    "eyebrow": "01 · Ürün Ailesi",
     "title": "Kolektörden otomasyona eksiksiz ürün gamı",
     "subtitle": "Orion kolektörler, Aquarious ve Sirius boylerler, merkezi ve paket sistem sehpaları, otomasyon ve bağlantı ekipmanları.",
     "viewAll": "Tüm ürünleri gör"
@@ -294,15 +294,15 @@
     "centralModel": "ORION × N + AQUARIOUS"
   },
   "whyUs": {
-    "eyebrow": "07 · Neden Şimşek",
+    "eyebrow": "06 · Neden Şimşek",
     "title": "Sahada kanıtlanmış mühendislik",
     "items": [
-      { "title": "Kendi üretim tesisi", "desc": "Emaye kaplamadan boru imalatına kadar tüm süreç grup şirketlerimizde, dışarıya bağımlı kalmadan yürütülür." },
-      { "title": "Sertifikalı kalite", "desc": "Ürünlerimiz CE, TSE ve Solar Keymark testlerinden geçer; her seri numarası geriye dönük izlenebilir." },
+      { "title": "Kendi üretim tesisimiz", "desc": "Kolektörlerimizi Mersin'deki entegre tesisimizde üretiyor; boyler yalıtımından montaj ve paketlemeye kadar tüm hatları kendi kalite standardımızla yönetiyoruz." },
+      { "title": "Sertifikalı kalite", "desc": "Ürünlerimiz CE, TSE ve Solar Keymark testlerinden geçer; her üretim partisi sevkiyat öncesi kalite kontrol istasyonlarımızda tek tek denetlenir." },
       { "title": "Anahtar teslim proje", "desc": "Keşiften projelendirmeye, montajdan devreye almaya tüm süreç Şimşek Yenilenebilir Enerji Sistemleri ekiplerince tek elden yönetilir." },
-      { "title": "Servis ve yedek parça ağı", "desc": "Türkiye genelindeki servis organizasyonumuz ve yedek parça stoğumuzla sistemleriniz on yıllarca sahada kalır." },
-      { "title": "Esnek montaj çözümleri", "desc": "Çatı, teras ve zemin uygulamalarına özel sehpa sistemleri; projeye özel OEM imalat imkânı." },
-      { "title": "Akıllı sistemler", "desc": "Şimşek.ai ve akıllı kontrolörlerimizle sistem performansını uzaktan izler, verimliliği veriyle optimize ederiz." }
+      { "title": "On yıllarca sahada", "desc": "Kurduğumuz sistemler on yıllar boyunca çalışır durumda kalır; yaygın servis ağımız ve yedek parça stoğumuzla bakım süreci kesintisiz sürer." },
+      { "title": "Projeye özel üretim", "desc": "Çatı, teras ve zemin uygulamalarına özel sehpa çözümleri; projeye ve talebe özel OEM imalat imkânlarıyla her sahaya uyum sağlarız." },
+      { "title": "İzleme ve hızlı müdahale", "desc": "Akıllı kontrolörlerimizle sistemin çalışma durumunu izler, kesintisiz çalışmasını sağlar; arıza durumunda saha ekiplerimizle acil müdahale ederiz." }
     ]
   },
   "process": {
@@ -316,7 +316,7 @@
     ]
   },
   "certs": {
-    "eyebrow": "06 · Belgelerimiz",
+    "eyebrow": "04 · Belgelerimiz",
     "title": "Uluslararası standartlarda belgelendirilmiş kalite",
     "subtitle": "Ürünlerimiz ve yönetim sistemlerimiz, ulusal ve uluslararası akredite kuruluşlar tarafından denetlenir ve belgelendirilir.",
     "viewLabel": "Belgeyi görüntüle (PDF)",
@@ -333,7 +333,7 @@
     ]
   },
   "projectsTeaser": {
-    "eyebrow": "04 · Referanslar",
+    "eyebrow": "03 · Referanslar",
     "title": "Kamu, konut ve otelden ihracata",
     "subtitle": "Askeri tesislerden otellere, toplu konutlardan ihracat pazarlarına: 81 ilde on binlerce projede tercih edilen mühendislik.",
     "cta": "Tüm referansları gör"
@@ -352,7 +352,7 @@
     "story": {
       "title": "Hikayemiz",
       "body1": "Mersin'in güneş potansiyelini değerlendirmek amacıyla kurulan Şimşek, bugün dört şirketli bir grup yapısına ve yılda binlerce üniteyi bulan üretim kapasitesine ulaştı. Kuruluşumuzdan bu yana amacımız değişmedi: dayanıklı, verimli ve bakım maliyeti düşük sistemler üretmek.",
-      "body2": "Bugün ürünlerimiz askeri tesisler, oteller ve toplu konutların yanı sıra ihracat pazarlarında da yer alıyor. Ar-Ge ekibimiz, absorban kaplama verimliliğinden emaye reçetesine, akıllı izleme yazılımımıza kadar her bileşeni sürekli geliştiriyor."
+      "body2": "Bugün ürünlerimiz askeri tesisler, oteller, hastaneler ve toplu konut projelerinin yanı sıra ihracat pazarlarında da yer alıyor. Ar-Ge ekibimiz; ürün dayanıklılığı, montaj kolaylığı ve sistem verimliliği başlıklarında geliştirme çalışmalarını sürdürüyor."
     },
     "stats": [
       { "value": "1992", "label": "Kuruluş" },
@@ -363,8 +363,8 @@
     "values": {
       "title": "Bizi biz yapan ilkeler",
       "items": [
-        { "title": "Dayanıklılık önce gelir", "desc": "Her ürünü, üreticinin değil kullanıcının bakış açısıyla; on yıllar sürecek şekilde tasarlarız." },
-        { "title": "Şeffaf mühendislik", "desc": "Teknik föylerimizde gerçek test değerlerini paylaşırız, abartılı verimlilik iddialarından kaçınırız." },
+        { "title": "Dayanıklılık önce gelir", "desc": "Her ürünü kullanıcının ihtiyacına yönelik, on yıllar sürecek şekilde tasarlarız." },
+        { "title": "Şeffaf mühendislik", "desc": "Teknik föylerimizde akredite laboratuvar test değerlerini paylaşır, her ürünün performansını belgeleriyle birlikte sunarız." },
         { "title": "Üretimden otomasyona bütünlük", "desc": "Üretici, proje mühendisi, saha uygulayıcısı ve teknoloji sağlayıcısı rollerini tek çatı altında topluyoruz." }
       ]
     },
@@ -381,22 +381,24 @@
     },
     "filters": {
       "all": "Tümü",
-      "catalog": "Kataloglar",
-      "manual": "Kurulum Kılavuzları",
-      "certificate": "Sertifikalar",
+      "datasheet": "Teknik Föyler",
       "drawing": "Teknik Çizimler",
-      "cad": "CAD / BIM",
-      "datasheet": "Teknik Föyler"
+      "manual": "Kurulum Kılavuzları"
     },
     "downloadSelected": "Seçilenleri indir",
-    "selectAll": "Tümünü seç",
     "productDocsTitle": "Ürün bazlı teknik dosyalar",
-    "generalDocsTitle": "Genel dökümanlar ve sertifikalar",
+    "productDocsSubtitle": "Her ürün için teknik föy, ölçülendirilmiş teknik çizim (PDF) ve kurulum kılavuzu.",
+    "certsTitle": "Sertifikalarımız",
+    "certsSubtitle": "Ürün ve yönetim sistemi belgelerimizin tamamı PDF olarak erişime açıktır.",
+    "generalDocsTitle": "Genel dökümanlar",
+    "generalDocsSubtitle": "Kurumsal tanıtım, marka kullanımı ve satış sonrası dökümanları.",
     "generalDocs": [
-      { "name": "Şimşek Grup Kurumsal Tanıtım", "type": "catalog" },
-      { "name": "ISO 9001 Kalite Yönetim Sertifikası", "type": "certificate" },
-      { "name": "CE Uygunluk Beyanı", "type": "certificate" },
-      { "name": "Solar Keymark Test Raporu", "type": "certificate" },
+      { "name": "Şimşek Solar Ürün Kataloğu", "type": "catalog" },
+      { "name": "Şimşek Grup Kurumsal Tanıtım Dosyası", "type": "catalog" },
+      { "name": "Logo Kullanım Kılavuzu", "type": "catalog" },
+      { "name": "Kurumsal Kimlik Rehberi", "type": "catalog" },
+      { "name": "Marka ve Logo Dosyaları", "type": "catalog" },
+      { "name": "Garanti Koşulları ve Genel Şartlar", "type": "catalog" },
       { "name": "Bayi Kurulum ve Bakım Kılavuzu", "type": "manual" }
     ]
   },
@@ -422,14 +424,11 @@
     "tabs": {
       "overview": "Genel Bakış",
       "specs": "Teknik Özellikler",
-      "drawings": "Çizimler",
-      "cad": "CAD / BIM",
+      "drawings": "Teknik Çizim",
       "documents": "Dökümanlar"
     },
     "drawingsTitle": "Teknik ölçü çizimleri",
-    "drawingsBody": "Montaj ve statik hesap için 2D ölçülendirilmiş çizimler.",
-    "cadTitle": "CAD / BIM dosyaları",
-    "cadBody": "Proje çizimlerinize doğrudan aktarabileceğiniz 3B model ve CAD formatları.",
+    "drawingsBody": "Montaj ve statik hesap için ölçülendirilmiş çizimler (PDF).",
     "documentsTitle": "İlgili dökümanlar",
     "downloadAll": "Seçilenleri indir",
     "items": {
@@ -625,7 +624,7 @@
     "hero": {
       "eyebrow": "İletişim",
       "title": "Projeniz için konuşalım",
-      "subtitle": "Teklif, teknik destek veya bayilik dışındaki tüm sorularınız için bize ulaşın."
+      "subtitle": "Teklif talebi, teknik destek, bayilik başvurusu ve aklınıza takılan tüm sorular için bize ulaşın."
     },
     "info": {
       "addressTitle": "Fabrika",

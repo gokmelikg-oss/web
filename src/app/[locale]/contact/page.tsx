@@ -47,15 +47,26 @@ export default async function ContactPage() {
             ))}
 
             <Reveal delay={0.3}>
-              <div className="overflow-hidden rounded-2xl border border-mist-900/10 shadow-card">
+              {/* Ana sayfadaki harita ile aynı dil: gri tonlu, üzerine gelince renklenir */}
+              <div className="group relative overflow-hidden rounded-2xl border border-mist-900/10 bg-mist-100 shadow-card">
                 <iframe
                   src={FACTORY_MAP_EMBED}
                   title={t('info.addressTitle')}
-                  className="h-64 w-full border-0"
+                  className="h-72 w-full border-0 grayscale-[0.85] contrast-[0.95] transition-all duration-500 group-hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   allowFullScreen
                 />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-white/80 to-transparent" aria-hidden />
+                <div className="pointer-events-none absolute start-3 top-3 flex items-center gap-2 rounded-full border border-mist-900/10 bg-white/95 py-1.5 pe-4 ps-2 shadow-sm backdrop-blur-sm">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-volt-500 text-graphite-950">
+                    <MapPin size={13} strokeWidth={2} />
+                  </span>
+                  <div className="leading-tight">
+                    <p className="text-xs font-bold text-graphite-950">Şimşek Solar Üretim Tesisi</p>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-600">Mersin 2. OSB</p>
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>

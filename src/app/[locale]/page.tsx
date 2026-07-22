@@ -14,13 +14,13 @@ export default function HomePage() {
     <>
       <SectionDots />
       <Hero />
-      <GroupSection />
-      <SystemWizard />
       <ProductsSection />
+      <SystemWizard />
       <ReferencesMapSection />
-      <ProductionSection />
       <Certs />
+      <ProductionSection />
       <WhyUs />
+      <GroupSection />
       <HomeContact />
     </>
   );

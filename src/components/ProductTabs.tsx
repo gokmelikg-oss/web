@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { FileDown, ArrowUpRight, CheckCircle2, Download, Box } from 'lucide-react';
+import { FileDown, ArrowUpRight, CheckCircle2, Download } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { getProduct, getProductDocuments } from '@/data/products';
 import { DocRow } from '@/components/DocRow';
 
-type TabKey = 'overview' | 'specs' | 'drawings' | 'cad' | 'documents';
+type TabKey = 'overview' | 'specs' | 'drawings' | 'documents';
 
 export function ProductTabs({ slug }: { slug: string }) {
   const t = useTranslations('products');
@@ -21,8 +21,7 @@ export function ProductTabs({ slug }: { slug: string }) {
   const features = t.raw(`items.${slug}.features`) as string[];
   const allDocs = getProductDocuments(slug);
   const drawingDocs = allDocs.filter((d) => d.type === 'drawing');
-  const cadDocs = allDocs.filter((d) => d.type === 'cad');
-  const documentDocs = allDocs.filter((d) => ['datasheet', 'manual', 'certificate'].includes(d.type));
+  const documentDocs = allDocs.filter((d) => ['datasheet', 'manual'].includes(d.type));
 
   function toggle(id: string) {
     setSelected((cur) => {
@@ -33,7 +32,7 @@ export function ProductTabs({ slug }: { slug: string }) {
     });
   }
 
-  const tabs: TabKey[] = ['overview', 'specs', 'drawings', 'cad', 'documents'];
+  const tabs: TabKey[] = ['overview', 'specs', 'drawings', 'documents'];
 
   return (
     <div>
@@ -116,33 +115,6 @@ export function ProductTabs({ slug }: { slug: string }) {
 
         {tab === 'drawings' && (
           <DocSection title={t('drawingsTitle')} body={t('drawingsBody')} docs={drawingDocs} selected={selected} onToggle={toggle} downloadLabel={t('downloadAll')} />
-        )}
-
-        {tab === 'cad' && (
-          <div>
-            <h2 className="font-display text-lg font-bold text-graphite-950">{t('cadTitle')}</h2>
-            <p className="mt-2 max-w-xl text-sm text-mist-700">{t('cadBody')}</p>
-            <div className="relative mt-6 flex h-56 items-center justify-center overflow-hidden rounded-2xl bg-graphite-950 bg-blueprint-dark">
-              <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, #f4c40a, transparent 55%)' }} />
-              <motion.div
-                animate={{ rotateY: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <Box size={64} strokeWidth={1} className="text-volt-400/80" />
-              </motion.div>
-            </div>
-            <div className="mt-6 divide-y divide-mist-900/8 overflow-hidden rounded-2xl border border-mist-900/8 bg-white">
-              {cadDocs.map((d) => (
-                <DocRow
-                  key={d.id}
-                  row={{ id: d.id, label: `${product.model} — ${d.format}`, format: d.format }}
-                  checked={selected.has(d.id)}
-                  onToggle={() => toggle(d.id)}
-                />
-              ))}
-            </div>
-          </div>
         )}
 
         {tab === 'documents' && (

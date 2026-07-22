@@ -144,31 +144,23 @@ export function getProduct(slug: string) {
   return products.find((p) => p.slug === slug);
 }
 
-export const cadFormats = ['DWG', 'DXF', 'STEP', 'PDF'] as const;
-
-export const productDocTypes = ['datasheet', 'manual', 'certificate'] as const;
-
-export const drawingFormats = ['PDF', 'DWG'] as const;
+/* Ürün bazlı belgeler yalnızca üç başlıkta toplanır: teknik föy,
+   teknik çizim (PDF) ve kurulum kılavuzu. Sertifikalar ürün altında değil,
+   Kaynaklar sayfasında ayrı bir bölümde listelenir. */
+export const productDocTypes = ['datasheet', 'drawing', 'manual'] as const;
 
 export interface ProductDocument {
   id: string;
   productSlug: string;
-  type: 'datasheet' | 'manual' | 'certificate' | 'drawing' | 'cad';
+  type: 'datasheet' | 'drawing' | 'manual';
   format: string;
 }
 
 export function getProductDocuments(slug: string): ProductDocument[] {
-  const docs: ProductDocument[] = [];
-
-  for (const type of productDocTypes) {
-    docs.push({ id: `${slug}-${type}`, productSlug: slug, type, format: 'PDF' });
-  }
-  for (const format of drawingFormats) {
-    docs.push({ id: `${slug}-drawing-${format}`, productSlug: slug, type: 'drawing', format });
-  }
-  for (const format of cadFormats) {
-    docs.push({ id: `${slug}-cad-${format}`, productSlug: slug, type: 'cad', format });
-  }
-
-  return docs;
+  return productDocTypes.map((type) => ({
+    id: `${slug}-${type}`,
+    productSlug: slug,
+    type,
+    format: 'PDF',
+  }));
 }

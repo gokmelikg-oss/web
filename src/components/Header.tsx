@@ -19,8 +19,8 @@ const navItems = [
 /* Kurumsal alt menüsü (şimdilik Türkçe; diğer diller sonra). */
 const corporateItems = [
   { href: '/founder', label: 'Kurucumuzdan' },
-  { href: '/group-companies', label: 'Grup Şirketleri' },
   { href: '/about', label: 'Hakkımızda' },
+  { href: '/about#grup-sirketleri', label: 'Grup Şirketleri' },
   { href: '/history', label: 'Tarihçe' },
 ] as const;
 
