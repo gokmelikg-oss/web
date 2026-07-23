@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Search, MapPin, X, ChevronDown } from 'lucide-react';
+import { Search, MapPin, X, ChevronDown, ArrowDownWideNarrow } from 'lucide-react';
 import { referenceProjects, provinceSummaries, computeImpact } from '@/data/references';
 
 const PAGE_SIZE = 24;
@@ -13,17 +13,20 @@ export function ReferenceList() {
   const [province, setProvince] = useState<string | null>(null);
   const [visible, setVisible] = useState(PAGE_SIZE);
 
+  /* Liste her zaman kollektör adedine göre büyükten küçüğe sıralanır. */
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase('tr-TR');
-    return referenceProjects.filter((p) => {
-      if (province && p.il !== province) return false;
-      if (!q) return true;
-      return (
-        p.title.toLocaleLowerCase('tr-TR').includes(q) ||
-        p.il.toLocaleLowerCase('tr-TR').includes(q) ||
-        p.ilce.toLocaleLowerCase('tr-TR').includes(q)
-      );
-    });
+    return referenceProjects
+      .filter((p) => {
+        if (province && p.il !== province) return false;
+        if (!q) return true;
+        return (
+          p.title.toLocaleLowerCase('tr-TR').includes(q) ||
+          p.il.toLocaleLowerCase('tr-TR').includes(q) ||
+          p.ilce.toLocaleLowerCase('tr-TR').includes(q)
+        );
+      })
+      .sort((a, b) => b.collectors - a.collectors);
   }, [query, province]);
 
   /* Filtrelenen seçkinin toplamları — arama yapıldıkça canlı güncellenir. */
@@ -132,6 +135,14 @@ export function ReferenceList() {
         </p>
       )}
 
+      {/* Sıralama bilgisi */}
+      {filtered.length > 0 && (
+        <p className="mt-6 flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
+          <ArrowDownWideNarrow size={13} className="shrink-0" />
+          Kollektör adedine göre büyükten küçüğe sıralı
+        </p>
+      )}
+
       {/* Liste */}
       {filtered.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-dashed border-mist-900/20 py-16 text-center">
@@ -150,14 +161,19 @@ export function ReferenceList() {
                   <MapPin size={11} className="shrink-0" />
                   {p.il} · {p.ilce}
                 </p>
-                <span className="shrink-0 rounded-full bg-mist-100 px-2.5 py-1 font-mono text-[10px] font-semibold text-mist-700">
+                <span className="shrink-0 rounded-full bg-volt-100 px-2.5 py-1 font-tabular font-mono text-[10px] font-bold text-volt-800">
                   {nf.format(p.collectors)} kollektör
                 </span>
               </div>
 
-              <h3 className="mt-2.5 text-balance font-display text-base font-bold leading-snug text-graphite-950">
-                {p.title}
-              </h3>
+              <div className="mt-2.5 flex items-start gap-3">
+                <span className="mt-0.5 shrink-0 font-tabular font-mono text-xs font-bold text-mist-400">
+                  {nf.format(i + 1)}
+                </span>
+                <h3 className="text-balance font-display text-base font-bold leading-snug text-graphite-950">
+                  {p.title}
+                </h3>
+              </div>
 
               <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-mist-900/8 pt-3.5">
                 <div>
