@@ -41,41 +41,52 @@ export function ProductionSection() {
           </div>
         </div>
 
-        {/* Teklif isteğinden devreye almaya: uçtan uca süreç şeridi */}
-        <div className="mt-16 border-t border-mist-900/10 pt-12">
+        {/* Teklif isteğinden devreye almaya: uçtan uca süreç akışı */}
+        <div className="mt-20">
           <Reveal>
-            <h3 className="font-display text-xl font-bold text-graphite-950">{tProcess('title')}</h3>
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                {tProcess('eyebrow')}
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              </p>
+              <h3 className="mt-4 text-balance font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">
+                {tProcess('title')}
+              </h3>
+            </div>
           </Reveal>
-          <ol className="mt-8 grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, i) => {
-              const Icon = stepIcons[i] ?? ClipboardList;
-              return (
-                <Reveal key={step.title} delay={i * 0.07}>
-                  <li className="relative flex flex-col">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-700">
-                        <Icon size={18} strokeWidth={1.85} />
+
+          <div className="relative mt-12">
+            {/* Adımları birbirine bağlayan sürekli akış çizgisi */}
+            <span
+              className="pointer-events-none absolute inset-x-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-volt-500/45 to-transparent lg:block"
+              aria-hidden
+            />
+
+            <ol className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              {steps.map((step, i) => {
+                const Icon = stepIcons[i] ?? ClipboardList;
+                return (
+                  <Reveal key={step.title} delay={i * 0.08}>
+                    <li className="group relative flex flex-col items-center text-center">
+                      {/* Numaralı ikon dairesi */}
+                      <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-volt-500/25 bg-white text-volt-700 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:border-volt-500 group-hover:bg-volt-500 group-hover:text-graphite-950">
+                        <Icon size={22} strokeWidth={1.8} />
+                        <span className="absolute -end-1.5 -top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-graphite-950 font-tabular font-mono text-[10px] font-bold text-white">
+                          {i + 1}
+                        </span>
                       </span>
-                      <span className="font-tabular font-mono text-xs font-bold text-mist-400">
-                        0{i + 1}
-                      </span>
-                      {/* Adımlar arası bağlayıcı çizgi */}
-                      {i < steps.length - 1 && (
-                        <span
-                          className="ms-1 hidden h-px flex-1 bg-gradient-to-r from-volt-500/40 to-transparent lg:block"
-                          aria-hidden
-                        />
-                      )}
-                    </div>
-                    <h4 className="mt-4 font-display text-base font-bold text-graphite-950">
-                      {step.title}
-                    </h4>
-                    <p className="mt-2 text-sm leading-relaxed text-mist-700">{step.desc}</p>
-                  </li>
-                </Reveal>
-              );
-            })}
-          </ol>
+
+                      <h4 className="mt-5 font-display text-base font-bold text-graphite-950">
+                        {step.title}
+                      </h4>
+                      <p className="mt-2 max-w-xs text-sm leading-relaxed text-mist-700">{step.desc}</p>
+                    </li>
+                  </Reveal>
+                );
+              })}
+            </ol>
+          </div>
         </div>
       </div>
     </section>
