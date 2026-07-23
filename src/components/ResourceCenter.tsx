@@ -19,7 +19,7 @@ interface Row {
   format: string;
 }
 
-type RawCert = string | { label: string; file?: string };
+type RawCert = string | { label: string; scope?: string; file?: string };
 
 export function ResourceCenter() {
   const t = useTranslations('resources');
@@ -135,8 +135,15 @@ export function ResourceCenter() {
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-700 transition-colors group-hover:bg-volt-500 group-hover:text-graphite-950">
                   <ShieldCheck size={18} strokeWidth={1.75} />
                 </span>
-                <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-graphite-950">
-                  {cert.label}
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold leading-snug text-graphite-950">
+                    {cert.label}
+                  </span>
+                  {cert.scope && (
+                    <span className="mt-0.5 block font-mono text-[9.5px] uppercase tracking-[0.12em] text-mist-500">
+                      {cert.scope}
+                    </span>
+                  )}
                 </span>
                 {cert.file && (
                   <ArrowUpRight

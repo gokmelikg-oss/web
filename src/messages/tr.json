@@ -10,6 +10,7 @@
     "projects": "Referanslar",
     "resources": "Kaynaklar",
     "calculator": "Hesaplama",
+    "dealers": "Bayilik",
     "contact": "İletişim",
     "getQuote": "Teklif Al"
   },
@@ -321,15 +322,15 @@
     "subtitle": "Ürünlerimiz ve yönetim sistemlerimiz, ulusal ve uluslararası akredite kuruluşlar tarafından denetlenir ve belgelendirilir.",
     "viewLabel": "Belgeyi görüntüle (PDF)",
     "items": [
-      { "label": "TSE Belgesi", "file": "/docs/certs/tse.pdf" },
-      { "label": "CE Belgesi", "file": "/docs/certs/ce.pdf" },
-      { "label": "Solar Keymark Sertifikası", "file": "/docs/certs/solar-keymark.pdf" },
-      { "label": "BAFA List", "file": "/docs/certs/bafa.pdf" },
-      { "label": "ISO 9001 Kalite Yönetimi", "file": "/docs/certs/iso-9001.pdf" },
-      { "label": "ISO 10002 Müşteri Memnuniyeti", "file": "/docs/certs/iso-10002.pdf" },
-      { "label": "ISO 14001 Çevre Yönetimi", "file": "/docs/certs/iso-14001.pdf" },
-      { "label": "ISO 45001 İSG Yönetimi", "file": "/docs/certs/iso-45001.pdf" },
-      { "label": "Zero Waste Certificate", "file": "/docs/certs/zero-waste.pdf" }
+      { "label": "Solar Keymark", "scope": "Orion 400 serisi kolektör", "file": "/docs/certs/solar-keymark.pdf" },
+      { "label": "TSE Belgesi", "scope": "Kolektör ve boyler", "file": "/docs/certs/tse.pdf" },
+      { "label": "CE Belgesi", "scope": "Kolektör ve boyler", "file": "/docs/certs/ce.pdf" },
+      { "label": "BAFA List", "scope": "Almanya teşvik listesi", "file": "/docs/certs/bafa.pdf" },
+      { "label": "ISO 9001", "scope": "Kalite yönetim sistemi", "file": "/docs/certs/iso-9001.pdf" },
+      { "label": "ISO 14001", "scope": "Çevre yönetim sistemi", "file": "/docs/certs/iso-14001.pdf" },
+      { "label": "ISO 45001", "scope": "İş sağlığı ve güvenliği", "file": "/docs/certs/iso-45001.pdf" },
+      { "label": "ISO 10002", "scope": "Müşteri memnuniyeti yönetimi", "file": "/docs/certs/iso-10002.pdf" },
+      { "label": "Zero Waste", "scope": "Sıfır atık belgesi", "file": "/docs/certs/zero-waste.pdf" }
     ]
   },
   "projectsTeaser": {

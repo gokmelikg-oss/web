@@ -6,9 +6,10 @@ const icons = [ShieldCheck, Award, FileCheck2, BadgeCheck, Globe2, Factory];
 
 /* items iki biçimi de destekler: düz string (en/ar) veya {label, file} (tr).
    file varsa kart, PDF'i yeni sekmede açan bir bağlantıya dönüşür. */
-type RawCert = string | { label: string; file?: string };
+type RawCert = string | { label: string; scope?: string; file?: string };
 interface Cert {
   label: string;
+  scope?: string;
   file?: string;
 }
 
@@ -56,7 +57,14 @@ export function Certs() {
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-volt-500/15 text-volt-400 transition-colors group-hover:bg-volt-500 group-hover:text-graphite-950">
                     <Icon size={18} strokeWidth={1.75} />
                   </span>
-                  <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-white">{item.label}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-sm font-semibold leading-snug text-white">{item.label}</span>
+                    {item.scope && (
+                      <span className="mt-0.5 block font-mono text-[9.5px] uppercase tracking-[0.12em] text-graphite-400">
+                        {item.scope}
+                      </span>
+                    )}
+                  </span>
                   {item.file && (
                     <ArrowUpRight
                       size={16}
