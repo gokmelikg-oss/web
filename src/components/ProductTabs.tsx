@@ -36,7 +36,7 @@ export function ProductTabs({ slug }: { slug: string }) {
 
   return (
     <div>
-      <div className="flex gap-1 overflow-x-auto border-b border-mist-900/10">
+      <div className="scroll-fade-x flex gap-1 overflow-x-auto border-b border-mist-900/10">
         {tabs.map((key) => (
           <button
             key={key}

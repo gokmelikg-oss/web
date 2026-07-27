@@ -9,8 +9,32 @@ export function WhyUs() {
   const items = t.raw('items') as { title: string; desc: string }[];
 
   return (
-    <section className="section-pad bg-mist-900 text-mist-50">
-      <div className="container-page">
+    <section className="section-pad relative overflow-hidden bg-mist-900 text-mist-50">
+      {/* Blueprint köşe çerçevesi — teknik kimliğe ince bir dokunuş */}
+      <div className="pointer-events-none absolute inset-6 hidden lg:block" aria-hidden>
+        <span className="absolute inset-0 rounded-lg border border-white/[0.06]" />
+        {(
+          [
+            'left-0 top-0',
+            'right-0 top-0',
+            'left-0 bottom-0',
+            'right-0 bottom-0',
+          ] as const
+        ).map((pos) => (
+          <span
+            key={pos}
+            className={`absolute h-3 w-3 ${pos} text-volt-500/50`}
+            style={{
+              borderColor: 'currentColor',
+            }}
+          >
+            <span className="absolute left-1/2 top-1/2 h-px w-3 -translate-x-1/2 -translate-y-1/2 bg-current" />
+            <span className="absolute left-1/2 top-1/2 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-current" />
+          </span>
+        ))}
+      </div>
+
+      <div className="container-page relative">
         <Reveal>
           <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
             <span className="h-px w-8 bg-volt-500" aria-hidden />

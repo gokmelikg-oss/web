@@ -101,6 +101,12 @@ body {
       animation: none;
     }
   }
+
+  /* Yatay kayan alanlarda sert kesim yerine kenarlarda yumuşak solma. */
+  .scroll-fade-x {
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
 }
 
 [dir="rtl"] .flip-rtl {

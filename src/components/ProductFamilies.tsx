@@ -47,7 +47,7 @@ export function ProductFamilies() {
     <div>
       {/* Kategori hızlı erişim çubuğu */}
       <div className="sticky top-20 z-30 -mx-4 mb-14 border-y border-mist-900/10 bg-mist-50/90 px-4 py-3 backdrop-blur-md sm:mx-0 sm:rounded-full sm:border sm:px-3">
-        <nav className="flex items-center gap-1.5 overflow-x-auto sm:justify-center">
+        <nav className="scroll-fade-x flex items-center gap-1.5 overflow-x-auto sm:justify-center">
           {families.map((family) => {
             const Icon = familyIcon[family.id] ?? Sun;
             const count = family.groups.reduce((sum, g) => sum + g.items.length, 0);
