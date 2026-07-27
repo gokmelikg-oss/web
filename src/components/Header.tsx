@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Menu, X, Sparkles, ChevronRight, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/navigation';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
@@ -110,26 +110,6 @@ export function Header() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
-          <Link
-            href="/ai"
-            aria-label="şimşek.ai"
-            className={`group flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-sm font-semibold transition-colors xl:px-3.5 ${
-              dark
-                ? 'border-white/25 bg-white/10 text-white hover:border-volt-400'
-                : 'border-graphite-700/20 bg-white text-graphite-900 hover:border-volt-500'
-            }`}
-          >
-            <Sparkles size={14} className="shrink-0 text-volt-500" />
-            <span className="hidden font-mono text-[13px] tracking-tight xl:inline">
-              şimşek<span className="text-volt-500">.ai</span>
-            </span>
-            <ChevronRight
-              size={14}
-              className={`hidden shrink-0 transition-transform group-hover:translate-x-0.5 xl:inline rtl:group-hover:-translate-x-0.5 rtl:rotate-180 ${
-                dark ? 'text-white/60' : 'text-graphite-400'
-              }`}
-            />
-          </Link>
           <LanguageSwitcher dark={dark} />
           <Link
             href="/contact"
@@ -182,16 +162,6 @@ export function Header() {
                 {t(item.key)}
               </Link>
             ))}
-            <Link
-              href="/ai"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center gap-2 rounded-lg px-3 py-3 text-base font-medium text-graphite-900 hover:bg-graphite-100"
-            >
-              <Sparkles size={16} className="text-volt-600" />
-              <span className="font-mono">
-                şimşek<span className="text-volt-600">.ai</span>
-              </span>
-            </Link>
             <div className="mt-2 flex items-center justify-between px-3">
               <LanguageSwitcher />
               <Link

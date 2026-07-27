@@ -50,42 +50,56 @@ export function ProductsSection() {
           </div>
         </Reveal>
 
-        {/* Açık, katalog düzeni: görsel üstte, bilgi altta — 5 ana grup */}
-        <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-9 md:grid-cols-3 xl:grid-cols-5">
+        {/* Editoryal katalog dizini: numaralı, tam genişlik satırlar */}
+        <div className="mt-12 border-t border-mist-900/10">
           {families.map((family, i) => {
             const visual = familyVisual[family.id] ?? familyVisual.kolektorler;
             const Icon = visual.icon;
             return (
-              <Reveal key={family.id} delay={i * 0.06}>
-                <Link href={`/products#${family.id}`} className="group flex h-full flex-col">
-                  <div className="relative aspect-square overflow-hidden rounded-2xl bg-mist-50">
-                    <Image
-                      src={visual.image}
-                      alt={family.title}
-                      fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 20vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                    />
+              <Reveal key={family.id} delay={i * 0.05}>
+                <Link
+                  href={`/products#${family.id}`}
+                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b border-mist-900/10 py-6 transition-colors hover:bg-mist-50 sm:gap-8 sm:py-7"
+                >
+                  {/* Numara + ikon */}
+                  <div className="flex items-center gap-4 ps-1 sm:ps-3">
+                    <span className="font-tabular font-mono text-sm font-bold text-mist-400">
+                      0{i + 1}
+                    </span>
                     <span
-                      className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
-                      style={{ backgroundColor: visual.accent }}
-                      aria-hidden
-                    />
+                      className="flex h-11 w-11 items-center justify-center rounded-xl transition-colors sm:h-12 sm:w-12"
+                      style={{ backgroundColor: `${visual.accent}1a`, color: visual.accent }}
+                    >
+                      <Icon size={21} strokeWidth={1.8} />
+                    </span>
                   </div>
 
-                  <div className="mt-4 flex flex-1 flex-col">
-                    <div className="flex items-center gap-2">
-                      <Icon size={15} strokeWidth={2} style={{ color: visual.accent }} />
-                      <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
+                  {/* Başlık + açıklama */}
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <h3 className="font-display text-xl font-bold text-graphite-950 transition-colors group-hover:text-volt-700 sm:text-2xl">
+                        {family.title}
+                      </h3>
+                      <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
                         {countOf(family)} {tCatalog('seriesLabel')}
-                      </p>
+                      </span>
                     </div>
-                    <h3 className="mt-1.5 font-display text-lg font-bold leading-snug text-graphite-950 transition-colors group-hover:text-volt-700">
-                      {family.title}
-                    </h3>
-                    <span className="mt-auto inline-flex items-center gap-1 pt-3 text-sm font-semibold text-mist-600 transition-colors group-hover:text-graphite-950">
-                      İncele
-                      <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-mist-700">{family.desc}</p>
+                  </div>
+
+                  {/* Küçük görsel + ok */}
+                  <div className="flex items-center gap-4 pe-1 sm:pe-2">
+                    <div className="relative hidden h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-mist-100 md:block lg:h-[4.5rem] lg:w-32">
+                      <Image
+                        src={visual.image}
+                        alt={family.title}
+                        fill
+                        sizes="128px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-mist-900/12 text-mist-500 transition-all group-hover:border-volt-500 group-hover:bg-volt-500 group-hover:text-graphite-950">
+                      <ArrowUpRight size={16} />
                     </span>
                   </div>
                 </Link>
