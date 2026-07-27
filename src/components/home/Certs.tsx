@@ -24,6 +24,7 @@ export function Certs() {
 
   return (
     <section className="relative overflow-hidden bg-graphite-950 py-20 text-white sm:py-24">
+      <div className="pointer-events-none absolute inset-0 aurora" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-blueprint-dark opacity-25" aria-hidden />
       <div className="pointer-events-none absolute -start-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-volt-500/10 blur-3xl" aria-hidden />
 

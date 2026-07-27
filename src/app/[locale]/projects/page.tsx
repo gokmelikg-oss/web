@@ -3,6 +3,7 @@ import { Leaf, Zap, TreePine, Home, Building2, Grid3x3, MapPinned, Sun } from 'l
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ReferenceList } from '@/components/ReferenceList';
+import { CountUp } from '@/components/CountUp';
 import { referenceTotals, totalImpact, IMPACT_ASSUMPTIONS } from '@/data/references';
 
 export const metadata: Metadata = {
@@ -15,12 +16,12 @@ const nf = new Intl.NumberFormat('tr-TR');
 const nf1 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 });
 
 const scaleStats = [
-  { icon: Grid3x3, value: nf.format(referenceTotals.projects), label: 'Tamamlanan proje' },
-  { icon: MapPinned, value: nf.format(referenceTotals.provinces), label: 'İl' },
-  { icon: Home, value: nf.format(referenceTotals.homes), label: 'Konut' },
-  { icon: Building2, value: nf.format(referenceTotals.blocks), label: 'Blok' },
-  { icon: Sun, value: nf.format(referenceTotals.collectors), label: 'Kollektör' },
-  { icon: Grid3x3, value: `${nf.format(referenceTotals.aperture)} m²`, label: 'Işınım alanı' },
+  { icon: Grid3x3, value: referenceTotals.projects, suffix: '', label: 'Tamamlanan proje' },
+  { icon: MapPinned, value: referenceTotals.provinces, suffix: '', label: 'İl' },
+  { icon: Home, value: referenceTotals.homes, suffix: '', label: 'Konut' },
+  { icon: Building2, value: referenceTotals.blocks, suffix: '', label: 'Blok' },
+  { icon: Sun, value: referenceTotals.collectors, suffix: '', label: 'Kollektör' },
+  { icon: Grid3x3, value: referenceTotals.aperture, suffix: ' m²', label: 'Işınım alanı' },
 ];
 
 export default function ProjectsPage() {
@@ -45,7 +46,7 @@ export default function ProjectsPage() {
                 <div className="flex flex-col">
                   <s.icon size={18} strokeWidth={1.75} className="text-volt-600" />
                   <p className="mt-3 font-tabular font-display text-2xl font-bold leading-none text-graphite-950">
-                    {s.value}
+                    <CountUp value={s.value} suffix={s.suffix} />
                   </p>
                   <p className="mt-2 font-mono text-[9.5px] uppercase tracking-[0.14em] text-mist-600">
                     {s.label}
@@ -59,6 +60,7 @@ export default function ProjectsPage() {
 
       {/* Çevresel etki */}
       <section className="relative overflow-hidden bg-graphite-950 py-20 text-white sm:py-24">
+        <div className="pointer-events-none absolute inset-0 aurora" aria-hidden />
         <div className="pointer-events-none absolute inset-0 bg-blueprint-dark opacity-20" aria-hidden />
         <div
           className="pointer-events-none absolute -end-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-3xl"

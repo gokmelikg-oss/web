@@ -8,6 +8,7 @@ import { WhyUs } from '@/components/home/WhyUs';
 import { Certs } from '@/components/home/Certs';
 import { HomeContact } from '@/components/home/HomeContact';
 import { SectionDots } from '@/components/home/SectionDots';
+import { TrustStrip } from '@/components/home/TrustStrip';
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <ProductsSection />
       <SystemWizard />
       <ReferencesMapSection />
+      <TrustStrip />
       <Certs />
       <ProductionSection />
       <WhyUs />
