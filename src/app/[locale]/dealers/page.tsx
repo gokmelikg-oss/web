@@ -1,10 +1,23 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { MapPinned, GraduationCap, Megaphone } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { DealerForm } from '@/components/DealerForm';
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
 
 const icons = [MapPinned, GraduationCap, Megaphone];
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'dealers.hero' });
+  return pageMetadata({ locale, path: '/dealers', title: t('title'), description: t('subtitle') });
+}
 
 export default async function DealersPage() {
   const t = await getTranslations('dealers');

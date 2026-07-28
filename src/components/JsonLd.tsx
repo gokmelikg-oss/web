@@ -1,0 +1,107 @@
+import { SITE_URL, SITE_NAME, ORG } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
+
+/* Yapısal veri (JSON-LD). Arama motorları ve AI botları için makine-okunur künye.
+   dangerouslySetInnerHTML script enjeksiyonu SEO'da standarttır; içerik statiktir. */
+function JsonLd({ data }: { data: Record<string, unknown> }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+export function OrgJsonLd({ locale }: { locale: Locale }) {
+  const org = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
+    name: SITE_NAME,
+    legalName: ORG.legalName,
+    url: `${SITE_URL}/${locale}`,
+    logo: `${SITE_URL}/brand/simsek-solar.png`,
+    foundingDate: ORG.foundingDate,
+    email: ORG.email,
+    telephone: ORG.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: ORG.street,
+      addressLocality: ORG.city,
+      addressRegion: ORG.district,
+      postalCode: ORG.postalCode,
+      addressCountry: ORG.country,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: ORG.latitude,
+      longitude: ORG.longitude,
+    },
+    areaServed: { '@type': 'Country', name: 'Türkiye' },
+    ...(ORG.sameAs.length ? { sameAs: ORG.sameAs } : {}),
+  };
+
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: SITE_NAME,
+    inLanguage: locale,
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  };
+
+  return (
+    <>
+      <JsonLd data={org} />
+      <JsonLd data={website} />
+    </>
+  );
+}
+
+/* Ürün sayfaları için Product yapısal verisi. */
+export function ProductJsonLd({
+  locale,
+  slug,
+  name,
+  description,
+  category,
+}: {
+  locale: Locale;
+  slug: string;
+  name: string;
+  description: string;
+  category?: string;
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    description,
+    ...(category ? { category } : {}),
+    brand: { '@type': 'Brand', name: SITE_NAME },
+    manufacturer: { '@id': `${SITE_URL}/#organization` },
+    url: `${SITE_URL}/${locale}/products/${slug}`,
+    image: `${SITE_URL}/products/${slug}.jpg`,
+  };
+  return <JsonLd data={data} />;
+}
+
+/* Gezinme kırıntısı — sayfa hiyerarşisi. */
+export function BreadcrumbJsonLd({
+  items,
+}: {
+  items: { name: string; url: string }[];
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      item: it.url,
+    })),
+  };
+  return <JsonLd data={data} />;
+}

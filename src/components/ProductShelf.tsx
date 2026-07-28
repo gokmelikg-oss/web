@@ -83,7 +83,7 @@ export function ProductShelf({
                 {item.image ? (
                   <Image
                     src={item.image}
-                    alt={item.name}
+                    alt={`${item.name} — Şimşek Solar${item.note ? ` (${item.note})` : ''}`}
                     fill
                     sizes="(max-width: 833px) 100vw, 38vw"
                     className="object-contain p-6"

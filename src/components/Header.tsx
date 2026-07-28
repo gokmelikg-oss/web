@@ -57,7 +57,7 @@ export function Header() {
         <Link href="/" className="flex shrink-0 items-center" aria-label={t('brand')}>
           <Image
             src={dark ? '/brand/simsek-solar-white.png' : '/brand/simsek-solar.png'}
-            alt={t('brand')}
+            alt={`${t('brand')} logo`}
             width={499}
             height={129}
             priority

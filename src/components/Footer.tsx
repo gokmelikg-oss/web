@@ -18,7 +18,7 @@ export function Footer() {
         <div>
           <Image
             src="/brand/simsek-solar-white.png"
-            alt={tNav('brand')}
+            alt={`${tNav('brand')} logo`}
             width={600}
             height={180}
             className="h-12 w-auto object-contain object-left rtl:object-right"

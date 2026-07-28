@@ -15,6 +15,19 @@ import {
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'about.hero' });
+  return pageMetadata({ locale, path: '/about', title: t('title'), description: t('subtitle') });
+}
 
 const valueIcons = [ShieldCheck, Factory, Globe2];
 

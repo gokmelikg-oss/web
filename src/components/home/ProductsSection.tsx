@@ -92,7 +92,7 @@ export function ProductsSection() {
                     <div className="relative hidden h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-mist-100 md:block lg:h-[4.5rem] lg:w-32">
                       <Image
                         src={visual.image}
-                        alt={family.title}
+                        alt={`${family.title} — Şimşek Solar güneş enerjisi ürün ailesi`}
                         fill
                         sizes="128px"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"

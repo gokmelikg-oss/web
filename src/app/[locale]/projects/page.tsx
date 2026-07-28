@@ -5,12 +5,23 @@ import { Reveal } from '@/components/Reveal';
 import { ReferenceList } from '@/components/ReferenceList';
 import { CountUp } from '@/components/CountUp';
 import { referenceTotals, totalImpact, IMPACT_ASSUMPTIONS } from '@/data/references';
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
 
-export const metadata: Metadata = {
-  title: 'Referanslar — Sahadaki İşlerimiz | Şimşek Solar',
-  description:
-    'Türkiye genelinde tamamladığımız toplu konut projeleri: kollektör adedi, ışınım ve brüt alan verileriyle referans listemiz ve çevresel etkisi.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/projects',
+    title: 'Referanslar — Sahadaki İşlerimiz',
+    description:
+      'Türkiye genelinde tamamladığımız toplu konut projeleri: kollektör adedi, ışınım ve brüt alan verileriyle referans listemiz ve çevresel etkisi.',
+  });
+}
 
 const nf = new Intl.NumberFormat('tr-TR');
 const nf1 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 });

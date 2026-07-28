@@ -7,6 +7,8 @@ import { locales, isRtl, type Locale } from '@/i18n/config';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { pageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
+import { OrgJsonLd } from '@/components/JsonLd';
 import '../globals.css';
 
 const josefinSans = Josefin_Sans({
@@ -45,9 +47,42 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return {
+  const base = pageMetadata({
+    locale,
+    path: '/',
     title: t('title'),
     description: t('description'),
+  });
+  return {
+    ...base,
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: t('title'),
+      template: `%s | ${SITE_NAME}`,
+    },
+    applicationName: SITE_NAME,
+    authors: [{ name: SITE_NAME, url: SITE_URL }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    keywords: [
+      'güneş enerjisi',
+      'güneş kollektörü',
+      'solar termal',
+      'emayeli boyler',
+      'paket sistem',
+      'merkezi sistem',
+      'Orion kollektör',
+      'Aquarious boyler',
+      'Şimşek Solar',
+      'Mersin güneş enerjisi',
+      'Solar Keymark',
+    ],
+    formatDetection: { telephone: true, address: true, email: true },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+    },
   };
 }
 
@@ -74,6 +109,7 @@ export default async function LocaleLayout({
           isRtl(locale) ? 'font-arabic' : 'font-body'
         } bg-background text-foreground antialiased`}
       >
+        <OrgJsonLd locale={locale} />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main>{children}</main>

@@ -1,11 +1,24 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { MapPin, Phone, Mail, Clock, Briefcase, ArrowUpRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
 
 const HR_EMAIL = 'info@simseksolar.com.tr';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'contact.hero' });
+  return pageMetadata({ locale, path: '/contact', title: t('title'), description: t('subtitle') });
+}
 
 export default async function ContactPage() {
   const t = await getTranslations('contact');

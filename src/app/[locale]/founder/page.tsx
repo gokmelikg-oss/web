@@ -2,12 +2,23 @@ import type { Metadata } from 'next';
 import { Quote, PenLine } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
 
-export const metadata: Metadata = {
-  title: 'Kurucumuzdan — Şimşek Grup Yolculuğu | Şimşek Solar',
-  description:
-    "Şimşek Grup Kurucu & Başkanı Sinan Şimşek'ten: 1992'de Mersin'deki küçük bir atölyede başlayan yolculuğun hikâyesi.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/founder',
+    title: 'Kurucumuzdan — Şimşek Grup Yolculuğu',
+    description:
+      "Şimşek Grup Kurucu & Başkanı Sinan Şimşek'ten: 1992'de Mersin'deki küçük bir atölyede başlayan yolculuğun hikâyesi.",
+  });
+}
 
 /* Kurucunun mektubu — groupsimsek.com.tr'deki orijinal metin. */
 const paragraphs = [

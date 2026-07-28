@@ -1,6 +1,19 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Calculator } from 'lucide-react';
 import { CALC_EMBED_URL } from '@/data/config';
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'calculator' });
+  return pageMetadata({ locale, path: '/calculator', title: t('title'), description: t('subtitle') });
+}
 
 export default async function CalculatorPage() {
   const t = await getTranslations('calculator');

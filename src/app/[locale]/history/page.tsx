@@ -3,12 +3,23 @@ import { Hammer, Globe2, Factory, Rocket, ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
+import { pageMetadata } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
 
-export const metadata: Metadata = {
-  title: 'Tarihçe — 1992\'den Bugüne | Şimşek Solar',
-  description:
-    "1992'de Mersin'deki küçük bir atölyeden entegre yenilenebilir enerji ekosistemine: Şimşek Grup'un kilometre taşları.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/history',
+    title: "Tarihçe — 1992'den Bugüne",
+    description:
+      "1992'de Mersin'deki küçük bir atölyeden entegre yenilenebilir enerji ekosistemine: Şimşek Grup'un kilometre taşları.",
+  });
+}
 
 interface Milestone {
   year: string;

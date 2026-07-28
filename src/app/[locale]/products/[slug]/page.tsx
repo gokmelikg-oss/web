@@ -7,6 +7,8 @@ import { locales, type Locale } from '@/i18n/config';
 import { Reveal } from '@/components/Reveal';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductTabs } from '@/components/ProductTabs';
+import { ProductJsonLd, BreadcrumbJsonLd } from '@/components/JsonLd';
+import { pageMetadata, SITE_URL } from '@/lib/seo';
 
 const categoryIcon = {
   collector: Sun,
@@ -28,18 +30,21 @@ export async function generateMetadata({
   const product = getProduct(slug);
   if (!product) return {};
   const t = await getTranslations({ locale, namespace: 'products' });
-  return {
-    title: `${t(`items.${slug}.name`)} — Şimşek Solar`,
+  return pageMetadata({
+    locale,
+    path: `/products/${slug}`,
+    title: t(`items.${slug}.name`),
     description: t(`items.${slug}.description`),
-  };
+    images: [`/products/${slug}.jpg`],
+  });
 }
 
 export default async function ProductDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: Locale; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
 
@@ -50,6 +55,20 @@ export default async function ProductDetailPage({
 
   return (
     <>
+      <ProductJsonLd
+        locale={locale}
+        slug={slug}
+        name={t(`items.${slug}.name`)}
+        description={t(`items.${slug}.description`)}
+        category={t(`categoryLabels.${product.category}`)}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Ana Sayfa', url: `${SITE_URL}/${locale}` },
+          { name: t('hero.title'), url: `${SITE_URL}/${locale}/products` },
+          { name: t(`items.${slug}.name`), url: `${SITE_URL}/${locale}/products/${slug}` },
+        ]}
+      />
       <section className={`relative overflow-hidden bg-gradient-to-br ${product.gradient} py-24 text-white sm:py-32`}>
         <div className="absolute inset-0 opacity-25" style={{ backgroundImage: 'radial-gradient(circle at 75% 20%, white, transparent 55%)' }} />
         <div className="container-page relative">
