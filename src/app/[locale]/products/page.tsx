@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { PageHero } from '@/components/PageHero';
 import { ProductFamilies } from '@/components/ProductFamilies';
+import { CollectorMatrix } from '@/components/CollectorMatrix';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -26,6 +27,7 @@ export default async function ProductsPage() {
           <ProductFamilies />
         </div>
       </section>
+      <CollectorMatrix />
     </>
   );
 }

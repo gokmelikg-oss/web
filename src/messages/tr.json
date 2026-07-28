@@ -136,6 +136,20 @@
     "subtitle": "Orion kolektörler, Aquarious ve Sirius boylerler, merkezi ve paket sistem sehpaları, otomasyon ve bağlantı ekipmanları.",
     "viewAll": "Tüm ürünleri gör"
   },
+  "collectorMatrix": {
+    "eyebrow": "Karşılaştırma",
+    "title": "Orion serisi seçim tablosu",
+    "subtitle": "Dokuz Orion serisi, boru ve absorber malzeme kombinasyonuyla ayrışır. İhtiyacınıza en uygun seriyi tablodan karşılaştırarak seçebilirsiniz.",
+    "col": {
+      "series": "Seri",
+      "pipe": "Boru",
+      "absorber": "Absorber",
+      "selective": "Selektif Kaplama"
+    },
+    "new": "Yeni",
+    "yes": "Evet",
+    "note": "Selektif kaplamalı absorberler, yüksek ışın yutma ve düşük ısı yayma oranıyla daha yüksek verim sağlar. Bakır boru, ısı iletiminde ve dayanıklılıkta üstünlük sunar. Detaylı teknik değerler için ilgili ürün föyüne bakın veya bizimle iletişime geçin."
+  },
   "catalog": {
     "newBadge": "Yeni Tasarım · Yeni Ürün",
     "seriesLabel": "Seri",

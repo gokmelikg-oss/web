@@ -136,6 +136,20 @@
     "subtitle": "Orion collectors, Aquarious and Sirius boilers, central and package system mounting frames, automation and connection equipment.",
     "viewAll": "View all products"
   },
+  "collectorMatrix": {
+    "eyebrow": "Comparison",
+    "title": "Orion series selection table",
+    "subtitle": "The nine Orion series differ by their pipe and absorber material combination. Compare them in the table to choose the series that best fits your needs.",
+    "col": {
+      "series": "Series",
+      "pipe": "Pipe",
+      "absorber": "Absorber",
+      "selective": "Selective Coating"
+    },
+    "new": "New",
+    "yes": "Yes",
+    "note": "Selective-coated absorbers deliver higher efficiency through high absorption and low emission. Copper pipe offers superior heat transfer and durability. For detailed technical values, see the relevant product datasheet or contact us."
+  },
   "catalog": {
     "newBadge": "New Design · New Product",
     "seriesLabel": "series",
