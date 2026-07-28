@@ -59,7 +59,9 @@ export function Certs() {
                     <Icon size={18} strokeWidth={1.75} />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-semibold leading-snug text-white">{item.label}</span>
+                    <span className="block text-sm font-semibold uppercase leading-snug text-white">
+                      {item.label}
+                    </span>
                     {item.scope && (
                       <span className="mt-0.5 block font-mono text-[9.5px] uppercase tracking-[0.12em] text-graphite-400">
                         {item.scope}

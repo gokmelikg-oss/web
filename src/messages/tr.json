@@ -322,7 +322,10 @@
     "subtitle": "Ürünlerimiz ve yönetim sistemlerimiz, ulusal ve uluslararası akredite kuruluşlar tarafından denetlenir ve belgelendirilir.",
     "viewLabel": "Belgeyi görüntüle (PDF)",
     "items": [
-      { "label": "Solar Keymark", "scope": "Orion 400 serisi kolektör", "file": "/docs/certs/solar-keymark.pdf" },
+      { "label": "Solar Keymark", "scope": "Orion 400 Ultrasonik", "file": "/docs/certs/solar-keymark-orion-400-ultrasonik.pdf" },
+      { "label": "Solar Keymark", "scope": "Orion 400 Lazer", "file": "/docs/certs/solar-keymark-orion-400-lazer.pdf" },
+      { "label": "Solar Keymark", "scope": "Orion 600 Ultrasonik", "file": "/docs/certs/solar-keymark-orion-600-ultrasonik.pdf" },
+      { "label": "CL23020833-DRAFT", "scope": "Solar Keymark taslak belge", "file": "/docs/certs/cl23020833-draft.pdf" },
       { "label": "TSE Belgesi", "scope": "Kolektör ve boyler", "file": "/docs/certs/tse.pdf" },
       { "label": "CE Belgesi", "scope": "Kolektör ve boyler", "file": "/docs/certs/ce.pdf" },
       { "label": "BAFA List", "scope": "Almanya teşvik listesi", "file": "/docs/certs/bafa.pdf" },

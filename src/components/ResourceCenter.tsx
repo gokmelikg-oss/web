@@ -136,7 +136,7 @@ export function ResourceCenter() {
                   <ShieldCheck size={18} strokeWidth={1.75} />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-semibold leading-snug text-graphite-950">
+                  <span className="block text-sm font-semibold uppercase leading-snug text-graphite-950">
                     {cert.label}
                   </span>
                   {cert.scope && (
