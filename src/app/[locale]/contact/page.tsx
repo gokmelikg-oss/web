@@ -5,15 +5,7 @@ import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
 
-const HR_EMAIL = 'kariyer@simsekgroup.com';
-const careerPositions = [
-  'Mühendislik',
-  'Üretim',
-  'Satış / Pazarlama',
-  'İdari İşler',
-  'Finans / Muhasebe',
-  'Staj',
-];
+const HR_EMAIL = 'info@simseksolar.com.tr';
 
 export default async function ContactPage() {
   const t = await getTranslations('contact');
@@ -92,16 +84,6 @@ export default async function ContactPage() {
                 sahibi, öğrenmeye açık ve birlikte başarmaya inanan ekip arkadaşları arıyoruz.
                 Özgeçmişinizi, çalışmak istediğiniz alanı belirterek iletin.
               </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {careerPositions.map((p) => (
-                  <span
-                    key={p}
-                    className="rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-xs font-semibold text-graphite-100"
-                  >
-                    {p}
-                  </span>
-                ))}
-              </div>
             </div>
             <div className="flex flex-col items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-7">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-volt-500 text-graphite-950">

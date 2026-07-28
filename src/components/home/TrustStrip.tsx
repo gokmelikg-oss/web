@@ -39,7 +39,7 @@ export function TrustStrip() {
           {[...SEGMENTS, ...SEGMENTS].map((label, i) => (
             <span
               key={i}
-              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-mist-900/10 bg-mist-50 px-4 py-2 text-sm font-semibold text-graphite-800"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-mist-900/10 bg-mist-50 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-graphite-800"
             >
               <Building2 size={14} className="shrink-0 text-volt-600" />
               {label}
