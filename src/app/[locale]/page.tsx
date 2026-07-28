@@ -9,7 +9,6 @@ import { Certs } from '@/components/home/Certs';
 import { HomeContact } from '@/components/home/HomeContact';
 import { SectionDots } from '@/components/home/SectionDots';
 import { TrustStrip } from '@/components/home/TrustStrip';
-import { PhotoShowcase } from '@/components/home/PhotoShowcase';
 
 export default function HomePage() {
   return (
@@ -22,7 +21,6 @@ export default function HomePage() {
       <TrustStrip />
       <Certs />
       <ProductionSection />
-      <PhotoShowcase />
       <WhyUs />
       <GroupSection />
       <HomeContact />
