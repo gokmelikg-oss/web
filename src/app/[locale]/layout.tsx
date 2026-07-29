@@ -10,6 +10,7 @@ import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { pageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
 import { OrgJsonLd } from '@/components/JsonLd';
 import { Analytics } from '@/components/Analytics';
+import { CookieBanner } from '@/components/CookieBanner';
 import '../globals.css';
 
 const josefinSans = Josefin_Sans({
@@ -132,6 +133,7 @@ export default async function LocaleLayout({
           <main>{children}</main>
           <Footer />
           <WhatsAppButton />
+          <CookieBanner />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { PageHero } from '@/components/PageHero';
-import { ProductFamilies } from '@/components/ProductFamilies';
+import { ProductsShowcase } from '@/components/ProductsShowcase';
 import { CollectorMatrix } from '@/components/CollectorMatrix';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
@@ -22,9 +22,9 @@ export default async function ProductsPage() {
   return (
     <>
       <PageHero eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
-      <section className="section-pad bg-mist-50">
+      <section className="section-pad bg-white">
         <div className="container-page">
-          <ProductFamilies />
+          <ProductsShowcase />
         </div>
       </section>
       <CollectorMatrix />
