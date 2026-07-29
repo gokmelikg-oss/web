@@ -2,13 +2,14 @@
 
 import { useTranslations } from 'next-intl';
 import { MessageCircle } from 'lucide-react';
+import { WHATSAPP_NUMBER } from '@/lib/seo';
 
 export function WhatsAppButton() {
   const t = useTranslations('contact');
 
   return (
     <a
-      href="https://wa.me/903243241235"
+      href={`https://wa.me/${WHATSAPP_NUMBER}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t('whatsapp')}

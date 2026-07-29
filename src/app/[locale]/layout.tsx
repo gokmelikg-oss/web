@@ -9,6 +9,7 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { pageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
 import { OrgJsonLd } from '@/components/JsonLd';
+import { Analytics } from '@/components/Analytics';
 import '../globals.css';
 
 const josefinSans = Josefin_Sans({
@@ -95,6 +96,9 @@ export async function generateMetadata({
       follow: true,
       googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
     },
+    ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+      ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+      : {}),
   };
 }
 
@@ -122,6 +126,7 @@ export default async function LocaleLayout({
         } bg-background text-foreground antialiased`}
       >
         <OrgJsonLd locale={locale} />
+        <Analytics />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main>{children}</main>

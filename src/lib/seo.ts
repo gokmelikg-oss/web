@@ -7,6 +7,19 @@ export const SITE_URL = 'https://www.simseksolar.com.tr';
 export const SITE_NAME = 'Şimşek Solar';
 
 /* Kurumsal künye — JSON-LD Organization ve iletişim yapısal verisi için. */
+/* Sosyal medya hesapları — footer + JSON-LD sameAs. */
+export const SOCIAL = {
+  instagram: 'https://www.instagram.com/simsek.solar/',
+  facebook: 'https://www.facebook.com/simsekguneskollektorleri/',
+  linkedin: 'https://tr.linkedin.com/company/simsek-solar',
+} as const;
+
+/* WhatsApp iletişim hattı (uluslararası biçim, sadece rakam). */
+export const WHATSAPP_NUMBER = '905495800501';
+
+/* Form mesajlarının iletileceği adres. */
+export const CONTACT_EMAIL = 'info@simseksolar.com.tr';
+
 export const ORG = {
   legalName: 'Şimşek Güneş Kollektörleri San. Tic. Ltd. Şti.',
   foundingDate: '1992',
@@ -19,7 +32,7 @@ export const ORG = {
   postalCode: '33000',
   latitude: 36.9152,
   longitude: 34.773,
-  sameAs: [] as string[], // sosyal medya adresleri geldiğinde eklenir
+  sameAs: [SOCIAL.instagram, SOCIAL.facebook, SOCIAL.linkedin] as string[],
 } as const;
 
 /* Bir yolun her dildeki mutlak URL'lerini üretir (hreflang + canonical için).

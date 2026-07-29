@@ -662,7 +662,8 @@
       "subject": "Konu",
       "message": "Mesajınız",
       "submit": "Gönder",
-      "success": "Mesajınız için teşekkürler, ekibimiz en kısa sürede dönüş yapacak."
+      "success": "Mesajınız için teşekkürler, ekibimiz en kısa sürede dönüş yapacak.",
+      "error": "Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin veya bizi +90 549 580 05 01 numarasından arayın."
     },
     "whatsapp": "WhatsApp'tan yazın"
   },

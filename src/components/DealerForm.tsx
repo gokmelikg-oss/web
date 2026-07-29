@@ -7,12 +7,33 @@ import { CheckCircle2, Loader2, Send } from 'lucide-react';
 
 export function DealerForm() {
   const t = useTranslations('dealers.form');
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'done'>('idle');
+  const tc = useTranslations('contact.form');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const fd = new FormData(e.currentTarget);
     setStatus('submitting');
-    setTimeout(() => setStatus('done'), 900);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'dealer',
+          name: fd.get('name'),
+          company: fd.get('company'),
+          city: fd.get('city'),
+          country: fd.get('country'),
+          phone: fd.get('phone'),
+          email: fd.get('email'),
+          volume: fd.get('volume'),
+          message: fd.get('message'),
+        }),
+      });
+      setStatus(res.ok ? 'done' : 'error');
+    } catch {
+      setStatus('error');
+    }
   }
 
   return (
@@ -55,14 +76,21 @@ export function DealerForm() {
               />
             </label>
 
-            <button
-              type="submit"
-              disabled={status === 'submitting'}
-              className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-graphite-950 px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] disabled:opacity-60 sm:col-span-2"
-            >
-              {status === 'submitting' ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
-              {t('submit')}
-            </button>
+            <div className="sm:col-span-2">
+              <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-graphite-950 px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] disabled:opacity-60"
+              >
+                {status === 'submitting' ? (
+                  <Loader2 size={16} className="animate-spin" />
+                ) : (
+                  <Send size={16} />
+                )}
+                {t('submit')}
+              </button>
+              {status === 'error' && <p className="mt-3 text-sm text-red-600">{tc('error')}</p>}
+            </div>
           </motion.form>
         )}
       </AnimatePresence>
