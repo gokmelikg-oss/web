@@ -1,7 +1,8 @@
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Sun, Droplets, Package as PackageIcon, Cpu, ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import type { Product } from '@/data/products';
+import { productImages, type Product } from '@/data/products';
 
 const categoryIcon = {
   collector: Sun,
@@ -13,20 +14,36 @@ const categoryIcon = {
 export function ProductCard({ product }: { product: Product }) {
   const t = useTranslations('products');
   const Icon = categoryIcon[product.category];
+  const image = productImages[product.slug];
 
   return (
     <Link
       href={`/products/${product.slug}`}
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-mist-900/8 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
     >
-      <div className={`relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br ${product.gradient}`}>
-        <div className="absolute inset-0 bg-blueprint opacity-30" aria-hidden />
-        <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, white, transparent 60%)' }} />
-        <Icon size={56} strokeWidth={1.25} className="relative text-white/90" />
-        <span className="absolute end-4 top-4 rounded-full bg-black/25 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+      <div className={`relative flex h-48 items-center justify-center overflow-hidden ${image ? 'bg-mist-100' : `bg-gradient-to-br ${product.gradient}`}`}>
+        {image ? (
+          <Image
+            src={image}
+            alt={`${t(`items.${product.slug}.name`)} — Şimşek Solar`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-blueprint opacity-30" aria-hidden />
+            <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, white, transparent 60%)' }} />
+            <Icon size={56} strokeWidth={1.25} className="relative text-white/90" />
+          </>
+        )}
+        <span className={`absolute end-4 top-4 rounded-full px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] backdrop-blur-sm ${image ? 'bg-white/90 text-graphite-900' : 'bg-black/25 text-white'}`}>
           {t(`categoryLabels.${product.category}`)}
         </span>
-        <span className="absolute bottom-3 start-4 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/75">
+        {image && (
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-graphite-950/40 via-transparent to-transparent" aria-hidden />
+        )}
+        <span className={`absolute bottom-3 start-4 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] ${image ? 'text-white' : 'text-white/75'}`}>
           {product.model}
         </span>
       </div>

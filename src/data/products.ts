@@ -13,6 +13,18 @@ export interface Product {
   specs: ProductSpec[];
 }
 
+/* Ürün görseli — mevcutsa gerçek fotoğraf, yoksa (undefined) zarif ikon fallback. */
+export const productImages: Record<string, string | undefined> = {
+  'orion-300': '/products/orion-300.jpg',
+  'orion-500': '/products/orion-500.jpg',
+  'aquarious-500': '/products/aquarious-500.jpg',
+  'aquarious-600': '/products/aquarious-740.jpg',
+  'helios-200l': '/products/helios-200l.jpg',
+  'helios-300l': '/products/helios-300l.jpg',
+  'simsek-track': undefined,
+  'akilli-kontrolor': undefined,
+};
+
 export const products: Product[] = [
   {
     slug: 'orion-300',
