@@ -8,6 +8,6 @@ export default createMiddleware({
 });
 
 export const config = {
-  // icon/apple-icon/opengraph-image gibi metadata rotaları locale önekinden muaf
-  matcher: ['/((?!api|_next|_vercel|icon|apple-icon|opengraph-image|.*\\..*).*)'],
+  // api/admin/metadata rotaları locale önekinden muaf
+  matcher: ['/((?!api|admin|_next|_vercel|icon|apple-icon|opengraph-image|.*\\..*).*)'],
 };

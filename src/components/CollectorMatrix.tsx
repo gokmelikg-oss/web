@@ -1,5 +1,8 @@
+'use client';
+
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Check } from 'lucide-react';
+import { Check, Plus, X } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
 interface CatalogItem {
@@ -12,23 +15,72 @@ interface CatalogFamily {
   groups: { items: CatalogItem[] }[];
 }
 
-/* "Bakır Boru + Alüminyum Selektif Absorber" → { boru, absorber } */
-function parseNote(note = '') {
-  const [boru = '', absorber = ''] = note.split('+').map((s) => s.trim());
+interface Series {
+  name: string;
+  boru: string;
+  absorber: string;
+  selektif: boolean;
+  isNew: boolean;
+}
+
+function parse(item: CatalogItem): Series {
+  const [boru = '', absorber = ''] = (item.note ?? '').split('+').map((s) => s.trim());
   return {
-    boru: boru.replace(/\s*Boru$/i, '').trim(),
-    absorber: absorber.replace(/\s*Absorber$/i, '').trim(),
+    name: item.name.replace(/\s*Serisi$/i, ''),
+    boru: boru.replace(/\s*Boru$/i, '').trim() || '—',
+    absorber: absorber.replace(/\s*Absorber$/i, '').trim() || '—',
     selektif: /selektif/i.test(absorber),
+    isNew: !!item.new,
   };
 }
 
-/* Orion serisi seçim tablosu — boru ve absorber malzeme kombinasyonunu
-   yan yana karşılaştırır. Seri sayısı arttıkça alıcı doğru modeli hızlı seçer. */
+const MAX = 4;
+
 export function CollectorMatrix() {
   const t = useTranslations('catalog');
   const tp = useTranslations('collectorMatrix');
   const families = t.raw('families') as CatalogFamily[];
-  const items = families.find((f) => f.id === 'kolektorler')?.groups[0]?.items ?? [];
+  const allSeries = (families.find((f) => f.id === 'kolektorler')?.groups[0]?.items ?? []).map(parse);
+
+  const [selected, setSelected] = useState<string[]>(allSeries.slice(0, 3).map((s) => s.name));
+
+  function toggle(name: string) {
+    setSelected((cur) => {
+      if (cur.includes(name)) return cur.filter((n) => n !== name);
+      if (cur.length >= MAX) return [...cur.slice(1), name];
+      return [...cur, name];
+    });
+  }
+
+  const cols = allSeries.filter((s) => selected.includes(s.name));
+
+  const rows: { label: string; render: (s: Series) => React.ReactNode }[] = [
+    { label: tp('col.pipe'), render: (s) => <span className="text-mist-800">{s.boru}</span> },
+    { label: tp('col.absorber'), render: (s) => <span className="text-mist-800">{s.absorber}</span> },
+    {
+      label: tp('col.selective'),
+      render: (s) =>
+        s.selektif ? (
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
+            <Check size={12} strokeWidth={3} />
+            {tp('yes')}
+          </span>
+        ) : (
+          <span className="text-mist-400">—</span>
+        ),
+    },
+    {
+      label: tp('new'),
+      render: (s) =>
+        s.isNew ? (
+          <span className="rounded-full bg-volt-100 px-2.5 py-1 text-xs font-semibold text-volt-700">
+            {tp('yes')}
+          </span>
+        ) : (
+          <span className="text-mist-400">—</span>
+        ),
+    },
+  ];
 
   return (
     <section className="section-pad border-t border-mist-900/10 bg-white">
@@ -46,64 +98,75 @@ export function CollectorMatrix() {
           </div>
         </Reveal>
 
+        {/* Seri seçici */}
         <Reveal delay={0.05}>
-          <div className="scroll-fade-x mt-8 overflow-x-auto">
-            <table className="w-full min-w-[640px] border-collapse text-sm">
-              <thead>
-                <tr className="border-b border-mist-900/15 text-start">
-                  <th className="py-3 pe-4 text-start font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
-                    {tp('col.series')}
-                  </th>
-                  <th className="py-3 pe-4 text-start font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
-                    {tp('col.pipe')}
-                  </th>
-                  <th className="py-3 pe-4 text-start font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
-                    {tp('col.absorber')}
-                  </th>
-                  <th className="py-3 text-start font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
-                    {tp('col.selective')}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item) => {
-                  const p = parseNote(item.note);
-                  return (
-                    <tr
-                      key={item.name}
-                      className="border-b border-mist-900/8 transition-colors hover:bg-mist-50"
-                    >
-                      <td className="py-3.5 pe-4">
-                        <span className="flex items-center gap-2 font-display font-bold text-graphite-950">
-                          {item.name}
-                          {item.new && (
-                            <span className="rounded-full bg-volt-100 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wide text-volt-700">
-                              {tp('new')}
-                            </span>
-                          )}
-                        </span>
-                      </td>
-                      <td className="py-3.5 pe-4 text-mist-700">{p.boru}</td>
-                      <td className="py-3.5 pe-4 text-mist-700">{p.absorber}</td>
-                      <td className="py-3.5">
-                        {p.selektif ? (
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
-                            <Check size={13} strokeWidth={2.5} />
-                            {tp('yes')}
-                          </span>
-                        ) : (
-                          <span className="text-xs text-mist-400">—</span>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+          <div className="mt-8">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-mist-500">
+              {tp('pick')} ({cols.length}/{MAX})
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {allSeries.map((s) => {
+                const active = selected.includes(s.name);
+                return (
+                  <button
+                    key={s.name}
+                    type="button"
+                    onClick={() => toggle(s.name)}
+                    aria-pressed={active}
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-sm font-semibold transition-colors ${
+                      active
+                        ? 'border-graphite-950 bg-graphite-950 text-white'
+                        : 'border-mist-900/15 bg-white text-graphite-800 hover:border-graphite-950'
+                    }`}
+                  >
+                    {active ? <X size={13} /> : <Plus size={13} />}
+                    {s.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </Reveal>
 
+        {/* Karşılaştırma tablosu */}
         <Reveal delay={0.1}>
+          <div className="scroll-fade-x mt-8 overflow-x-auto">
+            {cols.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-mist-900/20 py-14 text-center text-sm text-mist-500">
+                {tp('empty')}
+              </div>
+            ) : (
+              <table className="w-full min-w-[560px] border-collapse">
+                <thead>
+                  <tr>
+                    <th className="w-40 py-4 pe-4 text-start align-bottom font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
+                      {tp('col.series')}
+                    </th>
+                    {cols.map((s) => (
+                      <th key={s.name} className="px-4 py-4 text-start align-bottom">
+                        <span className="font-display text-lg font-bold text-graphite-950">{s.name}</span>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((row) => (
+                    <tr key={row.label} className="border-t border-mist-900/10">
+                      <th className="py-4 pe-4 text-start text-sm font-semibold text-mist-600">{row.label}</th>
+                      {cols.map((s) => (
+                        <td key={s.name} className="px-4 py-4 text-sm">
+                          {row.render(s)}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.12}>
           <p className="mt-5 max-w-2xl text-xs leading-relaxed text-mist-500">{tp('note')}</p>
         </Reveal>
       </div>

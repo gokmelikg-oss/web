@@ -148,6 +148,8 @@
     },
     "new": "Yeni",
     "yes": "Evet",
+    "pick": "Karşılaştırmak istediğiniz serileri seçin",
+    "empty": "Karşılaştırmak için yukarıdan en az bir seri seçin.",
     "note": "Selektif kaplamalı absorberler, yüksek ışın yutma ve düşük ısı yayma oranıyla daha yüksek verim sağlar. Bakır boru, ısı iletiminde ve dayanıklılıkta üstünlük sunar. Detaylı teknik değerler için ilgili ürün föyüne bakın veya bizimle iletişime geçin."
   },
   "catalog": {

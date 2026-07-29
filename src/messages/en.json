@@ -148,6 +148,8 @@
     },
     "new": "New",
     "yes": "Yes",
+    "pick": "Select the series you want to compare",
+    "empty": "Select at least one series above to compare.",
     "note": "Selective-coated absorbers deliver higher efficiency through high absorption and low emission. Copper pipe offers superior heat transfer and durability. For detailed technical values, see the relevant product datasheet or contact us."
   },
   "catalog": {

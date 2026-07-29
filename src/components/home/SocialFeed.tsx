@@ -2,17 +2,23 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { SOCIAL } from '@/lib/seo';
 
-/* Instagram bölümü. Canlı feed (Instagram Basic Display API) için erişim jetonu
-   gerektiğinden, şimdilik kendi kurumsal görsellerimizle profile yönlendirir.
-   Gerçek gönderiler gelince `posts` dizisini {image, permalink} ile doldurmak
-   yeterli — tasarım değişmez. */
-const posts = [
+/* Instagram slider. Canlı feed (Instagram Basic Display / Graph API) erişim
+   jetonu gerektirir; jeton geldiğinde `posts` dizisi {image, permalink} olarak
+   gerçek gönderilerle doldurulur — tasarım değişmez. Şimdilik kurumsal
+   görsellerimizle profile yönlendirir. */
+interface Post {
+  image: string;
+  permalink?: string;
+}
+const posts: Post[] = [
   { image: '/products/merkezi-sistem-saha.jpg' },
   { image: '/projects/saha-1.jpg' },
   { image: '/products/orion-500.jpg' },
   { image: '/projects/saha-3.jpg' },
   { image: '/products/fabrika-1.jpg' },
   { image: '/projects/saha-4.jpg' },
+  { image: '/products/aquarious-740.jpg' },
+  { image: '/projects/saha-2.jpg' },
 ];
 
 function InstagramGlyph({ className }: { className?: string }) {
@@ -39,7 +45,7 @@ export function SocialFeed() {
               Sahadan ve üretimden kareler
             </h2>
             <p className="mt-3 max-w-md text-mist-700">
-              Projelerimizi, ürünlerimizi ve üretim sürecimizi Instagram’da paylaşıyoruz.
+              Projelerimizi ve ürünlerimizi Instagram’da paylaşıyoruz.
             </p>
           </div>
           <a
@@ -53,25 +59,34 @@ export function SocialFeed() {
             <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
+      </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {posts.map((post, i) => (
+      {/* Sonsuz kayan slider */}
+      <div
+        className="marquee-paused group relative mt-10 overflow-hidden"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+        }}
+      >
+        <div className="animate-marquee flex w-max gap-4 pe-4" style={{ animationDuration: '48s' }}>
+          {[...posts, ...posts].map((post, i) => (
             <a
               key={i}
-              href={SOCIAL.instagram}
+              href={post.permalink || SOCIAL.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square overflow-hidden rounded-2xl bg-mist-100"
-              aria-label="Instagram"
+              className="group/card relative h-56 w-56 shrink-0 overflow-hidden rounded-2xl bg-mist-100 sm:h-64 sm:w-64"
+              aria-label="Instagram gönderisi"
             >
               <Image
                 src={post.image}
                 alt="Şimşek Solar Instagram"
                 fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                sizes="256px"
+                className="object-cover transition-transform duration-500 group-hover/card:scale-110"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-graphite-950/0 opacity-0 transition-all duration-300 group-hover:bg-graphite-950/40 group-hover:opacity-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-graphite-950/0 opacity-0 transition-all duration-300 group-hover/card:bg-graphite-950/40 group-hover/card:opacity-100">
                 <InstagramGlyph className="h-7 w-7 text-white" />
               </div>
             </a>

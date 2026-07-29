@@ -3,7 +3,10 @@ import { getTranslations } from 'next-intl/server';
 import { PageHero } from '@/components/PageHero';
 import { ResourceCenter } from '@/components/ResourceCenter';
 import { pageMetadata } from '@/lib/seo';
+import { getContent } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
+
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
@@ -17,13 +20,14 @@ export async function generateMetadata({
 
 export default async function ResourcesPage() {
   const t = await getTranslations('resources.hero');
+  const adminDocs = getContent().documents;
 
   return (
     <>
       <PageHero eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
       <section className="section-pad bg-mist-50">
         <div className="container-page">
-          <ResourceCenter />
+          <ResourceCenter adminDocs={adminDocs} />
         </div>
       </section>
     </>

@@ -21,7 +21,13 @@ interface Row {
 
 type RawCert = string | { label: string; scope?: string; file?: string };
 
-export function ResourceCenter() {
+interface AdminDoc {
+  id: string;
+  name: string;
+  url: string;
+}
+
+export function ResourceCenter({ adminDocs = [] }: { adminDocs?: AdminDoc[] }) {
   const t = useTranslations('resources');
   const tProducts = useTranslations('products');
   const tCerts = useTranslations('certs');
@@ -173,6 +179,28 @@ export function ResourceCenter() {
         <h2 className="font-display text-xl font-bold text-graphite-950">{t('generalDocsTitle')}</h2>
         <p className="mt-1.5 max-w-lg text-sm text-mist-700">{t('generalDocsSubtitle')}</p>
         <div className="mt-6 divide-y divide-mist-900/8 overflow-hidden rounded-2xl border border-mist-900/8 bg-white">
+          {/* Panelden eklenen, gerçek bağlantılı dökümanlar önce */}
+          {adminDocs
+            .filter((d) => d.name && d.url)
+            .map((doc) => (
+              <a
+                key={doc.id}
+                href={doc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3.5 px-5 py-4 transition-colors hover:bg-mist-50"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-volt-100 text-volt-700">
+                  <FileText size={16} strokeWidth={1.75} />
+                </span>
+                <span className="min-w-0 flex-1 text-sm font-medium text-graphite-950 group-hover:text-volt-700">
+                  {doc.name}
+                </span>
+                <span className="shrink-0 rounded-full bg-mist-100 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-mist-600">
+                  Aç
+                </span>
+              </a>
+            ))}
           {generalDocs.map((doc) => (
             <div key={doc.name} className="flex items-center gap-3.5 px-5 py-4">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-mist-100 text-mist-600">
