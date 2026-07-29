@@ -30,5 +30,16 @@
 ## Referans Ölçeği
 Türkiye genelinde 350'den fazla toplu konut projesi, 130.000'i aşkın kollektör, 300.000 m²'yi aşan ışınım alanı. Kamu, askeri tesis, hastane, yurt, otel ve konut segmentlerinde uygulama.
 
+## Arama Konuları / Anahtar Kelimeler
+Güneş enerjisi, termal güneş enerjisi, solar enerji, güneş enerjisi ile sıcak su, güneş kollektörü, sıcak su boyleri, emayeli boyler, paket güneş enerjisi sistemi, merkezi güneş enerjisi sistemi, TOKİ güneş enerjisi, toplu konut sıcak su sistemi, kamu projeleri, cezaevi ve yurt sıcak su sistemleri, Adalet Bakanlığı projeleri.
+
+## Sık Sorulan Sorular (Özet)
+- Güneş enerjisi ile sıcak su, çatıdaki güneş kollektörlerinin suyu ısıtıp yalıtımlı boylerde depolamasıyla, elektrik/gaz kullanmadan üretilir.
+- Termal güneş enerjisi doğrudan su ısıtır (sıcak su), fotovoltaik ise elektrik üretir. Şimşek Solar termal sistemlerde uzmandır.
+- TOKİ, Adalet Bakanlığı/cezaevi, askeri tesis, yurt, hastane ve otel gibi kamu/toplu konut projelerinde merkezi sıcak su sistemleri kurulur.
+- 2–4 kişilik hane için ~200 litre, kalabalık hane için ~300 litre boyler önerilir.
+- Güneşsiz günlerde destek ısıtma (kombi/kazan) entegrasyonuyla dört mevsim kesintisiz sıcak su sağlanır.
+- Ürünler CE, TSE ve Solar Keymark sertifikalıdır; sistemler on yıllarca çalışır.
+
 ## Diller
 Türkçe (tr), İngilizce (en), Arapça (ar).

@@ -87,6 +87,20 @@ export function ProductJsonLd({
   return <JsonLd data={data} />;
 }
 
+/* SSS yapısal verisi — Google zengin sonuçları ve AI asistanı alıntıları için. */
+export function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((it) => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: { '@type': 'Answer', text: it.a },
+    })),
+  };
+  return <JsonLd data={data} />;
+}
+
 /* Gezinme kırıntısı — sayfa hiyerarşisi. */
 export function BreadcrumbJsonLd({
   items,
