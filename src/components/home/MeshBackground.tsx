@@ -2,10 +2,10 @@
    şampanya/altın ve dumanlı mavi tonları. Düşük satürasyon (elit his) + ince
    film grain dokusu. Saf CSS/SVG; hareket sakin ve akışkan. */
 const blobs = [
-  { color: 'rgba(224,196,138,0.42)', size: '52%', top: '2%', left: '6%', anim: 'mesh-a', dur: '13s' },
-  { color: 'rgba(206,178,128,0.34)', size: '44%', top: '40%', left: '54%', anim: 'mesh-c', dur: '16s' },
-  { color: 'rgba(74,96,150,0.40)', size: '54%', top: '28%', left: '30%', anim: 'mesh-b', dur: '15s' },
-  { color: 'rgba(232,214,178,0.28)', size: '40%', top: '50%', left: '12%', anim: 'mesh-d', dur: '12s' },
+  { color: 'rgba(228,198,138,0.55)', size: '50%', top: '0%', left: '4%', anim: 'mesh-a', dur: '17s' },
+  { color: 'rgba(210,180,128,0.46)', size: '42%', top: '38%', left: '56%', anim: 'mesh-c', dur: '21s' },
+  { color: 'rgba(78,102,158,0.52)', size: '52%', top: '24%', left: '32%', anim: 'mesh-b', dur: '19s' },
+  { color: 'rgba(236,216,178,0.40)', size: '38%', top: '52%', left: '10%', anim: 'mesh-d', dur: '15s' },
 ] as const;
 
 /* İnce film grain — feTurbulence ile üretilen doku. */
@@ -43,12 +43,12 @@ export function MeshBackground() {
         />
       ))}
 
-      {/* Yazı kontrastı için koyu perde */}
+      {/* Yazı kontrastı için koyu perde (hafifletildi — hareket görünür olsun) */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(120% 84% at 50% 46%, rgba(10,15,34,0.48) 0%, rgba(10,15,34,0.70) 58%, rgba(10,15,34,0.9) 100%)',
+            'radial-gradient(125% 88% at 50% 46%, rgba(10,15,34,0.34) 0%, rgba(10,15,34,0.58) 60%, rgba(10,15,34,0.86) 100%)',
         }}
       />
 

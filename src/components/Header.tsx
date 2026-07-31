@@ -68,15 +68,6 @@ export function Header() {
         </Link>
 
         <nav className="hidden min-w-0 items-center gap-6 lg:flex xl:gap-8">
-          <Link
-            href="/"
-            className={`whitespace-nowrap text-sm font-medium transition-colors ${
-              dark ? 'text-white/80 hover:text-white' : 'text-graphite-900/80 hover:text-graphite-700'
-            }`}
-          >
-            {t('home')}
-          </Link>
-
           {/* Kurumsal dropdown */}
           <div className="relative" onMouseEnter={() => setCorpOpen(true)} onMouseLeave={() => setCorpOpen(false)}>
             <button
@@ -149,14 +140,6 @@ export function Header() {
       {mobileOpen && (
         <div className="border-t border-graphite-700/10 bg-white lg:hidden">
           <nav className="container-page flex flex-col gap-1 py-4">
-            <Link
-              href="/"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-lg px-3 py-3 text-base font-medium text-graphite-900 hover:bg-graphite-100"
-            >
-              {t('home')}
-            </Link>
-            <div className="my-1 h-px bg-graphite-700/10" aria-hidden />
             <p className="px-3 pt-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-mist-500">
               Kurumsal
             </p>

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { MapPin, Phone, Mail, Clock, Briefcase, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Briefcase, ArrowUpRight, Handshake } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
+import { DealerForm } from '@/components/DealerForm';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
@@ -119,6 +120,53 @@ export default async function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Bayilik — başvuru formu iletişim sayfasına gömüldü */}
+      <BayilikSection />
     </>
+  );
+}
+
+async function BayilikSection() {
+  const t = await getTranslations('dealers');
+  const benefits = t.raw('benefits.items') as { title: string; desc: string }[];
+
+  return (
+    <section id="bayilik" className="section-pad scroll-mt-24 bg-white">
+      <div className="container-page">
+        <Reveal>
+          <div className="max-w-2xl">
+            <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+              <span className="h-px w-8 bg-volt-500" aria-hidden />
+              {t('hero.eyebrow')}
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              {t('hero.title')}
+            </h2>
+            <p className="mt-4 text-mist-700">{t('hero.subtitle')}</p>
+          </div>
+        </Reveal>
+
+        <div className="mt-10 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div className="space-y-5">
+            {benefits.map((b, i) => (
+              <Reveal key={b.title} delay={i * 0.08} className="flex gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-700">
+                  <Handshake size={20} strokeWidth={1.75} />
+                </span>
+                <div>
+                  <h3 className="font-display text-base font-semibold text-graphite-950">{b.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-mist-700">{b.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.1}>
+            <DealerForm />
+          </Reveal>
+        </div>
+      </div>
+    </section>
   );
 }
