@@ -51,8 +51,8 @@ export function ProductPillars() {
           </div>
         </Reveal>
 
-        {/* Akademi kart mantığı — grup başına tek görsel + ikon + açıklama */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Akademi kart mantığı — tek satır: grup başına tek görsel + ikon + açıklama */}
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5">
           {families.map((family, i) => {
             const visual = familyVisual[family.id] ?? familyVisual.kolektorler;
             const Icon = visual.icon;
@@ -61,65 +61,60 @@ export function ProductPillars() {
               <Reveal key={family.id} delay={i * 0.07}>
                 <Link
                   href={`/products#${family.id}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-mist-900/10 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-volt-500/40 hover:shadow-card"
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-mist-900/10 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-volt-500/40 hover:shadow-card"
                 >
                   {/* Görsel */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-mist-100">
+                  <div className="relative aspect-square overflow-hidden bg-mist-100">
                     {image && (
                       <Image
                         src={image}
                         alt={`${family.title} — Şimşek Solar`}
                         fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     )}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-graphite-950/45 via-transparent to-transparent" aria-hidden />
-                    {/* Renkli ikon rozeti */}
                     <span
-                      className="absolute -bottom-6 start-6 flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg ring-4 ring-white"
+                      className="absolute -bottom-5 start-4 flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-lg ring-4 ring-white"
                       style={{ backgroundColor: visual.accent }}
                     >
-                      <Icon size={22} strokeWidth={1.85} />
+                      <Icon size={20} strokeWidth={1.85} />
                     </span>
-                    {/* Seri sayısı rozeti */}
-                    <span className="absolute end-4 top-4 rounded-full bg-white/95 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-graphite-900 backdrop-blur-sm">
+                    <span className="absolute end-3 top-3 rounded-full bg-white/95 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-graphite-900 backdrop-blur-sm">
                       {countOf(family)} {tc('seriesLabel')}
                     </span>
                   </div>
 
                   {/* İçerik */}
-                  <div className="flex flex-1 flex-col p-6 pt-9">
-                    <h3 className="font-display text-xl font-bold text-graphite-950 transition-colors group-hover:text-volt-700">
+                  <div className="flex flex-1 flex-col p-5 pt-8">
+                    <h3 className="font-display text-base font-bold leading-snug text-graphite-950 transition-colors group-hover:text-volt-700">
                       {family.title}
                     </h3>
-                    <p className="mt-2.5 flex-1 text-sm leading-relaxed text-mist-700">{family.desc}</p>
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-graphite-950 transition-colors group-hover:text-volt-700">
+                    <p className="mt-2 line-clamp-3 flex-1 text-xs leading-relaxed text-mist-700">{family.desc}</p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-graphite-950 transition-colors group-hover:text-volt-700">
                       İncele
-                      <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>
                 </Link>
               </Reveal>
             );
           })}
+        </div>
 
-          {/* Tüm ürünler kartı (6. hücre) */}
-          <Reveal delay={0.35}>
+        {/* Tüm ürünler */}
+        <Reveal delay={0.15}>
+          <div className="mt-10 flex justify-center">
             <Link
               href="/products"
-              className="group flex h-full min-h-[16rem] flex-col justify-center rounded-3xl border border-dashed border-graphite-950/20 bg-white p-8 text-center transition-all hover:-translate-y-1.5 hover:border-graphite-950 hover:bg-graphite-950 hover:text-white"
+              className="group inline-flex items-center gap-2 rounded-full bg-graphite-950 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-graphite-800"
             >
-              <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-graphite-950 text-white transition-colors group-hover:bg-white group-hover:text-graphite-950">
-                <ArrowUpRight size={26} />
-              </span>
-              <h3 className="mt-5 font-display text-xl font-bold">{t('viewAll')}</h3>
-              <p className="mt-2 text-sm text-mist-600 group-hover:text-graphite-300">
-                Tüm seriler, teknik özellikler ve karşılaştırma tablosu.
-              </p>
+              {t('viewAll')}
+              <ArrowRight size={15} className="rtl:rotate-180" />
             </Link>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
