@@ -3,7 +3,7 @@ import { GroupSection } from '@/components/home/GroupSection';
 import { ProductionSection } from '@/components/home/ProductionSection';
 import { ReferencesMapSection } from '@/components/home/ReferencesMapSection';
 import { SystemWizard } from '@/components/home/SystemWizard';
-import { ProductsSection } from '@/components/home/ProductsSection';
+import { ProductsTabs } from '@/components/home/ProductsTabs';
 import { WhyUs } from '@/components/home/WhyUs';
 import { Certs } from '@/components/home/Certs';
 import { HomeContact } from '@/components/home/HomeContact';
@@ -19,7 +19,7 @@ export default function HomePage() {
     <>
       <SectionDots />
       <Hero />
-      <ProductsSection />
+      <ProductsTabs />
       <SystemWizard />
       <ReferencesMapSection />
       <TrustStrip />

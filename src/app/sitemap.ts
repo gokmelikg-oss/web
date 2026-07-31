@@ -7,6 +7,7 @@ import { products } from '@/data/products';
 const STATIC_PATHS = [
   { path: '/', priority: 1.0, changeFrequency: 'weekly' as const },
   { path: '/products', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: '/akademi', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/projects', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/resources', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/calculator', priority: 0.7, changeFrequency: 'monthly' as const },

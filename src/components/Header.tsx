@@ -11,9 +11,8 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
    Hesaplama · Bayilik · İletişim. (Ana Sayfa ve Kurumsal ayrı render edilir.) */
 const navItems = [
   { href: '/products', key: 'products' },
-  { href: '/resources', key: 'resources' },
+  { href: '/akademi', key: 'academy' },
   { href: '/projects', key: 'projects' },
-  { href: '/calculator', key: 'calculator' },
   { href: '/contact', key: 'contact' },
 ] as const;
 
