@@ -1,52 +1,49 @@
-/* Canlı renk mesh arka planı — Hero'nun arkasında sürekli akan, marka tonlarında
-   yumuşak ışık lekeleri + yavaşça dönen konik renk katmanı + hafif renk kayması
-   (huemint tarzı). Saf CSS. Merkezde yazı kontrastı için ölçülü koyu perde. */
+/* Elit renk mesh arka planı — koyu lacivert zeminde ağırlıklı ALTIN, tek soğuk
+   aksan (derin mavi). Az renk, hızlı ve akışkan; gökkuşağı/hue kayması yok.
+   Saf CSS. Merkezde yazı kontrastı için ölçülü koyu perde. */
 const blobs = [
-  { color: 'rgba(246,188,50,0.75)', size: '48%', top: '2%', left: '6%', anim: 'mesh-a', dur: '13s' },
-  { color: 'rgba(2,183,212,0.65)', size: '44%', top: '0%', left: '55%', anim: 'mesh-b', dur: '11s' },
-  { color: 'rgba(45,168,255,0.6)', size: '52%', top: '42%', left: '48%', anim: 'mesh-c', dur: '15s' },
-  { color: 'rgba(248,140,60,0.55)', size: '46%', top: '44%', left: '2%', anim: 'mesh-d', dur: '12s' },
-  { color: 'rgba(124,92,255,0.45)', size: '40%', top: '20%', left: '30%', anim: 'mesh-b', dur: '17s' },
+  { color: 'rgba(246,188,50,0.70)', size: '46%', top: '4%', left: '8%', anim: 'mesh-a', dur: '9s' },
+  { color: 'rgba(248,202,92,0.55)', size: '40%', top: '38%', left: '54%', anim: 'mesh-c', dur: '11s' },
+  { color: 'rgba(30,64,140,0.55)', size: '50%', top: '30%', left: '30%', anim: 'mesh-b', dur: '10s' },
+  { color: 'rgba(246,188,50,0.45)', size: '38%', top: '48%', left: '14%', anim: 'mesh-d', dur: '8s' },
 ] as const;
 
 export function MeshBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      {/* Yavaşça dönen konik renk katmanı */}
+      {/* Yavaşça dönen tek-ton altın parıltı — sakin canlılık */}
       <div
-        className="absolute left-1/2 top-1/2 h-[160%] w-[160%] -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-1/2 top-1/2 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2"
         style={{
           background:
-            'conic-gradient(from 0deg, rgba(246,188,50,0.35), rgba(2,183,212,0.30), rgba(45,168,255,0.30), rgba(124,92,255,0.28), rgba(246,188,50,0.35))',
-          filter: 'blur(60px)',
-          animation: 'mesh-spin 40s linear infinite',
+            'conic-gradient(from 0deg, rgba(246,188,50,0.22), transparent 30%, rgba(30,64,140,0.20) 55%, transparent 80%, rgba(246,188,50,0.22))',
+          filter: 'blur(70px)',
+          animation: 'mesh-spin 34s linear infinite',
         }}
       />
 
-      {/* Akan renk lekeleri (hue kayması ile) */}
-      <div className="absolute inset-0" style={{ animation: 'mesh-hue 32s linear infinite' }}>
-        {blobs.map((b, i) => (
-          <span
-            key={i}
-            className="mesh-blob"
-            style={{
-              background: b.color,
-              width: b.size,
-              height: b.size,
-              top: b.top,
-              left: b.left,
-              animation: `${b.anim} ${b.dur} linear infinite`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Akışkan lekeler */}
+      {blobs.map((b, i) => (
+        <span
+          key={i}
+          className="mesh-blob"
+          style={{
+            background: b.color,
+            width: b.size,
+            height: b.size,
+            top: b.top,
+            left: b.left,
+            animation: `${b.anim} ${b.dur} linear infinite`,
+          }}
+        />
+      ))}
 
-      {/* Yazı kontrastı için ölçülü koyu perde — merkez daha koyu, kenarlar açık */}
+      {/* Yazı kontrastı için koyu perde */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(115% 80% at 50% 46%, rgba(13,19,41,0.30) 0%, rgba(13,19,41,0.55) 58%, rgba(13,19,41,0.82) 100%)',
+            'radial-gradient(115% 82% at 50% 46%, rgba(10,15,34,0.42) 0%, rgba(10,15,34,0.66) 58%, rgba(10,15,34,0.88) 100%)',
         }}
       />
     </div>

@@ -14,9 +14,6 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'tr',
     dir: 'ltr',
     categories: ['business', 'utilities'],
-    icons: [
-      { src: '/icon.svg', sizes: 'any', type: 'image/svg+xml' },
-      { src: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
-    ],
+    icons: [{ src: '/icon.svg', sizes: 'any', type: 'image/svg+xml' }],
   };
 }
