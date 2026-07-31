@@ -4,6 +4,7 @@ import { ProductionSection } from '@/components/home/ProductionSection';
 import { ReferencesMapSection } from '@/components/home/ReferencesMapSection';
 import { SystemWizard } from '@/components/home/SystemWizard';
 import { ProductsSection } from '@/components/home/ProductsSection';
+import { AnatomySection } from '@/components/home/AnatomySection';
 import { WhyUs } from '@/components/home/WhyUs';
 import { Certs } from '@/components/home/Certs';
 import { HomeContact } from '@/components/home/HomeContact';
@@ -20,6 +21,7 @@ export default function HomePage() {
       <SectionDots />
       <Hero />
       <ProductsSection />
+      <AnatomySection />
       <SystemWizard />
       <ReferencesMapSection />
       <TrustStrip />
