@@ -11,6 +11,7 @@ import { pageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
 import { OrgJsonLd } from '@/components/JsonLd';
 import { Analytics } from '@/components/Analytics';
 import { CookieBanner } from '@/components/CookieBanner';
+import { SmoothScroll } from '@/components/SmoothScroll';
 import '../globals.css';
 
 const josefinSans = Josefin_Sans({
@@ -128,6 +129,7 @@ export default async function LocaleLayout({
       >
         <OrgJsonLd locale={locale} />
         <Analytics />
+        <SmoothScroll />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-graphite-950 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"

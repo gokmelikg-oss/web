@@ -5,10 +5,11 @@
   },
   "nav": {
     "brand": "Şimşek Solar",
+    "home": "Ana Sayfa",
     "group": "Grup",
     "products": "Ürünler",
     "projects": "Referanslar",
-    "resources": "Kaynaklar",
+    "resources": "Dökümanlar",
     "calculator": "Hesaplama",
     "dealers": "Bayilik",
     "contact": "İletişim",

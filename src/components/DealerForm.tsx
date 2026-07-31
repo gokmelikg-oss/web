@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
+import { trackLead } from '@/lib/track';
 
 export function DealerForm() {
   const t = useTranslations('dealers.form');
@@ -30,7 +31,12 @@ export function DealerForm() {
           message: fd.get('message'),
         }),
       });
-      setStatus(res.ok ? 'done' : 'error');
+      if (res.ok) {
+        trackLead('dealer');
+        setStatus('done');
+      } else {
+        setStatus('error');
+      }
     } catch {
       setStatus('error');
     }
