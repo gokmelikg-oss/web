@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { CountUp } from '@/components/CountUp';
+import { MeshBackground } from '@/components/home/MeshBackground';
 
 const NUMBER_LOCALE: Record<string, string> = { tr: 'tr-TR', en: 'en-US', ar: 'ar-EG' };
 
@@ -15,7 +16,9 @@ export function Hero() {
 
   return (
     <section id="top" className="relative -mt-20 overflow-hidden bg-graphite-950 pt-20 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-blueprint-dark opacity-30 fade-mask-b" aria-hidden />
+      {/* Canlı renk mesh arka planı */}
+      <MeshBackground />
+      <div className="pointer-events-none absolute inset-0 bg-blueprint-dark opacity-20 fade-mask-b" aria-hidden />
 
       {/* Star dust */}
       <div

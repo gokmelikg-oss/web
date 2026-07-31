@@ -107,6 +107,42 @@ body {
     mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
   }
+
+  /* Canlı renk mesh'i — sürekli morph olan, marka tonlarında yumuşak lekeler.
+     Her leke kendi yörüngesinde bağımsız hareket eder; huemint tarzı "canlı"
+     his verir ama saf CSS'tir (bağımlılık yok). */
+  .mesh-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    will-change: transform;
+  }
+  @keyframes mesh-a {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(18%, 12%) scale(1.25); }
+    100% { transform: translate(-8%, 6%) scale(1.05); }
+  }
+  @keyframes mesh-b {
+    0% { transform: translate(0, 0) scale(1.1); }
+    50% { transform: translate(-16%, 14%) scale(1.3); }
+    100% { transform: translate(10%, -8%) scale(1); }
+  }
+  @keyframes mesh-c {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(12%, -14%) scale(1.2); }
+    100% { transform: translate(-14%, -6%) scale(1.15); }
+  }
+  @keyframes mesh-d {
+    0% { transform: translate(0, 0) scale(1.15); }
+    50% { transform: translate(-12%, -12%) scale(0.95); }
+    100% { transform: translate(14%, 10%) scale(1.2); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mesh-blob {
+      animation: none !important;
+    }
+  }
 }
 
 [dir="rtl"] .flip-rtl {
