@@ -2,10 +2,14 @@
    şampanya/altın ve dumanlı mavi tonları. Düşük satürasyon (elit his) + ince
    film grain dokusu. Saf CSS/SVG; hareket sakin ve akışkan. */
 const blobs = [
-  { color: 'rgba(228,198,138,0.55)', size: '50%', top: '0%', left: '4%', anim: 'mesh-a', dur: '17s' },
-  { color: 'rgba(210,180,128,0.46)', size: '42%', top: '38%', left: '56%', anim: 'mesh-c', dur: '21s' },
-  { color: 'rgba(78,102,158,0.52)', size: '52%', top: '24%', left: '32%', anim: 'mesh-b', dur: '19s' },
-  { color: 'rgba(236,216,178,0.40)', size: '38%', top: '52%', left: '10%', anim: 'mesh-d', dur: '15s' },
+  // Sol kenar
+  { color: 'rgba(228,198,138,0.55)', size: '48%', top: '2%', left: '-14%', anim: 'mesh-a', dur: '17s' },
+  { color: 'rgba(236,216,178,0.42)', size: '40%', top: '46%', left: '-10%', anim: 'mesh-d', dur: '15s' },
+  // Orta
+  { color: 'rgba(78,102,158,0.52)', size: '52%', top: '22%', left: '30%', anim: 'mesh-b', dur: '19s' },
+  // Sağ kenar
+  { color: 'rgba(210,180,128,0.48)', size: '46%', top: '4%', left: '66%', anim: 'mesh-c', dur: '21s' },
+  { color: 'rgba(90,116,176,0.42)', size: '40%', top: '48%', left: '72%', anim: 'mesh-a', dur: '18s' },
 ] as const;
 
 /* İnce film grain — feTurbulence ile üretilen doku. */

@@ -14,7 +14,6 @@ const navItems = [
   { href: '/resources', key: 'resources' },
   { href: '/projects', key: 'projects' },
   { href: '/calculator', key: 'calculator' },
-  { href: '/dealers', key: 'dealers' },
   { href: '/contact', key: 'contact' },
 ] as const;
 
