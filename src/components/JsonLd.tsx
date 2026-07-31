@@ -51,10 +51,48 @@ export function OrgJsonLd({ locale }: { locale: Locale }) {
     publisher: { '@id': `${SITE_URL}/#organization` },
   };
 
+  /* Yerel işletme — "Mersin güneş enerjisi" gibi yerel aramalar ve harita
+     sonuçları için. Çalışma saatleri + coğrafi konum + hizmet alanı. */
+  const localBusiness = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#localbusiness`,
+    name: SITE_NAME,
+    image: `${SITE_URL}/brand/simsek-solar.png`,
+    url: `${SITE_URL}/${locale}`,
+    telephone: ORG.phone,
+    email: ORG.email,
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: ORG.street,
+      addressLocality: ORG.city,
+      addressRegion: ORG.district,
+      postalCode: ORG.postalCode,
+      addressCountry: ORG.country,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: ORG.latitude,
+      longitude: ORG.longitude,
+    },
+    areaServed: { '@type': 'Country', name: 'Türkiye' },
+    parentOrganization: { '@id': `${SITE_URL}/#organization` },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={org} />
       <JsonLd data={website} />
+      <JsonLd data={localBusiness} />
     </>
   );
 }
