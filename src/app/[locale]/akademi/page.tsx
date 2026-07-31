@@ -91,21 +91,21 @@ export default function AkademiPage() {
       {/* Dört sütun */}
       <section className="section-pad bg-white">
         <div className="container-page">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.06}>
                 <Link
                   href={p.href}
-                  className="group flex h-full flex-col rounded-2xl border border-mist-900/10 bg-mist-50 p-6 transition-all hover:-translate-y-1 hover:border-volt-500/40 hover:bg-white hover:shadow-card"
+                  className="group flex h-full flex-col rounded-3xl border border-mist-900/10 bg-mist-50 p-8 transition-all hover:-translate-y-1.5 hover:border-volt-500/40 hover:bg-white hover:shadow-card"
                 >
-                  <span className={`flex h-12 w-12 items-center justify-center rounded-2xl ${p.accent}`}>
-                    <p.icon size={22} strokeWidth={1.75} />
+                  <span className={`flex h-16 w-16 items-center justify-center rounded-2xl ${p.accent}`}>
+                    <p.icon size={30} strokeWidth={1.6} />
                   </span>
-                  <h2 className="mt-5 font-display text-lg font-bold text-graphite-950">{p.title}</h2>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-mist-700">{p.desc}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-graphite-950 transition-colors group-hover:text-volt-700">
+                  <h2 className="mt-6 font-display text-xl font-bold text-graphite-950">{p.title}</h2>
+                  <p className="mt-3 flex-1 leading-relaxed text-mist-700">{p.desc}</p>
+                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-graphite-950 transition-colors group-hover:text-volt-700">
                     İncele
-                    <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </Link>
               </Reveal>
