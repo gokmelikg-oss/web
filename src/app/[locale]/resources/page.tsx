@@ -6,7 +6,9 @@ import { pageMetadata } from '@/lib/seo';
 import { getContent } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
-export const dynamic = 'force-dynamic';
+// ISR: statik olarak servis edilir, saatte bir yeniden üretilir. Admin kaydında
+// api/admin/content revalidatePath ile anında tazelenir → Function Invocation ~sıfır.
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,

@@ -38,6 +38,16 @@ export function OrgJsonLd({ locale }: { locale: Locale }) {
       longitude: ORG.longitude,
     },
     areaServed: { '@type': 'Country', name: 'Türkiye' },
+    // AI motorlarının şirketi doğru uzmanlık alanlarıyla ilişkilendirmesi için.
+    knowsAbout: [
+      'Güneş termal enerji sistemleri',
+      'Güneş kollektörü üretimi',
+      'Emayeli sıcak su boyleri',
+      'Merkezi güneş enerjisi sistemleri',
+      'Toplu konut ve kamu projeleri sıcak su sistemleri',
+      'Solar Keymark sertifikalı kollektörler',
+    ],
+    naics: '333414',
     ...(ORG.sameAs.length ? { sameAs: ORG.sameAs } : {}),
   };
 

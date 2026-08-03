@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getContent, saveContent, type SiteContent } from '@/lib/content';
 import { isAuthed } from '@/lib/adminAuth';
 
@@ -24,6 +25,8 @@ export async function POST(req: NextRequest) {
       groupImages: body.groupImages && typeof body.groupImages === 'object' ? body.groupImages : {},
       updatedAt: '',
     });
+    // ISR sayfalarını anında tazele (tüm diller için).
+    revalidatePath('/[locale]/resources', 'page');
     return NextResponse.json({ ok: true, content: getContent() });
   } catch (err) {
     console.error('content save error', err);
