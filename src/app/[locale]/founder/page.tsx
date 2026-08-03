@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Quote, PenLine } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
+import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -34,6 +35,7 @@ const paragraphs = [
 export default function FounderPage() {
   return (
     <>
+      <PageBreadcrumb items={[{ name: 'Kurucumuzdan', path: '/founder' }]} />
       <PageHero
         eyebrow="Kurucumuzdan"
         title="Şimşek Grup Yolculuğu"

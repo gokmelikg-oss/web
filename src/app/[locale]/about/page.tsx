@@ -15,6 +15,7 @@ import {
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
+import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 import type { Metadata } from 'next';
@@ -54,6 +55,7 @@ export default async function AboutPage() {
 
   return (
     <>
+      <PageBreadcrumb items={[{ name: 'Kurumsal', path: '/about' }]} />
       <PageHero eyebrow={t('hero.eyebrow')} title={t('hero.title')} subtitle={t('hero.subtitle')} />
 
       <section className="section-pad bg-white">

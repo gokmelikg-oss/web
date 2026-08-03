@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Calculator } from 'lucide-react';
 import { CALC_EMBED_URL } from '@/data/config';
+import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -39,6 +40,7 @@ export default async function CalculatorPage() {
        -mt-20/pt-20 ile şeffaf header'ın arkasına uzanır; böylece beyaz logo
        görünür ve araç sayfayla bütünleşir. */
     <div className="-mt-20 flex min-h-screen flex-col bg-mist-50">
+      <PageBreadcrumb items={[{ name: 'Hesaplama Aracı', path: '/calculator' }]} />
       {/* Koyu başlık bandı — şeffaf header'ın arkasına uzanır, nefes payı bırakır */}
       <div className="relative overflow-hidden bg-graphite-950 pb-10 pt-28 text-white sm:pb-12 sm:pt-32">
         <div className="pointer-events-none absolute inset-0 bg-blueprint-dark opacity-30" aria-hidden />

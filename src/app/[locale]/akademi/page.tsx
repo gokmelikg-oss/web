@@ -15,6 +15,7 @@ import {
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
+import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -82,6 +83,7 @@ const engineering = [
 export default function AkademiPage() {
   return (
     <>
+      <PageBreadcrumb items={[{ name: 'Şimşek Akademi', path: '/akademi' }]} />
       <PageHero
         eyebrow="Şimşek Akademi"
         title="Eğitim, mühendislik ve teknik kaynak merkezi"

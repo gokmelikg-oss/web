@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { PageHero } from '@/components/PageHero';
 import { ProductsShowcase } from '@/components/ProductsShowcase';
 import { CollectorMatrix } from '@/components/CollectorMatrix';
+import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -21,6 +22,7 @@ export default async function ProductsPage() {
 
   return (
     <>
+      <PageBreadcrumb items={[{ name: 'Ürünler', path: '/products' }]} />
       <PageHero eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
       <section className="section-pad bg-white">
         <div className="container-page">

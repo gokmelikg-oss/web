@@ -1,3 +1,4 @@
+import { getLocale } from 'next-intl/server';
 import { SITE_URL, SITE_NAME, ORG } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -144,6 +145,34 @@ export function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
       '@type': 'Question',
       name: it.q,
       acceptedAnswer: { '@type': 'Answer', text: it.a },
+    })),
+  };
+  return <JsonLd data={data} />;
+}
+
+/* Sayfa breadcrumb'ı — "Ana Sayfa > Sayfa" hiyerarşisini otomatik kurar.
+   locale request'ten okunur; her iç sayfa yalnızca kendi kırıntılarını verir. */
+const HOME_LABEL: Record<Locale, string> = {
+  tr: 'Ana Sayfa',
+  en: 'Home',
+  ar: 'الرئيسية',
+};
+
+export async function PageBreadcrumb({
+  items,
+}: {
+  items: { name: string; path: string }[];
+}) {
+  const locale = (await getLocale()) as Locale;
+  const trail = [{ name: HOME_LABEL[locale] ?? HOME_LABEL.tr, path: '/' }, ...items];
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: t.name,
+      item: `${SITE_URL}/${locale}${t.path === '/' ? '' : t.path}`,
     })),
   };
   return <JsonLd data={data} />;

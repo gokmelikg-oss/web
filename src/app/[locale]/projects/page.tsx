@@ -5,6 +5,7 @@ import { Reveal } from '@/components/Reveal';
 import { ReferenceList } from '@/components/ReferenceList';
 import { CountUp } from '@/components/CountUp';
 import { referenceTotals, totalImpact, IMPACT_ASSUMPTIONS } from '@/data/references';
+import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -38,6 +39,7 @@ const scaleStats = [
 export default function ProjectsPage() {
   return (
     <>
+      <PageBreadcrumb items={[{ name: 'Referanslar', path: '/projects' }]} />
       <PageHero
         eyebrow="Referanslar"
         title="Sahadaki işlerimiz"

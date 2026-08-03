@@ -3,6 +3,7 @@ import { Hammer, Globe2, Factory, Rocket, ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
+import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -91,6 +92,7 @@ const eras: Era[] = [
 export default function HistoryPage() {
   return (
     <>
+      <PageBreadcrumb items={[{ name: 'Tarihçe', path: '/history' }]} />
       <PageHero
         eyebrow="Tarihçe"
         title="Küçük bir atölyeden entegre enerji ekosistemine"
