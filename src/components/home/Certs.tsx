@@ -74,11 +74,12 @@ export function Certs() {
                       className="mt-0.5 shrink-0 text-graphite-400 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-volt-400"
                     />
                   )}
+                  <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-volt-500 transition-transform duration-500 ease-out group-hover:scale-x-100" aria-hidden />
                 </>
               );
 
               const cardClass =
-                'group flex h-full items-center gap-3.5 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-volt-500/50 hover:bg-white/[0.08]';
+                'group relative flex h-full items-center gap-3.5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-volt-500/50 hover:bg-white/[0.08]';
 
               return (
                 <Reveal key={item.label} delay={i * 0.04}>

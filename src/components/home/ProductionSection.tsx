@@ -28,13 +28,17 @@ export function ProductionSection() {
           <div className="grid grid-cols-2 gap-4">
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 0.07}>
-                <div className="rounded-2xl border border-mist-900/10 bg-mist-50 p-6">
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-mist-900/10 bg-mist-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-volt-500/40 hover:bg-white">
+                  <span className="absolute end-4 top-4 font-mono text-lg font-bold text-graphite-950/10 transition-colors group-hover:text-volt-600/40">
+                    0{i + 1}
+                  </span>
                   <p className="font-tabular font-display text-2xl font-bold text-graphite-950 sm:text-3xl">
                     {s.value}
                   </p>
                   <p className="mt-2 font-mono text-[10px] uppercase leading-snug tracking-[0.14em] text-mist-600">
                     {s.label}
                   </p>
+                  <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-volt-500 transition-transform duration-500 ease-out group-hover:scale-x-100" aria-hidden />
                 </div>
               </Reveal>
             ))}
