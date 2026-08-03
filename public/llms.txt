@@ -23,6 +23,7 @@
 - Ürünler: https://www.simseksolar.com.tr/tr/products
 - Referanslar: https://www.simseksolar.com.tr/tr/projects
 - Şimşek Akademi (eğitim + mühendislik + teknik kaynaklar): https://www.simseksolar.com.tr/tr/akademi
+- Satış Sonrası Hizmet (teknik servis, bakım, yedek parça): https://www.simseksolar.com.tr/tr/service
 - Hesaplama aracı: https://www.simseksolar.com.tr/tr/calculator
 - Teknik kaynaklar: https://www.simseksolar.com.tr/tr/resources
 - Hakkımızda: https://www.simseksolar.com.tr/tr/about

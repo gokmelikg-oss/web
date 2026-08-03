@@ -10,7 +10,7 @@ export const runtime = 'nodejs';
    Alıcı: info@simseksolar.com.tr (src/lib/seo.ts → CONTACT_EMAIL). */
 
 interface Payload {
-  formType?: 'contact' | 'dealer';
+  formType?: 'contact' | 'dealer' | 'service' | 'newsletter';
   name?: string;
   email?: string;
   phone?: string;
@@ -18,9 +18,17 @@ interface Payload {
   city?: string;
   country?: string;
   subject?: string;
+  serviceType?: string;
   volume?: string;
   message?: string;
 }
+
+const HEADINGS: Record<string, string> = {
+  dealer: 'Yeni Bayilik Başvurusu',
+  service: 'Yeni Teknik Servis Talebi',
+  newsletter: 'Yeni Bülten Aboneliği',
+  contact: 'Yeni İletişim Mesajı',
+};
 
 function esc(s = '') {
   return s.replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' })[c] as string);
@@ -34,21 +42,24 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: 'invalid_body' }, { status: 400 });
   }
 
-  // Basit doğrulama
-  if (!data.name || !data.email || !data.email.includes('@')) {
+  const isNewsletter = data.formType === 'newsletter';
+
+  // Basit doğrulama — bültende yalnızca e-posta, diğerlerinde ad + e-posta.
+  if (!data.email || !data.email.includes('@') || (!isNewsletter && !data.name)) {
     return NextResponse.json({ ok: false, error: 'validation' }, { status: 422 });
   }
 
-  const isDealer = data.formType === 'dealer';
-  const heading = isDealer ? 'Yeni Bayilik Başvurusu' : 'Yeni İletişim Mesajı';
+  const heading = HEADINGS[data.formType ?? 'contact'] ?? HEADINGS.contact;
+  const who = data.name || data.email;
 
   const rows: [string, string | undefined][] = [
     ['Ad Soyad', data.name],
     ['Firma', data.company],
     ['E-posta', data.email],
     ['Telefon', data.phone],
-    ['Şehir', data.city],
+    ['Şehir / Konum', data.city],
     ['Ülke', data.country],
+    ['Servis Türü', data.serviceType],
     ['Konu', data.subject],
     ['Tahmini Hacim', data.volume],
     ['Mesaj', data.message],
@@ -88,7 +99,7 @@ export async function POST(req: NextRequest) {
         from,
         to: [CONTACT_EMAIL],
         reply_to: data.email,
-        subject: `${heading} — ${data.name}`,
+        subject: `${heading} — ${who}`,
         html,
       }),
     });

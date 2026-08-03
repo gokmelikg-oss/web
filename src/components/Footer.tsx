@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import { SOCIAL } from '@/lib/seo';
 
 /* Marka ikonları — lucide brand ikonlarını kaldırdığı için inline SVG. */
@@ -53,6 +54,19 @@ export function Footer() {
 
   return (
     <footer className="bg-graphite-gradient text-graphite-100">
+      {/* Bülten aboneliği bandı */}
+      <div className="border-b border-white/10">
+        <div className="container-page flex flex-col gap-6 py-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-md">
+            <h2 className="font-display text-xl font-bold text-white">Güncellemelerden haberdar olun</h2>
+            <p className="mt-2 text-sm leading-relaxed text-graphite-300">
+              Yeni ürünler, projeler ve güneş enerjisi çözümlerimizdeki gelişmeleri e-posta ile alın.
+            </p>
+          </div>
+          <NewsletterForm />
+        </div>
+      </div>
+
       <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:py-20">
         <div>
           <Image
@@ -78,6 +92,7 @@ export function Footer() {
             <li><Link href="/projects" className="hover:text-white">{tNav('projects')}</Link></li>
             <li><Link href="/resources" className="hover:text-white">{tNav('resources')}</Link></li>
             <li><Link href="/calculator" className="hover:text-white">{tCalc('eyebrow')}</Link></li>
+            <li><Link href="/service" className="hover:text-white">Satış Sonrası Hizmet</Link></li>
             <li><Link href="/contact#bayilik" className="hover:text-white">{t('dealersLink')}</Link></li>
           </ul>
         </div>

@@ -3,7 +3,7 @@
 type Gtag = (command: string, event: string, params?: Record<string, unknown>) => void;
 type Fbq = (command: string, event: string, params?: Record<string, unknown>) => void;
 
-export function trackLead(source: 'contact' | 'dealer') {
+export function trackLead(source: 'contact' | 'dealer' | 'service' | 'newsletter') {
   if (typeof window === 'undefined') return;
   const w = window as unknown as { gtag?: Gtag; fbq?: Fbq };
   try {
