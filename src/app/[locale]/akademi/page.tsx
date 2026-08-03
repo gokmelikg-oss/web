@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import {
-  GraduationCap,
   Ruler,
-  FileText,
-  Calculator,
   ArrowUpRight,
   Sun,
   Wrench,
@@ -16,6 +13,7 @@ import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { PageBreadcrumb } from '@/components/JsonLd';
+import { PremiumIndex, type PremiumIndexItem } from '@/components/PremiumIndex';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -34,35 +32,47 @@ export async function generateMetadata({
   });
 }
 
-/* Dört ana sütun — Akademi'nin kapsadığı alanlar. */
-const pillars = [
+/* Akademi'nin kapsadığı alanlar — premium interaktif index (ürünlerle aynı imza). */
+const academyAreas: PremiumIndexItem[] = [
   {
-    icon: GraduationCap,
+    id: 'egitimler',
     title: 'Eğitimler',
-    desc: 'Bayiler, tesisatçılar ve mühendisler için güneş enerjisi, montaj ve projelendirme eğitimleri.',
-    href: '#egitimler',
-    accent: 'bg-volt-100 text-volt-700',
+    desc: 'Bayiler, tesisatçılar ve mühendisler için güneş enerjisi, montaj ve projelendirme eğitimleri. Teoriyle uygulamayı birleştiren, sahada işe yarayan içerikler.',
+    href: '/akademi#egitimler',
+    accent: '#f6bc32',
+    iconKey: 'egitim',
+    meta: '4 program · Uygulamalı',
+    tags: ['Temel eğitim', 'Montaj', 'Projelendirme', 'Bakım'],
   },
   {
-    icon: Ruler,
+    id: 'muhendislik',
     title: 'Mühendislik Hizmeti',
-    desc: 'Kapasite hesabı, statik proje, saha etüdü ve sistem şeması ile uçtan uca mühendislik desteği.',
-    href: '#muhendislik',
-    accent: 'bg-sky-50 text-sky-600',
+    desc: 'Kapasite hesabı, statik proje, saha etüdü ve sistem şeması ile fikirden devreye almaya uçtan uca mühendislik desteği.',
+    href: '/akademi#muhendislik',
+    accent: '#22c9e6',
+    iconKey: 'muhendislik',
+    meta: 'Fikirden devreye alma',
+    tags: ['Kapasite hesabı', 'Statik proje', 'Saha etüdü', 'Merkezi sistem'],
   },
   {
-    icon: FileText,
+    id: 'dokumanlar',
     title: 'Teknik Dökümanlar',
-    desc: 'Teknik föyler, ölçü çizimleri, kurulum kılavuzları ve sertifikalar tek arşivde.',
+    desc: 'Teknik föyler, ölçü çizimleri, kurulum kılavuzları ve sertifikalar tek arşivde; projelendirme ve montaj için gereken tüm belgeler.',
     href: '/resources',
-    accent: 'bg-emerald-50 text-emerald-600',
+    accent: '#22c98b',
+    iconKey: 'dokuman',
+    meta: 'Föy · Çizim · Sertifika',
+    tags: ['Teknik föyler', 'Kurulum kılavuzları', 'Sertifikalar'],
   },
   {
-    icon: Calculator,
+    id: 'hesaplama',
     title: 'Hesaplama Araçları',
-    desc: 'Sistem boyutlandırma ve kapasite hesap aracıyla doğru çözümü hızlıca belirleyin.',
+    desc: 'Sistem boyutlandırma ve kapasite hesap aracıyla hane veya tesis ihtiyacına göre doğru çözümü hızlıca belirleyin.',
     href: '/calculator',
-    accent: 'bg-mist-100 text-mist-600',
+    accent: '#8b9be0',
+    iconKey: 'hesaplama',
+    meta: 'Boyutlandırma aracı',
+    tags: ['Kapasite', 'Boyutlandırma'],
   },
 ];
 
@@ -90,31 +100,13 @@ export default function AkademiPage() {
         subtitle="Güneş enerjisinde bilgi birikimimizi paylaşıyoruz: eğitimler, mühendislik hizmetleri, teknik dökümanlar ve hesaplama araçları tek çatı altında."
       />
 
-      {/* Dört sütun */}
-      <section className="section-pad bg-white">
-        <div className="container-page">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {pillars.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.06}>
-                <Link
-                  href={p.href}
-                  className="group flex h-full flex-col rounded-3xl border border-mist-900/10 bg-mist-50 p-8 transition-all hover:-translate-y-1.5 hover:border-volt-500/40 hover:bg-white hover:shadow-card"
-                >
-                  <span className={`flex h-16 w-16 items-center justify-center rounded-2xl ${p.accent}`}>
-                    <p.icon size={30} strokeWidth={1.6} />
-                  </span>
-                  <h2 className="mt-6 font-display text-xl font-bold text-graphite-950">{p.title}</h2>
-                  <p className="mt-3 flex-1 leading-relaxed text-mist-700">{p.desc}</p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-graphite-950 transition-colors group-hover:text-volt-700">
-                    İncele
-                    <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Akademi kapsamı — premium interaktif index */}
+      <PremiumIndex
+        eyebrow="Akademi Kapsamı"
+        title="Tek çatı altında bilgi, mühendislik ve araçlar"
+        items={academyAreas}
+        actionLabel="Keşfet"
+      />
 
       {/* Eğitimler */}
       <section id="egitimler" className="section-pad scroll-mt-24 bg-mist-50">

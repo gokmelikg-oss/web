@@ -7,7 +7,7 @@ export const runtime = 'nodejs';
 
 export async function GET() {
   if (!(await isAuthed())) return NextResponse.json({ ok: false }, { status: 401 });
-  return NextResponse.json({ ok: true, content: getContent() });
+  return NextResponse.json({ ok: true, content: await getContent() });
 }
 
 export async function POST(req: NextRequest) {
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: 'invalid_body' }, { status: 400 });
   }
   try {
-    saveContent({
+    await saveContent({
       documents: Array.isArray(body.documents) ? body.documents : [],
       references: Array.isArray(body.references) ? body.references : [],
       groupImages: body.groupImages && typeof body.groupImages === 'object' ? body.groupImages : {},
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     });
     // ISR sayfalarını anında tazele (tüm diller için).
     revalidatePath('/[locale]/resources', 'page');
-    return NextResponse.json({ ok: true, content: getContent() });
+    return NextResponse.json({ ok: true, content: await getContent() });
   } catch (err) {
     console.error('content save error', err);
     return NextResponse.json({ ok: false, error: 'write_failed' }, { status: 500 });

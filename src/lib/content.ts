@@ -1,10 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
-/* Admin panelinden yönetilen içerik. JSON dosyasında saklanır (content/site.json).
-   Not: Bu dosya-tabanlı depolama; kendi sunucunuzda (VPS/Node) veya yerelde kalıcıdır.
-   Vercel gibi salt-okunur/serverless ortamlarda kalıcılık için Vercel KV veya bir
-   veritabanına geçilmelidir (getContent/saveContent gövdesini değiştirmek yeterli). */
+/* Admin panelinden yönetilen içerik.
+   Depolama stratejisi (otomatik seçilir):
+   - Vercel KV (Upstash Redis) ortam değişkenleri tanımlıysa → KV kullanılır (Vercel'de kalıcı).
+     Gerekli env: KV_REST_API_URL + KV_REST_API_TOKEN (Vercel KV store bağlanınca otomatik gelir).
+   - Aksi halde → yerel dosya (content/site.json). VPS/Node ve local geliştirmede kalıcıdır.
+   Böylece kod değişmeden hem Vercel hem kendi sunucunuz desteklenir. */
 
 export interface DocLink {
   id: string;
@@ -30,6 +32,7 @@ export interface SiteContent {
 }
 
 const FILE = path.join(process.cwd(), 'content', 'site.json');
+const KV_KEY = 'site:content';
 
 const DEFAULT: SiteContent = {
   documents: [],
@@ -38,7 +41,26 @@ const DEFAULT: SiteContent = {
   updatedAt: '',
 };
 
-export function getContent(): SiteContent {
+function kvEnabled(): boolean {
+  return Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+}
+
+/* @vercel/kv yalnızca gerektiğinde yüklenir (env yoksa hiç import edilmez). */
+async function kvClient() {
+  const { kv } = await import('@vercel/kv');
+  return kv;
+}
+
+export async function getContent(): Promise<SiteContent> {
+  if (kvEnabled()) {
+    try {
+      const data = await (await kvClient()).get<SiteContent>(KV_KEY);
+      return data ? { ...DEFAULT, ...data } : DEFAULT;
+    } catch (err) {
+      console.error('KV getContent hatası', err);
+      return DEFAULT;
+    }
+  }
   try {
     const raw = fs.readFileSync(FILE, 'utf8');
     return { ...DEFAULT, ...JSON.parse(raw) };
@@ -47,8 +69,13 @@ export function getContent(): SiteContent {
   }
 }
 
-export function saveContent(next: SiteContent): void {
+export async function saveContent(next: SiteContent): Promise<void> {
+  const payload: SiteContent = { ...next, updatedAt: new Date().toISOString() };
+  if (kvEnabled()) {
+    await (await kvClient()).set(KV_KEY, payload);
+    return;
+  }
   const dir = path.dirname(FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(FILE, JSON.stringify({ ...next, updatedAt: new Date().toISOString() }, null, 2), 'utf8');
+  fs.writeFileSync(FILE, JSON.stringify(payload, null, 2), 'utf8');
 }

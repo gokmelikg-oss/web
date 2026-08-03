@@ -15,7 +15,7 @@ const FAMILIES = [
 
 export default async function AdminHome() {
   if (!(await isAuthed())) redirect('/admin/login');
-  const content = getContent();
+  const content = await getContent();
 
   return <AdminDashboard initial={content} families={FAMILIES} />;
 }

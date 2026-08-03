@@ -23,7 +23,7 @@ export async function generateMetadata({
 
 export default async function ResourcesPage() {
   const t = await getTranslations('resources.hero');
-  const adminDocs = getContent().documents;
+  const adminDocs = (await getContent()).documents;
 
   return (
     <>

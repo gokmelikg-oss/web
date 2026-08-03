@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Şimşek Solar otomasyon panosu illüstrasyonu">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef1f7"/>
+      <stop offset="1" stop-color="#dbe1ee"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2f8"/>
+      <stop offset="1" stop-color="#c3ccdb"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#aeb8c8"/>
+      <stop offset="1" stop-color="#8b96a8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <!-- pano gövdesi -->
+  <rect x="150" y="120" width="500" height="560" rx="26" fill="#1c2333"/>
+  <rect x="176" y="146" width="448" height="508" rx="16" fill="url(#metal)"/>
+  <!-- üst etiket bandı -->
+  <rect x="176" y="146" width="448" height="60" rx="16" fill="#242c3f"/>
+  <circle cx="212" cy="176" r="9" fill="#8b9be0"/>
+  <text x="236" y="182" font-family="Verdana,Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="3" fill="#eef1f7">ŞİMŞEK · OTOMASYON</text>
+  <!-- DIN ray + kontaktörler/sigortalar -->
+  <g>
+    <rect x="200" y="250" width="400" height="70" rx="6" fill="url(#rail)"/>
+    <rect x="212" y="240" width="70" height="90" rx="8" fill="#2b3346"/>
+    <rect x="224" y="256" width="46" height="30" rx="4" fill="#8b9be0"/>
+    <rect x="300" y="244" width="40" height="82" rx="6" fill="#f2f5fa"/>
+    <rect x="308" y="252" width="24" height="14" rx="3" fill="#22c98b"/>
+    <rect x="352" y="244" width="40" height="82" rx="6" fill="#f2f5fa"/>
+    <rect x="360" y="252" width="24" height="14" rx="3" fill="#f6bc32"/>
+    <rect x="404" y="244" width="40" height="82" rx="6" fill="#f2f5fa"/>
+    <rect x="412" y="252" width="24" height="14" rx="3" fill="#22c98b"/>
+    <rect x="470" y="240" width="110" height="90" rx="8" fill="#2b3346"/>
+    <circle cx="500" cy="268" r="8" fill="#22c98b"/>
+    <circle cx="528" cy="268" r="8" fill="#f6bc32"/>
+    <circle cx="556" cy="268" r="8" fill="#e0574f"/>
+    <rect x="490" y="290" width="76" height="24" rx="5" fill="#3a445c"/>
+  </g>
+  <!-- alt DIN ray -->
+  <g>
+    <rect x="200" y="380" width="400" height="70" rx="6" fill="url(#rail)"/>
+    <rect x="212" y="374" width="80" height="82" rx="6" fill="#f2f5fa"/>
+    <rect x="222" y="386" width="60" height="16" rx="3" fill="#8b9be0"/>
+    <rect x="308" y="374" width="80" height="82" rx="6" fill="#f2f5fa"/>
+    <rect x="318" y="386" width="60" height="16" rx="3" fill="#8b9be0"/>
+    <rect x="404" y="374" width="80" height="82" rx="6" fill="#f2f5fa"/>
+    <rect x="414" y="386" width="60" height="16" rx="3" fill="#8b9be0"/>
+  </g>
+  <!-- kablo kanalı -->
+  <rect x="200" y="500" width="400" height="120" rx="10" fill="#e7ebf3" stroke="#c3ccdb" stroke-width="4"/>
+  <g stroke="#8b9be0" stroke-width="6" fill="none" opacity="0.7">
+    <path d="M240 500 C 260 560, 300 560, 320 620"/>
+    <path d="M320 500 C 340 560, 380 560, 400 620"/>
+    <path d="M400 500 C 420 560, 460 560, 480 620"/>
+  </g>
+</svg>

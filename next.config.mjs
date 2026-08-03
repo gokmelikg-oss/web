@@ -41,6 +41,11 @@ const nextConfig = {
     // Gerçekte kullanılan kırılım noktalarıyla sınırla → daha az varyant = daha az optimize maliyeti.
     deviceSizes: [360, 640, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Kendi ürettiğimiz ürün illüstrasyonları SVG; next/image bunları servis etsin.
+    // Script çalıştırmayı engelleyen sıkı CSP ile güvenli hale getirildi.
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   experimental: {

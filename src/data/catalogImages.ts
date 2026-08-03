@@ -48,7 +48,14 @@ export const catalogImages: Record<string, (string | null)[]> = {
     null,
     null,
   ],
-  'otomasyon-0': [null, null, null, null],
+  // Otomasyon: markalı ürün illüstrasyonları (gerçek fotoğraf gelince değiştirilir).
+  // Sıra: Kontaktörlü pano, Kartlı pano, AD598 kontrol, OEM pano.
+  'otomasyon-0': [
+    '/products/otomasyon-pano.svg',
+    '/products/otomasyon-kontrol.svg',
+    '/products/otomasyon-kontrol.svg',
+    '/products/otomasyon-pano.svg',
+  ],
 };
 
 /* One representative photo per family for overview cards. */
@@ -57,5 +64,5 @@ export const familyImages: Record<string, string> = {
   boylerler: '/products/aquarious-740.jpg',
   sehpalar: '/products/sehpa-merkezi-3lu.jpg',
   baglanti: '/products/solar-vana.jpg',
-  otomasyon: '/products/merkezi-sistem-saha.jpg',
+  otomasyon: '/products/otomasyon-pano.svg',
 };
