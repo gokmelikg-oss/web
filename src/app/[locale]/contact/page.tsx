@@ -5,7 +5,10 @@ import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
 import { DealerForm } from '@/components/DealerForm';
+import { Faq } from '@/components/home/Faq';
+import { FaqJsonLd } from '@/components/JsonLd';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
+import { faqItems } from '@/data/faq';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
@@ -82,6 +85,10 @@ export default async function ContactPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Sık sorulan sorular — ana sayfadan iletişim sayfasına taşındı */}
+      <Faq />
+      <FaqJsonLd items={faqItems} />
 
       {/* Kariyer — İnsan Kaynakları iletişim ile birleştirildi */}
       <section id="kariyer" className="scroll-mt-24 bg-mist-50 py-16 sm:py-20">

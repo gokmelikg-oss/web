@@ -9,10 +9,7 @@ import { Certs } from '@/components/home/Certs';
 import { HomeContact } from '@/components/home/HomeContact';
 import { SectionDots } from '@/components/home/SectionDots';
 import { TrustStrip } from '@/components/home/TrustStrip';
-import { Faq } from '@/components/home/Faq';
 import { SocialFeed } from '@/components/home/SocialFeed';
-import { FaqJsonLd } from '@/components/JsonLd';
-import { faqItems } from '@/data/faq';
 
 export default function HomePage() {
   return (
@@ -28,8 +25,6 @@ export default function HomePage() {
       <WhyUs />
       <GroupSection />
       <SocialFeed />
-      <Faq />
-      <FaqJsonLd items={faqItems} />
       <HomeContact />
     </>
   );
