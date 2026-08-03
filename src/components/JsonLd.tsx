@@ -136,6 +136,39 @@ export function ProductJsonLd({
   return <JsonLd data={data} />;
 }
 
+/* Makale yapısal verisi — blog/haber yazıları için (Google + AI alıntıları). */
+export function ArticleJsonLd({
+  locale,
+  slug,
+  title,
+  description,
+  datePublished,
+  image,
+}: {
+  locale: Locale;
+  slug: string;
+  title: string;
+  description: string;
+  datePublished: string;
+  image?: string;
+}) {
+  const url = `${SITE_URL}/${locale}/blog/${slug}`;
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    datePublished,
+    inLanguage: locale,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    url,
+    ...(image ? { image: `${SITE_URL}${image}` } : {}),
+    author: { '@type': 'Organization', name: SITE_NAME, '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  };
+  return <JsonLd data={data} />;
+}
+
 /* SSS yapısal verisi — Google zengin sonuçları ve AI asistanı alıntıları için. */
 export function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
   const data = {

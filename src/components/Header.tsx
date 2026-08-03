@@ -23,6 +23,7 @@ const corporateItems = [
   { href: '/about', label: 'Hakkımızda' },
   { href: '/about#grup-sirketleri', label: 'Grup Şirketleri' },
   { href: '/history', label: 'Tarihçe' },
+  { href: '/kalite-politikasi', label: 'Kalite Politikamız' },
 ] as const;
 
 export function Header() {
