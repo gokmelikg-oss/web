@@ -50,20 +50,26 @@ export default function ProjectsPage() {
         )} kollektör ile ${nf.format(referenceTotals.homes)} konutun sıcak su ihtiyacını güneşten karşılıyoruz.`}
       />
 
-      {/* Ölçek */}
+      {/* Ölçek — ince ayraçlı premium editoryal ızgara + dev index */}
       <section className="border-b border-mist-900/8 bg-white py-14">
         <div className="container-page">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-mist-900/10 bg-mist-900/10 sm:grid-cols-3 lg:grid-cols-6">
             {scaleStats.map((s, i) => (
               <Reveal key={s.label} delay={i * 0.05}>
-                <div className="flex flex-col">
-                  <s.icon size={18} strokeWidth={1.75} className="text-volt-600" />
+                <div className="group relative h-full bg-white p-6 transition-colors duration-300 hover:bg-mist-50">
+                  <div className="flex items-center justify-between">
+                    <s.icon size={18} strokeWidth={1.75} className="text-volt-600" />
+                    <span className="font-mono text-lg font-bold text-graphite-950/10 transition-colors group-hover:text-volt-600/40">
+                      0{i + 1}
+                    </span>
+                  </div>
                   <p className="mt-3 font-tabular font-display text-2xl font-bold leading-none text-graphite-950">
                     <CountUp value={s.value} suffix={s.suffix} />
                   </p>
                   <p className="mt-2 font-mono text-[9.5px] uppercase tracking-[0.14em] text-mist-600">
                     {s.label}
                   </p>
+                  <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-volt-500 transition-transform duration-500 ease-out group-hover:scale-x-100" aria-hidden />
                 </div>
               </Reveal>
             ))}

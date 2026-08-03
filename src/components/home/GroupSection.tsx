@@ -13,11 +13,11 @@ interface Company {
   desc: string;
 }
 
-const companyVisual: Record<string, { logo?: string; icon: typeof Sun; accent: string }> = {
-  solar: { logo: '/brand/simsek-solar.png', icon: Sun, accent: 'bg-volt-100 text-volt-700' },
-  lipus: { logo: '/brand/lipus.png', icon: BatteryCharging, accent: 'bg-emerald-50 text-emerald-600' },
-  yenilenebilir: { icon: Wind, accent: 'bg-sky-50 text-sky-600' },
-  smk: { icon: Layers, accent: 'bg-mist-100 text-mist-600' },
+const companyVisual: Record<string, { logo?: string; icon: typeof Sun; accent: string; bar: string }> = {
+  solar: { logo: '/brand/simsek-solar.png', icon: Sun, accent: 'bg-volt-100 text-volt-700', bar: '#f6bc32' },
+  lipus: { logo: '/brand/lipus.png', icon: BatteryCharging, accent: 'bg-emerald-50 text-emerald-600', bar: '#22c98b' },
+  yenilenebilir: { icon: Wind, accent: 'bg-sky-50 text-sky-600', bar: '#4ba7ff' },
+  smk: { icon: Layers, accent: 'bg-mist-100 text-mist-600', bar: '#8b9be0' },
 };
 
 export function GroupSection() {
@@ -111,28 +111,38 @@ export function GroupSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex flex-col rounded-2xl border border-graphite-700/10 bg-mist-50 p-7 shadow-card transition-all hover:-translate-y-1.5 hover:border-volt-500/50 hover:bg-white"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-graphite-700/10 bg-mist-50 p-7 shadow-card transition-all hover:-translate-y-1.5 hover:border-volt-500/50 hover:bg-white"
               >
-                <div className="flex h-14 items-center">
-                  {visual.logo ? (
-                    <Image
-                      src={visual.logo}
-                      alt={c.name}
-                      width={400}
-                      height={120}
-                      className="h-10 w-auto object-contain object-left rtl:object-right"
-                    />
-                  ) : (
-                    <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${visual.accent}`}>
-                      <Icon size={22} strokeWidth={1.75} />
-                    </span>
-                  )}
+                <div className="flex items-start justify-between">
+                  <div className="flex h-14 items-center">
+                    {visual.logo ? (
+                      <Image
+                        src={visual.logo}
+                        alt={c.name}
+                        width={400}
+                        height={120}
+                        className="h-10 w-auto object-contain object-left rtl:object-right"
+                      />
+                    ) : (
+                      <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${visual.accent}`}>
+                        <Icon size={22} strokeWidth={1.75} />
+                      </span>
+                    )}
+                  </div>
+                  <span className="font-mono text-2xl font-bold text-graphite-700/10 transition-colors duration-300 group-hover:text-graphite-700/25">
+                    0{i + 1}
+                  </span>
                 </div>
                 <h3 className="mt-4 font-display text-lg font-bold text-graphite-700">{c.name}</h3>
                 <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-volt-700">
                   {c.tag}
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-mist-600">{c.desc}</p>
+                <span
+                  className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
+                  style={{ backgroundColor: visual.bar }}
+                  aria-hidden
+                />
               </motion.div>
             );
           })}

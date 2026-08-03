@@ -45,16 +45,25 @@ export function WhyUs() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-x-8 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Premium editoryal ızgara — ince ayraç çizgileri + dev index numaraları */}
+        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, i) => {
             const Icon = icons[i] ?? Factory;
             return (
-              <Reveal key={item.title} delay={i * 0.1}>
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-volt-500/15 text-volt-400">
-                  <Icon size={22} strokeWidth={1.75} />
+              <Reveal key={item.title} delay={i * 0.08}>
+                <div className="group relative h-full bg-mist-900 p-7 transition-colors duration-300 hover:bg-graphite-900">
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-volt-500/15 text-volt-400 transition-colors group-hover:bg-volt-500 group-hover:text-graphite-950">
+                      <Icon size={22} strokeWidth={1.75} />
+                    </span>
+                    <span className="font-mono text-3xl font-bold text-white/10 transition-colors duration-300 group-hover:text-volt-400/50">
+                      0{i + 1}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 font-display text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-mist-300">{item.desc}</p>
+                  <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-volt-500 transition-transform duration-500 ease-out group-hover:scale-x-100" aria-hidden />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold">{item.title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-mist-300">{item.desc}</p>
               </Reveal>
             );
           })}
