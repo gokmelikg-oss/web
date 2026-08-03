@@ -43,11 +43,9 @@ export function Header() {
     setCorpOpen(false);
   }, [pathname]);
 
-  /* İç sayfaların koyu PageHero'su üstünde header şeffaf + beyaz logo; kaydırınca
-     açık cam bar olur. Ana sayfa hero'su AÇIK tonlu olduğundan orada üstteyken de
-     açık-mod (renkli logo + koyu metin) kullanılır. */
-  const isHome = pathname === '/';
-  const dark = !scrolled && !mobileOpen && !isHome;
+  /* Over the dark cinematic hero the header is transparent with white
+     assets; once scrolled it becomes a light glass bar. */
+  const dark = !scrolled && !mobileOpen;
 
   return (
     <header
