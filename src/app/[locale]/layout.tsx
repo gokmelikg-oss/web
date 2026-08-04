@@ -7,6 +7,7 @@ import { locales, isRtl, type Locale } from '@/i18n/config';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { MobileCtaBar } from '@/components/MobileCtaBar';
 import { pageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
 import { OrgJsonLd } from '@/components/JsonLd';
 import { Analytics } from '@/components/Analytics';
@@ -141,6 +142,7 @@ export default async function LocaleLayout({
           <main id="main">{children}</main>
           <Footer />
           <WhatsAppButton />
+          <MobileCtaBar />
           <CookieBanner />
         </NextIntlClientProvider>
       </body>
