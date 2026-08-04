@@ -3,6 +3,7 @@ import { locales } from '@/i18n/config';
 import { localizedUrls } from '@/lib/seo';
 import { products } from '@/data/products';
 import { articles } from '@/data/news';
+import { PROVINCES } from '@/data/provinces';
 
 /* Tüm sayfaların her dildeki sürümü + hreflang alternatifleri. */
 const STATIC_PATHS = [
@@ -45,6 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const p of STATIC_PATHS) push(p.path, p.priority, p.changeFrequency);
   for (const product of products) push(`/products/${product.slug}`, 0.7, 'monthly');
   for (const article of articles) push(`/blog/${article.slug}`, 0.6, 'monthly');
+  for (const province of PROVINCES) push(`/gunes-potansiyeli/${province.slug}`, 0.5, 'monthly');
 
   return entries;
 }

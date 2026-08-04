@@ -3,7 +3,9 @@ import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ProvinceExplorer } from '@/components/ProvinceExplorer';
 import { PageBreadcrumb } from '@/components/JsonLd';
+import { Link } from '@/i18n/navigation';
 import { pageMetadata } from '@/lib/seo';
+import { PROVINCES_SORTED } from '@/data/provinces';
 import type { Locale } from '@/i18n/config';
 
 export async function generateMetadata({
@@ -73,6 +75,32 @@ export default function SolarPotentialPage() {
                 Konut, toplu konut, kamu ve endüstriyel projelerde 35 yıllık üretim ve saha tecrübemizle
                 yanınızdayız.
               </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Tüm iller — il sayfalarına bağlantı */}
+      <section className="section-pad bg-white">
+        <div className="container-page">
+          <Reveal>
+            <h2 className="font-display text-2xl font-bold text-graphite-950">İl il güneş potansiyeli</h2>
+            <p className="mt-3 max-w-2xl text-mist-700">
+              İlinizin detaylı güneş enerjisi potansiyelini, tahmini üretimini ve öneriler ile sık sorulan
+              soruları görmek için seçin.
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {PROVINCES_SORTED.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/gunes-potansiyeli/${p.slug}`}
+                  className="rounded-full border border-mist-900/10 bg-mist-50 px-4 py-2 text-sm font-medium text-graphite-800 transition-colors hover:border-volt-500/40 hover:text-volt-700"
+                >
+                  {p.name}
+                </Link>
+              ))}
             </div>
           </Reveal>
         </div>
