@@ -60,8 +60,19 @@ export function ProductIndex() {
   const currentMeta = META[current.id] ?? META.kolektorler;
 
   return (
-    <section id="urunler" className="section-pad scroll-mt-20 overflow-hidden bg-graphite-950 text-white">
-      <div className="container-page">
+    <section id="urunler" className="relative section-pad scroll-mt-20 overflow-hidden bg-graphite-950 text-white">
+      {/* Hero ile tonal köprü — üstte hero ufkunun laciverti + sıcak parıltı yumuşakça sönümlenir */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-64"
+        style={{
+          background:
+            'radial-gradient(70% 100% at 50% 0%, rgba(26,36,76,0.85), transparent 70%), radial-gradient(40% 70% at 50% 0%, rgba(246,188,50,0.10), transparent 65%)',
+        }}
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-volt-500/40 to-transparent" aria-hidden />
+
+      <div className="container-page relative z-10">
         {/* Başlık */}
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-6 border-b border-white/10 pb-8 sm:flex-row sm:items-end">
