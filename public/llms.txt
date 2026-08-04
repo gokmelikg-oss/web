@@ -27,6 +27,7 @@
 - Blog & Bilgi Merkezi (güneş enerjisi rehberleri): https://www.simseksolar.com.tr/tr/blog
 - Kalite Politikamız: https://www.simseksolar.com.tr/tr/kalite-politikasi
 - Hesaplama aracı: https://www.simseksolar.com.tr/tr/calculator
+- İllere göre güneş potansiyeli (81 il, GEPA verileri): https://www.simseksolar.com.tr/tr/gunes-potansiyeli
 - Teknik kaynaklar: https://www.simseksolar.com.tr/tr/resources
 - Hakkımızda: https://www.simseksolar.com.tr/tr/about
 - İletişim: https://www.simseksolar.com.tr/tr/contact

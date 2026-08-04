@@ -74,6 +74,16 @@ const academyAreas: PremiumIndexItem[] = [
     meta: 'Boyutlandırma aracı',
     tags: ['Kapasite', 'Boyutlandırma'],
   },
+  {
+    id: 'potansiyel',
+    title: 'İllere Göre Güneş Potansiyeli',
+    desc: 'İlinizi seçin; yıllık güneş ışınımı, güneşlenme süresi ve tahmini üretimi görün. 81 il için GEPA verilerine dayalı potansiyel rehberi.',
+    href: '/gunes-potansiyeli',
+    accent: '#f6bc32',
+    iconKey: 'kolektor',
+    meta: '81 il · GEPA verileri',
+    tags: ['Güneş ışınımı', 'İl bazlı', 'Tahmini üretim'],
+  },
 ];
 
 const trainings = [

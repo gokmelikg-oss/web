@@ -11,6 +11,7 @@ const STATIC_PATHS = [
   { path: '/akademi', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/service', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/blog', priority: 0.7, changeFrequency: 'weekly' as const },
+  { path: '/gunes-potansiyeli', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/projects', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/resources', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/calculator', priority: 0.7, changeFrequency: 'monthly' as const },
