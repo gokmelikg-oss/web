@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
 import { trackLead } from '@/lib/track';
+import { Honeypot } from '@/components/Honeypot';
 
 export function ContactForm() {
   const t = useTranslations('contact.form');
@@ -21,6 +22,7 @@ export function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           formType: 'contact',
+          hp: fd.get('website'),
           name: fd.get('name'),
           phone: fd.get('phone'),
           email: fd.get('email'),
@@ -54,6 +56,7 @@ export function ContactForm() {
           </motion.div>
         ) : (
           <motion.form key="form" onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
+            <Honeypot />
             <h2 className="font-display text-xl font-bold text-graphite-950 sm:col-span-2">{t('title')}</h2>
 
             <label className="flex flex-col gap-1.5 text-sm">

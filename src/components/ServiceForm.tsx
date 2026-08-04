@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
 import { trackLead } from '@/lib/track';
+import { Honeypot } from '@/components/Honeypot';
 
 const SERVICE_TYPES = [
   'Periyodik Bakım',
@@ -28,6 +29,7 @@ export function ServiceForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           formType: 'service',
+          hp: fd.get('website'),
           name: fd.get('name'),
           phone: fd.get('phone'),
           email: fd.get('email'),
@@ -67,6 +69,7 @@ export function ServiceForm() {
           </motion.div>
         ) : (
           <motion.form key="form" onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
+            <Honeypot />
             <h2 className="font-display text-xl font-bold text-graphite-950 sm:col-span-2">
               Servis talebi oluşturun
             </h2>

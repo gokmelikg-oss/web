@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
 import { trackLead } from '@/lib/track';
+import { Honeypot } from '@/components/Honeypot';
 
 export function DealerForm() {
   const t = useTranslations('dealers.form');
@@ -21,6 +22,7 @@ export function DealerForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           formType: 'dealer',
+          hp: fd.get('website'),
           name: fd.get('name'),
           company: fd.get('company'),
           city: fd.get('city'),
@@ -63,6 +65,7 @@ export function DealerForm() {
             onSubmit={handleSubmit}
             className="grid gap-5 sm:grid-cols-2"
           >
+            <Honeypot />
             <h2 className="font-display text-xl font-bold text-graphite-950 sm:col-span-2">{t('title')}</h2>
 
             <Field label={t('name')} name="name" required />

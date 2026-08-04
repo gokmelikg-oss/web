@@ -11,6 +11,7 @@ export const runtime = 'nodejs';
 
 interface Payload {
   formType?: 'contact' | 'dealer' | 'service' | 'newsletter';
+  hp?: string; // honeypot — doluysa bot
   name?: string;
   email?: string;
   phone?: string;
@@ -40,6 +41,11 @@ export async function POST(req: NextRequest) {
     data = await req.json();
   } catch {
     return NextResponse.json({ ok: false, error: 'invalid_body' }, { status: 400 });
+  }
+
+  // Honeypot: gizli alan doluysa bottur — başarı taklidi yapıp sessizce yut.
+  if (data.hp && data.hp.trim() !== '') {
+    return NextResponse.json({ ok: true });
   }
 
   const isNewsletter = data.formType === 'newsletter';
