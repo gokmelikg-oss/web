@@ -4,10 +4,20 @@ import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ReferenceList } from '@/components/ReferenceList';
 import { CountUp } from '@/components/CountUp';
-import { referenceTotals, totalImpact, IMPACT_ASSUMPTIONS } from '@/data/references';
+import {
+  referenceTotals,
+  totalImpact,
+  IMPACT_ASSUMPTIONS,
+  visibleReferenceProjects,
+  type ReferenceProject,
+} from '@/data/references';
 import { PageBreadcrumb } from '@/components/JsonLd';
+import { getContent } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
+
+// Admin panelinden referans eklenebildiği için ISR.
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -36,7 +46,25 @@ const scaleStats = [
   { icon: Grid3x3, value: referenceTotals.aperture, suffix: ' m²', label: 'Işınım alanı' },
 ];
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const { references } = await getContent();
+  const adminProjects: ReferenceProject[] = references
+    .filter((r) => r.title && r.il)
+    .map((r) => {
+      const collectors = r.collectors ?? 0;
+      return {
+        title: r.title,
+        il: r.il,
+        ilce: r.ilce ?? '',
+        homes: r.homes ?? 0,
+        blocks: 0,
+        collectors,
+        aperture: Math.round(collectors * 2.33),
+        gross: Math.round(collectors * 2.55),
+      };
+    });
+  const allProjects = [...visibleReferenceProjects, ...adminProjects];
+
   return (
     <>
       <PageBreadcrumb items={[{ name: 'Referanslar', path: '/projects' }]} />
@@ -213,7 +241,7 @@ export default function ProjectsPage() {
           </Reveal>
 
           <div className="mt-10">
-            <ReferenceList />
+            <ReferenceList projects={allProjects} />
           </div>
         </div>
       </section>

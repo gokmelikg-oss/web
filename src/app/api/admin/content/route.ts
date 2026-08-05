@@ -22,11 +22,15 @@ export async function POST(req: NextRequest) {
     await saveContent({
       documents: Array.isArray(body.documents) ? body.documents : [],
       references: Array.isArray(body.references) ? body.references : [],
+      products: Array.isArray(body.products) ? body.products : [],
+      posts: Array.isArray(body.posts) ? body.posts : [],
       groupImages: body.groupImages && typeof body.groupImages === 'object' ? body.groupImages : {},
       updatedAt: '',
     });
-    // ISR sayfalarını anında tazele (tüm diller için).
-    revalidatePath('/[locale]/resources', 'page');
+    // Admin içeriği gösteren ISR sayfalarını anında tazele (tüm diller için).
+    for (const p of ['/[locale]/resources', '/[locale]/blog', '/[locale]/blog/[slug]', '/[locale]/products', '/[locale]/projects']) {
+      revalidatePath(p, 'page');
+    }
     return NextResponse.json({ ok: true, content: await getContent() });
   } catch (err) {
     console.error('content save error', err);

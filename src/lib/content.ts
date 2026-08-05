@@ -24,9 +24,34 @@ export interface RefEntry {
   collectors?: number;
 }
 
+/* Admin panelinden eklenen ürün (statik kataloğa ek olarak listelenir). */
+export interface AdminProduct {
+  id: string;
+  name: string;
+  category: string; // Kolektör, Boyler, Sehpa, Bağlantı, Otomasyon vb.
+  model?: string;
+  description?: string;
+  image?: string; // /products/... yolu
+}
+
+/* Admin panelinden eklenen blog yazısı. body düz metin; boş satır = yeni paragraf,
+   "## " ile başlayan satır = ara başlık. */
+export interface AdminPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt?: string;
+  category?: string;
+  date?: string; // YYYY-MM-DD
+  cover?: string;
+  body?: string;
+}
+
 export interface SiteContent {
   documents: DocLink[];
   references: RefEntry[];
+  products: AdminProduct[];
+  posts: AdminPost[];
   groupImages: Record<string, string>; // familyId -> görsel yolu
   updatedAt: string;
 }
@@ -37,6 +62,8 @@ const KV_KEY = 'site:content';
 const DEFAULT: SiteContent = {
   documents: [],
   references: [],
+  products: [],
+  posts: [],
   groupImages: {},
   updatedAt: '',
 };

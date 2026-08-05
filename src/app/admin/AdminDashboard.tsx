@@ -1,10 +1,32 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, MapPin, Image as ImageIcon, Plus, Trash2, Save, LogOut, Check, Loader2 } from 'lucide-react';
-import type { SiteContent, DocLink, RefEntry } from '@/lib/content';
+import {
+  FileText,
+  MapPin,
+  Image as ImageIcon,
+  Package,
+  Newspaper,
+  Plus,
+  Trash2,
+  Save,
+  LogOut,
+  Check,
+  Loader2,
+} from 'lucide-react';
+import type { SiteContent, DocLink, RefEntry, AdminProduct, AdminPost } from '@/lib/content';
 
 const rid = () => `id${Math.floor(performance.now() * 1000)}${Math.floor(1 + Math.random() * 998)}`;
+const slugify = (s: string) =>
+  s
+    .toLocaleLowerCase('tr-TR')
+    .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+const PRODUCT_CATEGORIES = ['Kolektör', 'Boyler', 'Sehpa', 'Bağlantı Ekipmanı', 'Otomasyon', 'Diğer'];
+const POST_CATEGORIES = ['Rehber', 'Teknik', 'Kalite', 'Bakım', 'Haber', 'Duyuru'];
+const inputCls = 'rounded-xl border border-mist-900/15 bg-mist-50 px-3.5 py-2.5 text-sm outline-none focus:border-volt-500';
 
 export function AdminDashboard({
   initial,
@@ -13,9 +35,11 @@ export function AdminDashboard({
   initial: SiteContent;
   families: { id: string; label: string }[];
 }) {
-  const [tab, setTab] = useState<'documents' | 'references' | 'images'>('documents');
+  const [tab, setTab] = useState<'products' | 'posts' | 'documents' | 'references' | 'images'>('products');
   const [docs, setDocs] = useState<DocLink[]>(initial.documents);
   const [refs, setRefs] = useState<RefEntry[]>(initial.references);
+  const [products, setProducts] = useState<AdminProduct[]>(initial.products ?? []);
+  const [posts, setPosts] = useState<AdminPost[]>(initial.posts ?? []);
   const [images, setImages] = useState<Record<string, string>>(initial.groupImages);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -27,7 +51,7 @@ export function AdminDashboard({
       const res = await fetch('/api/admin/content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ documents: docs, references: refs, groupImages: images, updatedAt: '' }),
+        body: JSON.stringify({ documents: docs, references: refs, products, posts, groupImages: images, updatedAt: '' }),
       });
       if (res.ok) {
         setSaved(true);
@@ -44,6 +68,8 @@ export function AdminDashboard({
   }
 
   const tabs = [
+    { key: 'products' as const, label: 'Ürünler', icon: Package },
+    { key: 'posts' as const, label: 'Blog', icon: Newspaper },
     { key: 'documents' as const, label: 'Dökümanlar', icon: FileText },
     { key: 'references' as const, label: 'Referanslar', icon: MapPin },
     { key: 'images' as const, label: 'Grup Görselleri', icon: ImageIcon },
@@ -100,6 +126,65 @@ export function AdminDashboard({
         <p className="mt-4 rounded-xl border border-volt-500/30 bg-volt-50 px-4 py-2.5 text-xs text-graphite-700">
           Değişiklikleri kaydetmek için sağ üstteki <strong>Kaydet</strong> düğmesini kullanın.
         </p>
+
+        {/* Ürünler */}
+        {tab === 'products' && (
+          <section className="mt-6 space-y-3">
+            <p className="text-sm text-mist-600">
+              Statik kataloğa <strong>ek</strong> ürünler. Görseli önce <code>public/products/</code> klasörüne
+              yükleyip yolunu girin (örn. <code>/products/yeni-urun.jpg</code>).
+            </p>
+            {products.map((p, i) => (
+              <div key={p.id} className="space-y-3 rounded-2xl border border-mist-900/10 bg-white p-4">
+                <div className="grid gap-3 sm:grid-cols-[2fr_1fr_1fr]">
+                  <input value={p.name} onChange={(e) => setProducts(products.map((x, j) => (j === i ? { ...x, name: e.target.value } : x)))} placeholder="Ürün adı" className={inputCls} />
+                  <select value={p.category} onChange={(e) => setProducts(products.map((x, j) => (j === i ? { ...x, category: e.target.value } : x)))} className={inputCls}>
+                    {PRODUCT_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                  <input value={p.model ?? ''} onChange={(e) => setProducts(products.map((x, j) => (j === i ? { ...x, model: e.target.value } : x)))} placeholder="Model (ops.)" className={inputCls} />
+                </div>
+                <textarea value={p.description ?? ''} onChange={(e) => setProducts(products.map((x, j) => (j === i ? { ...x, description: e.target.value } : x)))} placeholder="Kısa açıklama" rows={2} className={`${inputCls} w-full`} />
+                <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
+                  <input value={p.image ?? ''} onChange={(e) => setProducts(products.map((x, j) => (j === i ? { ...x, image: e.target.value } : x)))} placeholder="/products/... görsel yolu" className={inputCls} />
+                  <button onClick={() => setProducts(products.filter((_, j) => j !== i))} className="inline-flex items-center justify-center rounded-xl border border-red-200 px-3 py-2.5 text-red-600 hover:bg-red-50" aria-label="Sil"><Trash2 size={16} /></button>
+                </div>
+              </div>
+            ))}
+            <button onClick={() => setProducts([...products, { id: rid(), name: '', category: 'Kolektör', model: '', description: '', image: '' }])} className="inline-flex items-center gap-2 rounded-full border border-dashed border-mist-900/25 px-5 py-2.5 text-sm font-semibold text-graphite-700 hover:border-graphite-950">
+              <Plus size={15} /> Ürün ekle
+            </button>
+          </section>
+        )}
+
+        {/* Blog */}
+        {tab === 'posts' && (
+          <section className="mt-6 space-y-3">
+            <p className="text-sm text-mist-600">
+              Blog yazıları. İçerikte boş satır yeni paragraf, <code>## </code> ile başlayan satır ara başlık olur.
+            </p>
+            {posts.map((p, i) => (
+              <div key={p.id} className="space-y-3 rounded-2xl border border-mist-900/10 bg-white p-4">
+                <div className="grid gap-3 sm:grid-cols-[2fr_1fr]">
+                  <input value={p.title} onChange={(e) => { const v = e.target.value; setPosts(posts.map((x, j) => (j === i ? { ...x, title: v, slug: x.slug ? x.slug : slugify(v) } : x))); }} placeholder="Başlık" className={inputCls} />
+                  <input value={p.slug} onChange={(e) => setPosts(posts.map((x, j) => (j === i ? { ...x, slug: slugify(e.target.value) } : x)))} placeholder="url-adresi" className={inputCls} />
+                </div>
+                <div className="grid gap-3 sm:grid-cols-[1fr_1fr_1fr]">
+                  <select value={p.category ?? 'Rehber'} onChange={(e) => setPosts(posts.map((x, j) => (j === i ? { ...x, category: e.target.value } : x)))} className={inputCls}>
+                    {POST_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                  <input type="date" value={p.date ?? ''} onChange={(e) => setPosts(posts.map((x, j) => (j === i ? { ...x, date: e.target.value } : x)))} className={inputCls} />
+                  <input value={p.cover ?? ''} onChange={(e) => setPosts(posts.map((x, j) => (j === i ? { ...x, cover: e.target.value } : x)))} placeholder="/products/... kapak" className={inputCls} />
+                </div>
+                <input value={p.excerpt ?? ''} onChange={(e) => setPosts(posts.map((x, j) => (j === i ? { ...x, excerpt: e.target.value } : x)))} placeholder="Özet (liste ve önizleme)" className={`${inputCls} w-full`} />
+                <textarea value={p.body ?? ''} onChange={(e) => setPosts(posts.map((x, j) => (j === i ? { ...x, body: e.target.value } : x)))} placeholder="İçerik…" rows={7} className={`${inputCls} w-full`} />
+                <button onClick={() => setPosts(posts.filter((_, j) => j !== i))} className="inline-flex items-center gap-1.5 rounded-xl border border-red-200 px-3 py-2 text-sm text-red-600 hover:bg-red-50" aria-label="Sil"><Trash2 size={15} /> Yazıyı sil</button>
+              </div>
+            ))}
+            <button onClick={() => setPosts([...posts, { id: rid(), slug: '', title: '', category: 'Rehber', date: new Date().toISOString().slice(0, 10), cover: '', excerpt: '', body: '' }])} className="inline-flex items-center gap-2 rounded-full border border-dashed border-mist-900/25 px-5 py-2.5 text-sm font-semibold text-graphite-700 hover:border-graphite-950">
+              <Plus size={15} /> Yazı ekle
+            </button>
+          </section>
+        )}
 
         {/* Dökümanlar */}
         {tab === 'documents' && (

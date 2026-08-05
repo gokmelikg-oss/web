@@ -2,21 +2,32 @@
 
 import { useMemo, useState } from 'react';
 import { Search, MapPin, X, ChevronDown, ArrowDownWideNarrow } from 'lucide-react';
-import { visibleReferenceProjects, provinceSummaries, computeImpact } from '@/data/references';
+import { computeImpact, type ReferenceProject } from '@/data/references';
 
 const PAGE_SIZE = 24;
 const nf = new Intl.NumberFormat('tr-TR');
 const nf1 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 });
 
-export function ReferenceList() {
+export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
   const [query, setQuery] = useState('');
   const [province, setProvince] = useState<string | null>(null);
   const [visible, setVisible] = useState(PAGE_SIZE);
 
+  /* İl özetleri — verilen projelerden hesaplanır (filtre menüsü için). */
+  const provinceSummaries = useMemo(() => {
+    const map = projects.reduce<Record<string, { il: string; projects: number; collectors: number }>>((acc, p) => {
+      acc[p.il] ??= { il: p.il, projects: 0, collectors: 0 };
+      acc[p.il].projects += 1;
+      acc[p.il].collectors += p.collectors;
+      return acc;
+    }, {});
+    return Object.values(map).sort((a, b) => b.collectors - a.collectors);
+  }, [projects]);
+
   /* Liste her zaman kollektör adedine göre büyükten küçüğe sıralanır. */
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase('tr-TR');
-    return visibleReferenceProjects
+    return projects
       .filter((p) => {
         if (province && p.il !== province) return false;
         if (!q) return true;
@@ -27,7 +38,7 @@ export function ReferenceList() {
         );
       })
       .sort((a, b) => b.collectors - a.collectors);
-  }, [query, province]);
+  }, [query, province, projects]);
 
   /* Filtrelenen seçkinin toplamları — arama yapıldıkça canlı güncellenir. */
   const subtotal = useMemo(() => {

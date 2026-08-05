@@ -7,7 +7,12 @@ import { Link } from '@/i18n/navigation';
 import { ArticleJsonLd, PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { articles } from '@/data/news';
+import { getBlogList, getBlogPost } from '@/lib/blog';
 import type { Locale } from '@/i18n/config';
+
+// Statik yazılar önceden üretilir; admin yazıları talep üzerine (ISR).
+export const dynamicParams = true;
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -19,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const article = articles.find((a) => a.slug === slug);
+  const article = await getBlogPost(slug);
   if (!article) return {};
   return pageMetadata({
     locale,
@@ -38,10 +43,10 @@ export default async function ArticlePage({
   params: Promise<{ locale: Locale; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const article = articles.find((a) => a.slug === slug);
+  const article = await getBlogPost(slug);
   if (!article) notFound();
 
-  const related = articles.filter((a) => a.slug !== slug).slice(0, 3);
+  const related = (await getBlogList()).filter((a) => a.slug !== slug).slice(0, 3);
 
   return (
     <>

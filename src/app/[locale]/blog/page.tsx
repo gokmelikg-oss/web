@@ -6,8 +6,11 @@ import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
-import { articles } from '@/data/news';
+import { getBlogList } from '@/lib/blog';
 import type { Locale } from '@/i18n/config';
+
+// Admin blog yazıları eklenebildiği için ISR; admin kaydında revalidatePath ile tazelenir.
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -26,8 +29,8 @@ export async function generateMetadata({
 
 const nf = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 
-export default function BlogPage() {
-  const sorted = [...articles].sort((a, b) => (a.date < b.date ? 1 : -1));
+export default async function BlogPage() {
+  const sorted = await getBlogList();
 
   return (
     <>
