@@ -15,6 +15,97 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'gunes-kollektoru-turleri-duz-yuzeyli-vakum-tuplu',
+    title: 'Güneş kollektörü türleri: düz yüzeyli ve vakum tüplü',
+    excerpt:
+      'Düz yüzeyli (flat plate) ve vakum tüplü güneş kollektörlerinin yapısı, avantajları ve hangi iklimde hangisinin daha uygun olduğu üzerine karşılaştırmalı bir rehber.',
+    category: 'Rehber',
+    date: '2026-07-28',
+    readMin: 5,
+    cover: '/products/orion-400.jpg',
+    keywords: [
+      'güneş kollektörü türleri',
+      'düz yüzeyli kollektör',
+      'vakum tüplü kollektör',
+      'flat plate kollektör',
+      'kollektör karşılaştırma',
+    ],
+    body: [
+      {
+        heading: 'İki temel kollektör tipi',
+        paragraphs: [
+          'Güneş termal sistemlerde en yaygın iki kollektör tipi vardır: düz yüzeyli (flat plate) kollektörler ve vakum tüplü (evacuated tube) kollektörler. İkisi de güneş ışınımını ısıya çevirir; farkları yapılarında, verim eğrilerinde ve maliyetlerindedir.',
+        ],
+      },
+      {
+        heading: 'Düz yüzeyli (flat plate) kollektör',
+        paragraphs: [
+          'Düz yüzeyli kollektör; temperli camla kapatılmış, yalıtımlı bir kasa içine yerleştirilmiş koyu renkli bir absorber plaka ve bu plakaya bağlı akışkan borularından oluşur. Absorber güneşi emer, borulardaki suyu ya da solar sıvıyı ısıtır.',
+          'Sağlam yapısı, yüksek dayanıklılığı ve uygun maliyetiyle Türkiye gibi güneşlenme süresi yüksek ülkelerde en çok tercih edilen tiptir. Şimşek Solar’ın Orion serisi kollektörleri düz yüzeyli teknolojiyle üretilir; boru ve absorber kombinasyonuna göre farklı serilerle sunulur.',
+        ],
+      },
+      {
+        heading: 'Vakum tüplü (evacuated tube) kollektör',
+        paragraphs: [
+          'Vakum tüplü kollektörlerde absorber, havası boşaltılmış (vakumlanmış) cam tüplerin içindedir. Vakum, ısı kaybını azalttığı için düşük dış sıcaklıklarda ve düşük ışınımda düz yüzeyliye göre avantaj sağlayabilir.',
+          'Ancak cam tüpler dolu, kar yükü ve darbelere karşı düz yüzeyli kadar dayanıklı değildir ve maliyeti genelde daha yüksektir. Çok soğuk ve bulutlu iklimlerde öne çıkar.',
+        ],
+      },
+      {
+        heading: 'Hangisi sizin için uygun?',
+        paragraphs: [
+          'Türkiye’nin büyük bölümünde yüksek güneşlenme süresi nedeniyle düz yüzeyli kollektörler hem verim hem maliyet açısından en dengeli çözümdür. Çok soğuk bölgelerde antifrizli kapalı devre düz yüzeyli sistemler, destek ısıtmayla birlikte dört mevsim yüksek performans verir.',
+          'İlinizin güneş potansiyelini “İllere Göre Güneş Potansiyeli” aracımızdan görebilir, doğru kollektör ve kapasiteyi mühendislik ekibimizle birlikte belirleyebilirsiniz.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'gunes-kollektoru-verimini-etkileyen-faktorler',
+    title: 'Güneş kollektörü verimini etkileyen faktörler',
+    excerpt:
+      'Yönlenim, eğim, ışınım, absorber yüzeyi, yalıtım, gölgelenme ve bakım gibi güneş kollektörü veriminizi belirleyen faktörler ve maksimum performans için öneriler.',
+    category: 'Teknik',
+    date: '2026-07-22',
+    readMin: 5,
+    cover: '/products/orion-600.jpg',
+    keywords: [
+      'güneş kollektörü verimi',
+      'kollektör eğimi ve yönü',
+      'selektif absorber',
+      'sistem verimi',
+      'güneş ışınımı',
+    ],
+    body: [
+      {
+        heading: 'Yönlenim ve eğim',
+        paragraphs: [
+          'Kollektörün en yüksek verimi, güneşi en dik açıyla gördüğü konumda elde edilir. Türkiye için kollektörler genellikle güneye bakacak şekilde ve bölgeye uygun bir eğimle (çoğunlukla 30–45°) yerleştirilir. Yanlış yönlenim ve eğim, yıllık üretimi belirgin biçimde düşürür.',
+        ],
+      },
+      {
+        heading: 'Bölgesel güneş ışınımı',
+        paragraphs: [
+          'Bir bölgenin yıllık toplam güneş ışınımı (kWh/m²) ve güneşlenme süresi, üretilecek ısıyı doğrudan belirler. Güney illeri daha yüksek potansiyele sahiptir; ancak doğru tasarımla hemen her ilde güneş enerjisi ekonomiktir. İlinizin değerlerini güneş potansiyeli aracımızdan görebilirsiniz.',
+        ],
+      },
+      {
+        heading: 'Absorber yüzeyi ve yalıtım',
+        paragraphs: [
+          'Selektif absorber kaplaması, güneşi yüksek oranda emerken ısı yayımını (kaybı) azaltır; bu da düz yüzeyli kollektörlerde verimi ciddi biçimde artırır. Kasadaki taş yünü/yalıtım malzemesi de depolanan ısının korunmasını sağlar.',
+          'Boyler tarafında ise emaye kaplama ve yüksek yalıtım, ısıtılan suyun uzun süre sıcak kalmasını sağlayarak sistem verimini tamamlar.',
+        ],
+      },
+      {
+        heading: 'Gölgelenme, bakım ve sistem tasarımı',
+        paragraphs: [
+          'Gün içinde kollektör üzerine düşen gölge (ağaç, baca, komşu bina) üretimi düşürür; montaj öncesi saha etüdüyle gölgelenme analizi yapılır. Kollektör yüzeyindeki toz ve kir de verimi azaltır; periyodik temizlik ve bakım performansı korur.',
+          'Son olarak, doğru boyutlandırma kritiktir: ihtiyaca göre az veya fazla kapasite verimi düşürür. Kapasite hesabı ve projelendirmeyi mühendislik ekibimiz üstlenir; bakım ihtiyaçlarınızda satış sonrası servisimiz yanınızdadır.',
+        ],
+      },
+    ],
+  },
+  {
     slug: 'gunes-enerjisiyle-sicak-su-nasil-uretilir',
     title: 'Güneş enerjisiyle sıcak su nasıl üretilir?',
     excerpt:
