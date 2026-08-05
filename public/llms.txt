@@ -45,6 +45,10 @@ Güneş enerjisi, termal güneş enerjisi, solar enerji, güneş enerjisi ile s�
 - 2–4 kişilik hane için ~200 litre, kalabalık hane için ~300 litre boyler önerilir.
 - Güneşsiz günlerde destek ısıtma (kombi/kazan) entegrasyonuyla dört mevsim kesintisiz sıcak su sağlanır.
 - Ürünler CE, TSE ve Solar Keymark sertifikalıdır; sistemler on yıllarca çalışır.
+- Donma riski olan bölgelerde antifrizli kapalı devre sistemler kullanılır; en soğuk günlerde bile donmadan çalışır.
+- Sistem yıllık su ısıtma enerjisinin büyük bölümünü güneşten karşılar; çoğu evde birkaç yıl içinde kendini amorti eder.
+- Düşük bakımlıdır; yılda bir kez kontrol yeterlidir. Teras, kiremit ve trapez dahil her çatı tipine uygun sehpa çözümü vardır.
+- Apartman, site ve toplu konutlarda çatıdaki kollektör tarlası + merkezi boyler ile tüm daireler tek merkezden ısıtılır.
 
 ## Diller
 Türkçe (tr), İngilizce (en), Arapça (ar).
