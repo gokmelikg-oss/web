@@ -47,7 +47,8 @@ const scaleStats = [
 ];
 
 export default async function ProjectsPage() {
-  const { references } = await getContent();
+  const { references, hiddenRefs } = await getContent();
+  const hiddenSet = new Set(hiddenRefs ?? []);
   const adminProjects: ReferenceProject[] = references
     .filter((r) => r.title && r.il)
     .map((r) => {
@@ -63,7 +64,8 @@ export default async function ProjectsPage() {
         gross: Math.round(collectors * 2.55),
       };
     });
-  const allProjects = [...visibleReferenceProjects, ...adminProjects];
+  const staticVisible = visibleReferenceProjects.filter((p) => !hiddenSet.has(p.title));
+  const allProjects = [...staticVisible, ...adminProjects];
 
   return (
     <>

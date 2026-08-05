@@ -46,7 +46,7 @@ export default async function ProductsPage() {
             <Reveal>
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
-                Diğer Ürünler
+                Öne Çıkan Ürünler
               </p>
             </Reveal>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -77,6 +77,16 @@ export default async function ProductsPage() {
                       )}
                       <h3 className="mt-1.5 font-display text-lg font-bold text-graphite-950">{p.name}</h3>
                       {p.description && <p className="mt-2 text-sm leading-relaxed text-mist-700">{p.description}</p>}
+                      {p.specs && p.specs.length > 0 && (
+                        <dl className="mt-4 space-y-1.5 border-t border-mist-900/8 pt-3.5">
+                          {p.specs.slice(0, 5).map((s, si) => (
+                            <div key={si} className="flex items-baseline justify-between gap-3 text-xs">
+                              <dt className="text-mist-500">{s.label}</dt>
+                              <dd className="text-end font-semibold text-graphite-900">{s.value}</dd>
+                            </div>
+                          ))}
+                        </dl>
+                      )}
                     </div>
                   </div>
                 </Reveal>

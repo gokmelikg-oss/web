@@ -24,7 +24,11 @@ export interface RefEntry {
   collectors?: number;
 }
 
-/* Admin panelinden eklenen ürün (statik kataloğa ek olarak listelenir). */
+/* Admin panelinden yönetilen ürün. */
+export interface ProductSpecItem {
+  label: string;
+  value: string;
+}
 export interface AdminProduct {
   id: string;
   name: string;
@@ -32,6 +36,7 @@ export interface AdminProduct {
   model?: string;
   description?: string;
   image?: string; // /products/... yolu
+  specs?: ProductSpecItem[]; // teknik özellikler (etiket + değer)
 }
 
 /* Admin panelinden eklenen blog yazısı. body düz metin; boş satır = yeni paragraf,
@@ -52,6 +57,7 @@ export interface SiteContent {
   references: RefEntry[];
   products: AdminProduct[];
   posts: AdminPost[];
+  hiddenRefs: string[]; // gizlenecek statik referansların iş adları
   groupImages: Record<string, string>; // familyId -> görsel yolu
   updatedAt: string;
 }
@@ -64,6 +70,7 @@ const DEFAULT: SiteContent = {
   references: [],
   products: [],
   posts: [],
+  hiddenRefs: [],
   groupImages: {},
   updatedAt: '',
 };

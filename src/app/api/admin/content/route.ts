@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
       references: Array.isArray(body.references) ? body.references : [],
       products: Array.isArray(body.products) ? body.products : [],
       posts: Array.isArray(body.posts) ? body.posts : [],
+      hiddenRefs: Array.isArray(body.hiddenRefs) ? body.hiddenRefs : [],
       groupImages: body.groupImages && typeof body.groupImages === 'object' ? body.groupImages : {},
       updatedAt: '',
     });
