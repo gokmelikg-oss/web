@@ -1,4 +1,5 @@
 import raw from './tokiProjects.json';
+import { HIDDEN_REFERENCE_TITLES } from './hiddenReferences';
 
 export interface ReferenceProject {
   title: string;
@@ -23,6 +24,14 @@ export interface ReferenceTotals {
 
 export const referenceProjects = raw.projects as ReferenceProject[];
 export const referenceTotals = raw.totals as ReferenceTotals;
+
+/* Listede gösterilecek projeler — gizlenenler çıkarılır. Toplam ölçek
+   (referenceTotals) ve çevresel etki hâlâ TÜM projeleri sayar; yalnızca
+   liste süzülür. Gizlemek için: src/data/hiddenReferences.ts */
+const hiddenSet = new Set(HIDDEN_REFERENCE_TITLES.map((t) => t.trim()));
+export const visibleReferenceProjects = referenceProjects.filter(
+  (p) => !hiddenSet.has(p.title.trim())
+);
 
 /*
  * Çevresel etki varsayımları — muhafazakâr seçildi ve sayfada açıkça belirtilir.
@@ -77,7 +86,7 @@ export interface ProvinceSummary {
 }
 
 export const provinceSummaries: ProvinceSummary[] = Object.values(
-  referenceProjects.reduce<Record<string, ProvinceSummary>>((acc, p) => {
+  visibleReferenceProjects.reduce<Record<string, ProvinceSummary>>((acc, p) => {
     acc[p.il] ??= { il: p.il, projects: 0, homes: 0, collectors: 0, aperture: 0 };
     acc[p.il].projects += 1;
     acc[p.il].homes += p.homes;

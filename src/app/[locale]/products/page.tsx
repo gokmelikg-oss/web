@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { PageHero } from '@/components/PageHero';
 import { ProductsShowcase } from '@/components/ProductsShowcase';
-import { CollectorMatrix } from '@/components/CollectorMatrix';
+import { ProductCompare } from '@/components/ProductCompare';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
@@ -29,7 +29,7 @@ export default async function ProductsPage() {
           <ProductsShowcase />
         </div>
       </section>
-      <CollectorMatrix />
+      <ProductCompare />
     </>
   );
 }

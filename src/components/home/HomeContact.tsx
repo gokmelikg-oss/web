@@ -17,7 +17,7 @@ export function HomeContact() {
   ];
 
   return (
-    <section id="iletisim" className="scroll-mt-20 bg-mist-50 pt-20 sm:pt-28">
+    <section id="iletisim" className="scroll-mt-20 bg-mist-50 py-20 sm:py-28">
       <div className="container-page">
         <Reveal>
           <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
@@ -52,36 +52,6 @@ export function HomeContact() {
           </Reveal>
         </div>
       </div>
-
-      {/* Fabrika haritası — bölümü kapatan, sayfaya gömülü tam genişlik bant */}
-      <Reveal delay={0.05}>
-        <div className="group relative mt-16 h-[26rem] w-full overflow-hidden border-t border-mist-900/10 bg-mist-100">
-          <iframe
-            src={FACTORY_MAP_EMBED}
-            title={t('info.addressTitle')}
-            className="h-full w-full border-0 grayscale-[0.85] contrast-[0.95] transition-all duration-700 group-hover:grayscale-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-          {/* Üstte sitenin arka planına yumuşak geçiş — haritayı sayfaya bağlar */}
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-mist-50 to-transparent"
-            aria-hidden
-          />
-          <div className="container-page pointer-events-none absolute inset-x-0 top-6">
-            <div className="pointer-events-auto inline-flex items-center gap-3 rounded-2xl border border-mist-900/10 bg-white/95 py-2.5 pe-5 ps-2.5 shadow-card backdrop-blur-sm">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-volt-500 text-graphite-950">
-                <MapPin size={16} strokeWidth={2} />
-              </span>
-              <div className="leading-tight">
-                <p className="text-sm font-bold text-graphite-950">Şimşek Solar Üretim Tesisi</p>
-                <p className="mt-0.5 text-xs text-mist-600">{t('info.address')}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Reveal>
     </section>
   );
 }

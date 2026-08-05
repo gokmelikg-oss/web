@@ -7,24 +7,38 @@ import {
   Clock,
   Briefcase,
   ArrowUpRight,
-  Handshake,
   FileText,
   PhoneCall,
   PencilRuler,
   PackageCheck,
+  Wrench,
+  Package,
+  ShieldCheck,
+  Headphones,
+  Settings,
+  MessageCircle,
 } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
-import { DealerForm } from '@/components/DealerForm';
+import { ServiceForm } from '@/components/ServiceForm';
 import { Faq } from '@/components/home/Faq';
 import { FaqJsonLd } from '@/components/JsonLd';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
 import { faqItems } from '@/data/faq';
-import { pageMetadata } from '@/lib/seo';
+import { pageMetadata, ORG, WHATSAPP_NUMBER } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
 const HR_EMAIL = 'info@simseksolar.com.tr';
+
+const serviceBenefits = [
+  { icon: Wrench, title: 'Periyodik bakım', desc: 'Sistem verimini korumak için düzenli bakım, kontrol ve performans takibi.' },
+  { icon: ShieldCheck, title: 'Garanti & onarım', desc: 'Garanti kapsamında hızlı arıza teşhisi, onarım ve parça değişimi.' },
+  { icon: Package, title: 'Orijinal yedek parça', desc: 'Kollektör, boyler, sehpa ve bağlantı ekipmanları için orijinal yedek parça tedariki.' },
+  { icon: Headphones, title: 'Teknik destek', desc: 'Telefon ve uzaktan destekle hızlı çözüm; kurulum ve kullanım danışmanlığı.' },
+  { icon: Settings, title: 'Devreye alma', desc: 'Kurulum sonrası devreye alma, ayar ve kullanıcı eğitimi.' },
+  { icon: MapPin, title: 'Türkiye geneli servis ağı', desc: 'Bayi ve yetkili servis noktalarıyla ülke genelinde saha desteği.' },
+];
 
 export async function generateMetadata({
   params,
@@ -38,6 +52,7 @@ export async function generateMetadata({
 
 export default async function ContactPage() {
   const t = await getTranslations('contact');
+  const tel = `tel:${ORG.phone.replace(/\s/g, '')}`;
 
   const infoItems = [
     { icon: MapPin, title: t('info.addressTitle'), value: t('info.address'), dir: undefined },
@@ -68,7 +83,6 @@ export default async function ContactPage() {
             ))}
 
             <Reveal delay={0.3}>
-              {/* Ana sayfadaki harita ile aynı dil: gri tonlu, üzerine gelince renklenir */}
               <div className="group relative overflow-hidden rounded-2xl border border-mist-900/10 bg-mist-100 shadow-card">
                 <iframe
                   src={FACTORY_MAP_EMBED}
@@ -144,7 +158,77 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      {/* Sık sorulan sorular — ana sayfadan iletişim sayfasına taşındı */}
+      {/* Satış Sonrası Hizmet — servis sayfasından iletişime gömüldü */}
+      <section id="servis" className="section-pad scroll-mt-24 bg-white">
+        <div className="container-page">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                Satış Sonrası Hizmet
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+                Kurulumdan sonra da yanınızdayız
+              </h2>
+              <p className="mt-4 text-mist-700">
+                Periyodik bakım, garanti kapsamında onarım, orijinal yedek parça ve teknik destekle
+                sistemlerinizin ömrü boyunca yanınızdayız. Servis talebinizi aşağıdaki formdan oluşturun.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-10 grid gap-14 lg:grid-cols-[1fr_1.05fr]">
+            <div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                {serviceBenefits.map((b, i) => (
+                  <Reveal key={b.title} delay={i * 0.06} className="flex gap-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-700">
+                      <b.icon size={20} strokeWidth={1.75} />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-base font-semibold text-graphite-950">{b.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-mist-700">{b.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+
+              <Reveal delay={0.2}>
+                <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-mist-900/10 bg-mist-50 p-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="font-display text-sm font-bold text-graphite-950">Acil servis mi gerekiyor?</p>
+                    <p className="mt-1 text-sm text-mist-700">Doğrudan arayın, hızlıca yönlendirelim.</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2.5">
+                    <a
+                      href={tel}
+                      className="inline-flex items-center gap-2 rounded-full bg-graphite-950 px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+                    >
+                      <Phone size={15} />
+                      Ara
+                    </a>
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+                    >
+                      <MessageCircle size={15} />
+                      WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.1}>
+              <ServiceForm />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Sık sorulan sorular */}
       <Faq />
       <FaqJsonLd items={faqItems} />
 
@@ -185,53 +269,6 @@ export default async function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Bayilik — başvuru formu iletişim sayfasına gömüldü */}
-      <BayilikSection />
     </>
-  );
-}
-
-async function BayilikSection() {
-  const t = await getTranslations('dealers');
-  const benefits = t.raw('benefits.items') as { title: string; desc: string }[];
-
-  return (
-    <section id="bayilik" className="section-pad scroll-mt-24 bg-white">
-      <div className="container-page">
-        <Reveal>
-          <div className="max-w-2xl">
-            <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-              <span className="h-px w-8 bg-volt-500" aria-hidden />
-              {t('hero.eyebrow')}
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
-              {t('hero.title')}
-            </h2>
-            <p className="mt-4 text-mist-700">{t('hero.subtitle')}</p>
-          </div>
-        </Reveal>
-
-        <div className="mt-10 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div className="space-y-5">
-            {benefits.map((b, i) => (
-              <Reveal key={b.title} delay={i * 0.08} className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-700">
-                  <Handshake size={20} strokeWidth={1.75} />
-                </span>
-                <div>
-                  <h3 className="font-display text-base font-semibold text-graphite-950">{b.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-mist-700">{b.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.1}>
-            <DealerForm />
-          </Reveal>
-        </div>
-      </div>
-    </section>
   );
 }

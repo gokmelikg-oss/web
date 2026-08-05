@@ -23,7 +23,8 @@
 - Ürünler: https://www.simseksolar.com.tr/tr/products
 - Referanslar: https://www.simseksolar.com.tr/tr/projects
 - Şimşek Akademi (eğitim + mühendislik + teknik kaynaklar): https://www.simseksolar.com.tr/tr/akademi
-- Satış Sonrası Hizmet (teknik servis, bakım, yedek parça): https://www.simseksolar.com.tr/tr/service
+- Satış Sonrası Hizmet (teknik servis, bakım, yedek parça): https://www.simseksolar.com.tr/tr/contact#servis
+- Grup Şirketleri (Şimşek Solar, Lipus, Şimşek Yenilenebilir Enerji, SMK Alüminyum): https://www.simseksolar.com.tr/tr/grup-sirketleri
 - Blog & Bilgi Merkezi (güneş enerjisi rehberleri): https://www.simseksolar.com.tr/tr/blog
 - Kalite Politikamız: https://www.simseksolar.com.tr/tr/kalite-politikasi
 - Hesaplama aracı: https://www.simseksolar.com.tr/tr/calculator

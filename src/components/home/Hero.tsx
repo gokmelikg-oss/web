@@ -2,21 +2,12 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, ChevronDown, Sun, Droplets, Building2, Cpu, Wrench } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { CountUp } from '@/components/CountUp';
 import { MeshBackground } from '@/components/home/MeshBackground';
 
 const NUMBER_LOCALE: Record<string, string> = { tr: 'tr-TR', en: 'en-US', ar: 'ar-EG' };
-
-/* Çözüm alanları — hero altında ikon şeridi. */
-const CAPABILITIES = [
-  { icon: Sun, label: 'Güneş Kollektörü' },
-  { icon: Droplets, label: 'Emayeli Boyler' },
-  { icon: Building2, label: 'Merkezi Sistem' },
-  { icon: Cpu, label: 'Otomasyon' },
-  { icon: Wrench, label: 'Satış Sonrası' },
-];
 
 export function Hero() {
   const t = useTranslations('hero');
@@ -109,26 +100,11 @@ export function Hero() {
           </Link>
         </motion.div>
 
-        {/* Çözüm alanları ikon şeridi */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.52 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
-        >
-          {CAPABILITIES.map((c) => (
-            <span key={c.label} className="flex items-center gap-2 text-graphite-300">
-              <c.icon size={16} className="text-volt-400" strokeWidth={1.9} />
-              <span className="text-xs font-medium uppercase tracking-wide">{c.label}</span>
-            </span>
-          ))}
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-12 grid w-full max-w-2xl grid-cols-3 divide-x divide-white/12 border border-white/12 bg-white/[0.03] backdrop-blur-sm rtl:divide-x-reverse"
+          className="mt-16 grid w-full max-w-2xl grid-cols-3 divide-x divide-white/12 border border-white/12 bg-white/[0.03] backdrop-blur-sm rtl:divide-x-reverse"
         >
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col items-center justify-center px-4 py-3.5 text-center">

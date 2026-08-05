@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { Search, MapPin, X, ChevronDown, ArrowDownWideNarrow } from 'lucide-react';
-import { referenceProjects, provinceSummaries, computeImpact } from '@/data/references';
+import { visibleReferenceProjects, provinceSummaries, computeImpact } from '@/data/references';
 
 const PAGE_SIZE = 24;
 const nf = new Intl.NumberFormat('tr-TR');
@@ -16,7 +16,7 @@ export function ReferenceList() {
   /* Liste her zaman kollektör adedine göre büyükten küçüğe sıralanır. */
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase('tr-TR');
-    return referenceProjects
+    return visibleReferenceProjects
       .filter((p) => {
         if (province && p.il !== province) return false;
         if (!q) return true;

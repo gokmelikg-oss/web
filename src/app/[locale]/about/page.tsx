@@ -1,15 +1,14 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import Image from 'next/image';
 import {
   Factory,
   ShieldCheck,
   Globe2,
   Target,
   Eye,
-  Sun,
-  BatteryCharging,
-  Wind,
-  Layers,
+  Quote,
+  PenLine,
+  BadgeCheck,
   ArrowUpRight,
 } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
@@ -18,7 +17,6 @@ import { Link } from '@/i18n/navigation';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
-import type { Metadata } from 'next';
 
 export async function generateMetadata({
   params,
@@ -32,32 +30,31 @@ export async function generateMetadata({
 
 const valueIcons = [ShieldCheck, Factory, Globe2];
 
-interface Company {
-  id: string;
-  name: string;
-  tag: string;
-  desc: string;
+interface Cert {
+  label: string;
+  scope?: string;
+  file?: string;
 }
 
-const companyVisual: Record<string, { logo?: string; icon: typeof Sun; accent: string }> = {
-  solar: { logo: '/brand/simsek-solar.png', icon: Sun, accent: 'bg-volt-100 text-volt-700' },
-  lipus: { logo: '/brand/lipus.png', icon: BatteryCharging, accent: 'bg-emerald-50 text-emerald-600' },
-  yenilenebilir: { icon: Wind, accent: 'bg-sky-50 text-sky-600' },
-  smk: { icon: Layers, accent: 'bg-mist-100 text-mist-600' },
-};
+/* Kurucunun mektubundan özet notlar; tam metin /founder sayfasında. */
+const founderNotes = [
+  'Her şey basit ama güçlü bir hedefle başladı: Doğru işi, en iyi şekilde yapmak. İlk günden itibaren odağımız kalite, güven ve sürdürülebilir üretim oldu.',
+  'Solar termal sistemlerle attığımız ilk adım, markamızın Türkiye’de ve uluslararası pazarlarda çıkacağı yolculuğun güçlü bir işaretiydi. Yıllar içinde üretim kapasitemiz kadar etki alanımız da büyüdü; grup şirketlerimizle üretimden sahaya uzanan güçlü bir ekosistem kurduk.',
+];
 
 export default async function AboutPage() {
   const t = await getTranslations('about');
-  const tGroup = await getTranslations('group');
+  const tCerts = await getTranslations('certs');
   const stats = t.raw('stats') as { value: string; label: string }[];
   const values = t.raw('values.items') as { title: string; desc: string }[];
-  const companies = tGroup.raw('companies') as Company[];
+  const certs = tCerts.raw('items') as Cert[];
 
   return (
     <>
-      <PageBreadcrumb items={[{ name: 'Kurumsal', path: '/about' }]} />
+      <PageBreadcrumb items={[{ name: 'Hakkımızda', path: '/about' }]} />
       <PageHero eyebrow={t('hero.eyebrow')} title={t('hero.title')} subtitle={t('hero.subtitle')} />
 
+      {/* Hikayemiz */}
       <section className="section-pad bg-white">
         <div className="container-page grid gap-16 lg:grid-cols-2 lg:gap-12">
           <Reveal>
@@ -81,8 +78,60 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Misyon & Vizyon */}
+      {/* Kurucumuzdan */}
       <section className="section-pad bg-mist-50">
+        <div className="container-page">
+          <div className="mx-auto max-w-3xl">
+            <Reveal>
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                Kurucumuzdan
+              </p>
+              <figure className="relative mt-6 rounded-3xl bg-graphite-gradient p-9 text-white sm:p-11">
+                <Quote size={38} className="absolute -top-5 start-8 rounded-2xl bg-volt-500 p-2 text-graphite-950" aria-hidden />
+                <blockquote className="mt-2 font-display text-lg font-semibold leading-relaxed sm:text-2xl">
+                  &ldquo;Bizim için her şey 1992&apos;de Mersin&apos;deki küçük bir atölyede başladı. O atölyede
+                  bugün Şimşek Grup&apos;un temellerini oluşturan cesaret, emek ve büyük bir vizyon vardı.&rdquo;
+                </blockquote>
+              </figure>
+            </Reveal>
+
+            <div className="mt-8 space-y-5">
+              {founderNotes.map((p, i) => (
+                <Reveal key={i} delay={i * 0.06}>
+                  <p className="leading-[1.85] text-mist-800">{p}</p>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={0.1}>
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-mist-900/10 pt-7">
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-volt-100 text-volt-700">
+                    <PenLine size={22} strokeWidth={1.75} />
+                  </span>
+                  <div>
+                    <p className="font-display text-lg font-bold text-graphite-950">Sinan Şimşek</p>
+                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-mist-600">
+                      Şimşek Grup Kurucu &amp; Başkanı
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/founder"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-graphite-950 transition-colors hover:text-volt-700"
+                >
+                  Mektubun tamamını okuyun
+                  <ArrowUpRight size={15} />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Misyon & Vizyon */}
+      <section className="section-pad bg-white">
         <div className="container-page">
           <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-2">
             <Reveal>
@@ -103,7 +152,7 @@ export default async function AboutPage() {
               </div>
             </Reveal>
             <Reveal delay={0.08}>
-              <div className="flex h-full flex-col rounded-3xl border border-graphite-700/10 bg-white p-9 sm:p-11">
+              <div className="flex h-full flex-col rounded-3xl border border-graphite-700/10 bg-mist-50 p-9 sm:p-11">
                 <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-volt-100 text-volt-700">
                   <Eye size={26} strokeWidth={1.75} />
                 </span>
@@ -123,86 +172,70 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Grup Şirketleri — Hakkımızda ile birleştirildi */}
-      <section id="grup-sirketleri" className="section-pad scroll-mt-24 bg-white">
+      {/* Kalite Belgelerimiz */}
+      <section className="section-pad bg-mist-50">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+            <div className="max-w-2xl">
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
-                {tGroup('eyebrow').replace(/^\d+\s*·\s*/, '')}
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                Kalite Belgelerimiz
               </p>
-              <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
-                {tGroup('title')}
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+                Uluslararası standartlarda belgelendirilmiş kalite
               </h2>
-              <p className="mt-4 text-balance leading-relaxed text-mist-700">{tGroup('body')}</p>
+              <p className="mt-4 text-mist-700">
+                Ürünlerimiz CE, TSE ve Solar Keymark başta olmak üzere ulusal ve uluslararası kalite
+                belgelerine sahiptir. Belgelere tıklayarak ulaşabilirsiniz.
+              </p>
             </div>
           </Reveal>
 
-          <Reveal delay={0.05}>
-            <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-3xl border border-graphite-700/10 bg-graphite-gradient px-8 py-8 text-white sm:px-12">
-              <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-10">
-                <div className="flex shrink-0 items-center justify-center rounded-2xl bg-white px-8 py-5">
-                  <Image
-                    src="/brand/simsek-grup.png"
-                    alt="Şimşek Grup"
-                    width={1000}
-                    height={1000}
-                    className="h-20 w-auto object-contain"
-                  />
-                </div>
-                <div className="text-center sm:text-start">
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-volt-400">
-                    {tGroup('parentLabel')}
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {certs.map((c, i) => {
+              const inner = (
+                <>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-700">
+                    <BadgeCheck size={18} strokeWidth={1.85} />
                   </span>
-                  <p className="mt-2 text-sm leading-relaxed text-graphite-200">
-                    1992&apos;den bu yana yenilenebilir enerji ve iklimlendirme teknolojilerinde faaliyet
-                    gösteren; dört şirketiyle üretimden saha uygulamasına bütünleşik çözümler sunan
-                    sanayi grubu.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="mx-auto mt-8 grid max-w-5xl gap-6">
-            {companies.map((c, i) => {
-              const visual = companyVisual[c.id] ?? companyVisual.smk;
-              const Icon = visual.icon;
+                  <span className="min-w-0">
+                    <span className="block text-sm font-bold text-graphite-950">{c.label}</span>
+                    {c.scope && <span className="mt-0.5 block text-[11px] leading-snug text-mist-600">{c.scope}</span>}
+                  </span>
+                  {c.file && <ArrowUpRight size={15} className="ms-auto shrink-0 text-mist-400 transition-colors group-hover:text-volt-700" />}
+                </>
+              );
+              const cls =
+                'group flex h-full items-center gap-3 rounded-2xl border border-mist-900/10 bg-white p-4 transition-all hover:-translate-y-0.5 hover:border-volt-500/40 hover:shadow-sm';
               return (
-                <Reveal key={c.id} delay={i * 0.06}>
-                  <div className="grid gap-6 rounded-3xl border border-graphite-700/10 bg-mist-50 p-8 transition-colors hover:border-volt-500/40 hover:bg-white sm:grid-cols-[200px_1fr] sm:items-center sm:p-9">
-                    <div className="flex h-16 items-center">
-                      {visual.logo ? (
-                        <Image
-                          src={visual.logo}
-                          alt={c.name}
-                          width={400}
-                          height={120}
-                          className="h-11 w-auto object-contain object-left rtl:object-right"
-                        />
-                      ) : (
-                        <span className={`flex h-14 w-14 items-center justify-center rounded-2xl ${visual.accent}`}>
-                          <Icon size={26} strokeWidth={1.75} />
-                        </span>
-                      )}
-                    </div>
-                    <div>
-                      <h3 className="font-display text-xl font-bold text-graphite-950">{c.name}</h3>
-                      <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-volt-700">
-                        {c.tag}
-                      </p>
-                      <p className="mt-3 leading-relaxed text-mist-700">{c.desc}</p>
-                    </div>
-                  </div>
+                <Reveal key={`${c.label}-${i}`} delay={i * 0.03}>
+                  {c.file ? (
+                    <a href={c.file} target="_blank" rel="noopener noreferrer" title={tCerts('viewLabel')} className={cls}>
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className={cls}>{inner}</div>
+                  )}
                 </Reveal>
               );
             })}
           </div>
+
+          <Reveal delay={0.1}>
+            <div className="mt-8">
+              <Link
+                href="/kalite-politikasi"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-graphite-950 transition-colors hover:text-volt-700"
+              >
+                Kalite politikamızı inceleyin
+                <ArrowUpRight size={15} />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
+      {/* Değerlerimiz */}
       <section className="section-pad bg-mist-900 text-mist-50">
         <div className="container-page">
           <Reveal>

@@ -66,6 +66,12 @@ const nextConfig = {
         destination: '/:locale/contact#bayilik',
         permanent: true,
       },
+      {
+        // Satış sonrası hizmet iletişim sayfasına taşındı.
+        source: '/:locale(tr|en|ar)/service',
+        destination: '/:locale/contact#servis',
+        permanent: true,
+      },
     ];
   },
 

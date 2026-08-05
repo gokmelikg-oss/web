@@ -79,7 +79,7 @@ export function Footer() {
             <li><Link href="/resources" className="hover:text-white">{tNav('resources')}</Link></li>
             <li><Link href="/calculator" className="hover:text-white">{tCalc('eyebrow')}</Link></li>
             <li><Link href="/gunes-potansiyeli" className="hover:text-white">Güneş Potansiyeli</Link></li>
-            <li><Link href="/service" className="hover:text-white">Satış Sonrası Hizmet</Link></li>
+            <li><Link href="/contact#servis" className="hover:text-white">Satış Sonrası Hizmet</Link></li>
             <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
             <li><Link href="/contact#bayilik" className="hover:text-white">{t('dealersLink')}</Link></li>
           </ul>

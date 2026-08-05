@@ -35,26 +35,6 @@ export async function generateMetadata({
 /* Akademi'nin kapsadığı alanlar — premium interaktif index (ürünlerle aynı imza). */
 const academyAreas: PremiumIndexItem[] = [
   {
-    id: 'egitimler',
-    title: 'Eğitimler',
-    desc: 'Bayiler, tesisatçılar ve mühendisler için güneş enerjisi, montaj ve projelendirme eğitimleri. Teoriyle uygulamayı birleştiren, sahada işe yarayan içerikler.',
-    href: '/akademi#egitimler',
-    accent: '#f6bc32',
-    iconKey: 'egitim',
-    meta: '4 program · Uygulamalı',
-    tags: ['Temel eğitim', 'Montaj', 'Projelendirme', 'Bakım'],
-  },
-  {
-    id: 'muhendislik',
-    title: 'Mühendislik Hizmeti',
-    desc: 'Kapasite hesabı, statik proje, saha etüdü ve sistem şeması ile fikirden devreye almaya uçtan uca mühendislik desteği.',
-    href: '/akademi#muhendislik',
-    accent: '#22c9e6',
-    iconKey: 'muhendislik',
-    meta: 'Fikirden devreye alma',
-    tags: ['Kapasite hesabı', 'Statik proje', 'Saha etüdü', 'Merkezi sistem'],
-  },
-  {
     id: 'dokumanlar',
     title: 'Teknik Dökümanlar',
     desc: 'Teknik föyler, ölçü çizimleri, kurulum kılavuzları ve sertifikalar tek arşivde; projelendirme ve montaj için gereken tüm belgeler.',
@@ -73,6 +53,26 @@ const academyAreas: PremiumIndexItem[] = [
     iconKey: 'hesaplama',
     meta: 'Boyutlandırma aracı',
     tags: ['Kapasite', 'Boyutlandırma'],
+  },
+  {
+    id: 'muhendislik',
+    title: 'Mühendislik Hizmeti',
+    desc: 'Kapasite hesabı, statik proje, saha etüdü ve sistem şeması ile fikirden devreye almaya uçtan uca mühendislik desteği.',
+    href: '/akademi#muhendislik',
+    accent: '#22c9e6',
+    iconKey: 'muhendislik',
+    meta: 'Fikirden devreye alma',
+    tags: ['Kapasite hesabı', 'Statik proje', 'Saha etüdü', 'Merkezi sistem'],
+  },
+  {
+    id: 'egitimler',
+    title: 'Eğitimler',
+    desc: 'Bayiler, tesisatçılar ve mühendisler için güneş enerjisi, montaj ve projelendirme eğitimleri. Teoriyle uygulamayı birleştiren, sahada işe yarayan içerikler.',
+    href: '/akademi#egitimler',
+    accent: '#f6bc32',
+    iconKey: 'egitim',
+    meta: '4 program · Uygulamalı',
+    tags: ['Temel eğitim', 'Montaj', 'Projelendirme', 'Bakım'],
   },
   {
     id: 'potansiyel',

@@ -13,17 +13,14 @@ const navItems = [
   { href: '/products', key: 'products' },
   { href: '/akademi', key: 'academy' },
   { href: '/projects', key: 'projects' },
-  { href: '/service', key: 'service' },
   { href: '/contact', key: 'contact' },
 ] as const;
 
-/* Kurumsal alt menüsü (şimdilik Türkçe; diğer diller sonra). */
+/* Kurumsal alt menüsü — 3 başlık (şimdilik Türkçe; diğer diller sonra). */
 const corporateItems = [
-  { href: '/founder', label: 'Kurucumuzdan' },
   { href: '/about', label: 'Hakkımızda' },
-  { href: '/about#grup-sirketleri', label: 'Grup Şirketleri' },
   { href: '/history', label: 'Tarihçe' },
-  { href: '/kalite-politikasi', label: 'Kalite Politikamız' },
+  { href: '/grup-sirketleri', label: 'Grup Şirketleri' },
 ] as const;
 
 export function Header() {

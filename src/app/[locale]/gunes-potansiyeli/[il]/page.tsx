@@ -167,7 +167,7 @@ export default async function ProvinceDetailPage({
                     <ArrowUpRight size={15} />
                   </Link>
                   <Link
-                    href="/service"
+                    href="/contact#servis"
                     className="inline-flex items-center gap-2 rounded-full border border-graphite-950/15 px-6 py-3 text-sm font-semibold text-graphite-950 transition-colors hover:bg-mist-100"
                   >
                     <Wrench size={15} />
