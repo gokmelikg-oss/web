@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Reveal } from '@/components/Reveal';
 import { familyImages } from '@/data/catalogImages';
+import { BLUR_DATA } from '@/lib/blur';
 
 interface CatalogFamily {
   id: string;
@@ -147,6 +148,8 @@ export function ProductIndex() {
                                 fill
                                 sizes="100vw"
                                 className="object-cover"
+                                placeholder="blur"
+                                blurDataURL={BLUR_DATA}
                               />
                             </div>
                           )}
@@ -199,6 +202,8 @@ export function ProductIndex() {
                       fill
                       sizes="40vw"
                       className="object-cover"
+                      placeholder="blur"
+                      blurDataURL={BLUR_DATA}
                     />
                   </motion.div>
                 </AnimatePresence>

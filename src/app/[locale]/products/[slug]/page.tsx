@@ -1,9 +1,22 @@
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { Sun, Droplets, Package as PackageIcon, Cpu, ArrowLeft, ArrowUpRight, Check, FileText } from 'lucide-react';
+import {
+  Sun,
+  Droplets,
+  Package as PackageIcon,
+  Cpu,
+  ArrowLeft,
+  ArrowUpRight,
+  Check,
+  FileText,
+  Calculator,
+  ShieldCheck,
+  Building2,
+} from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { products, getProduct, productImages } from '@/data/products';
+import { BLUR_DATA } from '@/lib/blur';
 import { locales, type Locale } from '@/i18n/config';
 import { Reveal } from '@/components/Reveal';
 import { ProductCard } from '@/components/ProductCard';
@@ -16,6 +29,14 @@ const categoryIcon = {
   boiler: Droplets,
   package: PackageIcon,
   smart: Cpu,
+};
+
+/* Kategoriye göre tipik uygulama alanları — sektör bazlı bağlam + arama terimi. */
+const APPLICATIONS: Record<string, string[]> = {
+  collector: ['Konut', 'Toplu konut & TOKİ', 'Otel & turizm', 'Yurt & kampüs', 'Hastane', 'Endüstriyel tesis'],
+  boiler: ['Konut', 'Toplu konut', 'Otel', 'Merkezi sistemler'],
+  package: ['Müstakil konut', 'Villa', 'Yazlık', 'Küçük işletme'],
+  smart: ['Merkezi sistemler', 'Toplu konut', 'Kamu & tesis projeleri'],
 };
 
 /* Öne çıkarılacak ana teknik değerler (kategoriye göre en anlamlı 3 spec). */
@@ -67,6 +88,7 @@ export default async function ProductDetailPage({
     .filter(Boolean)
     .slice(0, 3) as { key: string; value: string }[];
 
+  const applications = APPLICATIONS[product.category] ?? [];
   const related = products.filter((p) => p.slug !== slug && p.category === product.category).slice(0, 3);
   const relatedFallback = related.length > 0 ? related : products.filter((p) => p.slug !== slug).slice(0, 3);
 
@@ -139,6 +161,13 @@ export default async function ProductDetailPage({
                     <ArrowUpRight size={16} />
                   </Link>
                   <Link
+                    href="/calculator"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                  >
+                    <Calculator size={15} />
+                    Kapasite hesapla
+                  </Link>
+                  <Link
                     href="/resources"
                     className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
                   >
@@ -146,6 +175,11 @@ export default async function ProductDetailPage({
                     {t('downloadSheet')}
                   </Link>
                 </div>
+
+                <p className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-graphite-400">
+                  <ShieldCheck size={14} className="text-volt-400" />
+                  CE · TSE · Solar Keymark sertifikalı üretim
+                </p>
               </div>
             </Reveal>
 
@@ -160,6 +194,8 @@ export default async function ProductDetailPage({
                       fill
                       sizes="(max-width: 1024px) 100vw, 45vw"
                       className="object-cover"
+                      placeholder="blur"
+                      blurDataURL={BLUR_DATA}
                       priority
                     />
                   ) : (
@@ -201,6 +237,31 @@ export default async function ProductDetailPage({
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Uygulama alanları */}
+      {applications.length > 0 && (
+        <section className="border-y border-mist-900/10 bg-white py-14">
+          <div className="container-page">
+            <Reveal>
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                Uygulama Alanları
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2.5">
+                {applications.map((a) => (
+                  <span
+                    key={a}
+                    className="inline-flex items-center gap-2 rounded-full border border-mist-900/10 bg-mist-50 px-4 py-2 text-sm font-semibold text-graphite-800"
+                  >
+                    <Building2 size={14} className="text-volt-600" />
+                    {a}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </section>
       )}

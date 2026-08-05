@@ -8,7 +8,7 @@ import { faqItems, type FaqItem } from '@/data/faq';
 /* Sık sorulan sorular — iki sütunlu akordeon. İçerik itiraz karşılama + arama
    terimi optimizasyonu için tasarlandı; FAQPage JSON-LD ayrıca eklenir.
    Değişken yükseklikte hizalama bozulmasın diye iki bağımsız sütuna bölünür. */
-export function Faq() {
+export function Faq({ showHeader = true }: { showHeader?: boolean }) {
   const [open, setOpen] = useState<string | null>(faqItems[0]?.q ?? null);
 
   const left = faqItems.filter((_, i) => i % 2 === 0);
@@ -57,25 +57,27 @@ export function Faq() {
   return (
     <section id="sss" className="section-pad scroll-mt-20 bg-white">
       <div className="container-page">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-              <span className="h-px w-8 bg-volt-500" aria-hidden />
-              Sık Sorulan Sorular
-              <span className="h-px w-8 bg-volt-500" aria-hidden />
-            </p>
-            <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
-              Güneş enerjili sıcak su hakkında merak edilenler
-            </h2>
-            <p className="mt-4 text-mist-700">
-              Sistem çalışması, boyler kapasitesi, tasarruf, bakım, TOKİ ve kamu projeleri hakkında en çok
-              sorulanlar. Aradığınızı bulamazsanız bize ulaşın.
-            </p>
-          </div>
-        </Reveal>
+        {showHeader && (
+          <Reveal>
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                Sık Sorulan Sorular
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              </p>
+              <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+                Güneş enerjili sıcak su hakkında merak edilenler
+              </h2>
+              <p className="mt-4 text-mist-700">
+                Sistem çalışması, boyler kapasitesi, tasarruf, bakım, TOKİ ve kamu projeleri hakkında en çok
+                sorulanlar. Aradığınızı bulamazsanız bize ulaşın.
+              </p>
+            </div>
+          </Reveal>
+        )}
 
         <Reveal delay={0.05}>
-          <div className="mt-10 grid items-start gap-x-8 gap-y-0 lg:grid-cols-2">
+          <div className={`grid items-start gap-x-8 gap-y-0 lg:grid-cols-2 ${showHeader ? 'mt-10' : ''}`}>
             <Column items={left} />
             <Column items={right} />
           </div>

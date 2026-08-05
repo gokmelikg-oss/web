@@ -26,6 +26,7 @@
 - Satış Sonrası Hizmet (teknik servis, bakım, yedek parça): https://www.simseksolar.com.tr/tr/contact#servis
 - Grup Şirketleri (Şimşek Solar, Lipus, Şimşek Yenilenebilir Enerji, SMK Alüminyum): https://www.simseksolar.com.tr/tr/grup-sirketleri
 - Blog & Bilgi Merkezi (güneş enerjisi rehberleri): https://www.simseksolar.com.tr/tr/blog
+- Sık Sorulan Sorular: https://www.simseksolar.com.tr/tr/sss
 - Kalite Politikamız: https://www.simseksolar.com.tr/tr/kalite-politikasi
 - Hesaplama aracı: https://www.simseksolar.com.tr/tr/calculator
 - İllere göre güneş potansiyeli (81 il, GEPA verileri): https://www.simseksolar.com.tr/tr/gunes-potansiyeli

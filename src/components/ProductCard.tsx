@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Sun, Droplets, Package as PackageIcon, Cpu, ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { productImages, type Product } from '@/data/products';
+import { BLUR_DATA } from '@/lib/blur';
 
 const categoryIcon = {
   collector: Sun,
@@ -29,6 +30,8 @@ export function ProductCard({ product }: { product: Product }) {
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
+            placeholder="blur"
+            blurDataURL={BLUR_DATA}
           />
         ) : (
           <>

@@ -81,6 +81,7 @@ export function Footer() {
             <li><Link href="/gunes-potansiyeli" className="hover:text-white">Güneş Potansiyeli</Link></li>
             <li><Link href="/contact#servis" className="hover:text-white">Satış Sonrası Hizmet</Link></li>
             <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
+            <li><Link href="/sss" className="hover:text-white">Sık Sorulan Sorular</Link></li>
             <li><Link href="/contact#bayilik" className="hover:text-white">{t('dealersLink')}</Link></li>
           </ul>
         </div>
