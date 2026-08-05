@@ -67,40 +67,63 @@ function adminToFull(p: AdminPost): PostFull {
   };
 }
 
-/* Statik + admin yazıları birleşik, tarihe göre yeni→eski. */
-export async function getBlogList(): Promise<PostSummary[]> {
-  const { posts } = await getContent();
-  const admin: PostSummary[] = posts
-    .filter((p) => p.slug && p.title)
-    .map((p) => ({
-      slug: p.slug,
-      title: p.title,
-      excerpt: p.excerpt ?? '',
-      category: p.category ?? 'Rehber',
-      date: p.date ?? '',
-      readMin: readMinFromText(`${p.body ?? ''} ${p.excerpt ?? ''}`),
-      cover: p.cover || undefined,
-    }));
-  const staticList: PostSummary[] = articles.map((a) => ({
+/* Statik body'yi admin düz-metin formatına çevirir (panelde düzenlenebilsin). */
+function serializeBody(sections: PostSection[]): string {
+  return sections
+    .map((s) => `${s.heading ? `## ${s.heading}\n\n` : ''}${s.paragraphs.join('\n\n')}`)
+    .join('\n\n');
+}
+
+/* Statik yazıları admin formatında verir — panel ilk açıldığında formları
+   mevcut içerikle doldurmak için. */
+export function staticPostsAsAdmin(): AdminPost[] {
+  return articles.map((a) => ({
+    id: `seed-${a.slug}`,
     slug: a.slug,
     title: a.title,
     excerpt: a.excerpt,
     category: a.category,
     date: a.date,
-    readMin: a.readMin,
     cover: a.cover,
+    body: serializeBody(a.body),
   }));
-  // Admin, aynı slug'ı override edebilir.
-  const bySlug = new Map<string, PostSummary>();
-  for (const p of staticList) bySlug.set(p.slug, p);
-  for (const p of admin) bySlug.set(p.slug, p);
-  return Array.from(bySlug.values()).sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+/* Kaynak seçimi: admin panelinde yazı VARSA yalnızca admin kullanılır (silme/
+   düzenleme kalıcı olur). Panel boşsa statik rehberler gösterilir. */
+export async function getBlogList(): Promise<PostSummary[]> {
+  const { posts } = await getContent();
+  const source: PostSummary[] =
+    posts.length > 0
+      ? posts
+          .filter((p) => p.slug && p.title)
+          .map((p) => ({
+            slug: p.slug,
+            title: p.title,
+            excerpt: p.excerpt ?? '',
+            category: p.category ?? 'Rehber',
+            date: p.date ?? '',
+            readMin: readMinFromText(`${p.body ?? ''} ${p.excerpt ?? ''}`),
+            cover: p.cover || undefined,
+          }))
+      : articles.map((a) => ({
+          slug: a.slug,
+          title: a.title,
+          excerpt: a.excerpt,
+          category: a.category,
+          date: a.date,
+          readMin: a.readMin,
+          cover: a.cover,
+        }));
+  return source.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 export async function getBlogPost(slug: string): Promise<PostFull | undefined> {
   const { posts } = await getContent();
-  const adminMatch = posts.find((p) => p.slug === slug);
-  if (adminMatch) return adminToFull(adminMatch);
+  if (posts.length > 0) {
+    const m = posts.find((p) => p.slug === slug);
+    return m ? adminToFull(m) : undefined;
+  }
   const a = articles.find((x) => x.slug === slug);
   if (!a) return undefined;
   return {

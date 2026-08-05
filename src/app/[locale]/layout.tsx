@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Josefin_Sans, Inter, JetBrains_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
+import { Sora, Inter, JetBrains_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import { locales, isRtl, type Locale } from '@/i18n/config';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -15,7 +15,7 @@ import { CookieBanner } from '@/components/CookieBanner';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import '../globals.css';
 
-const josefinSans = Josefin_Sans({
+const sora = Sora({
   subsets: ['latin', 'latin-ext'],
   variable: '--font-display',
   display: 'swap',
@@ -124,7 +124,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir}>
       <body
-        className={`${josefinSans.variable} ${inter.variable} ${jetbrainsMono.variable} ${plexArabic.variable} ${
+        className={`${sora.variable} ${inter.variable} ${jetbrainsMono.variable} ${plexArabic.variable} ${
           isRtl(locale) ? 'font-arabic' : 'font-body'
         } bg-background text-foreground antialiased`}
       >
