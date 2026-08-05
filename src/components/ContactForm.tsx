@@ -90,11 +90,21 @@ export function ContactForm() {
 
             <label className="flex flex-col gap-1.5 text-sm sm:col-span-2">
               <span className="font-medium text-graphite-950">{t('subject')}</span>
-              <input
+              <select
                 name="subject"
-                type="text"
+                defaultValue=""
                 className="rounded-xl border border-mist-900/15 bg-mist-50 px-4 py-3 text-sm outline-none focus:border-volt-500"
-              />
+              >
+                <option value="" disabled>
+                  Konu seçiniz…
+                </option>
+                <option value="Bilgi / Teklif talebi">Bilgi / Teklif talebi</option>
+                <option value="Ürünler hakkında">Ürünler hakkında</option>
+                <option value="Merkezi / toplu proje">Merkezi / toplu proje</option>
+                <option value="Teknik servis / satış sonrası">Teknik servis / satış sonrası</option>
+                <option value="Bayilik başvurusu">Bayilik başvurusu</option>
+                <option value="Diğer">Diğer</option>
+              </select>
             </label>
 
             <label className="flex flex-col gap-1.5 text-sm sm:col-span-2">

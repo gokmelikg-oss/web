@@ -1,6 +1,18 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { MapPin, Phone, Mail, Clock, Briefcase, ArrowUpRight, Handshake } from 'lucide-react';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Briefcase,
+  ArrowUpRight,
+  Handshake,
+  FileText,
+  PhoneCall,
+  PencilRuler,
+  PackageCheck,
+} from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
@@ -83,6 +95,52 @@ export default async function ContactPage() {
           <Reveal delay={0.1}>
             <ContactForm />
           </Reveal>
+        </div>
+      </section>
+
+      {/* Çalışma sürecimiz — talep sonrası ne olacağını gösteren akış */}
+      <section className="section-pad bg-mist-50">
+        <div className="container-page">
+          <Reveal>
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                Çalışma Sürecimiz
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              </p>
+              <h2 className="mt-4 text-balance font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">
+                Talebiniz sonrası ne oluyor?
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="relative mt-12">
+            <span
+              className="pointer-events-none absolute inset-x-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-volt-500/45 to-transparent lg:block"
+              aria-hidden
+            />
+            <ol className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { icon: FileText, title: 'Formu gönderin', desc: 'Talebinizi birkaç dakikada iletin.' },
+                { icon: PhoneCall, title: 'Uzmanımız sizi arasın', desc: 'İhtiyacınızı birlikte netleştirelim.' },
+                { icon: PencilRuler, title: 'Projelendirme & teklif', desc: 'Size özel çözüm ve fiyat hazırlanır.' },
+                { icon: PackageCheck, title: 'Montaj & devreye alma', desc: 'Anahtar teslim uygulama ve satış sonrası destek.' },
+              ].map((step, i) => (
+                <Reveal key={step.title} delay={i * 0.08}>
+                  <li className="group relative flex flex-col items-center text-center">
+                    <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-volt-500/25 bg-white text-volt-700 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:border-volt-500 group-hover:bg-volt-500 group-hover:text-graphite-950">
+                      <step.icon size={22} strokeWidth={1.8} />
+                      <span className="absolute -end-1.5 -top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-graphite-950 font-tabular font-mono text-[10px] font-bold text-white">
+                        {i + 1}
+                      </span>
+                    </span>
+                    <h3 className="mt-5 font-display text-base font-bold text-graphite-950">{step.title}</h3>
+                    <p className="mt-2 max-w-xs text-sm leading-relaxed text-mist-700">{step.desc}</p>
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 

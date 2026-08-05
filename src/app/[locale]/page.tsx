@@ -10,6 +10,7 @@ import { HomeContact } from '@/components/home/HomeContact';
 import { SectionDots } from '@/components/home/SectionDots';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { SocialFeed } from '@/components/home/SocialFeed';
+import { BlogTeaser } from '@/components/home/BlogTeaser';
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
       <ProductionSection />
       <WhyUs />
       <GroupSection />
+      <BlogTeaser />
       <SocialFeed />
       <HomeContact />
     </>
