@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Sora, Inter, JetBrains_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
+import { Poppins, Nunito, JetBrains_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import { locales, isRtl, type Locale } from '@/i18n/config';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -15,14 +15,15 @@ import { CookieBanner } from '@/components/CookieBanner';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import '../globals.css';
 
-const sora = Sora({
+const poppins = Poppins({
   subsets: ['latin', 'latin-ext'],
+  weight: ['500', '600', '700', '800'],
   variable: '--font-display',
   display: 'swap',
 });
 
-const inter = Inter({
-  subsets: ['latin'],
+const nunito = Nunito({
+  subsets: ['latin', 'latin-ext'],
   variable: '--font-body',
   display: 'swap',
 });
@@ -124,7 +125,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir}>
       <body
-        className={`${sora.variable} ${inter.variable} ${jetbrainsMono.variable} ${plexArabic.variable} ${
+        className={`${poppins.variable} ${nunito.variable} ${jetbrainsMono.variable} ${plexArabic.variable} ${
           isRtl(locale) ? 'font-arabic' : 'font-body'
         } bg-background text-foreground antialiased`}
       >
