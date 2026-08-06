@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import Image from 'next/image';
 import { Sun, BatteryCharging, Wind, Layers, Mail, Globe, Phone, MapPin } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
@@ -8,19 +8,78 @@ import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
+interface GroupUi {
+  crumb: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  band: string;
+  meta: { title: string; description: string };
+}
+
+const GROUP_UI: Record<Locale, GroupUi> = {
+  tr: {
+    crumb: 'Grup Şirketleri',
+    eyebrow: 'Grup Şirketleri',
+    title: 'Tek vizyon, dört kuvvet',
+    subtitle:
+      'Şimşek Grup çatısı altında; üretimden saha uygulamasına, satıştan uzun dönemli bakıma kadar birbirini tamamlayan dört şirket.',
+    band: "1992'den bu yana yenilenebilir enerji ve iklimlendirme teknolojilerinde faaliyet gösteren; dört şirketiyle üretimden saha uygulamasına bütünleşik çözümler sunan sanayi grubu.",
+    meta: {
+      title: 'Grup Şirketleri — Şimşek Grup',
+      description:
+        'Şimşek Grup çatısı altındaki şirketler: Şimşek Solar, Lipus, Şimşek Yenilenebilir Enerji Sistemleri ve SMK Alüminyum. Şirket açıklamaları ve iletişim bilgileri.',
+    },
+  },
+  en: {
+    crumb: 'Group Companies',
+    eyebrow: 'Group Companies',
+    title: 'One vision, four forces',
+    subtitle:
+      'Under the Şimşek Group, four companies that complete one another — from production to field application, from sales to long-term maintenance.',
+    band: 'An industrial group active in renewable energy and HVAC technologies since 1992, offering integrated solutions from production to field application with its four companies.',
+    meta: {
+      title: 'Group Companies — Şimşek Group',
+      description:
+        'The companies under the Şimşek Group: Şimşek Solar, Lipus, Şimşek Renewable Energy Systems and SMK Aluminum. Company descriptions and contact details.',
+    },
+  },
+  ar: {
+    crumb: 'شركات المجموعة',
+    eyebrow: 'شركات المجموعة',
+    title: 'رؤية واحدة، أربع قوى',
+    subtitle:
+      'تحت مظلة مجموعة شمشك؛ أربع شركات يكمّل بعضها بعضاً — من الإنتاج إلى التطبيق الميداني، ومن البيع إلى الصيانة طويلة الأمد.',
+    band: 'مجموعة صناعية تعمل في تقنيات الطاقة المتجددة والتكييف منذ عام 1992، تقدّم حلولاً متكاملة من الإنتاج إلى التطبيق الميداني بشركاتها الأربع.',
+    meta: {
+      title: 'شركات المجموعة — مجموعة شمشك',
+      description:
+        'الشركات تحت مظلة مجموعة شمشك: شمشك سولار وLipus وشمشك لأنظمة الطاقة المتجددة وSMK للألمنيوم. أوصاف الشركات وبيانات الاتصال.',
+    },
+  },
+  el: {
+    crumb: 'Εταιρείες Ομίλου',
+    eyebrow: 'Εταιρείες Ομίλου',
+    title: 'Ένα όραμα, τέσσερις δυνάμεις',
+    subtitle:
+      'Υπό τον Όμιλο Şimşek· τέσσερις εταιρείες που συμπληρώνουν η μία την άλλη — από την παραγωγή έως την εφαρμογή στο πεδίο, από τις πωλήσεις έως τη μακροχρόνια συντήρηση.',
+    band: 'Ένας βιομηχανικός όμιλος που δραστηριοποιείται στις τεχνολογίες ανανεώσιμης ενέργειας και κλιματισμού από το 1992, προσφέροντας ολοκληρωμένες λύσεις από την παραγωγή έως την εφαρμογή στο πεδίο με τις τέσσερις εταιρείες του.',
+    meta: {
+      title: 'Εταιρείες Ομίλου — Όμιλος Şimşek',
+      description:
+        'Οι εταιρείες υπό τον Όμιλο Şimşek: Şimşek Solar, Lipus, Şimşek Renewable Energy Systems και SMK Aluminum. Περιγραφές εταιρειών και στοιχεία επικοινωνίας.',
+    },
+  },
+};
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return pageMetadata({
-    locale,
-    path: '/grup-sirketleri',
-    title: 'Grup Şirketleri — Şimşek Grup',
-    description:
-      'Şimşek Grup çatısı altındaki şirketler: Şimşek Solar, Lipus, Şimşek Yenilenebilir Enerji Sistemleri ve SMK Alüminyum. Şirket açıklamaları ve iletişim bilgileri.',
-  });
+  const ui = GROUP_UI[locale] ?? GROUP_UI.tr;
+  return pageMetadata({ locale, path: '/grup-sirketleri', title: ui.meta.title, description: ui.meta.description });
 }
 
 interface Company {
@@ -47,16 +106,14 @@ const contact: Record<string, { email: string; web: string; webHref: string; pho
 
 export default async function GroupPage() {
   const tGroup = await getTranslations('group');
+  const locale = (await getLocale()) as Locale;
+  const ui = GROUP_UI[locale] ?? GROUP_UI.tr;
   const companies = tGroup.raw('companies') as Company[];
 
   return (
     <>
-      <PageBreadcrumb items={[{ name: 'Grup Şirketleri', path: '/grup-sirketleri' }]} />
-      <PageHero
-        eyebrow="Grup Şirketleri"
-        title="Tek vizyon, dört kuvvet"
-        subtitle="Şimşek Grup çatısı altında; üretimden saha uygulamasına, satıştan uzun dönemli bakıma kadar birbirini tamamlayan dört şirket."
-      />
+      <PageBreadcrumb items={[{ name: ui.crumb, path: '/grup-sirketleri' }]} />
+      <PageHero eyebrow={ui.eyebrow} title={ui.title} subtitle={ui.subtitle} />
 
       {/* Ana şirket bandı */}
       <section className="section-pad bg-white">
@@ -71,10 +128,7 @@ export default async function GroupPage() {
                   <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-volt-400">
                     {tGroup('parentLabel')}
                   </span>
-                  <p className="mt-2 text-sm leading-relaxed text-graphite-200">
-                    1992&apos;den bu yana yenilenebilir enerji ve iklimlendirme teknolojilerinde faaliyet
-                    gösteren; dört şirketiyle üretimden saha uygulamasına bütünleşik çözümler sunan sanayi grubu.
-                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-graphite-200">{ui.band}</p>
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import { ProvinceExplorer } from '@/components/ProvinceExplorer';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { Link } from '@/i18n/navigation';
 import { pageMetadata } from '@/lib/seo';
+import { getProvincesUi } from '@/lib/provincesUi';
 import { PROVINCES_SORTED } from '@/data/provinces';
 import type { Locale } from '@/i18n/config';
 
@@ -14,29 +15,22 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return pageMetadata({
-    locale,
-    path: '/gunes-potansiyeli',
-    title: 'İllere Göre Güneş Enerjisi Potansiyeli — Türkiye Haritası',
-    description:
-      'İlinizi seçin; yıllık güneş ışınımı, güneşlenme süresi ve güneş enerjisiyle sıcak su sisteminizin tahmini üretimini görün. Türkiye’nin 81 ili için GEPA verilerine dayalı güneş potansiyeli rehberi.',
-  });
+  const ui = getProvincesUi(locale).list;
+  return pageMetadata({ locale, path: '/gunes-potansiyeli', title: ui.meta.title, description: ui.meta.description });
 }
 
-export default function SolarPotentialPage() {
+export default async function SolarPotentialPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const ui = getProvincesUi(locale).list;
   return (
     <>
-      <PageBreadcrumb items={[{ name: 'Güneş Potansiyeli', path: '/gunes-potansiyeli' }]} />
-      <PageHero
-        eyebrow="İllere Göre Güneş Potansiyeli"
-        title="Bulunduğunuz ilde güneş ne kadar güçlü?"
-        subtitle="İlinizi seçin; yıllık güneş ışınımı, güneşlenme süresi ve güneş enerjili sıcak su sisteminizin tahmini üretimini anında görün. Türkiye’nin 81 ili için GEPA verilerine dayalı potansiyel rehberi."
-      />
+      <PageBreadcrumb items={[{ name: ui.crumb, path: '/gunes-potansiyeli' }]} />
+      <PageHero eyebrow={ui.hero.eyebrow} title={ui.hero.title} subtitle={ui.hero.subtitle} />
 
       <section className="section-pad bg-white">
         <div className="container-page">
           <Reveal>
-            <ProvinceExplorer />
+            <ProvinceExplorer labels={getProvincesUi(locale).explorer} />
           </Reveal>
         </div>
       </section>
@@ -44,39 +38,15 @@ export default function SolarPotentialPage() {
       {/* Bilgilendirme */}
       <section className="section-pad bg-mist-50">
         <div className="container-page grid gap-10 lg:grid-cols-2">
-          <Reveal>
-            <div>
-              <h2 className="font-display text-2xl font-bold text-graphite-950">
-                Güneş potansiyeli sistemi nasıl etkiler?
-              </h2>
-              <p className="mt-4 leading-relaxed text-mist-700">
-                Bir bölgenin yıllık güneş ışınımı ne kadar yüksekse, güneş kollektörleri o kadar çok ısı
-                üretir. Türkiye, güneş kuşağında yer alan ve yıllık ortalama güneşlenme süresi yüksek bir
-                ülkedir; bu da güneş enerjili sıcak su sistemlerini hemen her ilde ekonomik kılar.
-              </p>
-              <p className="mt-4 leading-relaxed text-mist-700">
-                Güney illerinde açık devre paket sistemler yüksek verim sağlarken, kışın sıcaklığın düştüğü
-                bölgelerde antifrizli kapalı devre sistemler ve destek ısıtma entegrasyonu ile dört mevsim
-                kesintisiz sıcak su elde edilir.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <div>
-              <h2 className="font-display text-2xl font-bold text-graphite-950">
-                Doğru sistemi birlikte belirleyelim
-              </h2>
-              <p className="mt-4 leading-relaxed text-mist-700">
-                Bu araç bölgesel ortalamalara dayalı bir ön fikir verir. İlinize, çatınıza ve tüketiminize
-                özel doğru kapasiteyi belirlemek için mühendislik ekibimiz ücretsiz saha keşfi ve
-                projelendirme yapar.
-              </p>
-              <p className="mt-4 leading-relaxed text-mist-700">
-                Konut, toplu konut, kamu ve endüstriyel projelerde 35 yıllık üretim ve saha tecrübemizle
-                yanınızdayız.
-              </p>
-            </div>
-          </Reveal>
+          {ui.info.map((block, i) => (
+            <Reveal key={block.title} delay={i * 0.05}>
+              <div>
+                <h2 className="font-display text-2xl font-bold text-graphite-950">{block.title}</h2>
+                <p className="mt-4 leading-relaxed text-mist-700">{block.body1}</p>
+                <p className="mt-4 leading-relaxed text-mist-700">{block.body2}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
@@ -84,11 +54,8 @@ export default function SolarPotentialPage() {
       <section className="section-pad bg-white">
         <div className="container-page">
           <Reveal>
-            <h2 className="font-display text-2xl font-bold text-graphite-950">İl il güneş potansiyeli</h2>
-            <p className="mt-3 max-w-2xl text-mist-700">
-              İlinizin detaylı güneş enerjisi potansiyelini, tahmini üretimini ve öneriler ile sık sorulan
-              soruları görmek için seçin.
-            </p>
+            <h2 className="font-display text-2xl font-bold text-graphite-950">{ui.allTitle}</h2>
+            <p className="mt-3 max-w-2xl text-mist-700">{ui.allSubtitle}</p>
           </Reveal>
           <Reveal delay={0.05}>
             <div className="mt-8 flex flex-wrap gap-2.5">

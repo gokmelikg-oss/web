@@ -1,13 +1,21 @@
 import type { ReactNode } from 'react';
 
 /* Yasal metin sayfaları için ortak, okunur tipografi düzeni. */
-export function LegalDoc({ updated, children }: { updated: string; children: ReactNode }) {
+export function LegalDoc({
+  updated,
+  updatedLabel = 'Son güncelleme',
+  children,
+}: {
+  updated: string;
+  updatedLabel?: string;
+  children: ReactNode;
+}) {
   return (
     <section className="section-pad bg-white">
       <div className="container-page">
         <div className="mx-auto max-w-3xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-mist-500">
-            Son güncelleme: {updated}
+            {updatedLabel}: {updated}
           </p>
           <div className="legal-prose mt-8">{children}</div>
         </div>
