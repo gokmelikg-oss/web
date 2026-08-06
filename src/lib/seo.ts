@@ -68,6 +68,7 @@ export function pageMetadata({
     tr: 'tr_TR',
     en: 'en_US',
     ar: 'ar_EG',
+    el: 'el_GR',
   };
 
   return {

@@ -25,9 +25,21 @@
     "ctaPrimary": "Ürünleri İncele",
     "ctaSecondary": "Teklif İste",
     "stats": [
-      { "value": 35, "suffix": "", "label": "Yıllık üretim tecrübesi" },
-      { "value": 240000, "suffix": "+", "label": "Sahada çalışan sistem" },
-      { "value": 40, "suffix": "+", "label": "İhracat yapılan ülke" }
+      {
+        "value": 35,
+        "suffix": "",
+        "label": "Yıllık üretim tecrübesi"
+      },
+      {
+        "value": 240000,
+        "suffix": "+",
+        "label": "Sahada çalışan sistem"
+      },
+      {
+        "value": 40,
+        "suffix": "+",
+        "label": "İhracat yapılan ülke"
+      }
     ]
   },
   "group": {
@@ -77,11 +89,31 @@
     "body": "Gerçek SolidWorks katı modelinden: sayfayı kaydırdıkça Orion kolektörü katman katman kurulur, sonunda patlatılmış görünümde bütün parçalarıyla karşınızda.",
     "hint": "Kaydırarak kurun",
     "layers": [
-      { "no": "01", "name": "Alüminyum kasa", "spec": "SMK Alüminyum eloksallı profil gövde" },
-      { "no": "02", "name": "Taş yünü yalıtım", "spec": "45 mm — A1 sınıfı, ısı kaybına karşı" },
-      { "no": "03", "name": "Selektif absorber", "spec": "Ti-N kaplama — α ≥ %95, bakır harp boru" },
-      { "no": "04", "name": "Temperli cam", "spec": "4 mm, düşük demirli — %91 ışık geçirgenliği" },
-      { "no": "05", "name": "Patlatılmış görünüm", "spec": "Tüm katmanlar — komple montaj seti" }
+      {
+        "no": "01",
+        "name": "Alüminyum kasa",
+        "spec": "SMK Alüminyum eloksallı profil gövde"
+      },
+      {
+        "no": "02",
+        "name": "Taş yünü yalıtım",
+        "spec": "45 mm — A1 sınıfı, ısı kaybına karşı"
+      },
+      {
+        "no": "03",
+        "name": "Selektif absorber",
+        "spec": "Ti-N kaplama — α ≥ %95, bakır harp boru"
+      },
+      {
+        "no": "04",
+        "name": "Temperli cam",
+        "spec": "4 mm, düşük demirli — %91 ışık geçirgenliği"
+      },
+      {
+        "no": "05",
+        "name": "Patlatılmış görünüm",
+        "spec": "Tüm katmanlar — komple montaj seti"
+      }
     ],
     "viewerLabel": "DİJİTAL İKİZ",
     "titleBlock": {
@@ -98,10 +130,22 @@
     "title": "Üretimin her adımı kendi bünyemizde",
     "body": "Şimşek Solar, Mersin'deki entegre tesislerinde hammadde girişinden paketlemeye kadar üretimin tamamını kendi çatısı altında yürütür. Emaye fırını, CNC boru bükme, lazer kesim ve alüminyum profil hatlarının tek kampüste toplanması; yüksek kapasiteyi istikrarlı kaliteyle, kısa terminlerle ve rekabetçi maliyetle birleştirir. Her ürün, sahaya çıkmadan önce kalite kontrol istasyonlarından geçer.",
     "stats": [
-      { "value": "11.575 m²", "label": "Toplam tesis alanı — 2. OSB" },
-      { "value": "5.700 m²", "label": "Kapalı üretim alanı" },
-      { "value": "900 / gün", "label": "Kolektör üretim kapasitesi" },
-      { "value": "150 / gün", "label": "Boyler üretim kapasitesi" }
+      {
+        "value": "11.575 m²",
+        "label": "Toplam tesis alanı — 2. OSB"
+      },
+      {
+        "value": "5.700 m²",
+        "label": "Kapalı üretim alanı"
+      },
+      {
+        "value": "900 / gün",
+        "label": "Kolektör üretim kapasitesi"
+      },
+      {
+        "value": "150 / gün",
+        "label": "Boyler üretim kapasitesi"
+      }
     ]
   },
   "calculator": {
@@ -167,15 +211,45 @@
         "groups": [
           {
             "items": [
-              { "name": "Orion 100 Serisi", "note": "Alüminyum Boru + Alüminyum Siyah Mat Boyalı Absorber" },
-              { "name": "Orion 200 Serisi", "note": "Alüminyum Boru + Alüminyum Selektif Absorber" },
-              { "name": "Orion 300 Serisi", "note": "Bakır Boru + Alüminyum Siyah Mat Boyalı Absorber" },
-              { "name": "Orion 400 Serisi", "note": "Bakır Boru + Alüminyum Selektif Absorber" },
-              { "name": "Orion 500 Serisi", "note": "Bakır Boru + Bakır Siyah Boyalı Absorber" },
-              { "name": "Orion 600 Serisi", "note": "Bakır Boru + Bakır Selektif Absorber" },
-              { "name": "Orion 700 Serisi", "note": "Bakır Boru + Alüminyum Siyah Mat Boyalı Absorber", "new": true },
-              { "name": "Orion 800 Serisi", "note": "Bakır Boru + Alüminyum Selektif Absorber", "new": true },
-              { "name": "Orion 900 Serisi", "note": "Bakır Boru + Bakır Selektif Absorber", "new": true }
+              {
+                "name": "Orion 100 Serisi",
+                "note": "Alüminyum Boru + Alüminyum Siyah Mat Boyalı Absorber"
+              },
+              {
+                "name": "Orion 200 Serisi",
+                "note": "Alüminyum Boru + Alüminyum Selektif Absorber"
+              },
+              {
+                "name": "Orion 300 Serisi",
+                "note": "Bakır Boru + Alüminyum Siyah Mat Boyalı Absorber"
+              },
+              {
+                "name": "Orion 400 Serisi",
+                "note": "Bakır Boru + Alüminyum Selektif Absorber"
+              },
+              {
+                "name": "Orion 500 Serisi",
+                "note": "Bakır Boru + Bakır Siyah Boyalı Absorber"
+              },
+              {
+                "name": "Orion 600 Serisi",
+                "note": "Bakır Boru + Bakır Selektif Absorber"
+              },
+              {
+                "name": "Orion 700 Serisi",
+                "note": "Bakır Boru + Alüminyum Siyah Mat Boyalı Absorber",
+                "new": true
+              },
+              {
+                "name": "Orion 800 Serisi",
+                "note": "Bakır Boru + Alüminyum Selektif Absorber",
+                "new": true
+              },
+              {
+                "name": "Orion 900 Serisi",
+                "note": "Bakır Boru + Bakır Selektif Absorber",
+                "new": true
+              }
             ]
           }
         ]
@@ -187,11 +261,26 @@
         "groups": [
           {
             "items": [
-              { "name": "Aquarious 500 Serisi", "note": "93 Litre · 120 Litre · 150 Litre · 170 Litre" },
-              { "name": "Aquarious 540 Serisi — Kapalı Devre", "note": "150 Litre · 200 Litre · 300 Litre" },
-              { "name": "Aquarious 540 Serisi — Açık Devre", "note": "150 Litre · 200 Litre · 300 Litre" },
-              { "name": "Sirius 540 Serisi — Fleks Serpantinli", "note": "200 Litre · 300 Litre" },
-              { "name": "Aquarious 740 Serisi — Kapalı Devre", "note": "500 Litre" }
+              {
+                "name": "Aquarious 500 Serisi",
+                "note": "93 Litre · 120 Litre · 150 Litre · 170 Litre"
+              },
+              {
+                "name": "Aquarious 540 Serisi — Kapalı Devre",
+                "note": "150 Litre · 200 Litre · 300 Litre"
+              },
+              {
+                "name": "Aquarious 540 Serisi — Açık Devre",
+                "note": "150 Litre · 200 Litre · 300 Litre"
+              },
+              {
+                "name": "Sirius 540 Serisi — Fleks Serpantinli",
+                "note": "200 Litre · 300 Litre"
+              },
+              {
+                "name": "Aquarious 740 Serisi — Kapalı Devre",
+                "note": "500 Litre"
+              }
             ]
           }
         ]
@@ -204,25 +293,56 @@
           {
             "title": "Merkezi Sistem Sehpaları",
             "items": [
-              { "name": "Merkezi Sistem Teras Çatı Galvaniz Sehpa", "note": "2 mm" },
-              { "name": "Merkezi Sistem Teras Çatı Galvaniz Sehpa", "note": "3 mm" },
-              { "name": "Merkezi Sistem Teras Çatı Paslanmaz Sehpa" },
-              { "name": "Merkezi Sistem Kiremit / Trapez Çatı Sehpası", "note": "5 mm" },
-              { "name": "Merkezi Sistem Profil Kaide Çatı Alüminyum Sehpa" },
-              { "name": "OEM Sehpa Üretimleri" }
+              {
+                "name": "Merkezi Sistem Teras Çatı Galvaniz Sehpa",
+                "note": "2 mm"
+              },
+              {
+                "name": "Merkezi Sistem Teras Çatı Galvaniz Sehpa",
+                "note": "3 mm"
+              },
+              {
+                "name": "Merkezi Sistem Teras Çatı Paslanmaz Sehpa"
+              },
+              {
+                "name": "Merkezi Sistem Kiremit / Trapez Çatı Sehpası",
+                "note": "5 mm"
+              },
+              {
+                "name": "Merkezi Sistem Profil Kaide Çatı Alüminyum Sehpa"
+              },
+              {
+                "name": "OEM Sehpa Üretimleri"
+              }
             ]
           },
           {
             "title": "Paket Sistem Sehpaları",
             "items": [
-              { "name": "Helios 120 Serisi Paket Sistem Sehpası" },
-              { "name": "Helios 150S ve 200S Serisi Paket Sistem Sehpası" },
-              { "name": "Helios 150L ve 200L Serisi Paket Sistem Sehpası" },
-              { "name": "Helios 300S Serisi Paket Sistem Sehpası" },
-              { "name": "Helios 300L Serisi Paket Sistem Sehpası" },
-              { "name": "Helios 500S Serisi Paket Sistem Sehpası" },
-              { "name": "Helios 500L Serisi Paket Sistem Sehpası" },
-              { "name": "OEM Sehpa Üretimleri" }
+              {
+                "name": "Helios 120 Serisi Paket Sistem Sehpası"
+              },
+              {
+                "name": "Helios 150S ve 200S Serisi Paket Sistem Sehpası"
+              },
+              {
+                "name": "Helios 150L ve 200L Serisi Paket Sistem Sehpası"
+              },
+              {
+                "name": "Helios 300S Serisi Paket Sistem Sehpası"
+              },
+              {
+                "name": "Helios 300L Serisi Paket Sistem Sehpası"
+              },
+              {
+                "name": "Helios 500S Serisi Paket Sistem Sehpası"
+              },
+              {
+                "name": "Helios 500L Serisi Paket Sistem Sehpası"
+              },
+              {
+                "name": "OEM Sehpa Üretimleri"
+              }
             ]
           }
         ]
@@ -234,15 +354,33 @@
         "groups": [
           {
             "items": [
-              { "name": "3/4\" Ara Bağlantı Fleksi" },
-              { "name": "3/4\" Köşe Bağlantı Fleksi" },
-              { "name": "3/4\" Pirinç Kör Tapa" },
-              { "name": "3/4\" & 1/2\" Küresel Vana" },
-              { "name": "1/2\" Solar Hava Purjörü" },
-              { "name": "Paket Sistem İzoleli Fleks Bağlantı Kiti" },
-              { "name": "Paket Sistem Emniyet Kiti" },
-              { "name": "Solar Transfer Sıvısı" },
-              { "name": "Otomatik Solar Sıvı Besleme Ünitesi" }
+              {
+                "name": "3/4\" Ara Bağlantı Fleksi"
+              },
+              {
+                "name": "3/4\" Köşe Bağlantı Fleksi"
+              },
+              {
+                "name": "3/4\" Pirinç Kör Tapa"
+              },
+              {
+                "name": "3/4\" & 1/2\" Küresel Vana"
+              },
+              {
+                "name": "1/2\" Solar Hava Purjörü"
+              },
+              {
+                "name": "Paket Sistem İzoleli Fleks Bağlantı Kiti"
+              },
+              {
+                "name": "Paket Sistem Emniyet Kiti"
+              },
+              {
+                "name": "Solar Transfer Sıvısı"
+              },
+              {
+                "name": "Otomatik Solar Sıvı Besleme Ünitesi"
+              }
             ]
           }
         ]
@@ -254,10 +392,18 @@
         "groups": [
           {
             "items": [
-              { "name": "Kontaktörlü Otomasyon Panosu" },
-              { "name": "Kartlı Otomasyon Panosu" },
-              { "name": "AD598 Otomatik Kontrol Paneli" },
-              { "name": "OEM Otomasyon Panosu" }
+              {
+                "name": "Kontaktörlü Otomasyon Panosu"
+              },
+              {
+                "name": "Kartlı Otomasyon Panosu"
+              },
+              {
+                "name": "AD598 Otomatik Kontrol Paneli"
+              },
+              {
+                "name": "OEM Otomasyon Panosu"
+              }
             ]
           }
         ]
@@ -274,30 +420,81 @@
       "smart": "Uzaktan izleme ister misiniz?"
     },
     "segments": {
-      "home": { "title": "Konut", "desc": "Müstakil ev veya daire" },
-      "commercial": { "title": "Otel & Ticari", "desc": "Otel, yurt, spor tesisi" },
-      "industrial": { "title": "Endüstri & Kamu", "desc": "Fabrika, askeri tesis, toplu konut" }
+      "home": {
+        "title": "Konut",
+        "desc": "Müstakil ev veya daire"
+      },
+      "commercial": {
+        "title": "Otel & Ticari",
+        "desc": "Otel, yurt, spor tesisi"
+      },
+      "industrial": {
+        "title": "Endüstri & Kamu",
+        "desc": "Fabrika, askeri tesis, toplu konut"
+      }
     },
     "sizes": {
       "home": [
-        { "id": "s", "title": "2-3 kişi", "desc": "Küçük hane" },
-        { "id": "m", "title": "4-5 kişi", "desc": "Standart hane" },
-        { "id": "l", "title": "6-8 kişi", "desc": "Kalabalık hane" }
+        {
+          "id": "s",
+          "title": "2-3 kişi",
+          "desc": "Küçük hane"
+        },
+        {
+          "id": "m",
+          "title": "4-5 kişi",
+          "desc": "Standart hane"
+        },
+        {
+          "id": "l",
+          "title": "6-8 kişi",
+          "desc": "Kalabalık hane"
+        }
       ],
       "commercial": [
-        { "id": "s", "title": "≤ 30 oda / kişi", "desc": "Butik ölçek" },
-        { "id": "m", "title": "30-80 oda / kişi", "desc": "Orta ölçek" },
-        { "id": "l", "title": "80+ oda / kişi", "desc": "Büyük ölçek" }
+        {
+          "id": "s",
+          "title": "≤ 30 oda / kişi",
+          "desc": "Butik ölçek"
+        },
+        {
+          "id": "m",
+          "title": "30-80 oda / kişi",
+          "desc": "Orta ölçek"
+        },
+        {
+          "id": "l",
+          "title": "80+ oda / kişi",
+          "desc": "Büyük ölçek"
+        }
       ],
       "industrial": [
-        { "id": "s", "title": "Proses ön ısıtma", "desc": "Endüstriyel su" },
-        { "id": "m", "title": "Merkezi sıcak su", "desc": "Tesis geneli" },
-        { "id": "l", "title": "Toplu konut", "desc": "Çok blok" }
+        {
+          "id": "s",
+          "title": "Proses ön ısıtma",
+          "desc": "Endüstriyel su"
+        },
+        {
+          "id": "m",
+          "title": "Merkezi sıcak su",
+          "desc": "Tesis geneli"
+        },
+        {
+          "id": "l",
+          "title": "Toplu konut",
+          "desc": "Çok blok"
+        }
       ]
     },
     "smartOptions": {
-      "yes": { "title": "Evet", "desc": "ŞimşekTrack ile uzaktan izleme" },
-      "no": { "title": "Şimdilik hayır", "desc": "Sonradan eklenebilir" }
+      "yes": {
+        "title": "Evet",
+        "desc": "ŞimşekTrack ile uzaktan izleme"
+      },
+      "no": {
+        "title": "Şimdilik hayır",
+        "desc": "Sonradan eklenebilir"
+      }
     },
     "back": "Geri",
     "restart": "Baştan başla",
@@ -317,22 +514,52 @@
     "eyebrow": "06 · Neden Şimşek",
     "title": "Sahada kanıtlanmış mühendislik",
     "items": [
-      { "title": "Kendi üretim tesisimiz", "desc": "Kolektörlerimizi Mersin'deki entegre tesisimizde üretiyor; boyler yalıtımından montaj ve paketlemeye kadar tüm hatları kendi kalite standardımızla yönetiyoruz." },
-      { "title": "Sertifikalı kalite", "desc": "Ürünlerimiz CE, TSE ve Solar Keymark testlerinden geçer; her üretim partisi sevkiyat öncesi kalite kontrol istasyonlarımızda tek tek denetlenir." },
-      { "title": "Anahtar teslim proje", "desc": "Keşiften projelendirmeye, montajdan devreye almaya tüm süreç Şimşek Yenilenebilir Enerji Sistemleri ekiplerince tek elden yönetilir." },
-      { "title": "On yıllarca sahada", "desc": "Kurduğumuz sistemler on yıllar boyunca çalışır durumda kalır; yaygın servis ağımız ve yedek parça stoğumuzla bakım süreci kesintisiz sürer." },
-      { "title": "Projeye özel üretim", "desc": "Çatı, teras ve zemin uygulamalarına özel sehpa çözümleri; projeye ve talebe özel OEM imalat imkânlarıyla her sahaya uyum sağlarız." },
-      { "title": "İzleme ve hızlı müdahale", "desc": "Akıllı kontrolörlerimizle sistemin çalışma durumunu izler, kesintisiz çalışmasını sağlar; arıza durumunda saha ekiplerimizle acil müdahale ederiz." }
+      {
+        "title": "Kendi üretim tesisimiz",
+        "desc": "Kolektörlerimizi Mersin'deki entegre tesisimizde üretiyor; boyler yalıtımından montaj ve paketlemeye kadar tüm hatları kendi kalite standardımızla yönetiyoruz."
+      },
+      {
+        "title": "Sertifikalı kalite",
+        "desc": "Ürünlerimiz CE, TSE ve Solar Keymark testlerinden geçer; her üretim partisi sevkiyat öncesi kalite kontrol istasyonlarımızda tek tek denetlenir."
+      },
+      {
+        "title": "Anahtar teslim proje",
+        "desc": "Keşiften projelendirmeye, montajdan devreye almaya tüm süreç Şimşek Yenilenebilir Enerji Sistemleri ekiplerince tek elden yönetilir."
+      },
+      {
+        "title": "On yıllarca sahada",
+        "desc": "Kurduğumuz sistemler on yıllar boyunca çalışır durumda kalır; yaygın servis ağımız ve yedek parça stoğumuzla bakım süreci kesintisiz sürer."
+      },
+      {
+        "title": "Projeye özel üretim",
+        "desc": "Çatı, teras ve zemin uygulamalarına özel sehpa çözümleri; projeye ve talebe özel OEM imalat imkânlarıyla her sahaya uyum sağlarız."
+      },
+      {
+        "title": "İzleme ve hızlı müdahale",
+        "desc": "Akıllı kontrolörlerimizle sistemin çalışma durumunu izler, kesintisiz çalışmasını sağlar; arıza durumunda saha ekiplerimizle acil müdahale ederiz."
+      }
     ]
   },
   "process": {
     "eyebrow": "Süreç",
     "title": "Teklif isteğinden devreye almaya",
     "steps": [
-      { "title": "İhtiyaç analizi", "desc": "Hane veya tesis su tüketiminize göre doğru kapasiteyi birlikte belirliyoruz." },
-      { "title": "Proje ve mühendislik", "desc": "Çatı yapısı ve konuma özel sistem şeması, statik hesap ve teknik çizimlerle detaylı teklif hazırlıyoruz." },
-      { "title": "Üretim ve sevkiyat", "desc": "Sipariş, Mersin tesislerimizde üretilip güvenli paketleme ile sahaya ulaştırılır." },
-      { "title": "Saha uygulaması ve izleme", "desc": "Kendi saha ekibimiz kurulumu tamamlar, isteğe bağlı uzaktan izleme sistemine bağlar." }
+      {
+        "title": "İhtiyaç analizi",
+        "desc": "Hane veya tesis su tüketiminize göre doğru kapasiteyi birlikte belirliyoruz."
+      },
+      {
+        "title": "Proje ve mühendislik",
+        "desc": "Çatı yapısı ve konuma özel sistem şeması, statik hesap ve teknik çizimlerle detaylı teklif hazırlıyoruz."
+      },
+      {
+        "title": "Üretim ve sevkiyat",
+        "desc": "Sipariş, Mersin tesislerimizde üretilip güvenli paketleme ile sahaya ulaştırılır."
+      },
+      {
+        "title": "Saha uygulaması ve izleme",
+        "desc": "Kendi saha ekibimiz kurulumu tamamlar, isteğe bağlı uzaktan izleme sistemine bağlar."
+      }
     ]
   },
   "certs": {
@@ -341,18 +568,66 @@
     "subtitle": "Ürünlerimiz ve yönetim sistemlerimiz, ulusal ve uluslararası akredite kuruluşlar tarafından denetlenir ve belgelendirilir.",
     "viewLabel": "Belgeyi görüntüle (PDF)",
     "items": [
-      { "label": "Solar Keymark", "scope": "Orion 400 Ultrasonik", "file": "/docs/certs/solar-keymark-orion-400-ultrasonik.pdf" },
-      { "label": "Solar Keymark", "scope": "Orion 400 Lazer", "file": "/docs/certs/solar-keymark-orion-400-lazer.pdf" },
-      { "label": "Solar Keymark", "scope": "Orion 600 Ultrasonik", "file": "/docs/certs/solar-keymark-orion-600-ultrasonik.pdf" },
-      { "label": "CL23020833-DRAFT", "scope": "Solar Keymark taslak belge", "file": "/docs/certs/cl23020833-draft.pdf" },
-      { "label": "TSE Belgesi", "scope": "Kolektör ve boyler", "file": "/docs/certs/tse.pdf" },
-      { "label": "CE Belgesi", "scope": "Kolektör ve boyler", "file": "/docs/certs/ce.pdf" },
-      { "label": "BAFA List", "scope": "Almanya teşvik listesi", "file": "/docs/certs/bafa.pdf" },
-      { "label": "ISO 9001", "scope": "Kalite yönetim sistemi", "file": "/docs/certs/iso-9001.pdf" },
-      { "label": "ISO 14001", "scope": "Çevre yönetim sistemi", "file": "/docs/certs/iso-14001.pdf" },
-      { "label": "ISO 45001", "scope": "İş sağlığı ve güvenliği", "file": "/docs/certs/iso-45001.pdf" },
-      { "label": "ISO 10002", "scope": "Müşteri memnuniyeti yönetimi", "file": "/docs/certs/iso-10002.pdf" },
-      { "label": "Zero Waste", "scope": "Sıfır atık belgesi", "file": "/docs/certs/zero-waste.pdf" }
+      {
+        "label": "Solar Keymark",
+        "scope": "Orion 400 Ultrasonik",
+        "file": "/docs/certs/solar-keymark-orion-400-ultrasonik.pdf"
+      },
+      {
+        "label": "Solar Keymark",
+        "scope": "Orion 400 Lazer",
+        "file": "/docs/certs/solar-keymark-orion-400-lazer.pdf"
+      },
+      {
+        "label": "Solar Keymark",
+        "scope": "Orion 600 Ultrasonik",
+        "file": "/docs/certs/solar-keymark-orion-600-ultrasonik.pdf"
+      },
+      {
+        "label": "CL23020833-DRAFT",
+        "scope": "Solar Keymark taslak belge",
+        "file": "/docs/certs/cl23020833-draft.pdf"
+      },
+      {
+        "label": "TSE Belgesi",
+        "scope": "Kolektör ve boyler",
+        "file": "/docs/certs/tse.pdf"
+      },
+      {
+        "label": "CE Belgesi",
+        "scope": "Kolektör ve boyler",
+        "file": "/docs/certs/ce.pdf"
+      },
+      {
+        "label": "BAFA List",
+        "scope": "Almanya teşvik listesi",
+        "file": "/docs/certs/bafa.pdf"
+      },
+      {
+        "label": "ISO 9001",
+        "scope": "Kalite yönetim sistemi",
+        "file": "/docs/certs/iso-9001.pdf"
+      },
+      {
+        "label": "ISO 14001",
+        "scope": "Çevre yönetim sistemi",
+        "file": "/docs/certs/iso-14001.pdf"
+      },
+      {
+        "label": "ISO 45001",
+        "scope": "İş sağlığı ve güvenliği",
+        "file": "/docs/certs/iso-45001.pdf"
+      },
+      {
+        "label": "ISO 10002",
+        "scope": "Müşteri memnuniyeti yönetimi",
+        "file": "/docs/certs/iso-10002.pdf"
+      },
+      {
+        "label": "Zero Waste",
+        "scope": "Sıfır atık belgesi",
+        "file": "/docs/certs/zero-waste.pdf"
+      }
     ]
   },
   "projectsTeaser": {
@@ -378,17 +653,38 @@
       "body2": "Bugün ürünlerimiz askeri tesisler, oteller, hastaneler ve toplu konut projelerinin yanı sıra ihracat pazarlarında da yer alıyor. Ar-Ge ekibimiz; ürün dayanıklılığı, montaj kolaylığı ve sistem verimliliği başlıklarında geliştirme çalışmalarını sürdürüyor."
     },
     "stats": [
-      { "value": "1992", "label": "Kuruluş" },
-      { "value": "4", "label": "Grup şirketi" },
-      { "value": "240.000+", "label": "Sahada çalışan sistem" },
-      { "value": "40+", "label": "İhracat yapılan ülke" }
+      {
+        "value": "1992",
+        "label": "Kuruluş"
+      },
+      {
+        "value": "4",
+        "label": "Grup şirketi"
+      },
+      {
+        "value": "240.000+",
+        "label": "Sahada çalışan sistem"
+      },
+      {
+        "value": "40+",
+        "label": "İhracat yapılan ülke"
+      }
     ],
     "values": {
       "title": "Bizi biz yapan ilkeler",
       "items": [
-        { "title": "Dayanıklılık önce gelir", "desc": "Her ürünü kullanıcının ihtiyacına yönelik, on yıllar sürecek şekilde tasarlarız." },
-        { "title": "Şeffaf mühendislik", "desc": "Teknik föylerimizde akredite laboratuvar test değerlerini paylaşır, her ürünün performansını belgeleriyle birlikte sunarız." },
-        { "title": "Üretimden otomasyona bütünlük", "desc": "Üretici, proje mühendisi, saha uygulayıcısı ve teknoloji sağlayıcısı rollerini tek çatı altında topluyoruz." }
+        {
+          "title": "Dayanıklılık önce gelir",
+          "desc": "Her ürünü kullanıcının ihtiyacına yönelik, on yıllar sürecek şekilde tasarlarız."
+        },
+        {
+          "title": "Şeffaf mühendislik",
+          "desc": "Teknik föylerimizde akredite laboratuvar test değerlerini paylaşır, her ürünün performansını belgeleriyle birlikte sunarız."
+        },
+        {
+          "title": "Üretimden otomasyona bütünlük",
+          "desc": "Üretici, proje mühendisi, saha uygulayıcısı ve teknoloji sağlayıcısı rollerini tek çatı altında topluyoruz."
+        }
       ]
     },
     "facility": {
@@ -406,7 +702,10 @@
       "all": "Tümü",
       "datasheet": "Teknik Föyler",
       "drawing": "Teknik Çizimler",
-      "manual": "Kurulum Kılavuzları"
+      "manual": "Kurulum Kılavuzları",
+      "catalog": "Kataloglar",
+      "certificate": "Sertifikalar",
+      "cad": "CAD / BIM"
     },
     "downloadSelected": "Seçilenleri indir",
     "productDocsTitle": "Ürün bazlı teknik dosyalar",
@@ -416,14 +715,36 @@
     "generalDocsTitle": "Genel dökümanlar",
     "generalDocsSubtitle": "Kurumsal tanıtım, marka kullanımı ve satış sonrası dökümanları.",
     "generalDocs": [
-      { "name": "Şimşek Solar Ürün Kataloğu", "type": "catalog" },
-      { "name": "Şimşek Grup Kurumsal Tanıtım Dosyası", "type": "catalog" },
-      { "name": "Logo Kullanım Kılavuzu", "type": "catalog" },
-      { "name": "Kurumsal Kimlik Rehberi", "type": "catalog" },
-      { "name": "Marka ve Logo Dosyaları", "type": "catalog" },
-      { "name": "Garanti Koşulları ve Genel Şartlar", "type": "catalog" },
-      { "name": "Bayi Kurulum ve Bakım Kılavuzu", "type": "manual" }
-    ]
+      {
+        "name": "Şimşek Solar Ürün Kataloğu",
+        "type": "catalog"
+      },
+      {
+        "name": "Şimşek Grup Kurumsal Tanıtım Dosyası",
+        "type": "catalog"
+      },
+      {
+        "name": "Logo Kullanım Kılavuzu",
+        "type": "catalog"
+      },
+      {
+        "name": "Kurumsal Kimlik Rehberi",
+        "type": "catalog"
+      },
+      {
+        "name": "Marka ve Logo Dosyaları",
+        "type": "catalog"
+      },
+      {
+        "name": "Garanti Koşulları ve Genel Şartlar",
+        "type": "catalog"
+      },
+      {
+        "name": "Bayi Kurulum ve Bakım Kılavuzu",
+        "type": "manual"
+      }
+    ],
+    "selectAll": "Tümünü seç"
   },
   "products": {
     "hero": {
@@ -448,7 +769,8 @@
       "overview": "Genel Bakış",
       "specs": "Teknik Özellikler",
       "drawings": "Teknik Çizim",
-      "documents": "Dökümanlar"
+      "documents": "Dökümanlar",
+      "cad": "CAD / BIM"
     },
     "drawingsTitle": "Teknik ölçü çizimleri",
     "drawingsBody": "Montaj ve statik hesap için ölçülendirilmiş çizimler (PDF).",
@@ -578,7 +900,9 @@
       "boiler": "Boyler",
       "package": "Paket Sistem",
       "smart": "Akıllı Sistem"
-    }
+    },
+    "cadTitle": "CAD / BIM dosyaları",
+    "cadBody": "Proje çizimlerinize doğrudan aktarabileceğiniz 3D modeller ve CAD formatları."
   },
   "projects": {
     "hero": {
@@ -618,9 +942,18 @@
     "benefits": {
       "title": "Bayilerimize sunduklarımız",
       "items": [
-        { "title": "Bölgesel münhasırlık", "desc": "Belirlenen bölgelerde sınırlı sayıda bayi ile çalışarak karlılığınızı koruruz." },
-        { "title": "Teknik eğitim ve saha desteği", "desc": "Kurulum öncesi ve sonrası teknik ekibimizden eğitim ve destek alırsınız." },
-        { "title": "Pazarlama materyali desteği", "desc": "Katalog, teknik föy ve saha sunumları için hazır materyal sağlarız." }
+        {
+          "title": "Bölgesel münhasırlık",
+          "desc": "Belirlenen bölgelerde sınırlı sayıda bayi ile çalışarak karlılığınızı koruruz."
+        },
+        {
+          "title": "Teknik eğitim ve saha desteği",
+          "desc": "Kurulum öncesi ve sonrası teknik ekibimizden eğitim ve destek alırsınız."
+        },
+        {
+          "title": "Pazarlama materyali desteği",
+          "desc": "Katalog, teknik föy ve saha sunumları için hazır materyal sağlarız."
+        }
       ]
     },
     "network": {

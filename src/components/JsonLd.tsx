@@ -189,6 +189,7 @@ const HOME_LABEL: Record<Locale, string> = {
   tr: 'Ana Sayfa',
   en: 'Home',
   ar: 'الرئيسية',
+  el: 'Αρχική',
 };
 
 export async function PageBreadcrumb({

@@ -56,19 +56,19 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:locale(tr|en|ar)/automation',
+        source: '/:locale(tr|en|ar|el)/automation',
         destination: '/:locale/products',
         permanent: false,
       },
       {
         // Bayilik iletişim sayfasına taşındı — eski /dealers rotası yönlendirilir.
-        source: '/:locale(tr|en|ar)/dealers',
+        source: '/:locale(tr|en|ar|el)/dealers',
         destination: '/:locale/contact#bayilik',
         permanent: true,
       },
       {
         // Satış sonrası hizmet iletişim sayfasına taşındı.
-        source: '/:locale(tr|en|ar)/service',
+        source: '/:locale(tr|en|ar|el)/service',
         destination: '/:locale/contact#servis',
         permanent: true,
       },

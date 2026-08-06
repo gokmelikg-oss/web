@@ -25,9 +25,21 @@
     "ctaPrimary": "Explore Products",
     "ctaSecondary": "Request a Quote",
     "stats": [
-      { "value": 35, "suffix": "", "label": "Years of manufacturing" },
-      { "value": 240000, "suffix": "+", "label": "Systems in the field" },
-      { "value": 40, "suffix": "+", "label": "Export markets" }
+      {
+        "value": 35,
+        "suffix": "",
+        "label": "Years of manufacturing"
+      },
+      {
+        "value": 240000,
+        "suffix": "+",
+        "label": "Systems in the field"
+      },
+      {
+        "value": 40,
+        "suffix": "+",
+        "label": "Export markets"
+      }
     ]
   },
   "group": {
@@ -77,11 +89,31 @@
     "body": "From the real SolidWorks solid model: as you scroll, the Orion collector is built layer by layer, ending in a full exploded view of every component.",
     "hint": "Scroll to assemble",
     "layers": [
-      { "no": "01", "name": "Aluminum casing", "spec": "SMK Aluminum anodized profile body" },
-      { "no": "02", "name": "Rock wool insulation", "spec": "45 mm — class A1, against heat loss" },
-      { "no": "03", "name": "Selective absorber", "spec": "Ti-N coating — α ≥ 95%, copper harp tubes" },
-      { "no": "04", "name": "Tempered glass", "spec": "4 mm, low-iron — 91% light transmittance" },
-      { "no": "05", "name": "Exploded view", "spec": "All layers — complete assembly kit" }
+      {
+        "no": "01",
+        "name": "Aluminum casing",
+        "spec": "SMK Aluminum anodized profile body"
+      },
+      {
+        "no": "02",
+        "name": "Rock wool insulation",
+        "spec": "45 mm — class A1, against heat loss"
+      },
+      {
+        "no": "03",
+        "name": "Selective absorber",
+        "spec": "Ti-N coating — α ≥ 95%, copper harp tubes"
+      },
+      {
+        "no": "04",
+        "name": "Tempered glass",
+        "spec": "4 mm, low-iron — 91% light transmittance"
+      },
+      {
+        "no": "05",
+        "name": "Exploded view",
+        "spec": "All layers — complete assembly kit"
+      }
     ],
     "viewerLabel": "DIGITAL TWIN",
     "titleBlock": {
@@ -98,10 +130,22 @@
     "title": "Every step of production in-house",
     "body": "At its integrated plants in Mersin, Şimşek Solar runs the entire production process under its own roof, from raw material intake to packaging. Bringing the enamel kiln, CNC tube bending, laser cutting and aluminum profile lines together on a single campus combines high capacity with consistent quality, short lead times and competitive cost. Every product passes quality control stations before reaching the field.",
     "stats": [
-      { "value": "11,575 m²", "label": "Production facility area" },
-      { "value": "900 / day", "label": "Collector production capacity" },
-      { "value": "150 / day", "label": "Boiler production capacity" },
-      { "value": "100,000+", "label": "Completed projects" }
+      {
+        "value": "11,575 m²",
+        "label": "Production facility area"
+      },
+      {
+        "value": "900 / day",
+        "label": "Collector production capacity"
+      },
+      {
+        "value": "150 / day",
+        "label": "Boiler production capacity"
+      },
+      {
+        "value": "100,000+",
+        "label": "Completed projects"
+      }
     ]
   },
   "calculator": {
@@ -167,15 +211,45 @@
         "groups": [
           {
             "items": [
-              { "name": "Orion 100 Series", "note": "Aluminum Tube + Matte Black Painted Aluminum Absorber" },
-              { "name": "Orion 200 Series", "note": "Aluminum Tube + Selective Aluminum Absorber" },
-              { "name": "Orion 300 Series", "note": "Copper Tube + Matte Black Painted Aluminum Absorber" },
-              { "name": "Orion 400 Series", "note": "Copper Tube + Selective Aluminum Absorber" },
-              { "name": "Orion 500 Series", "note": "Copper Tube + Black Painted Copper Absorber" },
-              { "name": "Orion 600 Series", "note": "Copper Tube + Selective Copper Absorber" },
-              { "name": "Orion 700 Series", "note": "Copper Tube + Matte Black Painted Aluminum Absorber", "new": true },
-              { "name": "Orion 800 Series", "note": "Copper Tube + Selective Aluminum Absorber", "new": true },
-              { "name": "Orion 900 Series", "note": "Copper Tube + Selective Copper Absorber", "new": true }
+              {
+                "name": "Orion 100 Series",
+                "note": "Aluminum Tube + Matte Black Painted Aluminum Absorber"
+              },
+              {
+                "name": "Orion 200 Series",
+                "note": "Aluminum Tube + Selective Aluminum Absorber"
+              },
+              {
+                "name": "Orion 300 Series",
+                "note": "Copper Tube + Matte Black Painted Aluminum Absorber"
+              },
+              {
+                "name": "Orion 400 Series",
+                "note": "Copper Tube + Selective Aluminum Absorber"
+              },
+              {
+                "name": "Orion 500 Series",
+                "note": "Copper Tube + Black Painted Copper Absorber"
+              },
+              {
+                "name": "Orion 600 Series",
+                "note": "Copper Tube + Selective Copper Absorber"
+              },
+              {
+                "name": "Orion 700 Series",
+                "note": "Copper Tube + Matte Black Painted Aluminum Absorber",
+                "new": true
+              },
+              {
+                "name": "Orion 800 Series",
+                "note": "Copper Tube + Selective Aluminum Absorber",
+                "new": true
+              },
+              {
+                "name": "Orion 900 Series",
+                "note": "Copper Tube + Selective Copper Absorber",
+                "new": true
+              }
             ]
           }
         ]
@@ -187,11 +261,26 @@
         "groups": [
           {
             "items": [
-              { "name": "Aquarious 500 Series", "note": "93 L · 120 L · 150 L · 170 L" },
-              { "name": "Aquarious 540 Series — Closed Loop", "note": "150 L · 200 L · 300 L" },
-              { "name": "Aquarious 540 Series — Open Loop", "note": "150 L · 200 L · 300 L" },
-              { "name": "Sirius 540 Series — Flex Coil", "note": "200 L · 300 L" },
-              { "name": "Aquarious 740 Series — Closed Loop", "note": "500 L" }
+              {
+                "name": "Aquarious 500 Series",
+                "note": "93 L · 120 L · 150 L · 170 L"
+              },
+              {
+                "name": "Aquarious 540 Series — Closed Loop",
+                "note": "150 L · 200 L · 300 L"
+              },
+              {
+                "name": "Aquarious 540 Series — Open Loop",
+                "note": "150 L · 200 L · 300 L"
+              },
+              {
+                "name": "Sirius 540 Series — Flex Coil",
+                "note": "200 L · 300 L"
+              },
+              {
+                "name": "Aquarious 740 Series — Closed Loop",
+                "note": "500 L"
+              }
             ]
           }
         ]
@@ -204,25 +293,56 @@
           {
             "title": "Central System Frames",
             "items": [
-              { "name": "Central System Flat Roof Galvanized Frame", "note": "2 mm" },
-              { "name": "Central System Flat Roof Galvanized Frame", "note": "3 mm" },
-              { "name": "Central System Flat Roof Stainless Steel Frame" },
-              { "name": "Central System Tile / Trapezoidal Roof Frame", "note": "5 mm" },
-              { "name": "Central System Profile Base Aluminum Roof Frame" },
-              { "name": "OEM Frame Production" }
+              {
+                "name": "Central System Flat Roof Galvanized Frame",
+                "note": "2 mm"
+              },
+              {
+                "name": "Central System Flat Roof Galvanized Frame",
+                "note": "3 mm"
+              },
+              {
+                "name": "Central System Flat Roof Stainless Steel Frame"
+              },
+              {
+                "name": "Central System Tile / Trapezoidal Roof Frame",
+                "note": "5 mm"
+              },
+              {
+                "name": "Central System Profile Base Aluminum Roof Frame"
+              },
+              {
+                "name": "OEM Frame Production"
+              }
             ]
           },
           {
             "title": "Package System Frames",
             "items": [
-              { "name": "Helios 120 Series Package System Frame" },
-              { "name": "Helios 150S & 200S Series Package System Frame" },
-              { "name": "Helios 150L & 200L Series Package System Frame" },
-              { "name": "Helios 300S Series Package System Frame" },
-              { "name": "Helios 300L Series Package System Frame" },
-              { "name": "Helios 500S Series Package System Frame" },
-              { "name": "Helios 500L Series Package System Frame" },
-              { "name": "OEM Frame Production" }
+              {
+                "name": "Helios 120 Series Package System Frame"
+              },
+              {
+                "name": "Helios 150S & 200S Series Package System Frame"
+              },
+              {
+                "name": "Helios 150L & 200L Series Package System Frame"
+              },
+              {
+                "name": "Helios 300S Series Package System Frame"
+              },
+              {
+                "name": "Helios 300L Series Package System Frame"
+              },
+              {
+                "name": "Helios 500S Series Package System Frame"
+              },
+              {
+                "name": "Helios 500L Series Package System Frame"
+              },
+              {
+                "name": "OEM Frame Production"
+              }
             ]
           }
         ]
@@ -235,24 +355,50 @@
           {
             "title": "Automation & Remote Monitoring",
             "items": [
-              { "name": "Contactor Automation Panel" },
-              { "name": "Card-Based Automation Panel" },
-              { "name": "AD598 Automatic Control Panel" },
-              { "name": "OEM Automation Panel" }
+              {
+                "name": "Contactor Automation Panel"
+              },
+              {
+                "name": "Card-Based Automation Panel"
+              },
+              {
+                "name": "AD598 Automatic Control Panel"
+              },
+              {
+                "name": "OEM Automation Panel"
+              }
             ]
           },
           {
             "title": "Connection Equipment",
             "items": [
-              { "name": "3/4\" Intermediate Connection Flex" },
-              { "name": "3/4\" Corner Connection Flex" },
-              { "name": "3/4\" Brass Blind Plug" },
-              { "name": "3/4\" & 1/2\" Ball Valve" },
-              { "name": "1/2\" Solar Air Vent" },
-              { "name": "Package System Insulated Flex Connection Kit" },
-              { "name": "Package System Safety Kit" },
-              { "name": "Solar Transfer Fluid" },
-              { "name": "Automatic Solar Fluid Feeding Unit" }
+              {
+                "name": "3/4\" Intermediate Connection Flex"
+              },
+              {
+                "name": "3/4\" Corner Connection Flex"
+              },
+              {
+                "name": "3/4\" Brass Blind Plug"
+              },
+              {
+                "name": "3/4\" & 1/2\" Ball Valve"
+              },
+              {
+                "name": "1/2\" Solar Air Vent"
+              },
+              {
+                "name": "Package System Insulated Flex Connection Kit"
+              },
+              {
+                "name": "Package System Safety Kit"
+              },
+              {
+                "name": "Solar Transfer Fluid"
+              },
+              {
+                "name": "Automatic Solar Fluid Feeding Unit"
+              }
             ]
           }
         ]
@@ -269,30 +415,81 @@
       "smart": "Do you want remote monitoring?"
     },
     "segments": {
-      "home": { "title": "Residential", "desc": "Detached house or apartment" },
-      "commercial": { "title": "Hotel & Commercial", "desc": "Hotel, dormitory, sports facility" },
-      "industrial": { "title": "Industry & Public", "desc": "Factory, military facility, housing" }
+      "home": {
+        "title": "Residential",
+        "desc": "Detached house or apartment"
+      },
+      "commercial": {
+        "title": "Hotel & Commercial",
+        "desc": "Hotel, dormitory, sports facility"
+      },
+      "industrial": {
+        "title": "Industry & Public",
+        "desc": "Factory, military facility, housing"
+      }
     },
     "sizes": {
       "home": [
-        { "id": "s", "title": "2-3 people", "desc": "Small household" },
-        { "id": "m", "title": "4-5 people", "desc": "Standard household" },
-        { "id": "l", "title": "6-8 people", "desc": "Large household" }
+        {
+          "id": "s",
+          "title": "2-3 people",
+          "desc": "Small household"
+        },
+        {
+          "id": "m",
+          "title": "4-5 people",
+          "desc": "Standard household"
+        },
+        {
+          "id": "l",
+          "title": "6-8 people",
+          "desc": "Large household"
+        }
       ],
       "commercial": [
-        { "id": "s", "title": "≤ 30 rooms / people", "desc": "Boutique scale" },
-        { "id": "m", "title": "30-80 rooms / people", "desc": "Mid scale" },
-        { "id": "l", "title": "80+ rooms / people", "desc": "Large scale" }
+        {
+          "id": "s",
+          "title": "≤ 30 rooms / people",
+          "desc": "Boutique scale"
+        },
+        {
+          "id": "m",
+          "title": "30-80 rooms / people",
+          "desc": "Mid scale"
+        },
+        {
+          "id": "l",
+          "title": "80+ rooms / people",
+          "desc": "Large scale"
+        }
       ],
       "industrial": [
-        { "id": "s", "title": "Process preheating", "desc": "Industrial water" },
-        { "id": "m", "title": "Central hot water", "desc": "Whole facility" },
-        { "id": "l", "title": "Housing development", "desc": "Multiple blocks" }
+        {
+          "id": "s",
+          "title": "Process preheating",
+          "desc": "Industrial water"
+        },
+        {
+          "id": "m",
+          "title": "Central hot water",
+          "desc": "Whole facility"
+        },
+        {
+          "id": "l",
+          "title": "Housing development",
+          "desc": "Multiple blocks"
+        }
       ]
     },
     "smartOptions": {
-      "yes": { "title": "Yes", "desc": "Remote monitoring with ŞimşekTrack" },
-      "no": { "title": "Not for now", "desc": "Can be added later" }
+      "yes": {
+        "title": "Yes",
+        "desc": "Remote monitoring with ŞimşekTrack"
+      },
+      "no": {
+        "title": "Not for now",
+        "desc": "Can be added later"
+      }
     },
     "back": "Back",
     "restart": "Start over",
@@ -312,20 +509,44 @@
     "eyebrow": "Why Şimşek",
     "title": "Engineering proven in the field",
     "items": [
-      { "title": "Our own production plants", "desc": "From enamel coating to aluminum profiles, the whole process runs inside our group companies with no outsourcing." },
-      { "title": "Certified quality", "desc": "Our products pass CE, TSE and Solar Keymark testing, with every serial number traceable back to its production batch." },
-      { "title": "Project and field support", "desc": "Our engineering team works alongside you from project design through field installation and commissioning." },
-      { "title": "Smart systems", "desc": "With Şimşek.ai and our smart controllers, we monitor system performance remotely and optimize efficiency with data." }
+      {
+        "title": "Our own production plants",
+        "desc": "From enamel coating to aluminum profiles, the whole process runs inside our group companies with no outsourcing."
+      },
+      {
+        "title": "Certified quality",
+        "desc": "Our products pass CE, TSE and Solar Keymark testing, with every serial number traceable back to its production batch."
+      },
+      {
+        "title": "Project and field support",
+        "desc": "Our engineering team works alongside you from project design through field installation and commissioning."
+      },
+      {
+        "title": "Smart systems",
+        "desc": "With Şimşek.ai and our smart controllers, we monitor system performance remotely and optimize efficiency with data."
+      }
     ]
   },
   "process": {
     "eyebrow": "Process",
     "title": "From your first request to commissioning",
     "steps": [
-      { "title": "Needs assessment", "desc": "We size the right capacity together, based on your household or facility's hot water demand." },
-      { "title": "Project and engineering", "desc": "We prepare a detailed quote with a system layout, structural calculations, and technical drawings tailored to your site." },
-      { "title": "Production and dispatch", "desc": "Your order is manufactured at our Mersin plants and shipped with secure packaging." },
-      { "title": "Field installation and monitoring", "desc": "Our own field team completes installation, and can connect the system to remote monitoring on request." }
+      {
+        "title": "Needs assessment",
+        "desc": "We size the right capacity together, based on your household or facility's hot water demand."
+      },
+      {
+        "title": "Project and engineering",
+        "desc": "We prepare a detailed quote with a system layout, structural calculations, and technical drawings tailored to your site."
+      },
+      {
+        "title": "Production and dispatch",
+        "desc": "Your order is manufactured at our Mersin plants and shipped with secure packaging."
+      },
+      {
+        "title": "Field installation and monitoring",
+        "desc": "Our own field team completes installation, and can connect the system to remote monitoring on request."
+      }
     ]
   },
   "certs": {
@@ -343,7 +564,8 @@
       "ISO 10002",
       "ISO 14001",
       "ISO 45001"
-    ]
+    ],
+    "viewLabel": "View document (PDF)"
   },
   "projectsTeaser": {
     "eyebrow": "Projects",
@@ -368,17 +590,38 @@
       "body2": "Today our products serve military facilities, hotels, and housing developments, alongside a growing export presence. Our R&D team keeps refining every component, from absorber coating efficiency to the enamel formulation to our smart monitoring software."
     },
     "stats": [
-      { "value": "1990", "label": "Founded" },
-      { "value": "4", "label": "Group companies" },
-      { "value": "240,000+", "label": "Systems in the field" },
-      { "value": "40+", "label": "Export markets" }
+      {
+        "value": "1990",
+        "label": "Founded"
+      },
+      {
+        "value": "4",
+        "label": "Group companies"
+      },
+      {
+        "value": "240,000+",
+        "label": "Systems in the field"
+      },
+      {
+        "value": "40+",
+        "label": "Export markets"
+      }
     ],
     "values": {
       "title": "What defines us",
       "items": [
-        { "title": "Durability comes first", "desc": "We design every product from the user's perspective, not the manufacturer's — built to last for decades." },
-        { "title": "Transparent engineering", "desc": "Our technical sheets carry real tested values; we avoid inflated efficiency claims." },
-        { "title": "One roof, from production to technology", "desc": "We bring manufacturer, project engineer, field installer, and technology provider together under one roof." }
+        {
+          "title": "Durability comes first",
+          "desc": "We design every product from the user's perspective, not the manufacturer's — built to last for decades."
+        },
+        {
+          "title": "Transparent engineering",
+          "desc": "Our technical sheets carry real tested values; we avoid inflated efficiency claims."
+        },
+        {
+          "title": "One roof, from production to technology",
+          "desc": "We bring manufacturer, project engineer, field installer, and technology provider together under one roof."
+        }
       ]
     },
     "facility": {
@@ -406,12 +649,31 @@
     "productDocsTitle": "Product-specific technical files",
     "generalDocsTitle": "General documents and certificates",
     "generalDocs": [
-      { "name": "Şimşek Group Corporate Profile", "type": "catalog" },
-      { "name": "ISO 9001 Quality Management Certificate", "type": "certificate" },
-      { "name": "CE Declaration of Conformity", "type": "certificate" },
-      { "name": "Solar Keymark Test Report", "type": "certificate" },
-      { "name": "Dealer Installation & Maintenance Guide", "type": "manual" }
-    ]
+      {
+        "name": "Şimşek Group Corporate Profile",
+        "type": "catalog"
+      },
+      {
+        "name": "ISO 9001 Quality Management Certificate",
+        "type": "certificate"
+      },
+      {
+        "name": "CE Declaration of Conformity",
+        "type": "certificate"
+      },
+      {
+        "name": "Solar Keymark Test Report",
+        "type": "certificate"
+      },
+      {
+        "name": "Dealer Installation & Maintenance Guide",
+        "type": "manual"
+      }
+    ],
+    "certsTitle": "Our certificates",
+    "certsSubtitle": "All our product and management-system documents are available as PDFs.",
+    "productDocsSubtitle": "Technical data sheet, dimensioned technical drawing (PDF) and installation guide for every product.",
+    "generalDocsSubtitle": "Corporate profile, brand-usage and after-sales documents."
   },
   "products": {
     "hero": {
@@ -609,9 +871,18 @@
     "benefits": {
       "title": "What our dealers get",
       "items": [
-        { "title": "Regional exclusivity", "desc": "We work with a limited number of dealers per region to protect your margins." },
-        { "title": "Technical training and field support", "desc": "Get training and support from our technical team before and after installation." },
-        { "title": "Marketing material support", "desc": "We provide ready-made catalogs, technical sheets and field presentation materials." }
+        {
+          "title": "Regional exclusivity",
+          "desc": "We work with a limited number of dealers per region to protect your margins."
+        },
+        {
+          "title": "Technical training and field support",
+          "desc": "Get training and support from our technical team before and after installation."
+        },
+        {
+          "title": "Marketing material support",
+          "desc": "We provide ready-made catalogs, technical sheets and field presentation materials."
+        }
       ]
     },
     "network": {
