@@ -46,9 +46,6 @@ export function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
   const tContact = useTranslations('contact');
-  const tCatalog = useTranslations('catalog');
-  const tCalc = useTranslations('calculator');
-  const families = tCatalog.raw('families') as { id: string; title: string }[];
   const year = new Date().getFullYear();
 
   return (
@@ -67,37 +64,26 @@ export function Footer() {
 
         <div>
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-volt-400">
-            {t('linksTitle')}
+            Kurumsal
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
-            <li><Link href="/founder" className="hover:text-white">Kurucumuzdan</Link></li>
-            <li><Link href="/about#grup-sirketleri" className="hover:text-white">Grup Şirketleri</Link></li>
             <li><Link href="/about" className="hover:text-white">{t('aboutLink')}</Link></li>
             <li><Link href="/history" className="hover:text-white">Tarihçe</Link></li>
+            <li><Link href="/grup-sirketleri" className="hover:text-white">Grup Şirketleri</Link></li>
             <li><Link href="/contact#kariyer" className="hover:text-white">Kariyer</Link></li>
-            <li><Link href="/projects" className="hover:text-white">{tNav('projects')}</Link></li>
-            <li><Link href="/resources" className="hover:text-white">{tNav('resources')}</Link></li>
-            <li><Link href="/calculator" className="hover:text-white">{tCalc('eyebrow')}</Link></li>
-            <li><Link href="/gunes-potansiyeli" className="hover:text-white">Güneş Potansiyeli</Link></li>
-            <li><Link href="/contact#servis" className="hover:text-white">Satış Sonrası Hizmet</Link></li>
-            <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
-            <li><Link href="/sss" className="hover:text-white">Sık Sorulan Sorular</Link></li>
-            <li><Link href="/contact#bayilik" className="hover:text-white">{t('dealersLink')}</Link></li>
           </ul>
         </div>
 
         <div>
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-volt-400">
-            {t('productsTitle')}
+            Ürünler & Hizmet
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
-            {families.map((f) => (
-              <li key={f.id}>
-                <Link href={`/products#${f.id}`} className="hover:text-white">
-                  {f.title}
-                </Link>
-              </li>
-            ))}
+            <li><Link href="/products" className="hover:text-white">{tNav('products')}</Link></li>
+            <li><Link href="/akademi" className="hover:text-white">{tNav('academy')}</Link></li>
+            <li><Link href="/projects" className="hover:text-white">{tNav('projects')}</Link></li>
+            <li><Link href="/contact#servis" className="hover:text-white">Satış Sonrası Hizmet</Link></li>
+            <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
           </ul>
         </div>
 
