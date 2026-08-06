@@ -1,8 +1,9 @@
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { isAuthed } from '@/lib/adminAuth';
-import { getContent, type AdminProduct } from '@/lib/content';
+import { getContent, getPrevContent, type AdminProduct } from '@/lib/content';
 import { staticPostsAsAdmin } from '@/lib/blog';
+import { TEXT_FIELDS } from '@/lib/siteTexts';
 import { products as featuredProducts, productImages } from '@/data/products';
 import { referenceProjects } from '@/data/references';
 import { AdminDashboard } from './AdminDashboard';
@@ -42,12 +43,19 @@ export default async function AdminHome() {
     collectors: r.collectors,
   }));
 
+  // Metin alanlarını mevcut değerlerle (override ya da varsayılan) doldur.
+  const textsSeed: Record<string, string> = {};
+  for (const f of TEXT_FIELDS) textsSeed[f.key] = content.texts?.[f.key] ?? f.default;
+
   const initial = {
     ...content,
     products: content.products.length ? content.products : seedProducts,
     posts: content.posts.length ? content.posts : staticPostsAsAdmin(),
     hiddenRefs: content.hiddenRefs ?? [],
+    texts: textsSeed,
   };
 
-  return <AdminDashboard initial={initial} families={FAMILIES} staticRefs={staticRefs} />;
+  const prev = await getPrevContent();
+
+  return <AdminDashboard initial={initial} families={FAMILIES} staticRefs={staticRefs} prev={prev ?? null} />;
 }

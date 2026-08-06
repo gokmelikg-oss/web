@@ -2,18 +2,19 @@ import { useTranslations } from 'next-intl';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
+import { txt } from '@/lib/siteTexts';
 
 export const FACTORY_MAP_EMBED =
   'https://www.google.com/maps?q=%C5%9Eim%C5%9Fek+G%C3%BCne%C5%9F+Kollekt%C3%B6rleri+San.+Tic.+Ltd.+%C5%9Eti.+Mersin&hl=tr&z=15&output=embed';
 
-export function HomeContact() {
+export function HomeContact({ texts }: { texts?: Record<string, string> }) {
   const t = useTranslations('contact');
 
   const infoItems = [
-    { icon: MapPin, title: t('info.addressTitle'), value: t('info.address'), dir: undefined },
-    { icon: Phone, title: t('info.phoneTitle'), value: t('info.phone'), dir: 'ltr' as const },
-    { icon: Mail, title: t('info.emailTitle'), value: t('info.email'), dir: 'ltr' as const },
-    { icon: Clock, title: t('info.hoursTitle'), value: t('info.hours'), dir: undefined },
+    { icon: MapPin, title: t('info.addressTitle'), value: txt(texts, 'contact.address', t('info.address')), dir: undefined },
+    { icon: Phone, title: t('info.phoneTitle'), value: txt(texts, 'contact.phone', t('info.phone')), dir: 'ltr' as const },
+    { icon: Mail, title: t('info.emailTitle'), value: txt(texts, 'contact.email', t('info.email')), dir: 'ltr' as const },
+    { icon: Clock, title: t('info.hoursTitle'), value: txt(texts, 'contact.hours', t('info.hours')), dir: undefined },
   ];
 
   return (

@@ -9,12 +9,17 @@ import { HomeContact } from '@/components/home/HomeContact';
 import { SectionDots } from '@/components/home/SectionDots';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { SocialFeed } from '@/components/home/SocialFeed';
+import { getContent } from '@/lib/content';
 
-export default function HomePage() {
+// Admin metin düzenlemeleri için ISR.
+export const revalidate = 3600;
+
+export default async function HomePage() {
+  const { texts } = await getContent();
   return (
     <>
       <SectionDots />
-      <Hero />
+      <Hero texts={texts} />
       <ProductIndex />
       <SystemWizard />
       <TrustStrip />
@@ -23,7 +28,7 @@ export default function HomePage() {
       <WhyUs />
       <GroupSection />
       <SocialFeed />
-      <HomeContact />
+      <HomeContact texts={texts} />
     </>
   );
 }

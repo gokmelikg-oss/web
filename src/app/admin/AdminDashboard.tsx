@@ -20,10 +20,14 @@ import {
   ExternalLink,
   Menu,
   X,
+  Type,
+  RotateCcw,
+  History,
 } from 'lucide-react';
 import type { SiteContent, DocLink, RefEntry, AdminProduct, AdminPost, ProductSpecItem } from '@/lib/content';
+import { TEXT_FIELDS, TEXT_GROUPS } from '@/lib/siteTexts';
 
-type Tab = 'overview' | 'products' | 'posts' | 'references' | 'documents' | 'images';
+type Tab = 'overview' | 'texts' | 'products' | 'posts' | 'references' | 'documents' | 'images';
 type StaticRef = { title: string; il: string; ilce?: string; collectors: number };
 
 const rid = () => `id${Math.floor(performance.now() * 1000)}${Math.floor(1 + Math.random() * 998)}`;
@@ -43,6 +47,7 @@ const lbl = 'mb-1.5 block text-[11px] font-semibold uppercase tracking-wide text
 
 const META: Record<Tab, { title: string; desc: string }> = {
   overview: { title: 'Genel Bakış', desc: 'İçeriğinize hızlı bir bakış ve kısayollar.' },
+  texts: { title: 'Sayfa Metinleri', desc: 'Hero, misyon-vizyon, hakkımızda ve iletişim metinlerini düzenleyin.' },
   products: { title: 'Ürünler', desc: 'Ürünleri, görselleri ve teknik özellikleri yönetin.' },
   posts: { title: 'Blog', desc: 'Blog yazılarını ekleyin, düzenleyin ve yayınlayın.' },
   references: { title: 'Referanslar', desc: 'Mevcut referansları gösterin/gizleyin, yeni ekleyin.' },
@@ -77,10 +82,12 @@ export function AdminDashboard({
   initial,
   families,
   staticRefs,
+  prev,
 }: {
   initial: SiteContent;
   families: { id: string; label: string }[];
   staticRefs: StaticRef[];
+  prev: SiteContent | null;
 }) {
   const [tab, setTab] = useState<Tab>('overview');
   const [docs, setDocs] = useState<DocLink[]>(initial.documents);
@@ -88,12 +95,34 @@ export function AdminDashboard({
   const [products, setProducts] = useState<AdminProduct[]>(initial.products ?? []);
   const [posts, setPosts] = useState<AdminPost[]>(initial.posts ?? []);
   const [hiddenRefs, setHiddenRefs] = useState<string[]>(initial.hiddenRefs ?? []);
+  const [texts, setTexts] = useState<Record<string, string>>(initial.texts ?? {});
   const [images, setImages] = useState<Record<string, string>>(initial.groupImages);
   const [refSearch, setRefSearch] = useState('');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [dirty, setDirty] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+
+  /* Bir sürümün tüm alanlarını forma yükler. */
+  function loadFrom(src: SiteContent, markDirty: boolean) {
+    setDocs(src.documents ?? []);
+    setRefs(src.references ?? []);
+    setProducts(src.products ?? []);
+    setPosts(src.posts ?? []);
+    setHiddenRefs(src.hiddenRefs ?? []);
+    setTexts({ ...(initial.texts ?? {}), ...(src.texts ?? {}) });
+    setImages(src.groupImages ?? {});
+    setDirty(markDirty);
+  }
+  function revertUnsaved() {
+    if (dirty && !window.confirm('Kaydedilmemiş değişiklikler geri alınsın mı?')) return;
+    loadFrom(initial, false);
+  }
+  function restorePrev() {
+    if (!prev) return;
+    if (!window.confirm('Bir önceki kaydedilmiş sürüme dönülsün mü? (Kaydet dediğinizde yayınlanır.)')) return;
+    loadFrom(prev, true);
+  }
 
   function mark<T>(setter: (v: T) => void) {
     return (v: T) => {
@@ -106,6 +135,7 @@ export function AdminDashboard({
   const setProductsD = mark(setProducts);
   const setPostsD = mark(setPosts);
   const setImagesD = mark(setImages);
+  const setTextsD = mark(setTexts);
   const setHiddenD = (fn: (cur: string[]) => string[]) => {
     setDirty(true);
     setHiddenRefs(fn);
@@ -118,7 +148,7 @@ export function AdminDashboard({
       const res = await fetch('/api/admin/content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ documents: docs, references: refs, products, posts, hiddenRefs, groupImages: images, updatedAt: '' }),
+        body: JSON.stringify({ documents: docs, references: refs, products, posts, hiddenRefs, texts, groupImages: images, updatedAt: '' }),
       });
       if (res.ok) {
         setSaved(true);
@@ -149,6 +179,7 @@ export function AdminDashboard({
 
   const nav: { key: Tab; icon: typeof Package; count?: number }[] = [
     { key: 'overview', icon: LayoutDashboard },
+    { key: 'texts', icon: Type },
     { key: 'products', icon: Package, count: products.length },
     { key: 'posts', icon: Newspaper, count: posts.length },
     { key: 'references', icon: MapPin, count: refs.length + hiddenRefs.length },
@@ -232,10 +263,18 @@ export function AdminDashboard({
               <p className="hidden truncate text-xs text-mist-500 sm:block">{META[tab].desc}</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="hidden text-xs text-mist-500 md:inline">
+          <div className="flex items-center gap-2">
+            <span className="hidden text-xs text-mist-500 lg:inline">
               {dirty ? 'Kaydedilmemiş değişiklik' : 'Tüm değişiklikler kayıtlı'}
             </span>
+            {dirty && (
+              <button onClick={revertUnsaved} className="inline-flex items-center gap-1.5 rounded-full border border-mist-900/15 px-3.5 py-2 text-sm font-semibold text-graphite-700 hover:border-graphite-950" title="Kaydedilmemiş değişiklikleri geri al">
+                <RotateCcw size={15} /> <span className="hidden sm:inline">Geri Al</span>
+              </button>
+            )}
+            <a href="/" target="_blank" rel="noopener noreferrer" className="hidden items-center gap-1.5 rounded-full border border-mist-900/15 px-3.5 py-2 text-sm font-semibold text-graphite-700 hover:border-graphite-950 sm:inline-flex" title="Siteyi yeni sekmede önizle">
+              <Eye size={15} /> Önizle
+            </a>
             <button
               onClick={save}
               disabled={saving}
@@ -253,7 +292,7 @@ export function AdminDashboard({
         <div className="flex-1 overflow-y-auto p-5 lg:p-8">
           <div className="mx-auto max-w-4xl">
             {/* Bölüm başlığı + ekle */}
-            {tab !== 'overview' && tab !== 'images' && (
+            {tab !== 'overview' && tab !== 'images' && tab !== 'texts' && (
               <div className="mb-6 flex items-center justify-between gap-3">
                 <div>
                   <h2 className="font-display text-xl font-bold text-graphite-950">{META[tab].title}</h2>
@@ -306,9 +345,41 @@ export function AdminDashboard({
                     </button>
                   ))}
                 </div>
-                {initial.updatedAt && (
-                  <p className="mt-6 text-xs text-mist-500">Son kayıt: {new Date(initial.updatedAt).toLocaleString('tr-TR')}</p>
-                )}
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  {initial.updatedAt && (
+                    <p className="text-xs text-mist-500">Son kayıt: {new Date(initial.updatedAt).toLocaleString('tr-TR')}</p>
+                  )}
+                  {prev && (
+                    <button onClick={restorePrev} className="inline-flex items-center gap-1.5 rounded-full border border-mist-900/15 px-3.5 py-1.5 text-xs font-semibold text-graphite-700 hover:border-graphite-950">
+                      <History size={13} /> Bir önceki kayda dön
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Sayfa Metinleri */}
+            {tab === 'texts' && (
+              <div className="space-y-5">
+                <p className="rounded-xl border border-volt-500/30 bg-volt-50 px-4 py-2.5 text-xs text-graphite-700">
+                  Buradaki metinler sitedeki gerçek metinlerdir. Değiştirip <strong>Kaydet</strong> deyince ilgili sayfada güncellenir. Boş bırakırsanız varsayılan metin kullanılır.
+                </p>
+                {TEXT_GROUPS.map((group) => (
+                  <div key={group} className="rounded-2xl border border-mist-900/10 bg-white p-5 shadow-[0_1px_2px_rgba(16,24,40,0.04)]">
+                    <h3 className="font-display text-sm font-bold text-graphite-950">{group}</h3>
+                    <div className="mt-4 space-y-4">
+                      {TEXT_FIELDS.filter((f) => f.group === group).map((f) => (
+                        <Field key={f.key} label={f.label}>
+                          {f.multiline ? (
+                            <textarea value={texts[f.key] ?? f.default} onChange={(e) => setTextsD({ ...texts, [f.key]: e.target.value })} rows={3} className={inp} />
+                          ) : (
+                            <input value={texts[f.key] ?? f.default} onChange={(e) => setTextsD({ ...texts, [f.key]: e.target.value })} className={inp} />
+                          )}
+                        </Field>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
 

@@ -6,10 +6,11 @@ import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { CountUp } from '@/components/CountUp';
 import { MeshBackground } from '@/components/home/MeshBackground';
+import { txt } from '@/lib/siteTexts';
 
 const NUMBER_LOCALE: Record<string, string> = { tr: 'tr-TR', en: 'en-US', ar: 'ar-EG' };
 
-export function Hero() {
+export function Hero({ texts }: { texts?: Record<string, string> }) {
   const t = useTranslations('hero');
   const locale = useLocale();
   const stats = t.raw('stats') as { value: number; suffix: string; label: string }[];
@@ -52,7 +53,7 @@ export function Hero() {
           className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-volt-400"
         >
           <span className="h-px w-8 bg-volt-500" aria-hidden />
-          {t('eyebrow')}
+          {txt(texts, 'hero.eyebrow', t('eyebrow'))}
           <span className="h-px w-8 bg-volt-500" aria-hidden />
         </motion.p>
 
@@ -62,10 +63,10 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="mt-7 max-w-4xl text-balance font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl"
         >
-          {t('titleLine1')}
+          {txt(texts, 'hero.titleLine1', t('titleLine1'))}
           <br />
           <span className="bg-gradient-to-r from-volt-300 via-volt-500 to-volt-600 bg-clip-text text-transparent">
-            {t('titleLine2')}
+            {txt(texts, 'hero.titleLine2', t('titleLine2'))}
           </span>
         </motion.h1>
 
@@ -75,7 +76,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-6 max-w-2xl text-balance text-base leading-relaxed text-graphite-300 sm:text-lg"
         >
-          {t('subtitle')}
+          {txt(texts, 'hero.subtitle', t('subtitle'))}
         </motion.p>
 
         <motion.div

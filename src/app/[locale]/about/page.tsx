@@ -15,8 +15,13 @@ import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { PageBreadcrumb } from '@/components/JsonLd';
+import { getContent } from '@/lib/content';
+import { txt } from '@/lib/siteTexts';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
+
+// Admin metin düzenlemeleri için ISR.
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -45,6 +50,7 @@ const founderNotes = [
 export default async function AboutPage() {
   const t = await getTranslations('about');
   const tCerts = await getTranslations('certs');
+  const { texts } = await getContent();
   const stats = t.raw('stats') as { value: string; label: string }[];
   const values = t.raw('values.items') as { title: string; desc: string }[];
   const certs = tCerts.raw('items') as Cert[];
@@ -59,10 +65,10 @@ export default async function AboutPage() {
         <div className="container-page grid gap-16 lg:grid-cols-2 lg:gap-12">
           <Reveal>
             <h2 className="font-display text-3xl font-bold tracking-tight text-graphite-950">
-              {t('story.title')}
+              {txt(texts, 'about.story.title', t('story.title'))}
             </h2>
-            <p className="mt-6 text-balance leading-relaxed text-mist-700">{t('story.body1')}</p>
-            <p className="mt-4 text-balance leading-relaxed text-mist-700">{t('story.body2')}</p>
+            <p className="mt-6 text-balance leading-relaxed text-mist-700">{txt(texts, 'about.story.body1', t('story.body1'))}</p>
+            <p className="mt-4 text-balance leading-relaxed text-mist-700">{txt(texts, 'about.story.body2', t('story.body2'))}</p>
           </Reveal>
 
           <Reveal delay={0.1}>
@@ -141,14 +147,9 @@ export default async function AboutPage() {
                 </span>
                 <h2 className="mt-6 font-display text-2xl font-bold sm:text-3xl">Misyonumuz</h2>
                 <p className="mt-4 font-display text-lg font-semibold leading-relaxed text-volt-400">
-                  &ldquo;Enerjiyi sadece bir ihtiyaç değil, yaşamı sürdüren görünmez bir güç olarak
-                  görüyoruz.&rdquo;
+                  &ldquo;{txt(texts, 'about.mission.quote')}&rdquo;
                 </p>
-                <p className="mt-4 leading-relaxed text-graphite-200">
-                  Yenilenebilir enerjiyi herkes için erişilebilir, güvenilir ve dayanıklı hâle getiren
-                  çözümler geliştiriyoruz. Her proje; bir haneye konfor, bir işletmeye istikrar ve
-                  çocukların geleceğine fırsat sunmak demek.
-                </p>
+                <p className="mt-4 leading-relaxed text-graphite-200">{txt(texts, 'about.mission.body')}</p>
               </div>
             </Reveal>
             <Reveal delay={0.08}>
@@ -158,14 +159,9 @@ export default async function AboutPage() {
                 </span>
                 <h2 className="mt-6 font-display text-2xl font-bold text-graphite-950 sm:text-3xl">Vizyonumuz</h2>
                 <p className="mt-4 font-display text-lg font-semibold leading-relaxed text-volt-700">
-                  &ldquo;Geleceğin daha temiz, daha özgür ve daha nefes alınabilir bir dünya olduğuna
-                  inanıyoruz.&rdquo;
+                  &ldquo;{txt(texts, 'about.vision.quote')}&rdquo;
                 </p>
-                <p className="mt-4 leading-relaxed text-mist-700">
-                  Evlerin, şehirlerin ve hayatların enerjisini doğanın gücüyle birleştirerek
-                  Türkiye&apos;nin enerji dönüşümüne katkı sağlıyor; geliştirdiğimiz teknolojilerle düşük
-                  karbonlu bir gelecek inşa ediyoruz.
-                </p>
+                <p className="mt-4 leading-relaxed text-mist-700">{txt(texts, 'about.vision.body')}</p>
               </div>
             </Reveal>
           </div>

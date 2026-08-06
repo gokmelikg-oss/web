@@ -25,11 +25,21 @@ export async function POST(req: NextRequest) {
       products: Array.isArray(body.products) ? body.products : [],
       posts: Array.isArray(body.posts) ? body.posts : [],
       hiddenRefs: Array.isArray(body.hiddenRefs) ? body.hiddenRefs : [],
+      texts: body.texts && typeof body.texts === 'object' ? body.texts : {},
       groupImages: body.groupImages && typeof body.groupImages === 'object' ? body.groupImages : {},
       updatedAt: '',
     });
     // Admin içeriği gösteren ISR sayfalarını anında tazele (tüm diller için).
-    for (const p of ['/[locale]/resources', '/[locale]/blog', '/[locale]/blog/[slug]', '/[locale]/products', '/[locale]/projects']) {
+    for (const p of [
+      '/[locale]',
+      '/[locale]/resources',
+      '/[locale]/blog',
+      '/[locale]/blog/[slug]',
+      '/[locale]/products',
+      '/[locale]/projects',
+      '/[locale]/about',
+      '/[locale]/contact',
+    ]) {
       revalidatePath(p, 'page');
     }
     return NextResponse.json({ ok: true, content: await getContent() });

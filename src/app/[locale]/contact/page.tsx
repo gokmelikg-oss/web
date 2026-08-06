@@ -26,8 +26,13 @@ import { Faq } from '@/components/home/Faq';
 import { FaqJsonLd } from '@/components/JsonLd';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
 import { faqItems } from '@/data/faq';
+import { getContent } from '@/lib/content';
+import { txt } from '@/lib/siteTexts';
 import { pageMetadata, ORG, WHATSAPP_NUMBER } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
+
+// Admin iletişim metni düzenlemeleri için ISR.
+export const revalidate = 3600;
 
 const HR_EMAIL = 'info@simseksolar.com.tr';
 
@@ -52,13 +57,14 @@ export async function generateMetadata({
 
 export default async function ContactPage() {
   const t = await getTranslations('contact');
+  const { texts } = await getContent();
   const tel = `tel:${ORG.phone.replace(/\s/g, '')}`;
 
   const infoItems = [
-    { icon: MapPin, title: t('info.addressTitle'), value: t('info.address'), dir: undefined },
-    { icon: Phone, title: t('info.phoneTitle'), value: t('info.phone'), dir: 'ltr' },
-    { icon: Mail, title: t('info.emailTitle'), value: t('info.email'), dir: 'ltr' },
-    { icon: Clock, title: t('info.hoursTitle'), value: t('info.hours'), dir: undefined },
+    { icon: MapPin, title: t('info.addressTitle'), value: txt(texts, 'contact.address', t('info.address')), dir: undefined },
+    { icon: Phone, title: t('info.phoneTitle'), value: txt(texts, 'contact.phone', t('info.phone')), dir: 'ltr' },
+    { icon: Mail, title: t('info.emailTitle'), value: txt(texts, 'contact.email', t('info.email')), dir: 'ltr' },
+    { icon: Clock, title: t('info.hoursTitle'), value: txt(texts, 'contact.hours', t('info.hours')), dir: undefined },
   ] as const;
 
   return (
