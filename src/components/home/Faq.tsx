@@ -3,16 +3,25 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
-import { faqItems, type FaqItem } from '@/data/faq';
+import { faqItems as defaultFaqItems, type FaqItem } from '@/data/faq';
 
 /* Sık sorulan sorular — iki sütunlu akordeon. İçerik itiraz karşılama + arama
    terimi optimizasyonu için tasarlandı; FAQPage JSON-LD ayrıca eklenir.
-   Değişken yükseklikte hizalama bozulmasın diye iki bağımsız sütuna bölünür. */
-export function Faq({ showHeader = true }: { showHeader?: boolean }) {
-  const [open, setOpen] = useState<string | null>(faqItems[0]?.q ?? null);
+   Değişken yükseklikte hizalama bozulmasın diye iki bağımsız sütuna bölünür.
+   `items` sunucu tarafından (dile göre) verilir; verilmezse Türkçe'ye düşer. */
+export function Faq({
+  showHeader = true,
+  items = defaultFaqItems,
+  header,
+}: {
+  showHeader?: boolean;
+  items?: FaqItem[];
+  header?: { eyebrow: string; title: string; subtitle: string };
+}) {
+  const [open, setOpen] = useState<string | null>(items[0]?.q ?? null);
 
-  const left = faqItems.filter((_, i) => i % 2 === 0);
-  const right = faqItems.filter((_, i) => i % 2 === 1);
+  const left = items.filter((_, i) => i % 2 === 0);
+  const right = items.filter((_, i) => i % 2 === 1);
 
   const Column = ({ items }: { items: FaqItem[] }) => (
     <ul className="divide-y divide-mist-900/10 border-y border-mist-900/10">
@@ -62,15 +71,15 @@ export function Faq({ showHeader = true }: { showHeader?: boolean }) {
             <div className="mx-auto max-w-2xl text-center">
               <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
-                Sık Sorulan Sorular
+                {header?.eyebrow ?? 'Sık Sorulan Sorular'}
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
               </p>
               <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
-                Güneş enerjili sıcak su hakkında merak edilenler
+                {header?.title ?? 'Güneş enerjili sıcak su hakkında merak edilenler'}
               </h2>
               <p className="mt-4 text-mist-700">
-                Sistem çalışması, boyler kapasitesi, tasarruf, bakım, TOKİ ve kamu projeleri hakkında en çok
-                sorulanlar. Aradığınızı bulamazsanız bize ulaşın.
+                {header?.subtitle ??
+                  'Sistem çalışması, boyler kapasitesi, tasarruf, bakım, TOKİ ve kamu projeleri hakkında en çok sorulanlar. Aradığınızı bulamazsanız bize ulaşın.'}
               </p>
             </div>
           </Reveal>

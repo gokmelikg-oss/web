@@ -1,4 +1,4 @@
-import { articles } from '@/data/news';
+import { articles, getArticles } from '@/data/news';
 import { getContent, type AdminPost } from '@/lib/content';
 
 export interface PostSection {
@@ -91,7 +91,7 @@ export function staticPostsAsAdmin(): AdminPost[] {
 
 /* Kaynak seçimi: admin panelinde yazı VARSA yalnızca admin kullanılır (silme/
    düzenleme kalıcı olur). Panel boşsa statik rehberler gösterilir. */
-export async function getBlogList(): Promise<PostSummary[]> {
+export async function getBlogList(locale = 'tr'): Promise<PostSummary[]> {
   const { posts } = await getContent();
   const source: PostSummary[] =
     posts.length > 0
@@ -106,7 +106,7 @@ export async function getBlogList(): Promise<PostSummary[]> {
             readMin: readMinFromText(`${p.body ?? ''} ${p.excerpt ?? ''}`),
             cover: p.cover || undefined,
           }))
-      : articles.map((a) => ({
+      : getArticles(locale).map((a) => ({
           slug: a.slug,
           title: a.title,
           excerpt: a.excerpt,
@@ -118,13 +118,13 @@ export async function getBlogList(): Promise<PostSummary[]> {
   return source.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export async function getBlogPost(slug: string): Promise<PostFull | undefined> {
+export async function getBlogPost(slug: string, locale = 'tr'): Promise<PostFull | undefined> {
   const { posts } = await getContent();
   if (posts.length > 0) {
     const m = posts.find((p) => p.slug === slug);
     return m ? adminToFull(m) : undefined;
   }
-  const a = articles.find((x) => x.slug === slug);
+  const a = getArticles(locale).find((x) => x.slug === slug);
   if (!a) return undefined;
   return {
     slug: a.slug,

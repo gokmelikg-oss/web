@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { getBlogList } from '@/lib/blog';
+import { getBlogUi } from '@/lib/blogUi';
 import type { Locale } from '@/i18n/config';
 
 // Admin blog yazıları eklenebildiği için ISR; admin kaydında revalidatePath ile tazelenir.
@@ -18,28 +19,20 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return pageMetadata({
-    locale,
-    path: '/blog',
-    title: 'Blog & Bilgi Merkezi — Güneş Enerjisi Rehberleri',
-    description:
-      'Güneş enerjisi, termal sistemler, boyler seçimi, merkezi sistemler ve bakım hakkında uzman rehberler. Şimşek Solar bilgi merkezi.',
-  });
+  const ui = getBlogUi(locale);
+  return pageMetadata({ locale, path: '/blog', title: ui.metaTitle, description: ui.metaDescription });
 }
 
-const nf = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
-
-export default async function BlogPage() {
-  const sorted = await getBlogList();
+export default async function BlogPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const ui = getBlogUi(locale);
+  const nf = new Intl.DateTimeFormat(ui.intlLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+  const sorted = await getBlogList(locale);
 
   return (
     <>
-      <PageBreadcrumb items={[{ name: 'Blog', path: '/blog' }]} />
-      <PageHero
-        eyebrow="Blog & Bilgi Merkezi"
-        title="Güneş enerjisinde bilgi ve rehberler"
-        subtitle="Termal sistemlerin çalışma prensibinden boyler seçimine, merkezi sistemlerden bakıma kadar merak edilenleri uzman gözüyle anlatıyoruz."
-      />
+      <PageBreadcrumb items={[{ name: ui.crumb, path: '/blog' }]} />
+      <PageHero eyebrow={ui.heroEyebrow} title={ui.heroTitle} subtitle={ui.heroSubtitle} />
 
       <section className="section-pad bg-mist-50">
         <div className="container-page">
@@ -68,7 +61,7 @@ export default async function BlogPage() {
                     <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.12em] text-mist-500">
                       <span>{nf.format(new Date(a.date))}</span>
                       <span className="flex items-center gap-1">
-                        <Clock size={11} /> {a.readMin} dk
+                        <Clock size={11} /> {a.readMin} {ui.minRead}
                       </span>
                     </div>
                     <h2 className="mt-3 font-display text-lg font-bold leading-snug text-graphite-950 transition-colors group-hover:text-volt-700">
@@ -76,7 +69,7 @@ export default async function BlogPage() {
                     </h2>
                     <p className="mt-2.5 line-clamp-3 flex-1 text-sm leading-relaxed text-mist-700">{a.excerpt}</p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-graphite-950 transition-colors group-hover:text-volt-700">
-                      Devamını oku
+                      {ui.readMore}
                       <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>

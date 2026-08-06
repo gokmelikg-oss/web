@@ -8,6 +8,7 @@ import { ArticleJsonLd, PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
 import { articles } from '@/data/news';
 import { getBlogList, getBlogPost } from '@/lib/blog';
+import { getBlogUi } from '@/lib/blogUi';
 import type { Locale } from '@/i18n/config';
 
 // Statik yazılar önceden üretilir; admin yazıları talep üzerine (ISR).
@@ -24,7 +25,7 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const article = await getBlogPost(slug);
+  const article = await getBlogPost(slug, locale);
   if (!article) return {};
   return pageMetadata({
     locale,
@@ -35,18 +36,18 @@ export async function generateMetadata({
   });
 }
 
-const nf = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
-
 export default async function ArticlePage({
   params,
 }: {
   params: Promise<{ locale: Locale; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const article = await getBlogPost(slug);
+  const ui = getBlogUi(locale);
+  const nf = new Intl.DateTimeFormat(ui.intlLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+  const article = await getBlogPost(slug, locale);
   if (!article) notFound();
 
-  const related = (await getBlogList()).filter((a) => a.slug !== slug).slice(0, 3);
+  const related = (await getBlogList(locale)).filter((a) => a.slug !== slug).slice(0, 3);
 
   return (
     <>
@@ -60,7 +61,7 @@ export default async function ArticlePage({
       />
       <PageBreadcrumb
         items={[
-          { name: 'Blog', path: '/blog' },
+          { name: ui.crumb, path: '/blog' },
           { name: article.title, path: `/blog/${article.slug}` },
         ]}
       />
@@ -70,14 +71,14 @@ export default async function ArticlePage({
         <div className="pointer-events-none absolute inset-0 bg-blueprint-dark opacity-40 fade-mask-b" aria-hidden />
         <div className="container-page relative">
           <Link href="/blog" className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-graphite-300 transition-colors hover:text-white">
-            <ArrowLeft size={13} /> Blog
+            <ArrowLeft size={13} /> {ui.crumb}
           </Link>
           <div className="mt-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.14em] text-volt-400">
             <span>{article.category}</span>
             <span className="h-1 w-1 rounded-full bg-volt-500" aria-hidden />
             <span>{nf.format(new Date(article.date))}</span>
             <span className="flex items-center gap-1 text-graphite-400">
-              <Clock size={11} /> {article.readMin} dk okuma
+              <Clock size={11} /> {article.readMin} {ui.minRead}
             </span>
           </div>
           <h1 className="mt-4 max-w-3xl text-balance font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
@@ -113,14 +114,14 @@ export default async function ArticlePage({
           <Reveal>
             <div className="mt-14 flex flex-col items-start gap-4 rounded-3xl bg-graphite-gradient p-8 text-white sm:flex-row sm:items-center sm:justify-between sm:p-10">
               <div>
-                <h3 className="font-display text-xl font-bold">Projeniz için çözüm mü arıyorsunuz?</h3>
-                <p className="mt-2 text-sm text-graphite-300">Mühendislik ekibimiz doğru sistemi birlikte belirleyelim.</p>
+                <h3 className="font-display text-xl font-bold">{ui.ctaTitle}</h3>
+                <p className="mt-2 text-sm text-graphite-300">{ui.ctaBody}</p>
               </div>
               <Link
                 href="/contact"
                 className="inline-flex shrink-0 items-center gap-2 rounded-full bg-solar-gradient px-6 py-3 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
               >
-                İletişime geç
+                {ui.ctaButton}
                 <ArrowUpRight size={15} />
               </Link>
             </div>
@@ -131,7 +132,7 @@ export default async function ArticlePage({
       {/* İlgili yazılar */}
       <section className="section-pad bg-mist-50">
         <div className="container-page">
-          <h2 className="font-display text-2xl font-bold text-graphite-950">Diğer yazılar</h2>
+          <h2 className="font-display text-2xl font-bold text-graphite-950">{ui.otherPosts}</h2>
           <div className="mt-8 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((a) => (
               <Link

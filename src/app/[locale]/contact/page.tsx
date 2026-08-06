@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import {
   MapPin,
   Phone,
@@ -25,7 +25,7 @@ import { ServiceForm } from '@/components/ServiceForm';
 import { Faq } from '@/components/home/Faq';
 import { FaqJsonLd } from '@/components/JsonLd';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
-import { faqItems } from '@/data/faq';
+import { getFaqItems } from '@/data/faq';
 import { getContent } from '@/lib/content';
 import { txt } from '@/lib/siteTexts';
 import { pageMetadata, ORG, WHATSAPP_NUMBER } from '@/lib/seo';
@@ -55,8 +55,37 @@ export async function generateMetadata({
   return pageMetadata({ locale, path: '/contact', title: t('title'), description: t('subtitle') });
 }
 
+const FAQ_HEADER: Record<Locale, { eyebrow: string; title: string; subtitle: string }> = {
+  tr: {
+    eyebrow: 'Sık Sorulan Sorular',
+    title: 'Güneş enerjili sıcak su hakkında merak edilenler',
+    subtitle:
+      'Sistem çalışması, boyler kapasitesi, tasarruf, bakım, TOKİ ve kamu projeleri hakkında en çok sorulanlar. Aradığınızı bulamazsanız bize ulaşın.',
+  },
+  en: {
+    eyebrow: 'Frequently Asked Questions',
+    title: 'What people ask about solar hot water',
+    subtitle:
+      'The most common questions about system operation, boiler capacity, savings, maintenance and public projects. Can’t find what you need? Get in touch.',
+  },
+  ar: {
+    eyebrow: 'الأسئلة الشائعة',
+    title: 'ما يتساءل عنه الناس حول الماء الساخن الشمسي',
+    subtitle:
+      'أكثر الأسئلة شيوعاً حول تشغيل النظام وسعة الخزان والتوفير والصيانة والمشاريع العامة. لم تجدوا ما تبحثون عنه؟ تواصلوا معنا.',
+  },
+  el: {
+    eyebrow: 'Συχνές Ερωτήσεις',
+    title: 'Τι ρωτούν οι άνθρωποι για το ηλιακό ζεστό νερό',
+    subtitle:
+      'Οι πιο συχνές ερωτήσεις για τη λειτουργία του συστήματος, τη χωρητικότητα μπόιλερ, την εξοικονόμηση, τη συντήρηση και τα δημόσια έργα. Δεν βρίσκετε αυτό που ψάχνετε; Επικοινωνήστε μαζί μας.',
+  },
+};
+
 export default async function ContactPage() {
   const t = await getTranslations('contact');
+  const locale = (await getLocale()) as Locale;
+  const faq = getFaqItems(locale);
   const { texts } = await getContent();
   const tel = `tel:${ORG.phone.replace(/\s/g, '')}`;
 
@@ -235,8 +264,8 @@ export default async function ContactPage() {
       </section>
 
       {/* Sık sorulan sorular */}
-      <Faq />
-      <FaqJsonLd items={faqItems} />
+      <Faq items={faq} header={FAQ_HEADER[locale] ?? FAQ_HEADER.tr} />
+      <FaqJsonLd items={faq} />
 
       {/* Kariyer — İnsan Kaynakları iletişim ile birleştirildi */}
       <section id="kariyer" className="scroll-mt-24 bg-mist-50 py-16 sm:py-20">
