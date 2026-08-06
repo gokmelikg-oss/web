@@ -20,7 +20,8 @@ const FAMILIES = [
 export default async function AdminHome() {
   if (!(await isAuthed())) redirect('/admin/login');
   const content = await getContent();
-  const tp = await getTranslations('products');
+  // /admin [locale] dışında olduğu için locale'i açıkça veriyoruz.
+  const tp = await getTranslations({ locale: 'tr', namespace: 'products' });
 
   // Ürün paneli boşsa mevcut ürünleri (teknik özellikleriyle) getir.
   const seedProducts: AdminProduct[] = featuredProducts.map((p) => ({
