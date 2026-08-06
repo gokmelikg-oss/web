@@ -5,13 +5,45 @@ import { Search, MapPin, X, ChevronDown, ArrowDownWideNarrow } from 'lucide-reac
 import { computeImpact, type ReferenceProject } from '@/data/references';
 
 const PAGE_SIZE = 24;
-const nf = new Intl.NumberFormat('tr-TR');
-const nf1 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 });
 
-export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
+export interface ReferenceListLabels {
+  searchPlaceholder: string;
+  allProvinces: string; // "Tüm iller"
+  clear: string;
+  proje: string;
+  konut: string;
+  kollektor: string;
+  isinimAlani: string;
+  isinim: string;
+  brut: string;
+  collectorWord: string; // "kollektör"
+  sortedByCollectors: string;
+  noResults: string;
+  noResultsHint: string;
+  homesServed: string; // "{n} konutun sıcak su ihtiyacı güneş enerjisiyle karşılanıyor" — {n} önce eklenir
+  blockWord: string; // "blok"
+  showMore: string; // "Daha fazla göster"
+  selBefore: string;
+  selMiddle: string;
+  selAfter: string;
+  tonUnit: string; // "ton"
+}
+
+export function ReferenceList({
+  projects,
+  labels,
+  intlLocale = 'tr-TR',
+}: {
+  projects: ReferenceProject[];
+  labels: ReferenceListLabels;
+  intlLocale?: string;
+}) {
   const [query, setQuery] = useState('');
   const [province, setProvince] = useState<string | null>(null);
   const [visible, setVisible] = useState(PAGE_SIZE);
+
+  const nf = useMemo(() => new Intl.NumberFormat(intlLocale), [intlLocale]);
+  const nf1 = useMemo(() => new Intl.NumberFormat(intlLocale, { maximumFractionDigits: 1 }), [intlLocale]);
 
   /* İl özetleri — verilen projelerden hesaplanır (filtre menüsü için). */
   const provinceSummaries = useMemo(() => {
@@ -78,7 +110,7 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
               setQuery(e.target.value);
               setVisible(PAGE_SIZE);
             }}
-            placeholder="Proje, il veya ilçe ara…"
+            placeholder={labels.searchPlaceholder}
             className="w-full rounded-full border border-mist-900/12 bg-white py-3 pe-4 ps-11 text-sm outline-none transition-colors focus:border-volt-500"
           />
         </div>
@@ -91,7 +123,9 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
             }}
             className="w-full appearance-none rounded-full border border-mist-900/12 bg-white py-3 pe-10 ps-5 text-sm font-medium outline-none transition-colors focus:border-volt-500 sm:w-56"
           >
-            <option value="">Tüm iller ({provinceSummaries.length})</option>
+            <option value="">
+              {labels.allProvinces} ({provinceSummaries.length})
+            </option>
             {provinceSummaries.map((p) => (
               <option key={p.il} value={p.il}>
                 {p.il} ({p.projects})
@@ -110,7 +144,7 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
             className="inline-flex items-center justify-center gap-1.5 rounded-full border border-mist-900/12 px-5 py-3 text-sm font-semibold text-mist-700 transition-colors hover:border-graphite-950 hover:text-graphite-950"
           >
             <X size={14} />
-            Temizle
+            {labels.clear}
           </button>
         )}
       </div>
@@ -118,10 +152,10 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
       {/* Seçkinin canlı özeti */}
       <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl border border-mist-900/10 bg-mist-50 p-4 sm:grid-cols-4">
         {[
-          { label: 'Proje', value: nf.format(filtered.length) },
-          { label: 'Konut', value: nf.format(subtotal.homes) },
-          { label: 'Kollektör', value: nf.format(subtotal.collectors) },
-          { label: 'Işınım alanı', value: `${nf.format(Math.round(subtotal.aperture))} m²` },
+          { label: labels.proje, value: nf.format(filtered.length) },
+          { label: labels.konut, value: nf.format(subtotal.homes) },
+          { label: labels.kollektor, value: nf.format(subtotal.collectors) },
+          { label: labels.isinimAlani, value: `${nf.format(Math.round(subtotal.aperture))} m²` },
         ].map((s) => (
           <div key={s.label}>
             <p className="font-tabular font-display text-xl font-bold text-graphite-950">{s.value}</p>
@@ -134,15 +168,15 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
 
       {hasFilter && filtered.length > 0 && (
         <p className="mt-3 text-sm text-mist-700">
-          Bu seçki yılda yaklaşık{' '}
+          {labels.selBefore}{' '}
           <strong className="font-semibold text-graphite-950">
             {nf1.format(subtotal.impact.annualGwh)} GWh
           </strong>{' '}
-          temiz ısı enerjisi üretiyor,{' '}
+          {labels.selMiddle}{' '}
           <strong className="font-semibold text-emerald-600">
-            {nf.format(Math.round(subtotal.impact.co2TonsPerYear))} ton CO₂
+            {nf.format(Math.round(subtotal.impact.co2TonsPerYear))} {labels.tonUnit} CO₂
           </strong>{' '}
-          salımını önlüyor.
+          {labels.selAfter}
         </p>
       )}
 
@@ -150,15 +184,15 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
       {filtered.length > 0 && (
         <p className="mt-6 flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">
           <ArrowDownWideNarrow size={13} className="shrink-0" />
-          Kollektör adedine göre büyükten küçüğe sıralı
+          {labels.sortedByCollectors}
         </p>
       )}
 
       {/* Liste */}
       {filtered.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-dashed border-mist-900/20 py-16 text-center">
-          <p className="font-display text-lg font-bold text-graphite-950">Sonuç bulunamadı</p>
-          <p className="mt-1.5 text-sm text-mist-600">Farklı bir arama veya il deneyin.</p>
+          <p className="font-display text-lg font-bold text-graphite-950">{labels.noResults}</p>
+          <p className="mt-1.5 text-sm text-mist-600">{labels.noResultsHint}</p>
         </div>
       ) : (
         <ul className="mt-6 grid gap-3 lg:grid-cols-2">
@@ -173,7 +207,7 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
                   {p.il} · {p.ilce}
                 </p>
                 <span className="shrink-0 rounded-full bg-volt-100 px-2.5 py-1 font-tabular font-mono text-[10px] font-bold text-volt-800">
-                  {nf.format(p.collectors)} kollektör
+                  {nf.format(p.collectors)} {labels.collectorWord}
                 </span>
               </div>
 
@@ -188,19 +222,19 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
 
               <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-mist-900/8 pt-3.5">
                 <div>
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">Konut</dt>
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">{labels.konut}</dt>
                   <dd className="mt-0.5 font-tabular text-sm font-bold text-graphite-950">
                     {nf.format(p.homes)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">Işınım</dt>
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">{labels.isinim}</dt>
                   <dd className="mt-0.5 font-tabular text-sm font-bold text-graphite-950">
                     {nf.format(Math.round(p.aperture))} m²
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">Brüt</dt>
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">{labels.brut}</dt>
                   <dd className="mt-0.5 font-tabular text-sm font-bold text-graphite-950">
                     {nf.format(Math.round(p.gross))} m²
                   </dd>
@@ -208,8 +242,8 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
               </dl>
 
               <p className="mt-3 text-xs leading-relaxed text-mist-600">
-                {nf.format(p.homes)} konutun sıcak su ihtiyacı güneş enerjisiyle karşılanıyor
-                {p.blocks > 0 && ` · ${nf.format(p.blocks)} blok`}.
+                {nf.format(p.homes)} {labels.homesServed}
+                {p.blocks > 0 && ` · ${nf.format(p.blocks)} ${labels.blockWord}`}.
               </p>
             </li>
           ))}
@@ -223,7 +257,7 @@ export function ReferenceList({ projects }: { projects: ReferenceProject[] }) {
             onClick={() => setVisible((v) => v + PAGE_SIZE)}
             className="rounded-full border border-graphite-950/15 px-7 py-3 text-sm font-semibold text-graphite-950 transition-colors hover:bg-graphite-950 hover:text-white"
           >
-            Daha fazla göster ({nf.format(filtered.length - visible)})
+            {labels.showMore} ({nf.format(filtered.length - visible)})
           </button>
         </div>
       )}

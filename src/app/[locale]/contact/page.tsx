@@ -21,7 +21,7 @@ import {
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
-import { ServiceForm } from '@/components/ServiceForm';
+import { ServiceForm, type ServiceFormLabels } from '@/components/ServiceForm';
 import { Faq } from '@/components/home/Faq';
 import { FaqJsonLd } from '@/components/JsonLd';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
@@ -36,14 +36,243 @@ export const revalidate = 3600;
 
 const HR_EMAIL = 'info@simseksolar.com.tr';
 
-const serviceBenefits = [
-  { icon: Wrench, title: 'Periyodik bakım', desc: 'Sistem verimini korumak için düzenli bakım, kontrol ve performans takibi.' },
-  { icon: ShieldCheck, title: 'Garanti & onarım', desc: 'Garanti kapsamında hızlı arıza teşhisi, onarım ve parça değişimi.' },
-  { icon: Package, title: 'Orijinal yedek parça', desc: 'Kollektör, boyler, sehpa ve bağlantı ekipmanları için orijinal yedek parça tedariki.' },
-  { icon: Headphones, title: 'Teknik destek', desc: 'Telefon ve uzaktan destekle hızlı çözüm; kurulum ve kullanım danışmanlığı.' },
-  { icon: Settings, title: 'Devreye alma', desc: 'Kurulum sonrası devreye alma, ayar ve kullanıcı eğitimi.' },
-  { icon: MapPin, title: 'Türkiye geneli servis ağı', desc: 'Bayi ve yetkili servis noktalarıyla ülke genelinde saha desteği.' },
-];
+const SERVICE_ICONS = [Wrench, ShieldCheck, Package, Headphones, Settings, MapPin];
+const PROCESS_ICONS = [FileText, PhoneCall, PencilRuler, PackageCheck];
+
+interface CardT { title: string; desc: string }
+interface ContactExtra {
+  mapBadge: string;
+  process: { eyebrow: string; title: string; steps: CardT[] };
+  service: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    benefits: CardT[];
+    urgentTitle: string;
+    urgentBody: string;
+    call: string;
+  };
+  career: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    cardBody: string;
+    button: string;
+    mailSubject: string;
+  };
+  serviceForm: ServiceFormLabels;
+}
+
+const CONTACT_EXTRA: Record<Locale, ContactExtra> = {
+  tr: {
+    mapBadge: 'Şimşek Solar Üretim Tesisi',
+    process: {
+      eyebrow: 'Çalışma Sürecimiz',
+      title: 'Talebiniz sonrası ne oluyor?',
+      steps: [
+        { title: 'Formu gönderin', desc: 'Talebinizi birkaç dakikada iletin.' },
+        { title: 'Uzmanımız sizi arasın', desc: 'İhtiyacınızı birlikte netleştirelim.' },
+        { title: 'Projelendirme & teklif', desc: 'Size özel çözüm ve fiyat hazırlanır.' },
+        { title: 'Montaj & devreye alma', desc: 'Anahtar teslim uygulama ve satış sonrası destek.' },
+      ],
+    },
+    service: {
+      eyebrow: 'Satış Sonrası Hizmet',
+      title: 'Kurulumdan sonra da yanınızdayız',
+      body: 'Periyodik bakım, garanti kapsamında onarım, orijinal yedek parça ve teknik destekle sistemlerinizin ömrü boyunca yanınızdayız. Servis talebinizi aşağıdaki formdan oluşturun.',
+      benefits: [
+        { title: 'Periyodik bakım', desc: 'Sistem verimini korumak için düzenli bakım, kontrol ve performans takibi.' },
+        { title: 'Garanti & onarım', desc: 'Garanti kapsamında hızlı arıza teşhisi, onarım ve parça değişimi.' },
+        { title: 'Orijinal yedek parça', desc: 'Kollektör, boyler, sehpa ve bağlantı ekipmanları için orijinal yedek parça tedariki.' },
+        { title: 'Teknik destek', desc: 'Telefon ve uzaktan destekle hızlı çözüm; kurulum ve kullanım danışmanlığı.' },
+        { title: 'Devreye alma', desc: 'Kurulum sonrası devreye alma, ayar ve kullanıcı eğitimi.' },
+        { title: 'Türkiye geneli servis ağı', desc: 'Bayi ve yetkili servis noktalarıyla ülke genelinde saha desteği.' },
+      ],
+      urgentTitle: 'Acil servis mi gerekiyor?',
+      urgentBody: 'Doğrudan arayın, hızlıca yönlendirelim.',
+      call: 'Ara',
+    },
+    career: {
+      eyebrow: 'Kariyer',
+      title: 'Ekibimize dahil olun',
+      body: 'Enerjiyi geleceğe bırakacağımız en önemli miraslardan biri olarak görüyoruz. Sorumluluk sahibi, öğrenmeye açık ve birlikte başarmaya inanan ekip arkadaşları arıyoruz. Özgeçmişinizi, çalışmak istediğiniz alanı belirterek iletin.',
+      cardBody: 'Başvurularınızı ve staj taleplerinizi doğrudan insan kaynakları ekibimize gönderebilirsiniz.',
+      button: 'Özgeçmişinizi gönderin',
+      mailSubject: 'Kariyer — İş Başvurusu',
+    },
+    serviceForm: {
+      title: 'Servis talebi oluşturun',
+      success: 'Servis talebiniz alındı. Teknik ekibimiz en kısa sürede sizinle iletişime geçecek.',
+      name: 'Ad Soyad',
+      phone: 'Telefon',
+      email: 'E-posta',
+      city: 'Sistem konumu / Şehir',
+      serviceTypeLabel: 'Servis türü',
+      selectPlaceholder: 'Seçiniz…',
+      serviceTypes: ['Periyodik Bakım', 'Arıza / Onarım', 'Yedek Parça Talebi', 'Garanti Kapsamı', 'Devreye Alma', 'Genel Soru'],
+      descriptionLabel: 'Açıklama',
+      descriptionHint: '(sistem tipi, arıza belirtisi, kurulum yılı…)',
+      submit: 'Talebi gönder',
+      error: 'Gönderilemedi. Lütfen tekrar deneyin veya bizi telefonla arayın.',
+    },
+  },
+  en: {
+    mapBadge: 'Şimşek Solar Production Plant',
+    process: {
+      eyebrow: 'Our Process',
+      title: 'What happens after your request?',
+      steps: [
+        { title: 'Send the form', desc: 'Submit your request in a few minutes.' },
+        { title: 'Our expert calls you', desc: 'Let’s clarify your needs together.' },
+        { title: 'Design & quote', desc: 'A tailored solution and price are prepared.' },
+        { title: 'Installation & commissioning', desc: 'Turnkey delivery and after-sales support.' },
+      ],
+    },
+    service: {
+      eyebrow: 'After-Sales Service',
+      title: 'We’re with you after installation too',
+      body: 'With periodic maintenance, warranty repairs, original spare parts and technical support, we stand by you throughout the life of your systems. Create your service request using the form below.',
+      benefits: [
+        { title: 'Periodic maintenance', desc: 'Regular maintenance, inspection and performance monitoring to preserve system efficiency.' },
+        { title: 'Warranty & repair', desc: 'Fast fault diagnosis, repair and part replacement under warranty.' },
+        { title: 'Original spare parts', desc: 'Original spare-part supply for collectors, boilers, frames and connection equipment.' },
+        { title: 'Technical support', desc: 'Fast solutions via phone and remote support; installation and usage consulting.' },
+        { title: 'Commissioning', desc: 'Post-installation commissioning, adjustment and user training.' },
+        { title: 'Nationwide service network', desc: 'Field support across the country through dealers and authorized service points.' },
+      ],
+      urgentTitle: 'Need urgent service?',
+      urgentBody: 'Call us directly and we’ll route you quickly.',
+      call: 'Call',
+    },
+    career: {
+      eyebrow: 'Careers',
+      title: 'Join our team',
+      body: 'We see energy as one of the most important legacies we will leave to the future. We are looking for responsible teammates who are open to learning and believe in succeeding together. Send us your CV, indicating the field you’d like to work in.',
+      cardBody: 'You can send your applications and internship requests directly to our human resources team.',
+      button: 'Send your CV',
+      mailSubject: 'Careers — Job Application',
+    },
+    serviceForm: {
+      title: 'Create a service request',
+      success: 'Your service request has been received. Our technical team will contact you shortly.',
+      name: 'Full Name',
+      phone: 'Phone',
+      email: 'Email',
+      city: 'System location / City',
+      serviceTypeLabel: 'Service type',
+      selectPlaceholder: 'Select…',
+      serviceTypes: ['Periodic Maintenance', 'Fault / Repair', 'Spare Part Request', 'Warranty Coverage', 'Commissioning', 'General Question'],
+      descriptionLabel: 'Description',
+      descriptionHint: '(system type, fault symptom, year of installation…)',
+      submit: 'Send request',
+      error: 'Could not be sent. Please try again or call us.',
+    },
+  },
+  ar: {
+    mapBadge: 'مصنع شمشك سولار',
+    process: {
+      eyebrow: 'آلية عملنا',
+      title: 'ماذا يحدث بعد طلبكم؟',
+      steps: [
+        { title: 'أرسلوا النموذج', desc: 'قدّموا طلبكم في دقائق.' },
+        { title: 'يتصل بكم خبيرنا', desc: 'لنوضّح احتياجكم معاً.' },
+        { title: 'التصميم والعرض', desc: 'يُعَدّ حل وسعر مخصّصان لكم.' },
+        { title: 'التركيب والتشغيل', desc: 'تسليم مفتاحي ودعم ما بعد البيع.' },
+      ],
+    },
+    service: {
+      eyebrow: 'خدمة ما بعد البيع',
+      title: 'نحن معكم بعد التركيب أيضاً',
+      body: 'بالصيانة الدورية والإصلاح ضمن الضمان وقطع الغيار الأصلية والدعم الفني، نقف إلى جانبكم طوال عمر أنظمتكم. أنشئوا طلب الخدمة عبر النموذج أدناه.',
+      benefits: [
+        { title: 'الصيانة الدورية', desc: 'صيانة منتظمة وفحص ومتابعة أداء للحفاظ على كفاءة النظام.' },
+        { title: 'الضمان والإصلاح', desc: 'تشخيص سريع للأعطال وإصلاح واستبدال قطع ضمن الضمان.' },
+        { title: 'قطع غيار أصلية', desc: 'توريد قطع غيار أصلية للمجمعات والخزانات والقواعد ومعدات التوصيل.' },
+        { title: 'الدعم الفني', desc: 'حلول سريعة عبر الهاتف والدعم عن بُعد؛ استشارات التركيب والاستخدام.' },
+        { title: 'التشغيل', desc: 'تشغيل وضبط بعد التركيب وتدريب المستخدم.' },
+        { title: 'شبكة خدمة تغطّي تركيا', desc: 'دعم ميداني في عموم البلاد عبر الوكلاء ونقاط الخدمة المعتمدة.' },
+      ],
+      urgentTitle: 'هل تحتاجون خدمة عاجلة؟',
+      urgentBody: 'اتصلوا بنا مباشرة وسنوجّهكم بسرعة.',
+      call: 'اتصال',
+    },
+    career: {
+      eyebrow: 'الوظائف',
+      title: 'انضمّوا إلى فريقنا',
+      body: 'نرى الطاقة إحدى أهم الموروثات التي سنتركها للمستقبل. نبحث عن زملاء مسؤولين ومنفتحين على التعلّم ويؤمنون بالنجاح المشترك. أرسلوا سيرتكم الذاتية مع تحديد المجال الذي ترغبون في العمل فيه.',
+      cardBody: 'يمكنكم إرسال طلباتكم وطلبات التدريب مباشرة إلى فريق الموارد البشرية لدينا.',
+      button: 'أرسلوا سيرتكم الذاتية',
+      mailSubject: 'الوظائف — طلب توظيف',
+    },
+    serviceForm: {
+      title: 'أنشئوا طلب خدمة',
+      success: 'تم استلام طلب الخدمة. سيتواصل معكم فريقنا الفني في أقرب وقت.',
+      name: 'الاسم الكامل',
+      phone: 'الهاتف',
+      email: 'البريد الإلكتروني',
+      city: 'موقع النظام / المدينة',
+      serviceTypeLabel: 'نوع الخدمة',
+      selectPlaceholder: 'اختاروا…',
+      serviceTypes: ['صيانة دورية', 'عطل / إصلاح', 'طلب قطع غيار', 'ضمن الضمان', 'التشغيل', 'سؤال عام'],
+      descriptionLabel: 'الوصف',
+      descriptionHint: '(نوع النظام، أعراض العطل، سنة التركيب…)',
+      submit: 'إرسال الطلب',
+      error: 'تعذّر الإرسال. يُرجى المحاولة مجدداً أو الاتصال بنا هاتفياً.',
+    },
+  },
+  el: {
+    mapBadge: 'Εργοστάσιο Şimşek Solar',
+    process: {
+      eyebrow: 'Η Διαδικασία μας',
+      title: 'Τι συμβαίνει μετά το αίτημά σας;',
+      steps: [
+        { title: 'Στείλτε τη φόρμα', desc: 'Υποβάλετε το αίτημά σας σε λίγα λεπτά.' },
+        { title: 'Ο ειδικός μας σας καλεί', desc: 'Ας διευκρινίσουμε τις ανάγκες σας μαζί.' },
+        { title: 'Σχεδιασμός & προσφορά', desc: 'Ετοιμάζεται εξατομικευμένη λύση και τιμή.' },
+        { title: 'Εγκατάσταση & λειτουργία', desc: 'Παράδοση με το κλειδί στο χέρι και υποστήριξη μετά την πώληση.' },
+      ],
+    },
+    service: {
+      eyebrow: 'Υποστήριξη Μετά την Πώληση',
+      title: 'Είμαστε δίπλα σας και μετά την εγκατάσταση',
+      body: 'Με περιοδική συντήρηση, επισκευές εντός εγγύησης, γνήσια ανταλλακτικά και τεχνική υποστήριξη, στεκόμαστε στο πλευρό σας σε όλη τη διάρκεια ζωής των συστημάτων σας. Δημιουργήστε το αίτημα εξυπηρέτησής σας με την παρακάτω φόρμα.',
+      benefits: [
+        { title: 'Περιοδική συντήρηση', desc: 'Τακτική συντήρηση, έλεγχος και παρακολούθηση απόδοσης για τη διατήρηση της απόδοσης του συστήματος.' },
+        { title: 'Εγγύηση & επισκευή', desc: 'Γρήγορη διάγνωση βλαβών, επισκευή και αντικατάσταση εξαρτημάτων εντός εγγύησης.' },
+        { title: 'Γνήσια ανταλλακτικά', desc: 'Προμήθεια γνήσιων ανταλλακτικών για συλλέκτες, μπόιλερ, βάσεις και εξοπλισμό σύνδεσης.' },
+        { title: 'Τεχνική υποστήριξη', desc: 'Γρήγορες λύσεις μέσω τηλεφώνου και απομακρυσμένης υποστήριξης· συμβουλευτική εγκατάστασης και χρήσης.' },
+        { title: 'Θέση σε λειτουργία', desc: 'Θέση σε λειτουργία μετά την εγκατάσταση, ρύθμιση και εκπαίδευση χρήστη.' },
+        { title: 'Δίκτυο εξυπηρέτησης σε όλη τη χώρα', desc: 'Υποστήριξη πεδίου σε όλη τη χώρα μέσω αντιπροσώπων και εξουσιοδοτημένων σημείων εξυπηρέτησης.' },
+      ],
+      urgentTitle: 'Χρειάζεστε επείγουσα εξυπηρέτηση;',
+      urgentBody: 'Καλέστε μας απευθείας και θα σας κατευθύνουμε γρήγορα.',
+      call: 'Κλήση',
+    },
+    career: {
+      eyebrow: 'Καριέρα',
+      title: 'Γίνετε μέλος της ομάδας μας',
+      body: 'Βλέπουμε την ενέργεια ως μία από τις σημαντικότερες κληρονομιές που θα αφήσουμε στο μέλλον. Αναζητούμε υπεύθυνους συνεργάτες, ανοιχτούς στη μάθηση, που πιστεύουν στην κοινή επιτυχία. Στείλτε μας το βιογραφικό σας, αναφέροντας τον τομέα στον οποίο θα θέλατε να εργαστείτε.',
+      cardBody: 'Μπορείτε να στείλετε τις αιτήσεις σας και τα αιτήματα πρακτικής άσκησης απευθείας στην ομάδα ανθρώπινου δυναμικού μας.',
+      button: 'Στείλτε το βιογραφικό σας',
+      mailSubject: 'Καριέρα — Αίτηση Εργασίας',
+    },
+    serviceForm: {
+      title: 'Δημιουργήστε αίτημα εξυπηρέτησης',
+      success: 'Το αίτημα εξυπηρέτησής σας ελήφθη. Η τεχνική μας ομάδα θα επικοινωνήσει μαζί σας σύντομα.',
+      name: 'Ονοματεπώνυμο',
+      phone: 'Τηλέφωνο',
+      email: 'Email',
+      city: 'Τοποθεσία συστήματος / Πόλη',
+      serviceTypeLabel: 'Τύπος εξυπηρέτησης',
+      selectPlaceholder: 'Επιλέξτε…',
+      serviceTypes: ['Περιοδική Συντήρηση', 'Βλάβη / Επισκευή', 'Αίτημα Ανταλλακτικού', 'Κάλυψη Εγγύησης', 'Θέση σε Λειτουργία', 'Γενική Ερώτηση'],
+      descriptionLabel: 'Περιγραφή',
+      descriptionHint: '(τύπος συστήματος, σύμπτωμα βλάβης, έτος εγκατάστασης…)',
+      submit: 'Αποστολή αιτήματος',
+      error: 'Δεν στάλθηκε. Δοκιμάστε ξανά ή καλέστε μας.',
+    },
+  },
+};
 
 export async function generateMetadata({
   params,
@@ -86,6 +315,7 @@ export default async function ContactPage() {
   const t = await getTranslations('contact');
   const locale = (await getLocale()) as Locale;
   const faq = getFaqItems(locale);
+  const ce = CONTACT_EXTRA[locale] ?? CONTACT_EXTRA.tr;
   const { texts } = await getContent();
   const tel = `tel:${ORG.phone.replace(/\s/g, '')}`;
 
@@ -133,7 +363,7 @@ export default async function ContactPage() {
                     <MapPin size={13} strokeWidth={2} />
                   </span>
                   <div className="leading-tight">
-                    <p className="text-xs font-bold text-graphite-950">Şimşek Solar Üretim Tesisi</p>
+                    <p className="text-xs font-bold text-graphite-950">{ce.mapBadge}</p>
                     <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-600">Mersin 2. OSB</p>
                   </div>
                 </div>
@@ -154,11 +384,11 @@ export default async function ContactPage() {
             <div className="mx-auto max-w-2xl text-center">
               <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
-                Çalışma Sürecimiz
+                {ce.process.eyebrow}
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
               </p>
               <h2 className="mt-4 text-balance font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">
-                Talebiniz sonrası ne oluyor?
+                {ce.process.title}
               </h2>
             </div>
           </Reveal>
@@ -169,16 +399,13 @@ export default async function ContactPage() {
               aria-hidden
             />
             <ol className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                { icon: FileText, title: 'Formu gönderin', desc: 'Talebinizi birkaç dakikada iletin.' },
-                { icon: PhoneCall, title: 'Uzmanımız sizi arasın', desc: 'İhtiyacınızı birlikte netleştirelim.' },
-                { icon: PencilRuler, title: 'Projelendirme & teklif', desc: 'Size özel çözüm ve fiyat hazırlanır.' },
-                { icon: PackageCheck, title: 'Montaj & devreye alma', desc: 'Anahtar teslim uygulama ve satış sonrası destek.' },
-              ].map((step, i) => (
+              {ce.process.steps.map((step, i) => {
+                const Icon = PROCESS_ICONS[i];
+                return (
                 <Reveal key={step.title} delay={i * 0.08}>
                   <li className="group relative flex flex-col items-center text-center">
                     <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-volt-500/25 bg-white text-volt-700 shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:border-volt-500 group-hover:bg-volt-500 group-hover:text-graphite-950">
-                      <step.icon size={22} strokeWidth={1.8} />
+                      <Icon size={22} strokeWidth={1.8} />
                       <span className="absolute -end-1.5 -top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-graphite-950 font-tabular font-mono text-[10px] font-bold text-white">
                         {i + 1}
                       </span>
@@ -187,7 +414,8 @@ export default async function ContactPage() {
                     <p className="mt-2 max-w-xs text-sm leading-relaxed text-mist-700">{step.desc}</p>
                   </li>
                 </Reveal>
-              ))}
+                );
+              })}
             </ol>
           </div>
         </div>
@@ -200,39 +428,39 @@ export default async function ContactPage() {
             <div className="max-w-2xl">
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
-                Satış Sonrası Hizmet
+                {ce.service.eyebrow}
               </p>
               <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
-                Kurulumdan sonra da yanınızdayız
+                {ce.service.title}
               </h2>
-              <p className="mt-4 text-mist-700">
-                Periyodik bakım, garanti kapsamında onarım, orijinal yedek parça ve teknik destekle
-                sistemlerinizin ömrü boyunca yanınızdayız. Servis talebinizi aşağıdaki formdan oluşturun.
-              </p>
+              <p className="mt-4 text-mist-700">{ce.service.body}</p>
             </div>
           </Reveal>
 
           <div className="mt-10 grid gap-14 lg:grid-cols-[1fr_1.05fr]">
             <div>
               <div className="grid gap-5 sm:grid-cols-2">
-                {serviceBenefits.map((b, i) => (
+                {ce.service.benefits.map((b, i) => {
+                  const Icon = SERVICE_ICONS[i];
+                  return (
                   <Reveal key={b.title} delay={i * 0.06} className="flex gap-4">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-700">
-                      <b.icon size={20} strokeWidth={1.75} />
+                      <Icon size={20} strokeWidth={1.75} />
                     </span>
                     <div>
                       <h3 className="font-display text-base font-semibold text-graphite-950">{b.title}</h3>
                       <p className="mt-1.5 text-sm leading-relaxed text-mist-700">{b.desc}</p>
                     </div>
                   </Reveal>
-                ))}
+                  );
+                })}
               </div>
 
               <Reveal delay={0.2}>
                 <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-mist-900/10 bg-mist-50 p-6 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="font-display text-sm font-bold text-graphite-950">Acil servis mi gerekiyor?</p>
-                    <p className="mt-1 text-sm text-mist-700">Doğrudan arayın, hızlıca yönlendirelim.</p>
+                    <p className="font-display text-sm font-bold text-graphite-950">{ce.service.urgentTitle}</p>
+                    <p className="mt-1 text-sm text-mist-700">{ce.service.urgentBody}</p>
                   </div>
                   <div className="flex flex-wrap gap-2.5">
                     <a
@@ -240,7 +468,7 @@ export default async function ContactPage() {
                       className="inline-flex items-center gap-2 rounded-full bg-graphite-950 px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
                     >
                       <Phone size={15} />
-                      Ara
+                      {ce.service.call}
                     </a>
                     <a
                       href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -257,7 +485,7 @@ export default async function ContactPage() {
             </div>
 
             <Reveal delay={0.1}>
-              <ServiceForm />
+              <ServiceForm labels={ce.serviceForm} />
             </Reveal>
           </div>
         </div>
@@ -274,29 +502,22 @@ export default async function ContactPage() {
             <div>
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
-                Kariyer
+                {ce.career.eyebrow}
               </p>
-              <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">Ekibimize dahil olun</h2>
-              <p className="mt-4 max-w-lg leading-relaxed text-graphite-200">
-                Enerjiyi geleceğe bırakacağımız en önemli miraslardan biri olarak görüyoruz. Sorumluluk
-                sahibi, öğrenmeye açık ve birlikte başarmaya inanan ekip arkadaşları arıyoruz.
-                Özgeçmişinizi, çalışmak istediğiniz alanı belirterek iletin.
-              </p>
+              <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">{ce.career.title}</h2>
+              <p className="mt-4 max-w-lg leading-relaxed text-graphite-200">{ce.career.body}</p>
             </div>
             <div className="flex flex-col items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-7">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-volt-500 text-graphite-950">
                 <Briefcase size={22} strokeWidth={1.75} />
               </span>
-              <p className="text-sm leading-relaxed text-graphite-200">
-                Başvurularınızı ve staj taleplerinizi doğrudan insan kaynakları ekibimize
-                gönderebilirsiniz.
-              </p>
+              <p className="text-sm leading-relaxed text-graphite-200">{ce.career.cardBody}</p>
               <a
-                href={`mailto:${HR_EMAIL}?subject=Kariyer — İş Başvurusu`}
+                href={`mailto:${HR_EMAIL}?subject=${encodeURIComponent(ce.career.mailSubject)}`}
                 className="inline-flex items-center gap-2 rounded-full bg-solar-gradient px-6 py-3 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
               >
                 <Mail size={15} />
-                Özgeçmişinizi gönderin
+                {ce.career.button}
                 <ArrowUpRight size={15} />
               </a>
               <p className="font-mono text-[11px] tracking-tight text-graphite-400">{HR_EMAIL}</p>

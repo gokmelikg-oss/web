@@ -14,6 +14,7 @@ import {
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { getContent } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
+import { getReferencesUi } from '@/lib/referencesUi';
 import type { Locale } from '@/i18n/config';
 
 // Admin panelinden referans eklenebildiği için ISR.
@@ -25,28 +26,27 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return pageMetadata({
-    locale,
-    path: '/projects',
-    title: 'Referanslar — Sahadaki İşlerimiz',
-    description:
-      'Türkiye genelinde tamamladığımız toplu konut projeleri: kollektör adedi, ışınım ve brüt alan verileriyle referans listemiz ve çevresel etkisi.',
-  });
+  const ui = getReferencesUi(locale);
+  return pageMetadata({ locale, path: '/projects', title: ui.meta.title, description: ui.meta.description });
 }
 
-const nf = new Intl.NumberFormat('tr-TR');
-const nf1 = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 });
+const SCALE_ICONS = [Grid3x3, MapPinned, Home, Building2, Sun, Grid3x3];
 
-const scaleStats = [
-  { icon: Grid3x3, value: referenceTotals.projects, suffix: '', label: 'Tamamlanan proje' },
-  { icon: MapPinned, value: referenceTotals.provinces, suffix: '', label: 'İl' },
-  { icon: Home, value: referenceTotals.homes, suffix: '', label: 'Konut' },
-  { icon: Building2, value: referenceTotals.blocks, suffix: '', label: 'Blok' },
-  { icon: Sun, value: referenceTotals.collectors, suffix: '', label: 'Kollektör' },
-  { icon: Grid3x3, value: referenceTotals.aperture, suffix: ' m²', label: 'Işınım alanı' },
-];
+export default async function ProjectsPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const ui = getReferencesUi(locale);
+  const nf = new Intl.NumberFormat(ui.intlLocale);
+  const nf1 = new Intl.NumberFormat(ui.intlLocale, { maximumFractionDigits: 1 });
 
-export default async function ProjectsPage() {
+  const scaleStats = [
+    { icon: SCALE_ICONS[0], value: referenceTotals.projects, suffix: '', label: ui.scaleLabels[0] },
+    { icon: SCALE_ICONS[1], value: referenceTotals.provinces, suffix: '', label: ui.scaleLabels[1] },
+    { icon: SCALE_ICONS[2], value: referenceTotals.homes, suffix: '', label: ui.scaleLabels[2] },
+    { icon: SCALE_ICONS[3], value: referenceTotals.blocks, suffix: '', label: ui.scaleLabels[3] },
+    { icon: SCALE_ICONS[4], value: referenceTotals.collectors, suffix: '', label: ui.scaleLabels[4] },
+    { icon: SCALE_ICONS[5], value: referenceTotals.aperture, suffix: ' m²', label: ui.scaleLabels[5] },
+  ];
+
   const { references, hiddenRefs } = await getContent();
   const hiddenSet = new Set(hiddenRefs ?? []);
   const adminProjects: ReferenceProject[] = references
@@ -69,15 +69,16 @@ export default async function ProjectsPage() {
 
   return (
     <>
-      <PageBreadcrumb items={[{ name: 'Referanslar', path: '/projects' }]} />
+      <PageBreadcrumb items={[{ name: ui.crumb, path: '/projects' }]} />
       <PageHero
-        eyebrow="Referanslar"
-        title="Sahadaki işlerimiz"
-        subtitle={`Türkiye'nin ${referenceTotals.provinces} ilinde tamamladığımız ${nf.format(
-          referenceTotals.projects
-        )} toplu konut projesinde ${nf.format(
-          referenceTotals.collectors
-        )} kollektör ile ${nf.format(referenceTotals.homes)} konutun sıcak su ihtiyacını güneşten karşılıyoruz.`}
+        eyebrow={ui.hero.eyebrow}
+        title={ui.hero.title}
+        subtitle={ui.hero.subtitle(
+          referenceTotals.provinces,
+          nf.format(referenceTotals.projects),
+          nf.format(referenceTotals.collectors),
+          nf.format(referenceTotals.homes)
+        )}
       />
 
       {/* Ölçek — ince ayraçlı premium editoryal ızgara + dev index */}
@@ -122,30 +123,20 @@ export default async function ProjectsPage() {
               <div>
                 <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-400">
                   <span className="h-px w-8 bg-emerald-500" aria-hidden />
-                  Çevresel Etki
+                  {ui.impact.eyebrow}
                 </p>
                 <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                  Kurduğumuz sistemler her yıl bir orman kadar karbon tutuyor
+                  {ui.impact.title}
                 </h2>
                 <p className="mt-4 max-w-md leading-relaxed text-graphite-300">
-                  Sahadaki {nf.format(referenceTotals.aperture)} m² ışınım alanı, güneşi ücretsiz ve
-                  temiz ısıya çeviriyor. Aşağıdaki değerler, bu alanın yıllık üretimi ve fosil yakıt
-                  yerine ikame edilmesiyle önlenen sera gazı salımını gösterir.
+                  {ui.impact.body(nf.format(referenceTotals.aperture))}
                 </p>
 
                 <div className="mt-8 space-y-2.5 rounded-2xl border border-white/10 bg-white/[0.04] p-5 font-mono text-[11px] leading-relaxed text-graphite-300 backdrop-blur-sm">
-                  <p className="font-semibold uppercase tracking-[0.14em] text-white">Hesap yöntemi</p>
-                  <p>
-                    Işınım alanı = kollektör adedi × 2,33 m² · Brüt alan = kollektör adedi × 2,55 m²
-                  </p>
-                  <p>
-                    Yıllık üretim = {nf.format(referenceTotals.aperture)} m² ×{' '}
-                    {IMPACT_ASSUMPTIONS.yieldPerM2} kWh/m²·yıl
-                  </p>
-                  <p>
-                    Önlenen salım = üretim × {String(IMPACT_ASSUMPTIONS.co2PerKwh).replace('.', ',')} kg
-                    CO₂/kWh (doğal gaz ikamesi)
-                  </p>
+                  <p className="font-semibold uppercase tracking-[0.14em] text-white">{ui.impact.methodTitle}</p>
+                  <p>{ui.impact.methodLine1}</p>
+                  <p>{ui.impact.methodLine2(nf.format(referenceTotals.aperture), IMPACT_ASSUMPTIONS.yieldPerM2)}</p>
+                  <p>{ui.impact.methodLine3(nf.format(IMPACT_ASSUMPTIONS.co2PerKwh))}</p>
                 </div>
               </div>
             </Reveal>
@@ -161,9 +152,7 @@ export default async function ProjectsPage() {
                       {nf1.format(totalImpact.annualGwh)}
                       <span className="ms-1.5 text-xl text-emerald-400">GWh</span>
                     </p>
-                    <p className="mt-2.5 text-sm leading-snug text-graphite-200">
-                      Yıllık üretilen temiz ısı enerjisi
-                    </p>
+                    <p className="mt-2.5 text-sm leading-snug text-graphite-200">{ui.impact.card1}</p>
                   </div>
                 </div>
               </Reveal>
@@ -176,11 +165,9 @@ export default async function ProjectsPage() {
                   <div className="mt-6">
                     <p className="font-tabular font-display text-4xl font-bold leading-none text-white">
                       {nf.format(Math.round(totalImpact.co2TonsPerYear))}
-                      <span className="ms-1.5 text-xl text-emerald-400">ton</span>
+                      <span className="ms-1.5 text-xl text-emerald-400">{ui.impact.tonUnit}</span>
                     </p>
-                    <p className="mt-2.5 text-sm leading-snug text-graphite-200">
-                      Yılda önlenen CO₂ salımı
-                    </p>
+                    <p className="mt-2.5 text-sm leading-snug text-graphite-200">{ui.impact.card2}</p>
                   </div>
                 </div>
               </Reveal>
@@ -193,11 +180,9 @@ export default async function ProjectsPage() {
                   <div className="mt-6">
                     <p className="font-tabular font-display text-4xl font-bold leading-none text-white">
                       {nf1.format(totalImpact.treeEquivalent / 1_000_000)}
-                      <span className="ms-1.5 text-xl text-emerald-400">milyon</span>
+                      <span className="ms-1.5 text-xl text-emerald-400">{ui.impact.millionUnit}</span>
                     </p>
-                    <p className="mt-2.5 text-sm leading-snug text-graphite-200">
-                      Ağacın yıllık karbon tutumuna eşdeğer
-                    </p>
+                    <p className="mt-2.5 text-sm leading-snug text-graphite-200">{ui.impact.card3}</p>
                   </div>
                 </div>
               </Reveal>
@@ -210,11 +195,9 @@ export default async function ProjectsPage() {
                   <div className="mt-6">
                     <p className="font-tabular font-display text-4xl font-bold leading-none text-white">
                       {nf.format(Math.round(totalImpact.homeEquivalent / 1000))}
-                      <span className="ms-1.5 text-xl text-volt-400">bin</span>
+                      <span className="ms-1.5 text-xl text-volt-400">{ui.impact.thousandUnit}</span>
                     </p>
-                    <p className="mt-2.5 text-sm leading-snug text-graphite-200">
-                      Hanenin yıllık sıcak su enerjisine eşdeğer
-                    </p>
+                    <p className="mt-2.5 text-sm leading-snug text-graphite-200">{ui.impact.card4}</p>
                   </div>
                 </div>
               </Reveal>
@@ -230,20 +213,17 @@ export default async function ProjectsPage() {
             <div className="max-w-2xl">
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
                 <span className="h-px w-8 bg-volt-500" aria-hidden />
-                Referans Listesi
+                {ui.listSection.eyebrow}
               </p>
               <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
-                Proje proje sahadaki işlerimiz
+                {ui.listSection.title}
               </h2>
-              <p className="mt-4 text-mist-700">
-                Her kayıtta kollektör adedi, toplam ışınım ve brüt alan ile karşılanan konut sayısı yer
-                alır. İl seçerek veya arayarak listeyi daraltabilirsiniz.
-              </p>
+              <p className="mt-4 text-mist-700">{ui.listSection.subtitle}</p>
             </div>
           </Reveal>
 
           <div className="mt-10">
-            <ReferenceList projects={allProjects} />
+            <ReferenceList projects={allProjects} labels={ui.listLabels} intlLocale={ui.intlLocale} />
           </div>
         </div>
       </section>
