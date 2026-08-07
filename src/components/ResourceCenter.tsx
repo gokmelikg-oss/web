@@ -27,7 +27,7 @@ interface AdminDoc {
   url: string;
 }
 
-export function ResourceCenter({ adminDocs = [] }: { adminDocs?: AdminDoc[] }) {
+export function ResourceCenter({ adminDocs = [], hideProductDocs = false }: { adminDocs?: AdminDoc[]; hideProductDocs?: boolean }) {
   const t = useTranslations('resources');
   const tProducts = useTranslations('products');
   const tCerts = useTranslations('certs');
@@ -68,6 +68,7 @@ export function ResourceCenter({ adminDocs = [] }: { adminDocs?: AdminDoc[] }) {
   return (
     <div className="space-y-16">
       {/* Ürün bazlı belgeler */}
+      {!hideProductDocs && (
       <div>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -129,6 +130,7 @@ export function ResourceCenter({ adminDocs = [] }: { adminDocs?: AdminDoc[] }) {
           })}
         </div>
       </div>
+      )}
 
       {/* Sertifikalar — gerçek PDF'lere bağlı */}
       <div>

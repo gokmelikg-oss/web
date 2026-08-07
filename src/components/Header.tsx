@@ -1,30 +1,39 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/navigation';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import type { Locale } from '@/i18n/config';
 
-/* Ana menü sırası: Ana Sayfa · Kurumsal · Ürünler · Dökümanlar · Referanslar ·
-   Hesaplama · Bayilik · İletişim. (Ana Sayfa ve Kurumsal ayrı render edilir.) */
+/* Ana menü sırası: Kurumsal · Ürünler · Dökümanlar · Akademi · Referanslar · İletişim. */
 const navItems = [
   { href: '/products', key: 'products' },
+  { href: '/resources', key: 'resources' },
   { href: '/akademi', key: 'academy' },
   { href: '/projects', key: 'projects' },
   { href: '/contact', key: 'contact' },
 ] as const;
 
-/* Kurumsal alt menüsü — 3 başlık (şimdilik Türkçe; diğer diller sonra). */
-const corporateItems = [
-  { href: '/about', label: 'Hakkımızda' },
-  { href: '/history', label: 'Tarihçe' },
-  { href: '/grup-sirketleri', label: 'Grup Şirketleri' },
-] as const;
+/* Kurumsal başlığı + alt menüsü — dört dilde. */
+const CORP: Record<Locale, { title: string; hakkimizda: string; tarihce: string; grup: string }> = {
+  tr: { title: 'Kurumsal', hakkimizda: 'Hakkımızda', tarihce: 'Tarihçe', grup: 'Grup Şirketleri' },
+  en: { title: 'Company', hakkimizda: 'About Us', tarihce: 'History', grup: 'Group Companies' },
+  ar: { title: 'الشركة', hakkimizda: 'من نحن', tarihce: 'التاريخ', grup: 'شركات المجموعة' },
+  el: { title: 'Εταιρεία', hakkimizda: 'Σχετικά', tarihce: 'Ιστορία', grup: 'Εταιρείες Ομίλου' },
+};
 
 export function Header() {
   const t = useTranslations('nav');
+  const locale = useLocale() as Locale;
+  const corp = CORP[locale] ?? CORP.tr;
+  const corporateItems = [
+    { href: '/about', label: corp.hakkimizda },
+    { href: '/history', label: corp.tarihce },
+    { href: '/grup-sirketleri', label: corp.grup },
+  ];
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -75,7 +84,7 @@ export function Header() {
                 dark ? 'text-white/80 hover:text-white' : 'text-graphite-900/80 hover:text-graphite-700'
               }`}
             >
-              Kurumsal
+              {corp.title}
               <ChevronDown size={14} className={`transition-transform ${corpOpen ? 'rotate-180' : ''}`} />
             </button>
             {corpOpen && (
@@ -138,7 +147,7 @@ export function Header() {
         <div className="border-t border-graphite-700/10 bg-white lg:hidden">
           <nav className="container-page flex flex-col gap-1 py-4">
             <p className="px-3 pt-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-mist-500">
-              Kurumsal
+              {corp.title}
             </p>
             {corporateItems.map((item) => (
               <Link
