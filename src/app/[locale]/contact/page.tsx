@@ -4,7 +4,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   Briefcase,
   ArrowUpRight,
   FileText,
@@ -42,6 +41,7 @@ const PROCESS_ICONS = [FileText, PhoneCall, PencilRuler, PackageCheck];
 interface CardT { title: string; desc: string }
 interface ContactExtra {
   mapBadge: string;
+  channels: { whatsappValue: string; whatsappNote: string; emailNote: string };
   process: { eyebrow: string; title: string; steps: CardT[] };
   service: {
     eyebrow: string;
@@ -66,6 +66,7 @@ interface ContactExtra {
 const CONTACT_EXTRA: Record<Locale, ContactExtra> = {
   tr: {
     mapBadge: 'Şimşek Solar Üretim Tesisi',
+    channels: { whatsappValue: 'Hızlı destek hattı', whatsappNote: 'Mesajınıza kısa sürede dönüyoruz', emailNote: '24 saat içinde yanıt veriyoruz' },
     process: {
       eyebrow: 'Çalışma Sürecimiz',
       title: 'Talebiniz sonrası ne oluyor?',
@@ -118,6 +119,7 @@ const CONTACT_EXTRA: Record<Locale, ContactExtra> = {
   },
   en: {
     mapBadge: 'Şimşek Solar Production Plant',
+    channels: { whatsappValue: 'Quick support line', whatsappNote: 'We reply to your message shortly', emailNote: 'We reply within 24 hours' },
     process: {
       eyebrow: 'Our Process',
       title: 'What happens after your request?',
@@ -170,6 +172,7 @@ const CONTACT_EXTRA: Record<Locale, ContactExtra> = {
   },
   ar: {
     mapBadge: 'مصنع شمشك سولار',
+    channels: { whatsappValue: 'خط دعم سريع', whatsappNote: 'نردّ على رسالتكم خلال وقت قصير', emailNote: 'نردّ خلال 24 ساعة' },
     process: {
       eyebrow: 'آلية عملنا',
       title: 'ماذا يحدث بعد طلبكم؟',
@@ -222,6 +225,7 @@ const CONTACT_EXTRA: Record<Locale, ContactExtra> = {
   },
   el: {
     mapBadge: 'Εργοστάσιο Şimşek Solar',
+    channels: { whatsappValue: 'Γραμμή γρήγορης υποστήριξης', whatsappNote: 'Απαντάμε στο μήνυμά σας σύντομα', emailNote: 'Απαντάμε εντός 24 ωρών' },
     process: {
       eyebrow: 'Η Διαδικασία μας',
       title: 'Τι συμβαίνει μετά το αίτημά σας;',
@@ -319,12 +323,17 @@ export default async function ContactPage() {
   const { texts } = await getContent();
   const tel = `tel:${ORG.phone.replace(/\s/g, '')}`;
 
-  const infoItems = [
-    { icon: MapPin, title: t('info.addressTitle'), value: txt(texts, 'contact.address', t('info.address')), dir: undefined },
-    { icon: Phone, title: t('info.phoneTitle'), value: txt(texts, 'contact.phone', t('info.phone')), dir: 'ltr' },
-    { icon: Mail, title: t('info.emailTitle'), value: txt(texts, 'contact.email', t('info.email')), dir: 'ltr' },
-    { icon: Clock, title: t('info.hoursTitle'), value: txt(texts, 'contact.hours', t('info.hours')), dir: undefined },
-  ] as const;
+  const phone = txt(texts, 'contact.phone', t('info.phone'));
+  const email = txt(texts, 'contact.email', t('info.email'));
+  const address = txt(texts, 'contact.address', t('info.address'));
+  const hours = txt(texts, 'contact.hours', t('info.hours'));
+
+  const channels = [
+    { icon: Phone, title: t('info.phoneTitle'), value: phone, note: hours, href: tel, dir: 'ltr' as const, external: false },
+    { icon: MessageCircle, title: 'WhatsApp', value: ce.channels.whatsappValue, note: ce.channels.whatsappNote, href: `https://wa.me/${WHATSAPP_NUMBER}`, dir: undefined, external: true },
+    { icon: Mail, title: t('info.emailTitle'), value: email, note: ce.channels.emailNote, href: `mailto:${email}`, dir: 'ltr' as const, external: false },
+    { icon: MapPin, title: t('info.addressTitle'), value: address, note: null, href: null, dir: undefined, external: false },
+  ];
 
   return (
     <>
@@ -332,22 +341,44 @@ export default async function ContactPage() {
 
       <section className="section-pad bg-white">
         <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.1fr]">
-          <div className="space-y-7">
-            {infoItems.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.08} className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-600">
-                  <item.icon size={20} strokeWidth={1.75} />
-                </span>
-                <div>
-                  <h3 className="font-display text-base font-semibold text-graphite-950">{item.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-mist-700" dir={item.dir}>
-                    {item.value}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+          <div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {channels.map((c, i) => {
+                const inner = (
+                  <>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-600 transition-colors group-hover:bg-volt-500 group-hover:text-graphite-950">
+                      <c.icon size={20} strokeWidth={1.75} />
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-display text-sm font-bold text-graphite-950">{c.title}</h3>
+                      <p className="mt-1 break-words text-sm leading-relaxed text-mist-700" dir={c.dir}>
+                        {c.value}
+                      </p>
+                      {c.note && <p className="mt-1 text-[11px] font-medium text-volt-700">{c.note}</p>}
+                    </div>
+                  </>
+                );
+                const cls =
+                  'group flex h-full gap-3.5 rounded-2xl border border-mist-900/10 bg-mist-50 p-5 transition-all';
+                return (
+                  <Reveal key={c.title} delay={i * 0.06}>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        className={`${cls} hover:-translate-y-0.5 hover:border-volt-500/40 hover:bg-white hover:shadow-card`}
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div className={cls}>{inner}</div>
+                    )}
+                  </Reveal>
+                );
+              })}
+            </div>
 
-            <Reveal delay={0.3}>
+            <Reveal delay={0.3} className="mt-3">
               <div className="group relative overflow-hidden rounded-2xl border border-mist-900/10 bg-mist-100 shadow-card">
                 <iframe
                   src={FACTORY_MAP_EMBED}

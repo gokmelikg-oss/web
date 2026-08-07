@@ -1,9 +1,61 @@
 import type { SVGProps } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { SOCIAL } from '@/lib/seo';
+import type { Locale } from '@/i18n/config';
+
+/* Footer sabit etiketleri — dört dilde (kolon başlıkları, link adları, yasal). */
+const FOOTER_UI: Record<
+  Locale,
+  {
+    kurumsal: string;
+    urunlerHizmet: string;
+    araclar: string;
+    tarihce: string;
+    grupSirketleri: string;
+    kariyer: string;
+    referanslar: string;
+    satisSonrasi: string;
+    blog: string;
+    hesaplama: string;
+    ilPotansiyeli: string;
+    catiUygunluk: string;
+    kvkk: string;
+    gizlilik: string;
+    cerez: string;
+  }
+> = {
+  tr: {
+    kurumsal: 'Kurumsal', urunlerHizmet: 'Ürünler & Hizmet', araclar: 'Araçlar',
+    tarihce: 'Tarihçe', grupSirketleri: 'Grup Şirketleri', kariyer: 'Kariyer',
+    referanslar: 'Referanslar', satisSonrasi: 'Satış Sonrası Hizmet', blog: 'Blog',
+    hesaplama: 'Hesaplama Aracı', ilPotansiyeli: 'İl Güneş Potansiyeli', catiUygunluk: 'Çatı Uygunluk',
+    kvkk: 'KVKK', gizlilik: 'Gizlilik Politikası', cerez: 'Çerez Politikası',
+  },
+  en: {
+    kurumsal: 'Company', urunlerHizmet: 'Products & Service', araclar: 'Tools',
+    tarihce: 'History', grupSirketleri: 'Group Companies', kariyer: 'Careers',
+    referanslar: 'References', satisSonrasi: 'After-Sales Service', blog: 'Blog',
+    hesaplama: 'Calculator', ilPotansiyeli: 'Solar Potential by Province', catiUygunluk: 'Roof Suitability',
+    kvkk: 'KVKK', gizlilik: 'Privacy Policy', cerez: 'Cookie Policy',
+  },
+  ar: {
+    kurumsal: 'الشركة', urunlerHizmet: 'المنتجات والخدمة', araclar: 'الأدوات',
+    tarihce: 'التاريخ', grupSirketleri: 'شركات المجموعة', kariyer: 'الوظائف',
+    referanslar: 'المراجع', satisSonrasi: 'خدمة ما بعد البيع', blog: 'المدونة',
+    hesaplama: 'أداة الحساب', ilPotansiyeli: 'الإمكان الشمسي حسب المحافظة', catiUygunluk: 'ملاءمة السطح',
+    kvkk: 'KVKK', gizlilik: 'سياسة الخصوصية', cerez: 'سياسة ملفات الارتباط',
+  },
+  el: {
+    kurumsal: 'Εταιρεία', urunlerHizmet: 'Προϊόντα & Υπηρεσία', araclar: 'Εργαλεία',
+    tarihce: 'Ιστορία', grupSirketleri: 'Εταιρείες Ομίλου', kariyer: 'Καριέρα',
+    referanslar: 'Έργα Αναφοράς', satisSonrasi: 'Υποστήριξη Μετά την Πώληση', blog: 'Ιστολόγιο',
+    hesaplama: 'Υπολογιστής', ilPotansiyeli: 'Ηλιακό Δυναμικό ανά Επαρχία', catiUygunluk: 'Καταλληλότητα Στέγης',
+    kvkk: 'KVKK', gizlilik: 'Πολιτική Απορρήτου', cerez: 'Πολιτική Cookies',
+  },
+};
 
 /* Marka ikonları — lucide brand ikonlarını kaldırdığı için inline SVG. */
 function InstagramIcon(props: SVGProps<SVGSVGElement>) {
@@ -36,21 +88,23 @@ const socialLinks = [
   { href: SOCIAL.linkedin, icon: LinkedinIcon, label: 'LinkedIn' },
 ];
 
-const legalLinks = [
-  { href: '/kvkk', label: 'KVKK' },
-  { href: '/gizlilik', label: 'Gizlilik Politikası' },
-  { href: '/cerez-politikasi', label: 'Çerez Politikası' },
-];
-
 export function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
   const tContact = useTranslations('contact');
+  const locale = useLocale() as Locale;
+  const f = FOOTER_UI[locale] ?? FOOTER_UI.tr;
   const year = new Date().getFullYear();
+
+  const legalLinks = [
+    { href: '/kvkk', label: f.kvkk },
+    { href: '/gizlilik', label: f.gizlilik },
+    { href: '/cerez-politikasi', label: f.cerez },
+  ];
 
   return (
     <footer className="bg-graphite-gradient text-graphite-100">
-      <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:py-20">
+      <div className="container-page grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.3fr] lg:py-20">
         <div>
           <Image
             src="/brand/simsek-solar-white.png"
@@ -64,26 +118,37 @@ export function Footer() {
 
         <div>
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-volt-400">
-            Kurumsal
+            {f.kurumsal}
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
             <li><Link href="/about" className="hover:text-white">{t('aboutLink')}</Link></li>
-            <li><Link href="/history" className="hover:text-white">Tarihçe</Link></li>
-            <li><Link href="/grup-sirketleri" className="hover:text-white">Grup Şirketleri</Link></li>
-            <li><Link href="/contact#kariyer" className="hover:text-white">Kariyer</Link></li>
+            <li><Link href="/history" className="hover:text-white">{f.tarihce}</Link></li>
+            <li><Link href="/grup-sirketleri" className="hover:text-white">{f.grupSirketleri}</Link></li>
+            <li><Link href="/contact#kariyer" className="hover:text-white">{f.kariyer}</Link></li>
           </ul>
         </div>
 
         <div>
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-volt-400">
-            Ürünler & Hizmet
+            {f.urunlerHizmet}
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
             <li><Link href="/products" className="hover:text-white">{tNav('products')}</Link></li>
+            <li><Link href="/projects" className="hover:text-white">{f.referanslar}</Link></li>
+            <li><Link href="/contact#servis" className="hover:text-white">{f.satisSonrasi}</Link></li>
+            <li><Link href="/blog" className="hover:text-white">{f.blog}</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-volt-400">
+            {f.araclar}
+          </h3>
+          <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
             <li><Link href="/akademi" className="hover:text-white">{tNav('academy')}</Link></li>
-            <li><Link href="/projects" className="hover:text-white">{tNav('projects')}</Link></li>
-            <li><Link href="/contact#servis" className="hover:text-white">Satış Sonrası Hizmet</Link></li>
-            <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
+            <li><Link href="/calculator" className="hover:text-white">{f.hesaplama}</Link></li>
+            <li><Link href="/gunes-potansiyeli" className="hover:text-white">{f.ilPotansiyeli}</Link></li>
+            <li><Link href="/gunes-potansiyeli#cati" className="hover:text-white">{f.catiUygunluk}</Link></li>
           </ul>
         </div>
 

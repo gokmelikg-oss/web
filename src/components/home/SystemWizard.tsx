@@ -8,13 +8,10 @@ import {
   Hotel,
   Factory,
   Users,
-  Activity,
   ArrowLeft,
   ArrowUpRight,
   RotateCcw,
   Package,
-  Cpu,
-  Sun,
   Calculator,
   Droplets,
   Thermometer,
@@ -92,23 +89,19 @@ export function SystemWizard() {
   const tProducts = useTranslations('products');
   const [segment, setSegment] = useState<Segment | null>(null);
   const [size, setSize] = useState<Size | null>(null);
-  const [smart, setSmart] = useState<boolean | null>(null);
 
-  const step = segment === null ? 0 : size === null ? 1 : smart === null ? 2 : 3;
+  const step = segment === null ? 0 : size === null ? 1 : 2;
 
   const segments = t.raw('segments') as Record<Segment, Option>;
   const sizes = segment ? (t.raw(`sizes.${segment}`) as Option[]) : [];
-  const smartOptions = t.raw('smartOptions') as Record<'yes' | 'no', Option>;
 
   function reset() {
     setSegment(null);
     setSize(null);
-    setSmart(null);
   }
 
   function back() {
-    if (smart !== null) setSmart(null);
-    else if (size !== null) setSize(null);
+    if (size !== null) setSize(null);
     else setSegment(null);
   }
 
@@ -132,7 +125,7 @@ export function SystemWizard() {
         <div className="mx-auto mt-10 max-w-3xl">
           {/* Step indicator */}
           <div className="mb-6 flex items-center justify-center gap-2" aria-hidden>
-            {[0, 1, 2].map((i) => (
+            {[0, 1].map((i) => (
               <span
                 key={i}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
@@ -179,26 +172,7 @@ export function SystemWizard() {
                 </WizardStep>
               )}
 
-              {step === 2 && (
-                <WizardStep key="smart" title={t('steps.smart')}>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <OptionCard
-                      icon={<Activity size={26} strokeWidth={1.6} />}
-                      title={smartOptions.yes.title}
-                      desc={smartOptions.yes.desc}
-                      onClick={() => setSmart(true)}
-                    />
-                    <OptionCard
-                      icon={<Sun size={26} strokeWidth={1.6} />}
-                      title={smartOptions.no.title}
-                      desc={smartOptions.no.desc}
-                      onClick={() => setSmart(false)}
-                    />
-                  </div>
-                </WizardStep>
-              )}
-
-              {step === 3 && rec && (
+              {step === 2 && rec && (
                 <motion.div
                   key="result"
                   initial={{ opacity: 0, y: 16 }}
@@ -212,11 +186,7 @@ export function SystemWizard() {
 
                   {/* Seçim özeti */}
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                    {[
-                      segments[segment!].title,
-                      sizes.find((s) => s.id === size)?.title,
-                      smart ? smartOptions.yes.desc : smartOptions.no.title,
-                    ]
+                    {[segments[segment!].title, sizes.find((s) => s.id === size)?.title]
                       .filter(Boolean)
                       .map((label) => (
                         <span
@@ -265,18 +235,6 @@ export function SystemWizard() {
                         </div>
                       ))}
                     </div>
-
-                    {smart && (
-                      <div className="mt-5 flex items-center gap-3 rounded-xl border border-volt-500/40 bg-volt-500/10 px-4 py-3">
-                        <Cpu size={18} className="shrink-0 text-volt-400" />
-                        <p className="text-sm">
-                          <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-volt-400">
-                            {t('addonLabel')}:
-                          </span>{' '}
-                          {tProducts('items.simsek-track.name')}
-                        </p>
-                      </div>
-                    )}
 
                     <div className="mt-7 flex flex-wrap gap-3">
                       <Link

@@ -77,7 +77,7 @@ export default async function SolarPotentialPage({ params }: { params: Promise<{
       </section>
 
       {/* Çatınız uygun mu? — öz-değerlendirme */}
-      <section className="section-pad bg-mist-50">
+      <section id="cati" className="section-pad scroll-mt-24 bg-mist-50">
         <div className="container-page">
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
