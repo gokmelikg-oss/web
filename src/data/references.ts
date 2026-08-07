@@ -10,6 +10,7 @@ export interface ReferenceProject {
   collectors: number;
   aperture: number; // m² ışınım alanı (kollektör × 2,33)
   gross: number; // m² brüt alan (kollektör × 2,55)
+  category?: string; // proje tipi anahtarı: konut|adalet|savunma|afad|emniyet|kamu|ozel
 }
 
 export interface ReferenceTotals {

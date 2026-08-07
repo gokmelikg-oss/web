@@ -46,7 +46,7 @@ const DATA: Record<Locale, ReferencesUi> = {
       eyebrow: 'Referanslar',
       title: 'Sahadaki işlerimiz',
       subtitle: (prov, proj, coll, homes) =>
-        `Türkiye'nin ${prov} ilinde tamamladığımız ${proj} toplu konut projesinde ${coll} kollektör ile ${homes} konutun sıcak su ihtiyacını güneşten karşılıyoruz.`,
+        `Türkiye'nin ${prov} ilinde tamamladığımız ${proj} projede ${coll} kollektör kurduk; toplu konutlardan kamu tesislerine ${homes} konutun sıcak su ihtiyacını güneşten karşılıyoruz.`,
     },
     scaleLabels: ['Tamamlanan proje', 'İl', 'Konut', 'Blok', 'Kollektör', 'Işınım alanı'],
     impact: {
@@ -75,6 +75,16 @@ const DATA: Record<Locale, ReferencesUi> = {
     listLabels: {
       searchPlaceholder: 'Proje, il veya ilçe ara…',
       allProvinces: 'Tüm iller',
+      allCategories: 'Tüm tipler',
+      categoryNames: {
+        konut: 'Toplu Konut',
+        adalet: 'Adalet & Kamu',
+        savunma: 'Savunma',
+        afad: 'Afet & AFAD',
+        emniyet: 'Emniyet',
+        kamu: 'Kamu Tesisi',
+        ozel: 'Özel & Ticari',
+      },
       clear: 'Temizle',
       proje: 'Proje',
       konut: 'Konut',
@@ -87,6 +97,7 @@ const DATA: Record<Locale, ReferencesUi> = {
       noResults: 'Sonuç bulunamadı',
       noResultsHint: 'Farklı bir arama veya il deneyin.',
       homesServed: 'konutun sıcak su ihtiyacı güneş enerjisiyle karşılanıyor',
+      institutionLine: 'kollektörlü güneş enerjili sıcak su sistemi',
       blockWord: 'blok',
       showMore: 'Daha fazla göster',
       selBefore: 'Bu seçki yılda yaklaşık',
@@ -107,7 +118,7 @@ const DATA: Record<Locale, ReferencesUi> = {
       eyebrow: 'References',
       title: 'Our work in the field',
       subtitle: (prov, proj, coll, homes) =>
-        `Across ${prov} provinces of Türkiye, in ${proj} mass-housing projects, we meet the hot water needs of ${homes} homes from the sun with ${coll} collectors.`,
+        `Across ${prov} provinces of Türkiye, we have installed ${coll} collectors in ${proj} projects; from mass housing to public facilities, we meet the hot water needs of ${homes} homes from the sun.`,
     },
     scaleLabels: ['Completed projects', 'Provinces', 'Homes', 'Blocks', 'Collectors', 'Aperture area'],
     impact: {
@@ -136,6 +147,16 @@ const DATA: Record<Locale, ReferencesUi> = {
     listLabels: {
       searchPlaceholder: 'Search project, province or district…',
       allProvinces: 'All provinces',
+      allCategories: 'All types',
+      categoryNames: {
+        konut: 'Mass Housing',
+        adalet: 'Justice & Public',
+        savunma: 'Defense',
+        afad: 'Disaster & AFAD',
+        emniyet: 'Public Safety',
+        kamu: 'Public Facility',
+        ozel: 'Private & Commercial',
+      },
       clear: 'Clear',
       proje: 'Projects',
       konut: 'Homes',
@@ -148,6 +169,7 @@ const DATA: Record<Locale, ReferencesUi> = {
       noResults: 'No results found',
       noResultsHint: 'Try a different search or province.',
       homesServed: 'homes have their hot water needs met by solar energy',
+      institutionLine: 'collector solar hot water system',
       blockWord: 'blocks',
       showMore: 'Show more',
       selBefore: 'This selection produces about',
@@ -168,7 +190,7 @@ const DATA: Record<Locale, ReferencesUi> = {
       eyebrow: 'المراجع',
       title: 'أعمالنا في الميدان',
       subtitle: (prov, proj, coll, homes) =>
-        `في ${prov} محافظة من تركيا، وفي ${proj} مشروع إسكان جماعي، نلبّي حاجة ${homes} منزل للماء الساخن من الشمس عبر ${coll} مجمّع.`,
+        `في ${prov} محافظة من تركيا، ركّبنا ${coll} مجمّعاً في ${proj} مشروع؛ من الإسكان الجماعي إلى المنشآت العامة، نلبّي حاجة ${homes} منزل للماء الساخن من الشمس.`,
     },
     scaleLabels: ['المشاريع المنجزة', 'المحافظات', 'المنازل', 'الكتل', 'المجمعات', 'مساحة الإشعاع'],
     impact: {
@@ -197,6 +219,16 @@ const DATA: Record<Locale, ReferencesUi> = {
     listLabels: {
       searchPlaceholder: 'ابحثوا عن مشروع أو محافظة أو منطقة…',
       allProvinces: 'كل المحافظات',
+      allCategories: 'كل الأنواع',
+      categoryNames: {
+        konut: 'إسكان جماعي',
+        adalet: 'العدل والمرافق العامة',
+        savunma: 'الدفاع',
+        afad: 'الكوارث (AFAD)',
+        emniyet: 'الأمن العام',
+        kamu: 'منشأة عامة',
+        ozel: 'خاص وتجاري',
+      },
       clear: 'مسح',
       proje: 'المشاريع',
       konut: 'المنازل',
@@ -209,6 +241,7 @@ const DATA: Record<Locale, ReferencesUi> = {
       noResults: 'لا توجد نتائج',
       noResultsHint: 'جرّبوا بحثاً أو محافظة مختلفة.',
       homesServed: 'منزل تُلبّى حاجتها للماء الساخن بالطاقة الشمسية',
+      institutionLine: 'مجمّع في نظام ماء ساخن شمسي',
       blockWord: 'كتلة',
       showMore: 'عرض المزيد',
       selBefore: 'تنتج هذه المجموعة سنوياً نحو',
@@ -229,7 +262,7 @@ const DATA: Record<Locale, ReferencesUi> = {
       eyebrow: 'Έργα Αναφοράς',
       title: 'Οι δουλειές μας στο πεδίο',
       subtitle: (prov, proj, coll, homes) =>
-        `Σε ${prov} επαρχίες της Τουρκίας, σε ${proj} έργα μαζικής κατοικίας, καλύπτουμε τις ανάγκες ζεστού νερού ${homes} κατοικιών από τον ήλιο με ${coll} συλλέκτες.`,
+        `Σε ${prov} επαρχίες της Τουρκίας, εγκαταστήσαμε ${coll} συλλέκτες σε ${proj} έργα· από μαζικές κατοικίες έως δημόσιες εγκαταστάσεις, καλύπτουμε τις ανάγκες ζεστού νερού ${homes} κατοικιών από τον ήλιο.`,
     },
     scaleLabels: ['Ολοκληρωμένα έργα', 'Επαρχίες', 'Κατοικίες', 'Κτίρια', 'Συλλέκτες', 'Επιφάνεια απορρόφησης'],
     impact: {
@@ -258,6 +291,16 @@ const DATA: Record<Locale, ReferencesUi> = {
     listLabels: {
       searchPlaceholder: 'Αναζήτηση έργου, επαρχίας ή περιοχής…',
       allProvinces: 'Όλες οι επαρχίες',
+      allCategories: 'Όλοι οι τύποι',
+      categoryNames: {
+        konut: 'Μαζική Κατοικία',
+        adalet: 'Δικαιοσύνη & Δημόσιο',
+        savunma: 'Άμυνα',
+        afad: 'Καταστροφές (AFAD)',
+        emniyet: 'Δημόσια Ασφάλεια',
+        kamu: 'Δημόσια Εγκατάσταση',
+        ozel: 'Ιδιωτικά & Εμπορικά',
+      },
       clear: 'Καθαρισμός',
       proje: 'Έργα',
       konut: 'Κατοικίες',
@@ -270,6 +313,7 @@ const DATA: Record<Locale, ReferencesUi> = {
       noResults: 'Δεν βρέθηκαν αποτελέσματα',
       noResultsHint: 'Δοκιμάστε διαφορετική αναζήτηση ή επαρχία.',
       homesServed: 'κατοικίες καλύπτουν τις ανάγκες ζεστού νερού τους με ηλιακή ενέργεια',
+      institutionLine: 'συλλέκτες σε ηλιακό σύστημα ζεστού νερού',
       blockWord: 'κτίρια',
       showMore: 'Δείτε περισσότερα',
       selBefore: 'Αυτή η επιλογή παράγει περίπου',

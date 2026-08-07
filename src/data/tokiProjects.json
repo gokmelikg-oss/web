@@ -1,12 +1,12 @@
 {
   "totals": {
-    "projects": 350,
+    "projects": 526,
     "homes": 184617,
     "blocks": 9301,
-    "collectors": 130842,
-    "aperture": 304863,
-    "gross": 333650,
-    "provinces": 64
+    "collectors": 150348,
+    "aperture": 350313,
+    "gross": 383391.1,
+    "provinces": 79
   },
   "projects": [
     {
@@ -17,7 +17,8 @@
       "blocks": 327,
       "collectors": 4579,
       "aperture": 10669.1,
-      "gross": 11676.4
+      "gross": 11676.4,
+      "category": "konut"
     },
     {
       "title": "5. Bölge 2. Etap 2259 Adet Konut İnşaatı",
@@ -27,7 +28,8 @@
       "blocks": 128,
       "collectors": 1761,
       "aperture": 4103.1,
-      "gross": 4490.5
+      "gross": 4490.5,
+      "category": "konut"
     },
     {
       "title": "Adıyaman İndere Deprem Konutları B Etabı 1. Kısım İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -37,7 +39,8 @@
       "blocks": 104,
       "collectors": 1610,
       "aperture": 3751.3,
-      "gross": 4105.5
+      "gross": 4105.5,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi 2. Bölge 2. Etap 2341 Adet Konut İnşaatı",
@@ -47,7 +50,8 @@
       "blocks": 109,
       "collectors": 1544,
       "aperture": 3597.5,
-      "gross": 3937.2
+      "gross": 3937.2,
+      "category": "konut"
     },
     {
       "title": "Oğlaklı Mahallesi 2. Etap 1598 Adet Konut (+14 K.D.) İnşaatları",
@@ -57,7 +61,8 @@
       "blocks": 85,
       "collectors": 1294,
       "aperture": 3015,
-      "gross": 3299.7
+      "gross": 3299.7,
+      "category": "konut"
     },
     {
       "title": "Cebike Mahallesi 2.ETAP 1602 Adet Konut İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -67,7 +72,8 @@
       "blocks": 98,
       "collectors": 1288,
       "aperture": 3001,
-      "gross": 3284.4
+      "gross": 3284.4,
+      "category": "konut"
     },
     {
       "title": "6 Bölge 1. Etap 1448 Adet Konut İnşaatı",
@@ -77,7 +83,8 @@
       "blocks": 109,
       "collectors": 1231,
       "aperture": 2868.2,
-      "gross": 3139
+      "gross": 3139,
+      "category": "konut"
     },
     {
       "title": "6 Bölge 2. Etap 1502 Adet Konut İnşaatı",
@@ -87,7 +94,8 @@
       "blocks": 102,
       "collectors": 1223,
       "aperture": 2849.6,
-      "gross": 3118.6
+      "gross": 3118.6,
+      "category": "konut"
     },
     {
       "title": "Orhanlı Mahallesi 2. Etap 1546 Adet Konut İnşaatı",
@@ -97,7 +105,8 @@
       "blocks": 77,
       "collectors": 1095,
       "aperture": 2551.4,
-      "gross": 2792.3
+      "gross": 2792.3,
+      "category": "konut"
     },
     {
       "title": "Orhanlı Mahallesi 1. Etap 1523 Konut + 14 KD İnşaatı",
@@ -107,7 +116,8 @@
       "blocks": 79,
       "collectors": 1086,
       "aperture": 2530.4,
-      "gross": 2769.3
+      "gross": 2769.3,
+      "category": "konut"
     },
     {
       "title": "4. Bölge 1. Etap 1266 Adet Konut +10 Kd+ 20 Dükkanlı Ticaret Merkezi Ve 1 Camii İnşaatı",
@@ -117,7 +127,8 @@
       "blocks": 79,
       "collectors": 1033,
       "aperture": 2406.9,
-      "gross": 2634.1
+      "gross": 2634.1,
+      "category": "konut"
     },
     {
       "title": "Karacadağ Mevki 2.BÖLGE 8. Etap 1249 Adet Konut (+9 K.D.) İnşaatı",
@@ -127,7 +138,8 @@
       "blocks": 65,
       "collectors": 998,
       "aperture": 2325.3,
-      "gross": 2544.9
+      "gross": 2544.9,
+      "category": "konut"
     },
     {
       "title": "Bahçebaşı Mahallesi 8. Etap 1321 Adet Konut (+13 KD) Ve 15 Adet Dükkan Ve 2 Adet Cami İnşaatı",
@@ -137,7 +149,8 @@
       "blocks": 63,
       "collectors": 944,
       "aperture": 2199.5,
-      "gross": 2407.2
+      "gross": 2407.2,
+      "category": "konut"
     },
     {
       "title": "Cebike Mahallesi 6. Etap 1212 Adet Konut, 3 Adet 5 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatı",
@@ -147,7 +160,8 @@
       "blocks": 71,
       "collectors": 912,
       "aperture": 2125,
-      "gross": 2325.6
+      "gross": 2325.6,
+      "category": "konut"
     },
     {
       "title": "Islahiye İlçesi, 3. Etap 1. Bölge 1115 Adet Konut (+9 KD) İnşaatı",
@@ -157,7 +171,8 @@
       "blocks": 70,
       "collectors": 912,
       "aperture": 2125,
-      "gross": 2325.6
+      "gross": 2325.6,
+      "category": "konut"
     },
     {
       "title": "Oğlaklı Mahallesi 1. Etap 1122 Adet Konut (+10 K.D.) İnşaatları",
@@ -167,7 +182,8 @@
       "blocks": 61,
       "collectors": 900,
       "aperture": 2097,
-      "gross": 2295
+      "gross": 2295,
+      "category": "konut"
     },
     {
       "title": "İstanbul İl, Arnavutköy İlçesi,sazlıbosna Mevkii 8.BÖLGE 1.ETAP 1147 Konut + 11 Kd+ 20 Ticari İnşaatı",
@@ -177,7 +193,8 @@
       "blocks": 58,
       "collectors": 872,
       "aperture": 2031.8,
-      "gross": 2223.6
+      "gross": 2223.6,
+      "category": "konut"
     },
     {
       "title": "Örenli Mahallesi 3. Etap 1075 Adet Konut (+9k.d.) İnşaatı İle Altyapı Ve Düzenleme",
@@ -187,7 +204,8 @@
       "blocks": 57,
       "collectors": 870,
       "aperture": 2027.1,
-      "gross": 2218.5
+      "gross": 2218.5,
+      "category": "konut"
     },
     {
       "title": "Hıdırbey Mahallesi 4. Etap 1138 Adet Konut İnşaatı",
@@ -197,7 +215,8 @@
       "blocks": 63,
       "collectors": 860,
       "aperture": 2003.8,
-      "gross": 2193
+      "gross": 2193,
+      "category": "konut"
     },
     {
       "title": "Saraycık Mahallesi , Merkez 10 5. Etap 1171 Konut (+12 K.D.) + 145 Adet Dükkan İnşaatları",
@@ -207,7 +226,8 @@
       "blocks": 52,
       "collectors": 830,
       "aperture": 1933.9,
-      "gross": 2116.5
+      "gross": 2116.5,
+      "category": "konut"
     },
     {
       "title": "7.BÖLGE 2.ETAP 1131 (1107+9 KD.) Adet Konut İnşaatı",
@@ -217,7 +237,8 @@
       "blocks": 57,
       "collectors": 823,
       "aperture": 1917.6,
-      "gross": 2098.6
+      "gross": 2098.6,
+      "category": "konut"
     },
     {
       "title": "Karataş Mahallesi 2. Etap 1132 Adet Konut İnşaatı",
@@ -227,7 +248,8 @@
       "blocks": 55,
       "collectors": 823,
       "aperture": 1917.6,
-      "gross": 2098.6
+      "gross": 2098.6,
+      "category": "konut"
     },
     {
       "title": "Onikişubat İlçesi Altınova Bölgesi 3.ETAP 1130 Konut+10 Kapıcı Dairesi İnşaatı",
@@ -237,7 +259,8 @@
       "blocks": 61,
       "collectors": 821,
       "aperture": 1912.9,
-      "gross": 2093.5
+      "gross": 2093.5,
+      "category": "konut"
     },
     {
       "title": "Savrandere Mahallesi 1005 Konut 1 Adet 10 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatları",
@@ -247,7 +270,8 @@
       "blocks": 58,
       "collectors": 812,
       "aperture": 1892,
-      "gross": 2070.6
+      "gross": 2070.6,
+      "category": "konut"
     },
     {
       "title": "İstanbul İl, Arnavutköy İlçesi,sazlıbosna Mevkii 8.BÖLGE 2.ETAP 1093 Konut + 9 Kd+ 20 Ticari Ve 1 Cami İnşaatı",
@@ -257,7 +281,8 @@
       "blocks": 52,
       "collectors": 809,
       "aperture": 1885,
-      "gross": 2063
+      "gross": 2063,
+      "category": "konut"
     },
     {
       "title": "8.BÖLGE - 1.ETAP 1001 Adet Konut (+9 K.D.) İnşaatı",
@@ -267,7 +292,8 @@
       "blocks": 51,
       "collectors": 806,
       "aperture": 1878,
-      "gross": 2055.3
+      "gross": 2055.3,
+      "category": "konut"
     },
     {
       "title": "Sazlıbosna Mevki 7. Bölge 1230 Konut (+8kd) Ve 15 Adet Dükkan İnşaatları",
@@ -277,7 +303,8 @@
       "blocks": 45,
       "collectors": 804,
       "aperture": 1873.3,
-      "gross": 2050.2
+      "gross": 2050.2,
+      "category": "konut"
     },
     {
       "title": "Yakınca Mahallesi 997 Adet Konut Ve 1 Adet 29 Dükkanlı Ticaret Merkezi İnşaatları",
@@ -287,7 +314,8 @@
       "blocks": 62,
       "collectors": 803,
       "aperture": 1871,
-      "gross": 2047.7
+      "gross": 2047.7,
+      "category": "konut"
     },
     {
       "title": "Cebike Mahallesi 3. Etap 933 Adet Konut İnşaatı",
@@ -297,7 +325,8 @@
       "blocks": 58,
       "collectors": 789,
       "aperture": 1838.4,
-      "gross": 2012
+      "gross": 2012,
+      "category": "konut"
     },
     {
       "title": "Söğütlü Mahallesi 2. Etap 980 Adet Konut İnşaatı",
@@ -307,7 +336,8 @@
       "blocks": 49,
       "collectors": 780,
       "aperture": 1817.4,
-      "gross": 1989
+      "gross": 1989,
+      "category": "konut"
     },
     {
       "title": "Maraş İli, Afşin İlçesi,gerger Mahallesi 1.ETAP 1090 Adet Konut +(8 K.D.) İnşaatı",
@@ -317,7 +347,8 @@
       "blocks": 51,
       "collectors": 777,
       "aperture": 1810.4,
-      "gross": 1981.4
+      "gross": 1981.4,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi 2. Bölge 8. Etap 1078 Adet Konut, 1 Adet 5 Dükkanlı Ticaret Merkezi, 1 Adet 3 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatı",
@@ -327,7 +358,8 @@
       "blocks": 52,
       "collectors": 776,
       "aperture": 1808.1,
-      "gross": 1978.8
+      "gross": 1978.8,
+      "category": "konut"
     },
     {
       "title": "Bahçebaşı Mahallesi 10. Etap 1084 Adet Konut (+12 KD) Ve 13 Adet Dükkan Ve 1 Adet 500 Kişilik Cami İnşaatı",
@@ -337,7 +369,8 @@
       "blocks": 51,
       "collectors": 760,
       "aperture": 1770.8,
-      "gross": 1938
+      "gross": 1938,
+      "category": "konut"
     },
     {
       "title": "8. Bölge 2. Etap 969 Adet Konut (+ 9 KD) İnşaatı",
@@ -347,7 +380,8 @@
       "blocks": 48,
       "collectors": 759,
       "aperture": 1768.5,
-      "gross": 1935.5
+      "gross": 1935.5,
+      "category": "konut"
     },
     {
       "title": "4. Bölge 2. Etap 1007 Adet Konut, 2 Adet 3 Dükkanlı Ticaret Merkezi Ve 2 Adet Cami İnşaatları",
@@ -357,7 +391,8 @@
       "blocks": 55,
       "collectors": 757,
       "aperture": 1763.8,
-      "gross": 1930.4
+      "gross": 1930.4,
+      "category": "konut"
     },
     {
       "title": "Hıdırbey Mahallesi 3. Etap 1112 Adet Konut (+10k.d.) Ve 2 Adet Ticaret Merkezi (20 Dükkan) İnşaatı",
@@ -367,7 +402,8 @@
       "blocks": 58,
       "collectors": 751,
       "aperture": 1749.8,
-      "gross": 1915.1
+      "gross": 1915.1,
+      "category": "konut"
     },
     {
       "title": "Doğu Ve Yeni Mahalleleri 907 Adet Konut (+5kd), 400 Adet Ticaret, 5 Adet Fırın Ve 18 Adet Ofis İnşaatları",
@@ -377,7 +413,8 @@
       "blocks": 78,
       "collectors": 747,
       "aperture": 1740.5,
-      "gross": 1904.9
+      "gross": 1904.9,
+      "category": "konut"
     },
     {
       "title": "Kızılaliler Mahallesi 994 Adet Konut (+9 Kd),2 Adet Ticaret Merkezi (11 Dükkan), 1 Adet T-15 Cami İnşaatı",
@@ -387,7 +424,8 @@
       "blocks": 50,
       "collectors": 746,
       "aperture": 1738.2,
-      "gross": 1902.3
+      "gross": 1902.3,
+      "category": "konut"
     },
     {
       "title": "Temelli Alçı / Yenipeçenek Mahallesi 1. Etap 994 Adet Konut +8kd +12 Adet Dükkan + İlkokul + Ortaokul + Cami İnşaatı",
@@ -397,7 +435,8 @@
       "blocks": 51,
       "collectors": 741,
       "aperture": 1726.5,
-      "gross": 1889.6
+      "gross": 1889.6,
+      "category": "konut"
     },
     {
       "title": "Gerger Mahallesi 3.ETAP 1006 Adet Konut İnşaaatı İle Altyapı Ve Çevre Düzenlemesi",
@@ -407,7 +446,8 @@
       "blocks": 50,
       "collectors": 733,
       "aperture": 1707.9,
-      "gross": 1869.2
+      "gross": 1869.2,
+      "category": "konut"
     },
     {
       "title": "Karakoca Mah.1078 Adet Konut +10 Kd+ 20 Dükkanlı Ticaret Merkezi Ve 1 Camii İnşaatları",
@@ -417,7 +457,8 @@
       "blocks": 47,
       "collectors": 732,
       "aperture": 1705.6,
-      "gross": 1866.6
+      "gross": 1866.6,
+      "category": "konut"
     },
     {
       "title": "5.BÖLGE 1.ETAP 880 Konut +7 KD İnşaatları",
@@ -427,7 +468,8 @@
       "blocks": 68,
       "collectors": 718,
       "aperture": 1672.9,
-      "gross": 1830.9
+      "gross": 1830.9,
+      "category": "konut"
     },
     {
       "title": "Merkez Battalgazi İlçesi Akpınar, Kırçuval Mahalleleri 25. Bölge 1055 Adet Konut, 590 Adet Dükkan, 97 Adet Ofis Ve 2 Adet Fırın İnşaatları",
@@ -437,7 +479,8 @@
       "blocks": 39,
       "collectors": 714,
       "aperture": 1663.6,
-      "gross": 1820.7
+      "gross": 1820.7,
+      "category": "konut"
     },
     {
       "title": "Çekmece Mahallesi 8.BÖLGE 2. Etap 1005 Adet Konut (+10 KD) Ve 43 Dükkan İnşaatı",
@@ -447,7 +490,8 @@
       "blocks": 50,
       "collectors": 712,
       "aperture": 1659,
-      "gross": 1815.6
+      "gross": 1815.6,
+      "category": "konut"
     },
     {
       "title": "İstanbul İl, Arnavutköy İlçesi,sazlıbosna Mevkii 8.BÖLGE 4.ETAP 978 Konut + 8 Kd+ 40 Ticari İnşaatı",
@@ -457,7 +501,8 @@
       "blocks": 45,
       "collectors": 701,
       "aperture": 1633.3,
-      "gross": 1787.6
+      "gross": 1787.6,
+      "category": "konut"
     },
     {
       "title": "7. Bölge 1. Etap 1026 Adet Konut, 2 Adet 5 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatları",
@@ -467,7 +512,8 @@
       "blocks": 45,
       "collectors": 696,
       "aperture": 1621.7,
-      "gross": 1774.8
+      "gross": 1774.8,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi 2. Bölge 3. Etap 1961 Adet Konut İnşaatı",
@@ -477,7 +523,8 @@
       "blocks": 46,
       "collectors": 694,
       "aperture": 1617,
-      "gross": 1769.7
+      "gross": 1769.7,
+      "category": "konut"
     },
     {
       "title": "Yeşilyurt Mahallesi 5. Etap 847 Adet Konut, 3 Adet 6 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatları",
@@ -487,7 +534,8 @@
       "blocks": 43,
       "collectors": 688,
       "aperture": 1603,
-      "gross": 1754.4
+      "gross": 1754.4,
+      "category": "konut"
     },
     {
       "title": "Yukarıpazarcık Mahallesi 5. Etap 853 Konut + 7KD İnşaatları Altyapı Ve Çevre Düzenlemesi İnşaatı",
@@ -497,17 +545,19 @@
       "blocks": 58,
       "collectors": 681,
       "aperture": 1586.7,
-      "gross": 1736.6
+      "gross": 1736.6,
+      "category": "konut"
     },
     {
       "title": "Kocaeli Dilovası Tavşanlı",
-      "il": "KOCAELİ DİLOVASI",
-      "ilce": "",
+      "il": "KOCAELİ",
+      "ilce": "DİLOVASI",
       "homes": 0,
       "blocks": 41,
       "collectors": 677,
       "aperture": 1577.4,
-      "gross": 1726.4
+      "gross": 1726.4,
+      "category": "kamu"
     },
     {
       "title": "Sazlıbosna Mevki 11. Bölge 4. Etap 939 Adet Konut, 1 Adet Lise Ve 1 Adet Cami İnşaatları",
@@ -517,7 +567,8 @@
       "blocks": 43,
       "collectors": 675,
       "aperture": 1572.8,
-      "gross": 1721.2
+      "gross": 1721.2,
+      "category": "konut"
     },
     {
       "title": "Taşburun Mevkii 5.ETAP, 852 Adet Konut (+6 K.D.), 2 Adet Ticaret (28 Dükkan), 1 Adet T-15 Cami İnşaatı",
@@ -527,7 +578,8 @@
       "blocks": 46,
       "collectors": 674,
       "aperture": 1570.4,
-      "gross": 1718.7
+      "gross": 1718.7,
+      "category": "konut"
     },
     {
       "title": "3.ETAP 2.BÖLGE 1072 Adet Konut (+9 KD) Ve 8 Adet Dükkan İnşaatı",
@@ -537,7 +589,8 @@
       "blocks": 33,
       "collectors": 672,
       "aperture": 1565.8,
-      "gross": 1713.6
+      "gross": 1713.6,
+      "category": "konut"
     },
     {
       "title": "5. Bölge 2. Etap 840 Adet Konut İnşaatı",
@@ -547,7 +600,8 @@
       "blocks": 47,
       "collectors": 669,
       "aperture": 1558.8,
-      "gross": 1706
+      "gross": 1706,
+      "category": "konut"
     },
     {
       "title": "2.BÖLGE 1.ETAP 1056 Adet Konut (+8 K.D.) İnşaatı",
@@ -557,7 +611,8 @@
       "blocks": 34,
       "collectors": 668,
       "aperture": 1556.4,
-      "gross": 1703.4
+      "gross": 1703.4,
+      "category": "konut"
     },
     {
       "title": "Sazlıbosna Mevki 11. Bölge 3. Etap 997 Adet Konut Ve 40 Adet Dükkan Ve 1 Adet 24 Derslikli İlköğretim Okulu İnşaatları",
@@ -567,7 +622,8 @@
       "blocks": 37,
       "collectors": 666,
       "aperture": 1551.8,
-      "gross": 1698.3
+      "gross": 1698.3,
+      "category": "konut"
     },
     {
       "title": "Mezretli Mahallesi 846 Adet Konut İnşaatı",
@@ -577,7 +633,8 @@
       "blocks": 42,
       "collectors": 654,
       "aperture": 1523.8,
-      "gross": 1667.7
+      "gross": 1667.7,
+      "category": "konut"
     },
     {
       "title": "Bahçebaşı Mahallesi 9. Etap 920 Adet Konut (+8 KD) Ve 10 Adet Dükkan İnşaatı",
@@ -587,7 +644,8 @@
       "blocks": 44,
       "collectors": 650,
       "aperture": 1514.5,
-      "gross": 1657.5
+      "gross": 1657.5,
+      "category": "konut"
     },
     {
       "title": "Onikişubat İlçesi Altınova Bölgesi 1.ETAP 884 Konut+6 Kapıcı Dairesi İnşaatı",
@@ -597,7 +655,8 @@
       "blocks": 47,
       "collectors": 648,
       "aperture": 1509.8,
-      "gross": 1652.4
+      "gross": 1652.4,
+      "category": "konut"
     },
     {
       "title": "Sazlıbosna Mahallesi 16.BÖLGE 1.ETAP 1045 Adet Konut (+ 5 K.D.) Ve 75 Dükkanlı Ticaret Merkezi İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -607,7 +666,8 @@
       "blocks": 23,
       "collectors": 645,
       "aperture": 1502.9,
-      "gross": 1644.7
+      "gross": 1644.7,
+      "category": "konut"
     },
     {
       "title": "Çekmece Ve Gazi Mahalleleri (17.bölge) 1042 Adet Konut (+9 K.D.), 119 Dükkan İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -617,7 +677,8 @@
       "blocks": 39,
       "collectors": 644,
       "aperture": 1500.5,
-      "gross": 1642.2
+      "gross": 1642.2,
+      "category": "konut"
     },
     {
       "title": "Antakya İlçesi, 9.BÖLGE 2.ETAP , 854 Adet Konut (+7 KD) Ve 59 Adet Dükkan İnşaatı",
@@ -627,7 +688,8 @@
       "blocks": 45,
       "collectors": 636,
       "aperture": 1481.9,
-      "gross": 1621.8
+      "gross": 1621.8,
+      "category": "konut"
     },
     {
       "title": "11. Etap 882 Adet Konut (+8 KD) Ve 34 Adet Dükkan İnşaatı",
@@ -637,7 +699,8 @@
       "blocks": 35,
       "collectors": 635,
       "aperture": 1479.6,
-      "gross": 1619.3
+      "gross": 1619.3,
+      "category": "konut"
     },
     {
       "title": "Kuzeyşehir Bölgesi 18. Etap 803 Adet Konut (+7 KD) İnşaatı",
@@ -647,7 +710,8 @@
       "blocks": 44,
       "collectors": 634,
       "aperture": 1477.2,
-      "gross": 1616.7
+      "gross": 1616.7,
+      "category": "konut"
     },
     {
       "title": "1. Etap 872 Konut + 8 KD, 5 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatları",
@@ -657,7 +721,8 @@
       "blocks": 37,
       "collectors": 629,
       "aperture": 1465.6,
-      "gross": 1603.9
+      "gross": 1603.9,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi 2. Bölge 6. Etap 844 Adet Konut İnşaatı",
@@ -667,7 +732,8 @@
       "blocks": 42,
       "collectors": 625,
       "aperture": 1456.3,
-      "gross": 1593.8
+      "gross": 1593.8,
+      "category": "konut"
     },
     {
       "title": "Onikişubat İlçesi Önsen Mahallesi 1. Etap 770 Adet Konut(+7 K.D.) İnşaatı",
@@ -677,7 +743,8 @@
       "blocks": 49,
       "collectors": 625,
       "aperture": 1456.3,
-      "gross": 1593.8
+      "gross": 1593.8,
+      "category": "konut"
     },
     {
       "title": "Bizmişen Mahallesi 2. Etap 809 Adet Konut+ 8 KD İnşaatı",
@@ -687,7 +754,8 @@
       "blocks": 43,
       "collectors": 614,
       "aperture": 1430.6,
-      "gross": 1565.7
+      "gross": 1565.7,
+      "category": "konut"
     },
     {
       "title": "Aşık Mahallesi 2. Etap 758 Adet Konut (+6 KD) İnşaatları",
@@ -697,7 +765,8 @@
       "blocks": 40,
       "collectors": 613,
       "aperture": 1428.3,
-      "gross": 1563.1
+      "gross": 1563.1,
+      "category": "konut"
     },
     {
       "title": "3. Etap 846 Konut + 6 KD Ve 24 Derslikli İlkokul İnşaatları",
@@ -707,7 +776,8 @@
       "blocks": 36,
       "collectors": 612,
       "aperture": 1426,
-      "gross": 1560.6
+      "gross": 1560.6,
+      "category": "konut"
     },
     {
       "title": "2.BÖLGE 2.ETAP 745 Adet Konut (+6 K.D.) 116 Dükkan İnşaatı",
@@ -717,7 +787,8 @@
       "blocks": 67,
       "collectors": 603,
       "aperture": 1405,
-      "gross": 1537.6
+      "gross": 1537.6,
+      "category": "konut"
     },
     {
       "title": "Emek Mahallesi 7. Etap 806 Adet Konut (+8 KD) Ve 80 Dükkan İnşaatı",
@@ -727,7 +798,8 @@
       "blocks": 52,
       "collectors": 599,
       "aperture": 1395.7,
-      "gross": 1527.4
+      "gross": 1527.4,
+      "category": "konut"
     },
     {
       "title": "Karataş Mahallesi 830 Adet Konut (+8 KD) İnşaatı",
@@ -737,7 +809,8 @@
       "blocks": 40,
       "collectors": 597,
       "aperture": 1391,
-      "gross": 1522.4
+      "gross": 1522.4,
+      "category": "konut"
     },
     {
       "title": "Baklalı Mahallesi 1. Etap 844 Adet Konut (8 KD) +10 Dükkan+1 Adet Cami İnşaatı",
@@ -747,7 +820,8 @@
       "blocks": 39,
       "collectors": 595,
       "aperture": 1386.4,
-      "gross": 1517.3
+      "gross": 1517.3,
+      "category": "konut"
     },
     {
       "title": "3.ETAP 1.BÖLGE 1006 Adet Konut (+9 KD) Ve 79 Adet Dükkan İnşaatı",
@@ -757,7 +831,8 @@
       "blocks": 28,
       "collectors": 593,
       "aperture": 1381.7,
-      "gross": 1512.1
+      "gross": 1512.1,
+      "category": "konut"
     },
     {
       "title": "Merkez Battalgazi İlçesi Yıldıztepe Mahallesi, 27.BÖLGE 815 Adet Konut+7 KD Ve 23 Dükkan İnşaatları",
@@ -767,7 +842,8 @@
       "blocks": 40,
       "collectors": 593,
       "aperture": 1381.7,
-      "gross": 1512.1
+      "gross": 1512.1,
+      "category": "konut"
     },
     {
       "title": "Cebike Mahallesi 5. Etap 1503 Adet Konut, 3 Adet 5 Dükkanlı Ticaret Merkezi, 1 Adet 3 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatı",
@@ -777,7 +853,8 @@
       "blocks": 41,
       "collectors": 592,
       "aperture": 1379.4,
-      "gross": 1509.6
+      "gross": 1509.6,
+      "category": "konut"
     },
     {
       "title": "Arduçlu Muhtelif Parseller 755 Konut (+7kd), 20 Konut Altı Dükkan Ve 1 Adet 24 Derslikli İlkokul İnşaatları İle Alt Yapı Ve Çevre Düzenleme",
@@ -787,7 +864,8 @@
       "blocks": 57,
       "collectors": 591,
       "aperture": 1377,
-      "gross": 1507.1
+      "gross": 1507.1,
+      "category": "konut"
     },
     {
       "title": "Nenek Mah. 2.ETAP 837 Adet Konut (+9 K.D.) İnşaatı",
@@ -797,7 +875,8 @@
       "blocks": 37,
       "collectors": 590,
       "aperture": 1374.7,
-      "gross": 1504.5
+      "gross": 1504.5,
+      "category": "konut"
     },
     {
       "title": "Muhittin Mahallesi 4.ETAP 686 Adet Konut + 6KD Ve 24 Adet Dükkan İnşaatları",
@@ -807,7 +886,8 @@
       "blocks": 44,
       "collectors": 574,
       "aperture": 1337.4,
-      "gross": 1463.7
+      "gross": 1463.7,
+      "category": "konut"
     },
     {
       "title": ",6. Bölge 2. Etap 718 Adet Konut İnşaatı",
@@ -817,7 +897,8 @@
       "blocks": 44,
       "collectors": 566,
       "aperture": 1318.8,
-      "gross": 1443.3
+      "gross": 1443.3,
+      "category": "konut"
     },
     {
       "title": "Şehit Erkut Akbay Mahallesi Kentsel Dönüşüm Projesi",
@@ -827,7 +908,8 @@
       "blocks": 30,
       "collectors": 550,
       "aperture": 1281.5,
-      "gross": 1402.5
+      "gross": 1402.5,
+      "category": "konut"
     },
     {
       "title": "Merkez, 3. Bölge, 1.ETAP 875 Adet Konut, 101 Dükkan İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -837,7 +919,8 @@
       "blocks": 34,
       "collectors": 550,
       "aperture": 1281.5,
-      "gross": 1402.5
+      "gross": 1402.5,
+      "category": "konut"
     },
     {
       "title": "3. Bölge 773 Adet Konut İnşaatı",
@@ -847,7 +930,8 @@
       "blocks": 37,
       "collectors": 549,
       "aperture": 1279.2,
-      "gross": 1399.9
+      "gross": 1399.9,
+      "category": "konut"
     },
     {
       "title": "6. Bölge 1. Etap 722 Adet Konut İnşaatı",
@@ -857,7 +941,8 @@
       "blocks": 40,
       "collectors": 543,
       "aperture": 1265.2,
-      "gross": 1384.6
+      "gross": 1384.6,
+      "category": "konut"
     },
     {
       "title": "Yeşılyurt İlçesi, Merkez 31. Bölge 750 Adet Konut (+6 K.D.) İnşaatı İle Altyapı Ve Çevre Düzenlemesı",
@@ -867,7 +952,8 @@
       "blocks": 35,
       "collectors": 542,
       "aperture": 1262.9,
-      "gross": 1382.1
+      "gross": 1382.1,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi 3.BÖLGE 1.ETAP 731 Adet Konut+ (7kd) İnşaatı",
@@ -877,7 +963,8 @@
       "blocks": 35,
       "collectors": 541,
       "aperture": 1260.5,
-      "gross": 1379.6
+      "gross": 1379.6,
+      "category": "konut"
     },
     {
       "title": "Aydınlı Mahallesi 4.BÖLGE 2. Etap 896 Adet Konut İnşaatı",
@@ -887,7 +974,8 @@
       "blocks": 24,
       "collectors": 541,
       "aperture": 1260.5,
-      "gross": 1379.6
+      "gross": 1379.6,
+      "category": "konut"
     },
     {
       "title": ", Kestel İlçesi , Seymen Mahallesi 712 Konut , 1 Adet T-16 Tipi Cami Ve 1 Adet 5 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -897,7 +985,8 @@
       "blocks": 36,
       "collectors": 540,
       "aperture": 1258.2,
-      "gross": 1377
+      "gross": 1377,
+      "category": "konut"
     },
     {
       "title": "Cebike Mahallesi 5. Etap 1503 Adet Konut, 3 Adet 5 Dükkanlı Ticaret Merkezi, 1 Adet 3 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatı",
@@ -907,7 +996,8 @@
       "blocks": 38,
       "collectors": 538,
       "aperture": 1253.5,
-      "gross": 1371.9
+      "gross": 1371.9,
+      "category": "konut"
     },
     {
       "title": "Aşağı Çağlan Mahallesi Göb.773 Konut (+7kd), 1 Adet İlkokul (24 Derslik), 1 Adet Ticaret Merkezi (20 Dükkan), 1 Adet Cami İnşaatları İle Altyapı Ve Çevre Düzenleme",
@@ -917,7 +1007,8 @@
       "blocks": 34,
       "collectors": 532,
       "aperture": 1239.6,
-      "gross": 1356.6
+      "gross": 1356.6,
+      "category": "konut"
     },
     {
       "title": "Antakya Ve Defne İlçesi, Saraycık Ve Çekmece Mahalleleri 792 Adet Konut (+9 KD), 108 Adet Dükkan İnşaatları",
@@ -927,7 +1018,8 @@
       "blocks": 26,
       "collectors": 532,
       "aperture": 1239.6,
-      "gross": 1356.6
+      "gross": 1356.6,
+      "category": "konut"
     },
     {
       "title": "Karsu Mahallesi 2. Etap 723 Adet Konut, 2 Adet 3 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami, Yayladağı İlçesi, Eğerci Mahallesi,2 Adet 3 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatları",
@@ -937,7 +1029,8 @@
       "blocks": 37,
       "collectors": 530,
       "aperture": 1234.9,
-      "gross": 1351.5
+      "gross": 1351.5,
+      "category": "konut"
     },
     {
       "title": "Merkez 4. Bölge 3. Etap 669 Adet Konut Ve 12 Adet Dükkan İnşaatı",
@@ -947,7 +1040,8 @@
       "blocks": 45,
       "collectors": 528,
       "aperture": 1230.2,
-      "gross": 1346.4
+      "gross": 1346.4,
+      "category": "konut"
     },
     {
       "title": "Kızılca Ve Nenek Mahalleleri 5.ETAP, 712 Adet Konut (+6 K.D.), 1 Adet 7 Dükkanlı Ticaret Merkezi,1 Adet 8 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -957,7 +1051,8 @@
       "blocks": 35,
       "collectors": 528,
       "aperture": 1230.2,
-      "gross": 1346.4
+      "gross": 1346.4,
+      "category": "konut"
     },
     {
       "title": "Bahçebaşı Mahallesi 4. Etap 726 Adet Konut + (6 KD) İnşaatı",
@@ -967,7 +1062,8 @@
       "blocks": 35,
       "collectors": 523,
       "aperture": 1218.6,
-      "gross": 1333.6
+      "gross": 1333.6,
+      "category": "konut"
     },
     {
       "title": "Mimarsinan Mahallesi 728 Adet Konut (5 Agd), 80 Adet Ticaret İnşaatı",
@@ -977,7 +1073,8 @@
       "blocks": 40,
       "collectors": 518,
       "aperture": 1206.9,
-      "gross": 1320.9
+      "gross": 1320.9,
+      "category": "konut"
     },
     {
       "title": "Merkez Battalgazi İlçesi, Ucbağlar Mahallesi, 37. Bölge 749 Adet Konut, 20 Adet Dükkan Ve 1 Adet Fırın İnşaatları",
@@ -987,7 +1084,8 @@
       "blocks": 35,
       "collectors": 518,
       "aperture": 1206.9,
-      "gross": 1320.9
+      "gross": 1320.9,
+      "category": "konut"
     },
     {
       "title": "6.BÖLGE 4.ETAP, 731 Adet Konut İnşaatı",
@@ -997,7 +1095,8 @@
       "blocks": 34,
       "collectors": 515,
       "aperture": 1200,
-      "gross": 1313.3
+      "gross": 1313.3,
+      "category": "konut"
     },
     {
       "title": "Aydınlı Mahallesi 4.BÖLGE 3. Etap 841 Adet Konut İnşaatları",
@@ -1007,7 +1106,8 @@
       "blocks": 23,
       "collectors": 514,
       "aperture": 1197.6,
-      "gross": 1310.7
+      "gross": 1310.7,
+      "category": "konut"
     },
     {
       "title": "Kurtlusoğuksu Mahallesi 2.BÖLGE 1.ETAP 666 Konut + (6 KD) + 8 Dükkan İnşaatları",
@@ -1017,7 +1117,8 @@
       "blocks": 34,
       "collectors": 512,
       "aperture": 1193,
-      "gross": 1305.6
+      "gross": 1305.6,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi 3.BÖLGE 16.ETAP 635 Adet Konut İnşaatları",
@@ -1027,7 +1128,8 @@
       "blocks": 32,
       "collectors": 512,
       "aperture": 1193,
-      "gross": 1305.6
+      "gross": 1305.6,
+      "category": "konut"
     },
     {
       "title": "7. Bölge 10. Etap 745 Adet Konut, 2. Bölge 1 Adet 5 Dükkanlı Ticaret Merkezi, 3. Bölge 1 Adet 6 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatları",
@@ -1037,7 +1139,8 @@
       "blocks": 33,
       "collectors": 508,
       "aperture": 1183.6,
-      "gross": 1295.4
+      "gross": 1295.4,
+      "category": "konut"
     },
     {
       "title": "Ferhatpaşa Mahallesi 648 Adet Konut (+6 KD), 1 Adet Cami Ve 10 Adet Dükkan İnşaatları İle Altyapı Ve Çevre Düzenlemeleri",
@@ -1047,7 +1150,8 @@
       "blocks": 46,
       "collectors": 507,
       "aperture": 1181.3,
-      "gross": 1292.9
+      "gross": 1292.9,
+      "category": "konut"
     },
     {
       "title": "Ağyar Mahallesi 3.ETAP 623 Adet Konut (+11 KD) İnşaatı",
@@ -1057,7 +1161,8 @@
       "blocks": 36,
       "collectors": 497,
       "aperture": 1158,
-      "gross": 1267.4
+      "gross": 1267.4,
+      "category": "konut"
     },
     {
       "title": "Örenli Mahallesi 1. Etap 614 Adet Konut İnşaatları",
@@ -1067,7 +1172,8 @@
       "blocks": 31,
       "collectors": 496,
       "aperture": 1155.7,
-      "gross": 1264.8
+      "gross": 1264.8,
+      "category": "konut"
     },
     {
       "title": "4. Etap 2.BÖLGE 603 Adet Konut (+5 KD) İnşaatı",
@@ -1077,7 +1183,8 @@
       "blocks": 38,
       "collectors": 494,
       "aperture": 1151,
-      "gross": 1259.7
+      "gross": 1259.7,
+      "category": "konut"
     },
     {
       "title": "Hoca Ahmet Yesevi Mahallesi Kentsel Dönüşüm Projesi",
@@ -1087,7 +1194,8 @@
       "blocks": 245,
       "collectors": 490,
       "aperture": 1141.7,
-      "gross": 1249.5
+      "gross": 1249.5,
+      "category": "konut"
     },
     {
       "title": "Zaviye Ve Koyunoğlu Mahalleleri 1. Etap (9-10-11-12-13-14 Ve 33. Bölgeler) 677 (+7 KD.) Adet Konut, 98 Adet Dükkan, 1 Adet Fırın İnşaatları",
@@ -1097,7 +1205,8 @@
       "blocks": 32,
       "collectors": 488,
       "aperture": 1137,
-      "gross": 1244.4
+      "gross": 1244.4,
+      "category": "konut"
     },
     {
       "title": "İnköy Mahallesi 634 Adet Konut + 6 KD İnşaatı",
@@ -1107,7 +1216,8 @@
       "blocks": 31,
       "collectors": 486,
       "aperture": 1132.4,
-      "gross": 1239.3
+      "gross": 1239.3,
+      "category": "konut"
     },
     {
       "title": "Kamalı Mahallesi 2. Etap 792 Adet Konut Ve 26 Adet Dükkan İnşaatı",
@@ -1117,7 +1227,8 @@
       "blocks": 24,
       "collectors": 485,
       "aperture": 1130.1,
-      "gross": 1236.8
+      "gross": 1236.8,
+      "category": "konut"
     },
     {
       "title": "Sazlıbosna Mevki 11. Bölge 2. Etap 759 Adet Konut Ve 26 Adet Dükkan İnşaatları",
@@ -1127,7 +1238,8 @@
       "blocks": 26,
       "collectors": 483,
       "aperture": 1125.4,
-      "gross": 1231.6
+      "gross": 1231.6,
+      "category": "konut"
     },
     {
       "title": "Yemişlik Mah. 2. Etap 624 Adet Konut (+ 6 KD) Ve 3 Adet Fırın İnşaatları",
@@ -1137,7 +1249,8 @@
       "blocks": 32,
       "collectors": 481,
       "aperture": 1120.7,
-      "gross": 1226.6
+      "gross": 1226.6,
+      "category": "konut"
     },
     {
       "title": "2.ETAP 595 Adet Konut (+5k.d.) İnşaatı",
@@ -1147,7 +1260,8 @@
       "blocks": 30,
       "collectors": 480,
       "aperture": 1118.4,
-      "gross": 1224
+      "gross": 1224,
+      "category": "konut"
     },
     {
       "title": "Merkez Battalgazi İlçesi Hanımın Çiftliği Ve Hidayet Mahalleleri 29. Bölge 2. Etap 651 Adet Konut, 1 Adet 16 Dükkanlı Ticaret Merkezi, 1 Adet 17 Dükkanlı Ticaret Merkezi Ve 2 Adet Fırın İnşaatları",
@@ -1157,7 +1271,8 @@
       "blocks": 32,
       "collectors": 478,
       "aperture": 1113.7,
-      "gross": 1218.9
+      "gross": 1218.9,
+      "category": "konut"
     },
     {
       "title": "575 Konut + 5 KD , 1 Adet Ticaret Merkezi Ve Camii İnşaatları",
@@ -1167,7 +1282,8 @@
       "blocks": 29,
       "collectors": 464,
       "aperture": 1081.1,
-      "gross": 1183.2
+      "gross": 1183.2,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi 3. Bölge, 22. Etap 608 Konut (+6 K.D.) Ve 14 Adet Dükkan İnşaatları İle Altyapı Ve Çevre Düzenleme",
@@ -1177,7 +1293,8 @@
       "blocks": 39,
       "collectors": 463,
       "aperture": 1078.8,
-      "gross": 1180.6
+      "gross": 1180.6,
+      "category": "konut"
     },
     {
       "title": "Kuyuluk Mahallesi (dörtyol 5. Etap) 628 Adet Konut (+6 KD), 1 Adet 6 Dükkanlı Ticaret Merkezi, 6 Adet 2 Dükkanlı Ticaret Merkezi, 2 Adet 4 Dükkanlı Ticaret Merkezi, 1 Adet 3 Dükkanlı Ticaret Merkezi,1 Adet 1 Dükkanlı Ticaret Merkezi Ve 2 Adet Cami İnşaatları",
@@ -1187,7 +1304,8 @@
       "blocks": 30,
       "collectors": 463,
       "aperture": 1078.8,
-      "gross": 1180.6
+      "gross": 1180.6,
+      "category": "konut"
     },
     {
       "title": "Cevdetiye Mahallesi 4.ETAP 1041 Adet Konut , 21 Dükkanlı Ticaret Merkezi Ve 1 Adet Camii İnşaatları",
@@ -1197,7 +1315,8 @@
       "blocks": 30,
       "collectors": 461,
       "aperture": 1074.1,
-      "gross": 1175.6
+      "gross": 1175.6,
+      "category": "konut"
     },
     {
       "title": "Baklalı Mahallesi 3. Etap 621 Adet Konut (5 KD) +10 Dükkan İnşaatı",
@@ -1207,7 +1326,8 @@
       "blocks": 30,
       "collectors": 460,
       "aperture": 1071.8,
-      "gross": 1173
+      "gross": 1173,
+      "category": "konut"
     },
     {
       "title": "6. Bölge 660 Adet Konut (+6 Kd),114 Adet Ticaret Ve 2 Adet Ofis İnşaatları",
@@ -1217,7 +1337,8 @@
       "blocks": 28,
       "collectors": 457,
       "aperture": 1064.8,
-      "gross": 1165.4
+      "gross": 1165.4,
+      "category": "konut"
     },
     {
       "title": "4. Bölge 3. Etap 761 Adet Konut Ve 1 Adet 5 Dükkanlı Ticaret Merkezi İnşaatları",
@@ -1227,7 +1348,8 @@
       "blocks": 30,
       "collectors": 456,
       "aperture": 1062.5,
-      "gross": 1162.8
+      "gross": 1162.8,
+      "category": "konut"
     },
     {
       "title": "Deveciler Mahallesi 2. Etap 645 Adet Konut(+5 K.D), 4 Dükkan Ve 1 Cami İnşaatı",
@@ -1237,7 +1359,8 @@
       "blocks": 31,
       "collectors": 456,
       "aperture": 1062.5,
-      "gross": 1162.8
+      "gross": 1162.8,
+      "category": "konut"
     },
     {
       "title": "Körfez İlçesi, İlimtepe Mahallesi 4. Etap 564 Adet Konut Ve 16 Adet Dükkan İnşaatları",
@@ -1247,7 +1370,8 @@
       "blocks": 34,
       "collectors": 453,
       "aperture": 1055.5,
-      "gross": 1155.1
+      "gross": 1155.1,
+      "category": "konut"
     },
     {
       "title": "(10.2) Ürgenpaşa Mahallesi 717 Adet Konut (+6 KD), 123 Adet Ticaret Ve 33 Adet Depo İnşaatları İle Altyapı Ve Çevre Düzenleme",
@@ -1257,7 +1381,8 @@
       "blocks": 20,
       "collectors": 451,
       "aperture": 1050.8,
-      "gross": 1150.1
+      "gross": 1150.1,
+      "category": "konut"
     },
     {
       "title": "5.BÖLGE 6.ETAP 551 Konut + 4 KD İnşaatları",
@@ -1267,7 +1392,8 @@
       "blocks": 43,
       "collectors": 450,
       "aperture": 1048.5,
-      "gross": 1147.5
+      "gross": 1147.5,
+      "category": "konut"
     },
     {
       "title": "İstiklal Mahallesi 659 Adet Konut (+6 KD) Ve 1 Adet 5 Dükkanlı İş Merkezi İnşaatı",
@@ -1277,7 +1403,8 @@
       "blocks": 29,
       "collectors": 448,
       "aperture": 1043.8,
-      "gross": 1142.4
+      "gross": 1142.4,
+      "category": "konut"
     },
     {
       "title": "Karataş Mahallesi 3. Etap 614 Adet Konut (+6 K.D.) İnşaatı",
@@ -1287,7 +1414,8 @@
       "blocks": 30,
       "collectors": 440,
       "aperture": 1025.2,
-      "gross": 1122
+      "gross": 1122,
+      "category": "konut"
     },
     {
       "title": "Merkez Antakya İlçesi Odabaşı Ve Ürgenpaşa Mahalleleri 8.ALAN 1.ETAP 579 Adet Konut (+5 KD) Ve 71 Adet Dükkan İnşaatı",
@@ -1297,7 +1425,8 @@
       "blocks": 31,
       "collectors": 440,
       "aperture": 1025.2,
-      "gross": 1122
+      "gross": 1122,
+      "category": "konut"
     },
     {
       "title": "Saraycık Mahallesi, Merkez 10 2. Etap 581 Konut (+5 K.D.) + 66 Adet Dükkan İnşaatları",
@@ -1307,7 +1436,8 @@
       "blocks": 31,
       "collectors": 438,
       "aperture": 1020.5,
-      "gross": 1116.9
+      "gross": 1116.9,
+      "category": "konut"
     },
     {
       "title": "Aydınlı Mahallesi 632 Adet Konut (+5 K.D.) Ve 6 Adet Dükkan İnşaatları",
@@ -1317,7 +1447,8 @@
       "blocks": 28,
       "collectors": 437,
       "aperture": 1018.2,
-      "gross": 1114.4
+      "gross": 1114.4,
+      "category": "konut"
     },
     {
       "title": "Emek Mahallesi 6.ETAP 645 Adet Konut (+5 KD) Ve 76 Dükkan İnşaatı",
@@ -1327,7 +1458,8 @@
       "blocks": 26,
       "collectors": 429,
       "aperture": 999.6,
-      "gross": 1093.9
+      "gross": 1093.9,
+      "category": "konut"
     },
     {
       "title": "Karataş Mahallesi 3.BÖLGE 1.ETAP 574 Konut + (6 KD) Ve 2 Adet Ticaret Merkezi (12 Dükkanlı) İnşaatları",
@@ -1337,7 +1469,8 @@
       "blocks": 29,
       "collectors": 424,
       "aperture": 987.9,
-      "gross": 1081.2
+      "gross": 1081.2,
+      "category": "konut"
     },
     {
       "title": "Merkez, 3. Bölge, 2.ETAP 610 Adet Konut, 206 Dükkan İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -1347,7 +1480,8 @@
       "blocks": 29,
       "collectors": 420,
       "aperture": 978.6,
-      "gross": 1071
+      "gross": 1071,
+      "category": "konut"
     },
     {
       "title": "Ağyar Mahallesi 2. Etap 577 Konut İnşaatı",
@@ -1357,7 +1491,8 @@
       "blocks": 28,
       "collectors": 419,
       "aperture": 976.3,
-      "gross": 1068.4
+      "gross": 1068.4,
+      "category": "konut"
     },
     {
       "title": "Oruçreis Mahallesi 618 Adet Konut İnşaatları İle Altyapı Ve Çevre Düzenleme",
@@ -1367,7 +1502,8 @@
       "blocks": 26,
       "collectors": 416,
       "aperture": 969.3,
-      "gross": 1060.8
+      "gross": 1060.8,
+      "category": "konut"
     },
     {
       "title": "Merkez 3.BÖLGE 2.ETAP, 682 Adet Konut (+4 K.d.)+128 Adet Dükkan İnşaatı",
@@ -1377,7 +1513,8 @@
       "blocks": 27,
       "collectors": 415,
       "aperture": 967,
-      "gross": 1058.3
+      "gross": 1058.3,
+      "category": "konut"
     },
     {
       "title": "Islahiye İlçesi, 2. Etap 2. Bölge 515 Adet Konut (+5 KD) İnşaatı",
@@ -1387,7 +1524,8 @@
       "blocks": 33,
       "collectors": 414,
       "aperture": 964.6,
-      "gross": 1055.7
+      "gross": 1055.7,
+      "category": "konut"
     },
     {
       "title": "Başpınar Ve Esenler Mahallesi Merkez 1. Bölge 574 Adet Konut, 174 Adet 2 Adet Fırın İnşaatı İle Altyapı Ve Çevre Düzenlemesi İşi Dükkan Ve",
@@ -1397,7 +1535,8 @@
       "blocks": 27,
       "collectors": 407,
       "aperture": 948.3,
-      "gross": 1037.9
+      "gross": 1037.9,
+      "category": "konut"
     },
     {
       "title": "Sarıçam İlçesi, Buruk Mahallesi 5. Etap 590 Adet Konut İnşaatı",
@@ -1407,7 +1546,8 @@
       "blocks": 26,
       "collectors": 402,
       "aperture": 936.7,
-      "gross": 1025.1
+      "gross": 1025.1,
+      "category": "konut"
     },
     {
       "title": "Kocadere Mahallesi 2.ETAP 510 Adet Konut (+ 8 K.D.), 1 Adet 32 Derslikli İnşaatı İle Altyapı Ve Çevre Düzenlemesi İşi İlkokul Ve 1 Adet Camii",
@@ -1417,7 +1557,8 @@
       "blocks": 26,
       "collectors": 399,
       "aperture": 929.7,
-      "gross": 1017.5
+      "gross": 1017.5,
+      "category": "konut"
     },
     {
       "title": "Başlamış Mahallesi 488 Adet Konut İnşaatı",
@@ -1427,7 +1568,8 @@
       "blocks": 33,
       "collectors": 398,
       "aperture": 927.3,
-      "gross": 1014.9
+      "gross": 1014.9,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi 3. Bölge 19. Etap 498 Adet Konut (+4 K.D.) İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -1437,7 +1579,8 @@
       "blocks": 26,
       "collectors": 397,
       "aperture": 925,
-      "gross": 1012.4
+      "gross": 1012.4,
+      "category": "konut"
     },
     {
       "title": "Saraycık Mahallesi 1. Etap 565 Daire + 5 KD +10 İş Yeri İnşaatı",
@@ -1447,7 +1590,8 @@
       "blocks": 29,
       "collectors": 395,
       "aperture": 920.4,
-      "gross": 1007.2
+      "gross": 1007.2,
+      "category": "konut"
     },
     {
       "title": "Aligör Mahallesi 471 Adet Konut+9 KD ,t1 Tipi(5 Dükkanlı) Ticaret Ve Camii İnşaatı",
@@ -1457,7 +1601,8 @@
       "blocks": 30,
       "collectors": 390,
       "aperture": 908.7,
-      "gross": 994.5
+      "gross": 994.5,
+      "category": "konut"
     },
     {
       "title": "Antakya İlçesi, Saraycık Mahallesi , Merkez 10 2. Etap 581 Konut (+5 K.D.) + 66 Adet Dükkan İnşaatları",
@@ -1467,7 +1612,8 @@
       "blocks": 27,
       "collectors": 387,
       "aperture": 901.7,
-      "gross": 986.9
+      "gross": 986.9,
+      "category": "konut"
     },
     {
       "title": "Karacadağ Mevki 2.BÖLGE 6. Etap 481 Adet Konut (+4 KD) İnşaatı",
@@ -1477,7 +1623,8 @@
       "blocks": 28,
       "collectors": 382,
       "aperture": 890.1,
-      "gross": 974.1
+      "gross": 974.1,
+      "category": "konut"
     },
     {
       "title": "İkizce Mahallesi, 3. Bölge 7. Etap 530 Adet Konut Ve 70 Adet Dükkan İnşaatları",
@@ -1487,7 +1634,8 @@
       "blocks": 23,
       "collectors": 382,
       "aperture": 890.1,
-      "gross": 974.1
+      "gross": 974.1,
+      "category": "konut"
     },
     {
       "title": "Saray Mahallesi 1. Etap 594 Adet Konut +(6kd), 493 Adet Dükkan, 256 Adet Ofis İnşaatı",
@@ -1497,7 +1645,8 @@
       "blocks": 19,
       "collectors": 381,
       "aperture": 887.7,
-      "gross": 971.6
+      "gross": 971.6,
+      "category": "konut"
     },
     {
       "title": "Hüyüklü Mahallesi 501 Adet Konut , 18 Adet Dükkan Ve 1 Adet Cami İnşaatları",
@@ -1507,7 +1656,8 @@
       "blocks": 24,
       "collectors": 365,
       "aperture": 850.5,
-      "gross": 930.7
+      "gross": 930.7,
+      "category": "konut"
     },
     {
       "title": "Onikişubat İlçesi Önsen Mahallesi 2. Etap 453 Adet Konut(+3 K.D.) İnşaatı",
@@ -1517,7 +1667,8 @@
       "blocks": 31,
       "collectors": 363,
       "aperture": 845.8,
-      "gross": 925.7
+      "gross": 925.7,
+      "category": "konut"
     },
     {
       "title": "Bozön Mahallesi 1. Etap 471 Adet Konut (+7 KD) , 1 Adet Cami Ve 1 Adet Ticaret Merkezi (12 Dükkanlı) İnşaatları",
@@ -1527,7 +1678,8 @@
       "blocks": 24,
       "collectors": 357,
       "aperture": 831.8,
-      "gross": 910.4
+      "gross": 910.4,
+      "category": "konut"
     },
     {
       "title": "Düğünyurdu Mahallesi 2. Etap 492 Adet Konut + (4 KD) İnşaatı",
@@ -1537,7 +1689,8 @@
       "blocks": 24,
       "collectors": 354,
       "aperture": 824.8,
-      "gross": 902.7
+      "gross": 902.7,
+      "category": "konut"
     },
     {
       "title": "General Şükrü Kanatlı Mahallesi (eski Stadyum Alanı) 707 Adet Konut Ve 128 Adet Dükkan İnşaatları",
@@ -1547,7 +1700,8 @@
       "blocks": 8,
       "collectors": 353,
       "aperture": 822.5,
-      "gross": 900.2
+      "gross": 900.2,
+      "category": "konut"
     },
     {
       "title": "Yenişehir Mahallesi, 2. Etap, 522 Adet Konut (+4 K.D), 10 Adet Dükkan , 1 Adet 4 Dükkanlı Ticaret Merkezi Ve 1 Adet Camii İnşaatı İle Altyapı Ve Çevre Düzenlemesi",
@@ -1557,7 +1711,8 @@
       "blocks": 22,
       "collectors": 351,
       "aperture": 817.8,
-      "gross": 895.1
+      "gross": 895.1,
+      "category": "konut"
     },
     {
       "title": "4. Etap 1.BÖLGE 428 Adet Konut (+4 KD) İnşaatı",
@@ -1567,7 +1722,8 @@
       "blocks": 27,
       "collectors": 351,
       "aperture": 817.8,
-      "gross": 895.1
+      "gross": 895.1,
+      "category": "konut"
     },
     {
       "title": "Yazıbaşı Mahallesi 428 Adet Konut + 4 KD + 8 Dükkan + 1 Adet Ticaret Merkezi İnşaatları",
@@ -1577,7 +1733,8 @@
       "blocks": 26,
       "collectors": 346,
       "aperture": 806.2,
-      "gross": 882.3
+      "gross": 882.3,
+      "category": "konut"
     },
     {
       "title": "Mezitli İlçesi Bozön Mahallesi 1.ETAP 484 Adet Konut (+6 KD) İnşaatı",
@@ -1587,7 +1744,8 @@
       "blocks": 23,
       "collectors": 344,
       "aperture": 801.5,
-      "gross": 877.2
+      "gross": 877.2,
+      "category": "konut"
     },
     {
       "title": "Emek Mahallesi 4. Etap 478 Adet Konut (+4 KD) Ve 24 Dükkan İnşaatı",
@@ -1597,7 +1755,8 @@
       "blocks": 22,
       "collectors": 343,
       "aperture": 799.2,
-      "gross": 874.7
+      "gross": 874.7,
+      "category": "konut"
     },
     {
       "title": "Karataş Mahallesi 4. Etap 447 Adet Konut İnşaatı",
@@ -1607,7 +1766,8 @@
       "blocks": 22,
       "collectors": 334,
       "aperture": 778.2,
-      "gross": 851.7
+      "gross": 851.7,
+      "category": "konut"
     },
     {
       "title": ", Selçuklu İlçesi Ardıçlı Mahallesi Rezerv Yapı Alanı 444 (+4 KD) Adet Konut, İnşaatı",
@@ -1617,7 +1777,8 @@
       "blocks": 25,
       "collectors": 331,
       "aperture": 771.2,
-      "gross": 844.1
+      "gross": 844.1,
+      "category": "konut"
     },
     {
       "title": "Merkez 24. Bölge 403 Adet Konut, 7 Adet Dükkan Ve 2 Adet Ofis İnşaatı",
@@ -1627,7 +1788,8 @@
       "blocks": 29,
       "collectors": 328,
       "aperture": 764.2,
-      "gross": 836.4
+      "gross": 836.4,
+      "category": "konut"
     },
     {
       "title": "Merkez Battalgazi İlçesi Dernek Ve Saray Mahalleleri 3. Bölge 1. Etap 511 Adet Konut, 308 Adet Dükkan Ve 2 Adet Fırın İnşaatları",
@@ -1637,7 +1799,8 @@
       "blocks": 23,
       "collectors": 328,
       "aperture": 764.2,
-      "gross": 836.4
+      "gross": 836.4,
+      "category": "konut"
     },
     {
       "title": "2 Etap 407 Adet Konut+3kd 1000M3 Su Deposu İle 3000 Kişilik Paket Arıtma İnşaatları",
@@ -1647,7 +1810,8 @@
       "blocks": 21,
       "collectors": 326,
       "aperture": 759.6,
-      "gross": 831.3
+      "gross": 831.3,
+      "category": "konut"
     },
     {
       "title": "Deveci Mahallesi 404 Konut (+4 K.D.) İnşaatları İle Altyapı Ve Çevre Düzenleme",
@@ -1657,7 +1821,8 @@
       "blocks": 26,
       "collectors": 324,
       "aperture": 754.9,
-      "gross": 826.2
+      "gross": 826.2,
+      "category": "konut"
     },
     {
       "title": "Elbistan İlçesi, Gerger Mahallesi 4. Etap 385 Adet Konut, 2 Adet Ticaret Merkezi ( 5 Ve10 Dükkanlı) Ve 1 Adet Cami İnşaatı",
@@ -1667,7 +1832,8 @@
       "blocks": 19,
       "collectors": 311,
       "aperture": 724.6,
-      "gross": 793.1
+      "gross": 793.1,
+      "category": "konut"
     },
     {
       "title": "Odabaşı Mahallesi Merkez 6. Ve 7. Bölgeler 391 Adet Konut Ve 2 Adet Ticaret Merkezi ( 2 Adet Dükkan Ve 10 Adet Ticari Depo) İnşaatları İle Altyapı Ve Çevre Düzenleme",
@@ -1677,7 +1843,8 @@
       "blocks": 19,
       "collectors": 296,
       "aperture": 689.7,
-      "gross": 754.8
+      "gross": 754.8,
+      "category": "konut"
     },
     {
       "title": "Islahiye İlçesi, 2. Etap 1. Bölge 361 Adet Konut (+4 KD) İnşaatı",
@@ -1687,7 +1854,8 @@
       "blocks": 23,
       "collectors": 295,
       "aperture": 687.4,
-      "gross": 752.3
+      "gross": 752.3,
+      "category": "konut"
     },
     {
       "title": "Temelli Alçı / Yenipeçenek Mahallesi 2. Etap 1012 Adet Konut + 8 KD +24 Dükkan İnşaatı",
@@ -1697,7 +1865,8 @@
       "blocks": 50,
       "collectors": 294,
       "aperture": 685,
-      "gross": 749.7
+      "gross": 749.7,
+      "category": "konut"
     },
     {
       "title": "Batıkent Mahallesi 4.ETAP 409 Adet Konut+3kd Ve 5 Dükkanlı Ticaret İnşaatı",
@@ -1707,7 +1876,8 @@
       "blocks": 20,
       "collectors": 293,
       "aperture": 682.7,
-      "gross": 747.2
+      "gross": 747.2,
+      "category": "konut"
     },
     {
       "title": "Kozcağız Mahallesi 358 Adet Konut (+2 K. D.) Ve 3 Adet Dükkan İnşaatları",
@@ -1717,7 +1887,8 @@
       "blocks": 18,
       "collectors": 288,
       "aperture": 671,
-      "gross": 734.4
+      "gross": 734.4,
+      "category": "konut"
     },
     {
       "title": "Merkez Kirazlı Mahallesi 2. Etap 349 Adet Konut + (3 K.D.) İnşaatı",
@@ -1727,7 +1898,8 @@
       "blocks": 22,
       "collectors": 286,
       "aperture": 666.4,
-      "gross": 729.3
+      "gross": 729.3,
+      "category": "konut"
     },
     {
       "title": "Karaali Mahallesi 373 Adet Konut (+3 KD) Ve 2 Adet Ticaret Merkezi (12 Dükkanlı) İnşaatı",
@@ -1737,7 +1909,8 @@
       "blocks": 20,
       "collectors": 284,
       "aperture": 661.7,
-      "gross": 724.2
+      "gross": 724.2,
+      "category": "konut"
     },
     {
       "title": "Fatih Mahallesi 1.ETAP 356 Adet Konut (+4 KD) , 1 Adet Ticaret Ve 1 Adet Fırın İnşaatları",
@@ -1747,7 +1920,8 @@
       "blocks": 20,
       "collectors": 280,
       "aperture": 652.4,
-      "gross": 714
+      "gross": 714,
+      "category": "konut"
     },
     {
       "title": "Çavuş Mahallesi 3. Etap 346 Konut TOKİ İnşaatları",
@@ -1757,7 +1931,8 @@
       "blocks": 19,
       "collectors": 271,
       "aperture": 631.4,
-      "gross": 691.1
+      "gross": 691.1,
+      "category": "konut"
     },
     {
       "title": "Kocaali İlçesi, Caferiye Mah. 3.ETAP 324 Adet Konut İnşaatı",
@@ -1767,7 +1942,8 @@
       "blocks": 25,
       "collectors": 268,
       "aperture": 624.4,
-      "gross": 683.4
+      "gross": 683.4,
+      "category": "konut"
     },
     {
       "title": "Büyükdağlı Mahallesi 322 Adet Konut + 2 KD +2 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -1777,7 +1953,8 @@
       "blocks": 20,
       "collectors": 262,
       "aperture": 610.5,
-      "gross": 668.1
+      "gross": 668.1,
+      "category": "konut"
     },
     {
       "title": "Kocadere Mahallesi 1.ETAP 326 Adet Konut (+ 4 K.D.) İnşaatı",
@@ -1787,7 +1964,8 @@
       "blocks": 17,
       "collectors": 262,
       "aperture": 610.5,
-      "gross": 668.1
+      "gross": 668.1,
+      "category": "konut"
     },
     {
       "title": "Merkez Mahallesi 5. Etap 337 Adet Konut Ve 5 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -1797,7 +1975,8 @@
       "blocks": 17,
       "collectors": 261,
       "aperture": 608.1,
-      "gross": 665.6
+      "gross": 665.6,
+      "category": "konut"
     },
     {
       "title": "Kevser Mahallesi 368 Konut+ 4 KD + 3 Dükkan İnşaatı",
@@ -1807,7 +1986,8 @@
       "blocks": 16,
       "collectors": 256,
       "aperture": 596.5,
-      "gross": 652.8
+      "gross": 652.8,
+      "category": "konut"
     },
     {
       "title": "Atatürk Mah. 4. Etap 308 Konut İnşaatı",
@@ -1817,7 +1997,8 @@
       "blocks": 20,
       "collectors": 252,
       "aperture": 587.2,
-      "gross": 642.6
+      "gross": 642.6,
+      "category": "konut"
     },
     {
       "title": "Boyaldı Mahallesi 301 Konut +3 K.D Ve 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -1827,7 +2008,8 @@
       "blocks": 18,
       "collectors": 242,
       "aperture": 563.9,
-      "gross": 617.1
+      "gross": 617.1,
+      "category": "konut"
     },
     {
       "title": "Yakınca Mahallesi 417 Adet (3+1) Konut + 4 Adet Görevli Dairesi İnşaatları İle Alt Yapı Çevre Düzenlemesi",
@@ -1837,7 +2019,8 @@
       "blocks": 12,
       "collectors": 240,
       "aperture": 559.2,
-      "gross": 612
+      "gross": 612,
+      "category": "konut"
     },
     {
       "title": "3.ETAP 297 Adet Konut (+3 K.D.) İnşaatı",
@@ -1847,7 +2030,8 @@
       "blocks": 15,
       "collectors": 240,
       "aperture": 559.2,
-      "gross": 612
+      "gross": 612,
+      "category": "konut"
     },
     {
       "title": "Batıkent Mahallesi 2.ETAP 303 Adet Konut+3 KD Ve 7 Dükkanlı Ticaret İnşaatı",
@@ -1857,7 +2041,8 @@
       "blocks": 17,
       "collectors": 238,
       "aperture": 554.5,
-      "gross": 606.9
+      "gross": 606.9,
+      "category": "konut"
     },
     {
       "title": "Çay Mahallesi 319 Konut İnşaatları",
@@ -1867,7 +2052,8 @@
       "blocks": 14,
       "collectors": 238,
       "aperture": 554.5,
-      "gross": 606.9
+      "gross": 606.9,
+      "category": "konut"
     },
     {
       "title": "Kurtuluş Mahallesi 293 Adet Konut + 3 KD ( 10 Ticaret ) İnşaatı",
@@ -1877,7 +2063,8 @@
       "blocks": 15,
       "collectors": 236,
       "aperture": 549.9,
-      "gross": 601.8
+      "gross": 601.8,
+      "category": "konut"
     },
     {
       "title": "Merkez Battalgazi İlçesi Üçbağlar Mahallesi 36. Bölge 1. Etap 345 Adet Konut Ve 4 Adet Dükkan İnşaatı",
@@ -1887,7 +2074,8 @@
       "blocks": 15,
       "collectors": 234,
       "aperture": 545.2,
-      "gross": 596.7
+      "gross": 596.7,
+      "category": "konut"
     },
     {
       "title": "Merkez Kirazlı Mahallesi 2 Etap 349 Adet Konut + (3 K.D.) İnşaatı",
@@ -1897,7 +2085,8 @@
       "blocks": 18,
       "collectors": 234,
       "aperture": 545.2,
-      "gross": 596.7
+      "gross": 596.7,
+      "category": "konut"
     },
     {
       "title": "Yukarı Çöplü Mahallesi 272 Adet Konut (+2kd) İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -1907,7 +2096,8 @@
       "blocks": 16,
       "collectors": 231,
       "aperture": 538.2,
-      "gross": 589.1
+      "gross": 589.1,
+      "category": "konut"
     },
     {
       "title": "299 Adet Konut + (3kd) + 6 Dükkan İnşaatı",
@@ -1917,7 +2107,8 @@
       "blocks": 16,
       "collectors": 230,
       "aperture": 535.9,
-      "gross": 586.5
+      "gross": 586.5,
+      "category": "konut"
     },
     {
       "title": "Sinanpaşa Mahallesi Kentsel Dönüşüm Projesi 341 Adet Konut (+3kd) Ve 28 Adet Dükkan İnşaatı",
@@ -1927,7 +2118,8 @@
       "blocks": 14,
       "collectors": 230,
       "aperture": 535.9,
-      "gross": 586.5
+      "gross": 586.5,
+      "category": "konut"
     },
     {
       "title": "Akbez Köyü 295 Adet Konut (+3 K.D.), İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -1937,7 +2129,8 @@
       "blocks": 15,
       "collectors": 230,
       "aperture": 535.9,
-      "gross": 586.5
+      "gross": 586.5,
+      "category": "konut"
     },
     {
       "title": "Hamidiye Mahallesi TOKİ Projesi",
@@ -1947,7 +2140,8 @@
       "blocks": 12,
       "collectors": 229,
       "aperture": 533.6,
-      "gross": 583.9
+      "gross": 583.9,
+      "category": "konut"
     },
     {
       "title": "Emek Mahallesi 3.BÖLGE 300 Adet Konut (+3 KD) Ve 36 Adet Dükkan İnşaatı",
@@ -1957,7 +2151,8 @@
       "blocks": 18,
       "collectors": 229,
       "aperture": 533.6,
-      "gross": 583.9
+      "gross": 583.9,
+      "category": "konut"
     },
     {
       "title": "Emek Mahallesi 3. Etap 315 Adet Konut (+2 KD) Ve 32 Dükkan İnşaatı",
@@ -1967,7 +2162,8 @@
       "blocks": 14,
       "collectors": 229,
       "aperture": 533.6,
-      "gross": 583.9
+      "gross": 583.9,
+      "category": "konut"
     },
     {
       "title": "1. Mıntıka Mahallesi 15. Bölge 384 Konut + 19. Bölge 101 Konut İnşaatları",
@@ -1977,7 +2173,8 @@
       "blocks": 6,
       "collectors": 228,
       "aperture": 531.2,
-      "gross": 581.4
+      "gross": 581.4,
+      "category": "konut"
     },
     {
       "title": "298 Adet Konut, 2 Adet 5 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatları",
@@ -1987,7 +2184,8 @@
       "blocks": 15,
       "collectors": 227,
       "aperture": 528.9,
-      "gross": 578.8
+      "gross": 578.8,
+      "category": "konut"
     },
     {
       "title": "Hz. Yakup Mah. Ve Süleyman Demirel Mah. 277 Adet Konut + 3KD + 24 Dükkan İnşaatı",
@@ -1997,7 +2195,8 @@
       "blocks": 18,
       "collectors": 226,
       "aperture": 526.6,
-      "gross": 576.3
+      "gross": 576.3,
+      "category": "konut"
     },
     {
       "title": "Bereketli Mahallesi 285 Adet Konut +(3. KD) İnşaatı",
@@ -2007,7 +2206,8 @@
       "blocks": 16,
       "collectors": 224,
       "aperture": 521.9,
-      "gross": 571.2
+      "gross": 571.2,
+      "category": "konut"
     },
     {
       "title": "Bitişik Mahallesi 374 Adet Konut(+4 KD) 118 Adet Dükkan İnşaatları İle Alt Yapı Çevre Düzenlemesi",
@@ -2017,7 +2217,8 @@
       "blocks": 10,
       "collectors": 222,
       "aperture": 517.3,
-      "gross": 566.1
+      "gross": 566.1,
+      "category": "konut"
     },
     {
       "title": "Buharkent Merkez Mahallesi 268 Konut + 4 KD +2 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2027,7 +2228,8 @@
       "blocks": 17,
       "collectors": 221,
       "aperture": 514.9,
-      "gross": 563.6
+      "gross": 563.6,
+      "category": "konut"
     },
     {
       "title": ", Belen İlçesi , Atik Mahallesi 292 Adet Konut Ve 1 Adet 4 Dükkanlı Ticaret Merkezi İnşaatları",
@@ -2037,7 +2239,8 @@
       "blocks": 14,
       "collectors": 216,
       "aperture": 503.3,
-      "gross": 550.8
+      "gross": 550.8,
+      "category": "konut"
     },
     {
       "title": "38.BÖLGE 285 Konut, 3 Kapıcı Dairesi, 16 Dükkan Kentsel Dönüşüm Projesi",
@@ -2047,7 +2250,8 @@
       "blocks": 15,
       "collectors": 210,
       "aperture": 489.3,
-      "gross": 535.5
+      "gross": 535.5,
+      "category": "konut"
     },
     {
       "title": "Gökçehöyük Mahallesi 2. Bölge 258 Adet Konut İnşaatı",
@@ -2057,7 +2261,8 @@
       "blocks": 13,
       "collectors": 208,
       "aperture": 484.6,
-      "gross": 530.4
+      "gross": 530.4,
+      "category": "konut"
     },
     {
       "title": "Ferhuş Mahallesi, 258 Adet Konut (2 K.D.) İnşaatı İle Altyapı Ve Çevre Düzenlemesi",
@@ -2067,7 +2272,8 @@
       "blocks": 13,
       "collectors": 208,
       "aperture": 484.6,
-      "gross": 530.4
+      "gross": 530.4,
+      "category": "konut"
     },
     {
       "title": "262 Adet Konut + 2 KD 1 Adet Ticaret Ve 1 Adet Cami İnşaatları",
@@ -2077,7 +2283,8 @@
       "blocks": 15,
       "collectors": 207,
       "aperture": 482.3,
-      "gross": 527.8
+      "gross": 527.8,
+      "category": "konut"
     },
     {
       "title": "Borsa Mahallesi 4.ETAP 256 Konut (+ 2KD) Ve 6 Adet Dükkan İnşaatları",
@@ -2087,7 +2294,8 @@
       "blocks": 13,
       "collectors": 206,
       "aperture": 480,
-      "gross": 525.3
+      "gross": 525.3,
+      "category": "konut"
     },
     {
       "title": "Antakya İlçesi, Alahan Mahallesi 282 Adet Konut, 1 Adet 3 Dükkanlı Ticaret Merkezi Ve 1 Adet Cami İnşaatları",
@@ -2097,7 +2305,8 @@
       "blocks": 14,
       "collectors": 204,
       "aperture": 475.3,
-      "gross": 520.2
+      "gross": 520.2,
+      "category": "konut"
     },
     {
       "title": "Kızılca Mahallesi, 250 Adet Konut (+2kd) Ve 1 Adet 5 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2107,7 +2316,8 @@
       "blocks": 14,
       "collectors": 197,
       "aperture": 459,
-      "gross": 502.4
+      "gross": 502.4,
+      "category": "konut"
     },
     {
       "title": "Gökçehüyük Mahallesi 1. Kısım 238 Konut + (2 KD) İnşaatları",
@@ -2117,7 +2327,8 @@
       "blocks": 12,
       "collectors": 192,
       "aperture": 447.4,
-      "gross": 489.6
+      "gross": 489.6,
+      "category": "konut"
     },
     {
       "title": "Bayır Mahallesi 280 Adet Konut (+2 Kd),12 Dükkan İnşaatı",
@@ -2127,7 +2338,8 @@
       "blocks": 12,
       "collectors": 189,
       "aperture": 440.4,
-      "gross": 482
+      "gross": 482,
+      "category": "konut"
     },
     {
       "title": "Beylik Mahallesi, 256 Adet Konut Ve 12 Adet Dükkan İnşaatı İle Altyapı Ve Çevre Düzenlemesi",
@@ -2137,7 +2349,8 @@
       "blocks": 12,
       "collectors": 183,
       "aperture": 426.4,
-      "gross": 466.7
+      "gross": 466.7,
+      "category": "konut"
     },
     {
       "title": "5. Etap Çayboyu Mahallesi 243 Adet Konut İnşaatı İle Altyapı Ve Çevre Düzenlemesı",
@@ -2147,7 +2360,8 @@
       "blocks": 14,
       "collectors": 182,
       "aperture": 424.1,
-      "gross": 464.1
+      "gross": 464.1,
+      "category": "konut"
     },
     {
       "title": "Ceylanpınarı İlçesi, Fatih Sultan Mahallesi (143 Adet Konut+1k.d. Ve 4 Adet Dükkan) İnşaatı",
@@ -2157,7 +2371,8 @@
       "blocks": 14,
       "collectors": 181,
       "aperture": 421.7,
-      "gross": 461.6
+      "gross": 461.6,
+      "category": "konut"
     },
     {
       "title": "Selçuklu Mahallesi 218 Adet Konut + 2 KD, 4 Ticaret Merkezi Altyapı Ve Çevre Düzenlemesi",
@@ -2167,7 +2382,8 @@
       "blocks": 14,
       "collectors": 178,
       "aperture": 414.7,
-      "gross": 453.9
+      "gross": 453.9,
+      "category": "konut"
     },
     {
       "title": "1.ETAP 250 Adet Konut(+2 K.D) İnşaatı",
@@ -2177,7 +2393,8 @@
       "blocks": 12,
       "collectors": 177,
       "aperture": 412.4,
-      "gross": 451.4
+      "gross": 451.4,
+      "category": "konut"
     },
     {
       "title": "1.ETAP 266 Adet Konut +(4kd) 4 Dükkan İnşaatı",
@@ -2187,7 +2404,8 @@
       "blocks": 16,
       "collectors": 177,
       "aperture": 412.4,
-      "gross": 451.4
+      "gross": 451.4,
+      "category": "konut"
     },
     {
       "title": "Yukarıkocayatak Mahallesi 262 Adet Konut 1 Adet 24 Derslikli İlkokul, 1 Adet Ticaret Merkezi İnşaatları",
@@ -2197,7 +2415,8 @@
       "blocks": 11,
       "collectors": 176,
       "aperture": 410.1,
-      "gross": 448.8
+      "gross": 448.8,
+      "category": "konut"
     },
     {
       "title": "Saraycık Mahallesi (7.etap) 214 Konut + 2 KD İnşaatları",
@@ -2207,7 +2426,8 @@
       "blocks": 17,
       "collectors": 176,
       "aperture": 410.1,
-      "gross": 448.8
+      "gross": 448.8,
+      "category": "konut"
     },
     {
       "title": "Çorakkadirler Mah. 220 Adet Konut (+2kd) 1 Adet 100 Kişilik Cami, 1 Adet 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2217,7 +2437,8 @@
       "blocks": 13,
       "collectors": 176,
       "aperture": 410.1,
-      "gross": 448.8
+      "gross": 448.8,
+      "category": "konut"
     },
     {
       "title": "Yalnızbağlar Mahallesi 218 Adet Konut (+ 2 K.D.) 1 Adet 5 Dükkanlı Ticaret Merkezi , 100 Kişilik Cami İnşaatı",
@@ -2227,7 +2448,8 @@
       "blocks": 13,
       "collectors": 175,
       "aperture": 407.8,
-      "gross": 446.2
+      "gross": 446.2,
+      "category": "konut"
     },
     {
       "title": "Deniz Mahallesi 3426, 3427, 3433, 3435, 3436, 3437 Adaları Kapsayan Riskli Alan Kentsel Dönüşüm Projesi",
@@ -2237,7 +2459,8 @@
       "blocks": 11,
       "collectors": 170,
       "aperture": 396.1,
-      "gross": 433.5
+      "gross": 433.5,
+      "category": "konut"
     },
     {
       "title": "Şevre İmar Mahallesi 1. Etap 276 Adet Konut + 3 KD + 9 Adet Ticaret İnşaatı",
@@ -2247,7 +2470,8 @@
       "blocks": 9,
       "collectors": 170,
       "aperture": 396.1,
-      "gross": 433.5
+      "gross": 433.5,
+      "category": "konut"
     },
     {
       "title": "Avnipaşa Mahallesi, 3. Etap 204 Adet Konut (+2 K.D), 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2257,7 +2481,8 @@
       "blocks": 12,
       "collectors": 163,
       "aperture": 379.8,
-      "gross": 415.7
+      "gross": 415.7,
+      "category": "konut"
     },
     {
       "title": "5.BÖLGE 2.ETAP 200 Konut (+2 KD) 63 Adet Dükkan , 3 Adet Cami İnşaatları Ve Altyapı Ve Çevre Düzenlemesi",
@@ -2267,7 +2492,8 @@
       "blocks": 17,
       "collectors": 163,
       "aperture": 379.8,
-      "gross": 415.7
+      "gross": 415.7,
+      "category": "konut"
     },
     {
       "title": "Bağcılar (çerikli) Mahallesi 3.ETAP 201 Adet Konut Ve 4 Adet Dükkan İnşaatları",
@@ -2277,7 +2503,8 @@
       "blocks": 11,
       "collectors": 162,
       "aperture": 377.5,
-      "gross": 413.1
+      "gross": 413.1,
+      "category": "konut"
     },
     {
       "title": "200 Konut (+2 K.D.) Ve 12 Ticari Birim İnşaatları İle Altyapı Ve Çevre Düzenleme",
@@ -2287,7 +2514,8 @@
       "blocks": 13,
       "collectors": 161,
       "aperture": 375.1,
-      "gross": 410.6
+      "gross": 410.6,
+      "category": "konut"
     },
     {
       "title": "Gop Mahallesi 198 Adet Konut (+4kd) Ve 2 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2297,7 +2525,8 @@
       "blocks": 12,
       "collectors": 161,
       "aperture": 375.1,
-      "gross": 410.6
+      "gross": 410.6,
+      "category": "konut"
     },
     {
       "title": "Hamidiye Mahallesi 200 Adet Konut İnşaatı",
@@ -2307,7 +2536,8 @@
       "blocks": 12,
       "collectors": 161,
       "aperture": 375.1,
-      "gross": 410.6
+      "gross": 410.6,
+      "category": "konut"
     },
     {
       "title": "Şair Eşref Mahallesi 198 Adet Konut (+ 2 K.D.), 1 Adet 3 Dükkanlı Ticaret İnşaatı İle Altyapı Ve Çevre Düzenlemesi İşi Merkezi",
@@ -2317,7 +2547,8 @@
       "blocks": 10,
       "collectors": 160,
       "aperture": 372.8,
-      "gross": 408
+      "gross": 408,
+      "category": "konut"
     },
     {
       "title": "Şarkışla İlçesi Gültekin Mahallesi 198 Konut Ve 2 K.D İnşaatı",
@@ -2327,7 +2558,8 @@
       "blocks": 10,
       "collectors": 160,
       "aperture": 372.8,
-      "gross": 408
+      "gross": 408,
+      "category": "konut"
     },
     {
       "title": "9.BÖLGE 3.ETAP, 224 Adet Konut (+2 KD) Ve 42 Adet Dükkan İnşaatı",
@@ -2337,7 +2569,8 @@
       "blocks": 11,
       "collectors": 159,
       "aperture": 370.5,
-      "gross": 405.5
+      "gross": 405.5,
+      "category": "konut"
     },
     {
       "title": "Reşadiye Mahallesi 194 Adet Konut +(2kd) İnşaatı",
@@ -2347,7 +2580,8 @@
       "blocks": 12,
       "collectors": 156,
       "aperture": 363.5,
-      "gross": 397.8
+      "gross": 397.8,
+      "category": "konut"
     },
     {
       "title": "Keles İlçesi, Cuma Mahallesi 196 Adet Konut (+2 K.D.) + 8 Adet Dükkan İnşaatı İle Altyapı Ve Çevre Düzenlemesı",
@@ -2357,7 +2591,8 @@
       "blocks": 12,
       "collectors": 156,
       "aperture": 363.5,
-      "gross": 397.8
+      "gross": 397.8,
+      "category": "konut"
     },
     {
       "title": "Başmakcı İlçesi, Çağlayan Mah. 126 Konut+ 2 KD Ve Afyonkarahisar İli, Dazkırı İlçesi, Esentepe Mahallesi 63 Konut+ 1 KD İnşaatı",
@@ -2367,7 +2602,8 @@
       "blocks": 11,
       "collectors": 155,
       "aperture": 361.2,
-      "gross": 395.3
+      "gross": 395.3,
+      "category": "konut"
     },
     {
       "title": "Akçasu Mahallesi 196 Adet Konut İnşaatları",
@@ -2377,7 +2613,8 @@
       "blocks": 11,
       "collectors": 154,
       "aperture": 358.8,
-      "gross": 392.7
+      "gross": 392.7,
+      "category": "konut"
     },
     {
       "title": "Hisar Mahallesi 196 Konut + 2 KD Ve 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2387,7 +2624,8 @@
       "blocks": 11,
       "collectors": 154,
       "aperture": 358.8,
-      "gross": 392.7
+      "gross": 392.7,
+      "category": "konut"
     },
     {
       "title": "Orhaniye Mahallesi 192 Adet Konut + 2 KD İnşaatı",
@@ -2397,7 +2635,8 @@
       "blocks": 10,
       "collectors": 154,
       "aperture": 358.8,
-      "gross": 392.7
+      "gross": 392.7,
+      "category": "konut"
     },
     {
       "title": "Hamdibey Mahallesi 188 Konut+ 8 Ticaret İnşaatı",
@@ -2407,7 +2646,8 @@
       "blocks": 12,
       "collectors": 152,
       "aperture": 354.2,
-      "gross": 387.6
+      "gross": 387.6,
+      "category": "konut"
     },
     {
       "title": "Kütahya İli Merkez İlçesi Parmakören Mahallesi Kentsel Dönüşüm Projesi",
@@ -2417,7 +2657,8 @@
       "blocks": 9,
       "collectors": 150,
       "aperture": 349.5,
-      "gross": 382.5
+      "gross": 382.5,
+      "category": "konut"
     },
     {
       "title": "İstiklal Mahallesi 7. Etap 184 Adet Konut + (2 KD) + 18 Dükkan İnşaatı",
@@ -2427,7 +2668,8 @@
       "blocks": 12,
       "collectors": 150,
       "aperture": 349.5,
-      "gross": 382.5
+      "gross": 382.5,
+      "category": "konut"
     },
     {
       "title": "Mithatpaşa Mahallesi 2. Etap 178 Adet Konut İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -2437,7 +2679,8 @@
       "blocks": 9,
       "collectors": 144,
       "aperture": 335.5,
-      "gross": 367.2
+      "gross": 367.2,
+      "category": "konut"
     },
     {
       "title": "Yeni Mahallesi 126 Adet Konut (+ 2 K.D.) 1 Adet 2 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2447,7 +2690,8 @@
       "blocks": 11,
       "collectors": 143,
       "aperture": 333.2,
-      "gross": 364.7
+      "gross": 364.7,
+      "category": "konut"
     },
     {
       "title": "Arğıl Mahallesi 174 Adet Konut İnşaatı",
@@ -2457,7 +2701,8 @@
       "blocks": 11,
       "collectors": 143,
       "aperture": 333.2,
-      "gross": 364.7
+      "gross": 364.7,
+      "category": "konut"
     },
     {
       "title": "Yenimahalle Mahallesi 178 Adet Konut (+ 2KD), 1 Adet 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2467,7 +2712,8 @@
       "blocks": 10,
       "collectors": 140,
       "aperture": 326.2,
-      "gross": 357
+      "gross": 357,
+      "category": "konut"
     },
     {
       "title": ", Sarız İlçesi , Kızılpınar Mahallesi 178 Konut Ve 1 Adet Ticaret Merkezi İnşaatı İle Altyapı Ve Çevre Düzenlemesi",
@@ -2477,7 +2723,8 @@
       "blocks": 10,
       "collectors": 140,
       "aperture": 326.2,
-      "gross": 357
+      "gross": 357,
+      "category": "konut"
     },
     {
       "title": "Merkez Battalgazi İlçesi Uçbağlar Mahallesi 44. Bölge 202 Adet Konut Ve 34 Adet Dükkan İle Doğanyol İlçesi İsak Mahallesi 1 Adet Cami İnşaatları",
@@ -2487,7 +2734,8 @@
       "blocks": 7,
       "collectors": 139,
       "aperture": 323.9,
-      "gross": 354.5
+      "gross": 354.5,
+      "category": "konut"
     },
     {
       "title": "2. Etap 1. Bölge Horsunlu Mahallesi 170 Adet Konut + 2 KD İnşaatı",
@@ -2497,7 +2745,8 @@
       "blocks": 9,
       "collectors": 138,
       "aperture": 321.5,
-      "gross": 351.9
+      "gross": 351.9,
+      "category": "konut"
     },
     {
       "title": "Taşoluk Mahallesi 158 Adet Konut + 2 KD Ve 12 Adet Dükkan İnşaatı",
@@ -2507,7 +2756,8 @@
       "blocks": 22,
       "collectors": 136,
       "aperture": 316.9,
-      "gross": 346.8
+      "gross": 346.8,
+      "category": "konut"
     },
     {
       "title": "Şevre İmar Mah. (yıldız Sitesi) (7. Alan) 182 Konut (+2 K.D.), 12 Ticari Birim İnşaatı İle Altyapı Ve Çevre Düzenlenmesi",
@@ -2517,7 +2767,8 @@
       "blocks": 9,
       "collectors": 134,
       "aperture": 312.2,
-      "gross": 341.7
+      "gross": 341.7,
+      "category": "konut"
     },
     {
       "title": "Bahçelievler Mahallesi 165 Konut Ve 1 Adet 2 Dükkanlı Ticaret Merkezi İnşaatları",
@@ -2527,7 +2778,8 @@
       "blocks": 9,
       "collectors": 132,
       "aperture": 307.6,
-      "gross": 336.6
+      "gross": 336.6,
+      "category": "konut"
     },
     {
       "title": "Ayaspaşa Mahallesi 160 Adet Konut (+ 2 K.D.) İnşaatı",
@@ -2537,7 +2789,8 @@
       "blocks": 10,
       "collectors": 131,
       "aperture": 305.2,
-      "gross": 334
+      "gross": 334,
+      "category": "konut"
     },
     {
       "title": "Balkar Mahallesi 154 Adet Konut (+ 2 KD) İnşaatları",
@@ -2547,7 +2800,8 @@
       "blocks": 13,
       "collectors": 130,
       "aperture": 302.9,
-      "gross": 331.5
+      "gross": 331.5,
+      "category": "konut"
     },
     {
       "title": "Cumhuriyet Mahallesi 159 Konut (+1 KD) Rezerv Yapı Alanı İnşaatı İle Altyapı Ve Çevre Düzenleme",
@@ -2557,7 +2811,8 @@
       "blocks": 10,
       "collectors": 130,
       "aperture": 302.9,
-      "gross": 331.5
+      "gross": 331.5,
+      "category": "konut"
     },
     {
       "title": "Tepecik Mahallesi 168 Adet Konut İnşaatı",
@@ -2567,7 +2822,8 @@
       "blocks": 10,
       "collectors": 130,
       "aperture": 302.9,
-      "gross": 331.5
+      "gross": 331.5,
+      "category": "konut"
     },
     {
       "title": "Şevkipaşa Mahallesi 158 Konut (+2kd.) İnşaatı",
@@ -2577,7 +2833,8 @@
       "blocks": 10,
       "collectors": 130,
       "aperture": 302.9,
-      "gross": 331.5
+      "gross": 331.5,
+      "category": "konut"
     },
     {
       "title": "Aksu Mahallesi 160 Konut+2kd, 4 Dükkan Ve 1 Adet Cami İnşaatı",
@@ -2587,7 +2844,8 @@
       "blocks": 9,
       "collectors": 126,
       "aperture": 293.6,
-      "gross": 321.3
+      "gross": 321.3,
+      "category": "konut"
     },
     {
       "title": "Merkez Mahallesi 160 Adet Konut (+ 2 KD) İnşaatı İle İnşaatı",
@@ -2597,7 +2855,8 @@
       "blocks": 9,
       "collectors": 126,
       "aperture": 293.6,
-      "gross": 321.3
+      "gross": 321.3,
+      "category": "konut"
     },
     {
       "title": "Çavuş Mahallesi 4. Etap 160 Konut TOKİ İnşaatları",
@@ -2607,7 +2866,8 @@
       "blocks": 9,
       "collectors": 126,
       "aperture": 293.6,
-      "gross": 321.3
+      "gross": 321.3,
+      "category": "konut"
     },
     {
       "title": ", Tonya İlçesi, İskenderli Mahallesi 157 Adet Konut (+3 KD) Ve 4 Dükkan İnşaatı",
@@ -2617,7 +2877,8 @@
       "blocks": 9,
       "collectors": 125,
       "aperture": 291.3,
-      "gross": 318.8
+      "gross": 318.8,
+      "category": "konut"
     },
     {
       "title": "Yeşil Mahallesi 152 Adet Konut, 4 Adet Dükkan Ve Ulucami Mahallesi 77 Adet Konut, 117 Adet İşyeri Ve 18 Adet Ofis İnşaatları",
@@ -2627,7 +2888,8 @@
       "blocks": 11,
       "collectors": 123,
       "aperture": 286.6,
-      "gross": 313.7
+      "gross": 313.7,
+      "category": "konut"
     },
     {
       "title": "Saltukova Beldesi, Düz Mahallesi 4.ETAP 150 Konut (+2 K.D.) Ve 1 Adet Cami İnşaatı İle Altyapı Ve Çevre Düzenlemesi",
@@ -2637,7 +2899,8 @@
       "blocks": 8,
       "collectors": 120,
       "aperture": 279.6,
-      "gross": 306
+      "gross": 306,
+      "category": "konut"
     },
     {
       "title": "Medrese Mah 142 Adet Konut (+2 KD.) İnşaatı",
@@ -2647,7 +2910,8 @@
       "blocks": 9,
       "collectors": 117,
       "aperture": 272.6,
-      "gross": 298.3
+      "gross": 298.3,
+      "category": "konut"
     },
     {
       "title": "5.ETAP 142 Adet Konut (+ 2 KD), 3 Dükkanlı Ticaret İnşaatı",
@@ -2657,7 +2921,8 @@
       "blocks": 9,
       "collectors": 117,
       "aperture": 272.6,
-      "gross": 298.3
+      "gross": 298.3,
+      "category": "konut"
     },
     {
       "title": "Darende İlçesi Balaban Mahallesi 13264,3265,3267 Parseller 142 Adet Konut + 2 KD İle 1 Ticaret (2 Dükkan) İnşaatları",
@@ -2667,7 +2932,8 @@
       "blocks": 9,
       "collectors": 117,
       "aperture": 272.6,
-      "gross": 298.3
+      "gross": 298.3,
+      "category": "konut"
     },
     {
       "title": "Hürriyet Mahallesi 142 Adet Konut + 2 KD İnşaatı",
@@ -2677,7 +2943,8 @@
       "blocks": 9,
       "collectors": 117,
       "aperture": 272.6,
-      "gross": 298.3
+      "gross": 298.3,
+      "category": "konut"
     },
     {
       "title": "Camiikebir Mahallesi 4. Bölge 143 Adet Konut İnşaatı",
@@ -2687,7 +2954,8 @@
       "blocks": 9,
       "collectors": 117,
       "aperture": 272.6,
-      "gross": 298.3
+      "gross": 298.3,
+      "category": "konut"
     },
     {
       "title": "3. Etap Yenice Mah. 145 Konut (+2kd) İnşaatı",
@@ -2697,7 +2965,8 @@
       "blocks": 9,
       "collectors": 116,
       "aperture": 270.3,
-      "gross": 295.8
+      "gross": 295.8,
+      "category": "konut"
     },
     {
       "title": "Ulucami Mahallesi 3.ETAP Toplu Konut Projesi 146 Konut (+2 K.D) İnşaatı",
@@ -2707,7 +2976,8 @@
       "blocks": 8,
       "collectors": 116,
       "aperture": 270.3,
-      "gross": 295.8
+      "gross": 295.8,
+      "category": "konut"
     },
     {
       "title": "Çarşıbaşı İlçesi Çarşıbaşı Mahallesi 166 Konut (+2kd) İnşaatı",
@@ -2717,7 +2987,8 @@
       "blocks": 7,
       "collectors": 112,
       "aperture": 261,
-      "gross": 285.6
+      "gross": 285.6,
+      "category": "konut"
     },
     {
       "title": "Karşıyaka Mahallesi 138 Adet Konut (+ 2 KD) İnşaatı",
@@ -2727,7 +2998,8 @@
       "blocks": 7,
       "collectors": 112,
       "aperture": 261,
-      "gross": 285.6
+      "gross": 285.6,
+      "category": "konut"
     },
     {
       "title": "Bahçebaşı Mahallesi 143 Adet Konut +(1kd) İle 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2737,7 +3009,8 @@
       "blocks": 8,
       "collectors": 112,
       "aperture": 261,
-      "gross": 285.6
+      "gross": 285.6,
+      "category": "konut"
     },
     {
       "title": "Çekmece Mahallesi 10.BÖLGE 144 Adet Konut Ve 20 Adet Dükkan İnşaatları",
@@ -2747,7 +3020,8 @@
       "blocks": 8,
       "collectors": 112,
       "aperture": 261,
-      "gross": 285.6
+      "gross": 285.6,
+      "category": "konut"
     },
     {
       "title": "Merkez Battalgazi İlçesi, Üçbağlar (göztepe Ve Tandoğan) Mahallesi 28. Bölge 2. Etap 164 Adet Konut + 2 KD Ve 4 Adet Dükkat İnşaatları",
@@ -2757,7 +3031,8 @@
       "blocks": 7,
       "collectors": 111,
       "aperture": 258.6,
-      "gross": 283
+      "gross": 283,
+      "category": "konut"
     },
     {
       "title": "Cumhuriyet Mahallesi 129 Adet Konut + ( 1 KD ) (4 Adet Dükkan ) İnşaatı",
@@ -2767,7 +3042,8 @@
       "blocks": 8,
       "collectors": 104,
       "aperture": 242.3,
-      "gross": 265.2
+      "gross": 265.2,
+      "category": "konut"
     },
     {
       "title": "Gölpınar Mahallesi 174 Adet Konut (+ 2 K.D.) 1 Adet 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2777,7 +3053,8 @@
       "blocks": 8,
       "collectors": 104,
       "aperture": 242.3,
-      "gross": 265.2
+      "gross": 265.2,
+      "category": "konut"
     },
     {
       "title": "126 Adet Konut (+2kd), 1 Adet 100 Kişilik Cami Ve 3 Dükkanlı Ticaret İnşaatı",
@@ -2787,7 +3064,8 @@
       "blocks": 8,
       "collectors": 104,
       "aperture": 242.3,
-      "gross": 265.2
+      "gross": 265.2,
+      "category": "konut"
     },
     {
       "title": "Yeni Mahallesi 126 Konut+2 KD İnşaatı",
@@ -2797,7 +3075,8 @@
       "blocks": 8,
       "collectors": 104,
       "aperture": 242.3,
-      "gross": 265.2
+      "gross": 265.2,
+      "category": "konut"
     },
     {
       "title": "125 Adet Konut (+1 K.D) Ve 4 Adet Dükkan İnşaatı",
@@ -2807,7 +3086,8 @@
       "blocks": 8,
       "collectors": 102,
       "aperture": 237.7,
-      "gross": 260.1
+      "gross": 260.1,
+      "category": "konut"
     },
     {
       "title": "Günyazı Mahallesi 2734 Ve 3310 Parselleri Konut Projesi",
@@ -2817,7 +3097,8 @@
       "blocks": 4,
       "collectors": 100,
       "aperture": 233,
-      "gross": 255
+      "gross": 255,
+      "category": "konut"
     },
     {
       "title": "116 Adet Konut + 1 KD Ve 6 Dükkan İnşaatı",
@@ -2827,7 +3108,8 @@
       "blocks": 8,
       "collectors": 94,
       "aperture": 219,
-      "gross": 239.7
+      "gross": 239.7,
+      "category": "konut"
     },
     {
       "title": "Evrensekiz Beldesi Fatih Mahallesi 117 Adet Konut (+ 1 KD), 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2837,7 +3119,8 @@
       "blocks": 6,
       "collectors": 94,
       "aperture": 219,
-      "gross": 239.7
+      "gross": 239.7,
+      "category": "konut"
     },
     {
       "title": "Yeni Mahallesi 114 Adet Konut (+ 2 K.D.) 1 Adet 2 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -2847,7 +3130,8 @@
       "blocks": 7,
       "collectors": 93,
       "aperture": 216.7,
-      "gross": 237.2
+      "gross": 237.2,
+      "category": "konut"
     },
     {
       "title": "Cumhuriyet Mah. 110 Adet Konut + 2 KD İle 6 Dükkan İnşaatları",
@@ -2857,7 +3141,8 @@
       "blocks": 7,
       "collectors": 91,
       "aperture": 212,
-      "gross": 232.1
+      "gross": 232.1,
+      "category": "konut"
     },
     {
       "title": "Havran İlçesi, Büyükdere Mahallesi, 103 Adet Konut (+2 K.D.) İnşaatı",
@@ -2867,7 +3152,8 @@
       "blocks": 7,
       "collectors": 91,
       "aperture": 212,
-      "gross": 232.1
+      "gross": 232.1,
+      "category": "konut"
     },
     {
       "title": "Bogaziçi Mahallesi 103 Adet Konut Ve 2 Adet Ticaret İnşaatı",
@@ -2877,7 +3163,8 @@
       "blocks": 7,
       "collectors": 91,
       "aperture": 212,
-      "gross": 232.1
+      "gross": 232.1,
+      "category": "konut"
     },
     {
       "title": "Altınyayla(dirmil) Mahallesi 110 Konut+ 2 KD İnşaatı",
@@ -2887,7 +3174,8 @@
       "blocks": 7,
       "collectors": 91,
       "aperture": 212,
-      "gross": 232.1
+      "gross": 232.1,
+      "category": "konut"
     },
     {
       "title": "Yongalık Mah.122 Ada 12 Parsel 109 Konut+4 Dükkan +1 KD İnşaatı",
@@ -2897,7 +3185,8 @@
       "blocks": 7,
       "collectors": 89,
       "aperture": 207.4,
-      "gross": 227
+      "gross": 227,
+      "category": "konut"
     },
     {
       "title": "Büyükorhan İlçesi, Orhan Mahallesi, 236 Ada 1 Parsel, 103 Adet Konut (+ 1 K.D.) İnşaatı İle Altyapı Ve Çevre Düzenlemesi",
@@ -2907,7 +3196,8 @@
       "blocks": 6,
       "collectors": 89,
       "aperture": 207.4,
-      "gross": 227
+      "gross": 227,
+      "category": "konut"
     },
     {
       "title": ", Hürriyet Ve Kınalıtaş Mahalleleri, 110 Adet Konut, 105 Adet Ticaret, 1 Adet Fırın, İnşaatı",
@@ -2917,7 +3207,8 @@
       "blocks": 13,
       "collectors": 89,
       "aperture": 207.4,
-      "gross": 227
+      "gross": 227,
+      "category": "konut"
     },
     {
       "title": "Ömerağa Mahallesi 113 Adet Konut (+1 KD ) Ve 12 Adet Dükkan İnşaatları",
@@ -2927,7 +3218,8 @@
       "blocks": 7,
       "collectors": 89,
       "aperture": 207.4,
-      "gross": 227
+      "gross": 227,
+      "category": "konut"
     },
     {
       "title": "Saray Mahallesi 120 Konut (+1 K.D) İnşaatı",
@@ -2937,7 +3229,8 @@
       "blocks": 6,
       "collectors": 88,
       "aperture": 205,
-      "gross": 224.4
+      "gross": 224.4,
+      "category": "konut"
     },
     {
       "title": "Mescit Mah. 109 Adet Konut + 1 KD ,1 Adet 3 Dükkanlı Ticaret İnşaatı",
@@ -2947,7 +3240,8 @@
       "blocks": 6,
       "collectors": 88,
       "aperture": 205,
-      "gross": 224.4
+      "gross": 224.4,
+      "category": "konut"
     },
     {
       "title": "Kırcasalih Mahallesi 123 Adet Konut (+1kd) 3 Dükkanlı Ticaret İnşaatı",
@@ -2957,7 +3251,8 @@
       "blocks": 9,
       "collectors": 88,
       "aperture": 205,
-      "gross": 224.4
+      "gross": 224.4,
+      "category": "konut"
     },
     {
       "title": "3. Etap 107 Adet (+1kd) Konut İnşaatı",
@@ -2967,7 +3262,8 @@
       "blocks": 8,
       "collectors": 88,
       "aperture": 205,
-      "gross": 224.4
+      "gross": 224.4,
+      "category": "konut"
     },
     {
       "title": "Biga İleçesi Karabiga Beldesi 104 Konut + 1 KD Ve 1 Adet Büfe İnşaatı",
@@ -2977,7 +3273,8 @@
       "blocks": 7,
       "collectors": 84,
       "aperture": 195.7,
-      "gross": 214.2
+      "gross": 214.2,
+      "category": "konut"
     },
     {
       "title": "Yotukçu Mah. 107 Adet Konut (+1 KD.) + 2 Dükkan İnşaatı",
@@ -2987,7 +3284,8 @@
       "blocks": 6,
       "collectors": 84,
       "aperture": 195.7,
-      "gross": 214.2
+      "gross": 214.2,
+      "category": "konut"
     },
     {
       "title": "Akpınar Mahallesi 4. Etap 100 Adet Konut + (2 KD) + 2 Dükkanlı Ticaret İnşaatları",
@@ -2997,7 +3295,8 @@
       "blocks": 6,
       "collectors": 81,
       "aperture": 188.7,
-      "gross": 206.6
+      "gross": 206.6,
+      "category": "konut"
     },
     {
       "title": "Öztürk Ve Maarif Mahalleleri 110 Adet Konut Ve 59 Adet Dükkan İnşaatı",
@@ -3007,7 +3306,8 @@
       "blocks": 13,
       "collectors": 80,
       "aperture": 186.4,
-      "gross": 204
+      "gross": 204,
+      "category": "konut"
     },
     {
       "title": "Karşıyaka Mahallesi 99 Adet Konut(+1 K.D.) Ve 1 Adet 3 Dükkanlı Ticaret Merkezi İnşaatı İle Altyapı Ve Çevre Düzenlemesı",
@@ -3017,7 +3317,8 @@
       "blocks": 5,
       "collectors": 80,
       "aperture": 186.4,
-      "gross": 204
+      "gross": 204,
+      "category": "konut"
     },
     {
       "title": "Bayırköy Beldesi 99 Konut + 1 KD İnşaatı",
@@ -3027,7 +3328,8 @@
       "blocks": 5,
       "collectors": 80,
       "aperture": 186.4,
-      "gross": 204
+      "gross": 204,
+      "category": "konut"
     },
     {
       "title": "Kahramanmaraş Pazarcık 112",
@@ -3037,7 +3339,8 @@
       "blocks": 6,
       "collectors": 78,
       "aperture": 181.7,
-      "gross": 198.9
+      "gross": 198.9,
+      "category": "konut"
     },
     {
       "title": "2. Etap 2. Bölge Pamukören Mahallesi 95 Adet Konut (+1kd) İnşaatı",
@@ -3047,7 +3350,8 @@
       "blocks": 6,
       "collectors": 78,
       "aperture": 181.7,
-      "gross": 198.9
+      "gross": 198.9,
+      "category": "konut"
     },
     {
       "title": "Azatlı Beldesi Küllüce Mahallesi 95 Adet Konut (+1 KD) Ve 1 Adet Ticaret Merkezi (3 Dükkanlı) İnşaatı",
@@ -3057,7 +3361,8 @@
       "blocks": 6,
       "collectors": 78,
       "aperture": 181.7,
-      "gross": 198.9
+      "gross": 198.9,
+      "category": "konut"
     },
     {
       "title": "Saray Mahallesi 94 Adet Konut + 2 KD İnşaatı",
@@ -3067,7 +3372,8 @@
       "blocks": 6,
       "collectors": 78,
       "aperture": 181.7,
-      "gross": 198.9
+      "gross": 198.9,
+      "category": "konut"
     },
     {
       "title": "105 Adet Konut + 1 KD İnşaatı",
@@ -3077,7 +3383,8 @@
       "blocks": 5,
       "collectors": 77,
       "aperture": 179.4,
-      "gross": 196.4
+      "gross": 196.4,
+      "category": "konut"
     },
     {
       "title": "Karsu Mahallesi 3. Etap 109 Adet Konut İnşaatı",
@@ -3087,7 +3394,8 @@
       "blocks": 5,
       "collectors": 75,
       "aperture": 174.8,
-      "gross": 191.3
+      "gross": 191.3,
+      "category": "konut"
     },
     {
       "title": "Babaeski Alpullu Belediyesi 91 Adet Konut + 8 Dükkan İnşaatı",
@@ -3097,7 +3405,8 @@
       "blocks": 6,
       "collectors": 74,
       "aperture": 172.4,
-      "gross": 188.7
+      "gross": 188.7,
+      "category": "konut"
     },
     {
       "title": "Gökçek Köyü 90 Adet Konut (+2k.d.) Ve Dükkanlı Ticaret İnşaatı İle Altyapı Ve Düzenlemesi",
@@ -3107,7 +3416,8 @@
       "blocks": 6,
       "collectors": 74,
       "aperture": 172.4,
-      "gross": 188.7
+      "gross": 188.7,
+      "category": "konut"
     },
     {
       "title": "Fikripaşa Mahallesi 89 Adet Konut (+2 KD) İnşaatı",
@@ -3117,7 +3427,8 @@
       "blocks": 6,
       "collectors": 73,
       "aperture": 170.1,
-      "gross": 186.1
+      "gross": 186.1,
+      "category": "konut"
     },
     {
       "title": "Subaşı Beldesi 159 Ada 1 Parsel 89 Adet Konut (+1kd) 4 Dükkan İnşaatları",
@@ -3127,7 +3438,8 @@
       "blocks": 5,
       "collectors": 72,
       "aperture": 167.8,
-      "gross": 183.6
+      "gross": 183.6,
+      "category": "konut"
     },
     {
       "title": "Merkez 87 Adet Konut + 1 KD İnşaatı",
@@ -3137,7 +3449,8 @@
       "blocks": 6,
       "collectors": 72,
       "aperture": 167.8,
-      "gross": 183.6
+      "gross": 183.6,
+      "category": "konut"
     },
     {
       "title": "86 Adet Konut + 2KD İle Altyapı Ve Çevre Düzenlemesi",
@@ -3147,7 +3460,8 @@
       "blocks": 5,
       "collectors": 69,
       "aperture": 160.8,
-      "gross": 176
+      "gross": 176,
+      "category": "konut"
     },
     {
       "title": "Sakarılıca Mah. 86 Adet Konut (+2 K.D.) İnşaatı",
@@ -3157,7 +3471,8 @@
       "blocks": 5,
       "collectors": 69,
       "aperture": 160.8,
-      "gross": 176
+      "gross": 176,
+      "category": "konut"
     },
     {
       "title": "Afyon İli, Kızılören İlçesi, Kızılören Mahallesi 79 Adet Konut +1 Kd.,1 Adet T4-a 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -3167,7 +3482,8 @@
       "blocks": 5,
       "collectors": 65,
       "aperture": 151.5,
-      "gross": 165.8
+      "gross": 165.8,
+      "category": "konut"
     },
     {
       "title": "Yeni Mahallesi 677 Ada 6 Ve 8 Parsel 81 Konut+4 Dükkan+1 KD İnşaatı",
@@ -3177,7 +3493,8 @@
       "blocks": 6,
       "collectors": 65,
       "aperture": 151.5,
-      "gross": 165.8
+      "gross": 165.8,
+      "category": "konut"
     },
     {
       "title": "Bozkurt Mahallesi 4.ETAP 79 Konut+1kd İnşaatı",
@@ -3187,7 +3504,8 @@
       "blocks": 5,
       "collectors": 65,
       "aperture": 151.5,
-      "gross": 165.8
+      "gross": 165.8,
+      "category": "konut"
     },
     {
       "title": "5. Etap Bakırcılar Mahallesi 89 Adet Konut İnşaatı İle Altyapı Ve Çevre Düzenlemesı",
@@ -3197,7 +3515,8 @@
       "blocks": 5,
       "collectors": 65,
       "aperture": 151.5,
-      "gross": 165.8
+      "gross": 165.8,
+      "category": "konut"
     },
     {
       "title": "Aleaddin Mahallesi 79 Konut+1kd İnşaatı",
@@ -3207,7 +3526,8 @@
       "blocks": 5,
       "collectors": 65,
       "aperture": 151.5,
-      "gross": 165.8
+      "gross": 165.8,
+      "category": "konut"
     },
     {
       "title": "Yeni Mahallesi 79 Adet Konut (+1 KD) İnşaatı",
@@ -3217,7 +3537,8 @@
       "blocks": 4,
       "collectors": 64,
       "aperture": 149.1,
-      "gross": 163.2
+      "gross": 163.2,
+      "category": "konut"
     },
     {
       "title": "Ahmetbeyli Beldesi 77 Adet Konut + 1KD (4 Adet) Ticaret Merkezi İnşaatı",
@@ -3227,17 +3548,19 @@
       "blocks": 5,
       "collectors": 63,
       "aperture": 146.8,
-      "gross": 160.6
+      "gross": 160.6,
+      "category": "konut"
     },
     {
       "title": "Tekirdağ Hayrabolu 78 Konut",
-      "il": "",
-      "ilce": "",
+      "il": "TEKİRDAĞ",
+      "ilce": "HAYRABOLU",
       "homes": 0,
       "blocks": 5,
       "collectors": 63,
       "aperture": 146.8,
-      "gross": 160.6
+      "gross": 160.6,
+      "category": "kamu"
     },
     {
       "title": "Aşkarbeyli Mah. (iskenderun-17) 90 Adet Konut, 12 Adet Dükkan, 1 Adet Ticaret Binası (1 Dükkan) (86 Adet Konut+12 Adet Dükkan) İnşaatı",
@@ -3247,7 +3570,8 @@
       "blocks": 4,
       "collectors": 60,
       "aperture": 139.8,
-      "gross": 153
+      "gross": 153,
+      "category": "konut"
     },
     {
       "title": "Fatih Mahallesi 71 Adet Konut + 1 KD İnşaatı",
@@ -3257,7 +3581,8 @@
       "blocks": 4,
       "collectors": 56,
       "aperture": 130.5,
-      "gross": 142.8
+      "gross": 142.8,
+      "category": "konut"
     },
     {
       "title": "İscehisar İlçesi, Seydiler Beldesi Hasanbasri Mahallesi 67 Adet Konut (+1 KD) Ve 1 Adet Ticaret Merkezi (3 Dükkanlı) İnşaatı",
@@ -3267,7 +3592,8 @@
       "blocks": 4,
       "collectors": 56,
       "aperture": 130.5,
-      "gross": 142.8
+      "gross": 142.8,
+      "category": "konut"
     },
     {
       "title": "Ovakışla Beldesi 68 Adet Konut İnşaatı",
@@ -3277,7 +3603,8 @@
       "blocks": 4,
       "collectors": 55,
       "aperture": 128.2,
-      "gross": 140.3
+      "gross": 140.3,
+      "category": "konut"
     },
     {
       "title": "Yazıkent Mahallesi 69 Konut (+1 KD) İnşaatı",
@@ -3287,7 +3614,8 @@
       "blocks": 4,
       "collectors": 52,
       "aperture": 121.2,
-      "gross": 132.6
+      "gross": 132.6,
+      "category": "konut"
     },
     {
       "title": "İsmetpaşa Mahallesi 71 Adet Konut+1k.d. İnşaatı",
@@ -3297,7 +3625,8 @@
       "blocks": 4,
       "collectors": 52,
       "aperture": 121.2,
-      "gross": 132.6
+      "gross": 132.6,
+      "category": "konut"
     },
     {
       "title": "Erkilet Mahallesi 267/61-67 Parseller 63 Adet Konut +(1 KD.) İnşaatı",
@@ -3307,7 +3636,8 @@
       "blocks": 4,
       "collectors": 52,
       "aperture": 121.2,
-      "gross": 132.6
+      "gross": 132.6,
+      "category": "konut"
     },
     {
       "title": "Merkez İskenderun İlçesi, Aşkarbeyli Mahallesi 12. Bölge 72 Adet Konut Ve 6 Adet Dükkan İnşaatları",
@@ -3317,7 +3647,8 @@
       "blocks": 3,
       "collectors": 49,
       "aperture": 114.2,
-      "gross": 125
+      "gross": 125,
+      "category": "konut"
     },
     {
       "title": "Paluçarşı Mahallesi 59 Konut (1 K.D.) İnşaatı",
@@ -3327,7 +3658,8 @@
       "blocks": 4,
       "collectors": 48,
       "aperture": 111.8,
-      "gross": 122.4
+      "gross": 122.4,
+      "category": "konut"
     },
     {
       "title": "Gaziantep İslahiye",
@@ -3337,7 +3669,8 @@
       "blocks": 4,
       "collectors": 48,
       "aperture": 111.8,
-      "gross": 122.4
+      "gross": 122.4,
+      "category": "konut"
     },
     {
       "title": "59 Adet Konut +(1. KD) İnşaatı",
@@ -3347,7 +3680,8 @@
       "blocks": 4,
       "collectors": 47,
       "aperture": 109.5,
-      "gross": 119.9
+      "gross": 119.9,
+      "category": "konut"
     },
     {
       "title": "Gazi Paşa Mahallesi 24 Adet Konut İnşaatı",
@@ -3357,7 +3691,8 @@
       "blocks": 1,
       "collectors": 47,
       "aperture": 109.5,
-      "gross": 119.9
+      "gross": 119.9,
+      "category": "konut"
     },
     {
       "title": "Hatay İlı İskenderun İlçesi Aşkarbeyli İmar Mahallesi (iskenderun 21) 82 Adet Konut (+1 KD) Ve 2 Adet Dükkan İnşaatı",
@@ -3367,7 +3702,8 @@
       "blocks": 2,
       "collectors": 44,
       "aperture": 102.5,
-      "gross": 112.2
+      "gross": 112.2,
+      "category": "konut"
     },
     {
       "title": "Karpuzlu Mahallesi 51 Konut+1 K.D. İnşaatı",
@@ -3377,7 +3713,8 @@
       "blocks": 4,
       "collectors": 43,
       "aperture": 100.2,
-      "gross": 109.7
+      "gross": 109.7,
+      "category": "konut"
     },
     {
       "title": "İhsaniyei Lçesi Şahinler Mahallesi 52 Adet Konut Ve 3 Dükkanlı Ticaret Merkezi İnşaatı",
@@ -3387,7 +3724,8 @@
       "blocks": 4,
       "collectors": 43,
       "aperture": 100.2,
-      "gross": 109.7
+      "gross": 109.7,
+      "category": "konut"
     },
     {
       "title": "Kelleci Mahallesi 51 Adet Konut (+1 KD) İnşaatı",
@@ -3397,7 +3735,8 @@
       "blocks": 4,
       "collectors": 42,
       "aperture": 97.9,
-      "gross": 107.1
+      "gross": 107.1,
+      "category": "konut"
     },
     {
       "title": "Hürriyet Mahallesi 6. Etap 47 Adet Konut+(1 KD) İnşaatları",
@@ -3407,7 +3746,8 @@
       "blocks": 3,
       "collectors": 39,
       "aperture": 90.9,
-      "gross": 99.4
+      "gross": 99.4,
+      "category": "konut"
     },
     {
       "title": "Çankırı",
@@ -3417,7 +3757,8 @@
       "blocks": 3,
       "collectors": 39,
       "aperture": 90.9,
-      "gross": 99.4
+      "gross": 99.4,
+      "category": "konut"
     },
     {
       "title": "Hira Mahallesi 44 Adet Konut (+1kd) İnşaatı",
@@ -3427,7 +3768,8 @@
       "blocks": 3,
       "collectors": 36,
       "aperture": 83.9,
-      "gross": 91.8
+      "gross": 91.8,
+      "category": "konut"
     },
     {
       "title": "249 Ada (2-3-4-8 Parsel) 34 Konut Ve 20 Dükkan İnşaatı",
@@ -3437,7 +3779,8 @@
       "blocks": 2,
       "collectors": 31,
       "aperture": 72.2,
-      "gross": 79.1
+      "gross": 79.1,
+      "category": "konut"
     },
     {
       "title": "Çakırlı Mah. 36 Konut İnşaatı",
@@ -3447,7 +3790,8 @@
       "blocks": 3,
       "collectors": 30,
       "aperture": 69.9,
-      "gross": 76.5
+      "gross": 76.5,
+      "category": "konut"
     },
     {
       "title": "5. Etap Menteşe Mahallesi 36 Adet Konut İnşaatı İle Altyapı Ve Çevre Düzenlemesı",
@@ -3457,7 +3801,8 @@
       "blocks": 2,
       "collectors": 26,
       "aperture": 60.6,
-      "gross": 66.3
+      "gross": 66.3,
+      "category": "konut"
     },
     {
       "title": "Kozan İlçesi Mahmutlu Mahallesi 29 Konut İnşaatı",
@@ -3467,7 +3812,8 @@
       "blocks": 1,
       "collectors": 19,
       "aperture": 44.3,
-      "gross": 48.4
+      "gross": 48.4,
+      "category": "konut"
     },
     {
       "title": "Sarıca Mah. 30 Konut İnşaatı",
@@ -3477,7 +3823,8 @@
       "blocks": 1,
       "collectors": 12,
       "aperture": 28,
-      "gross": 30.6
+      "gross": 30.6,
+      "category": "konut"
     },
     {
       "title": "Eskiköy-karahalil Mah.12 Konut İnşaatı",
@@ -3487,7 +3834,8 @@
       "blocks": 1,
       "collectors": 12,
       "aperture": 28,
-      "gross": 30.6
+      "gross": 30.6,
+      "category": "konut"
     },
     {
       "title": "Göbü Mah. 12 Konut İnşaatı",
@@ -3497,7 +3845,8 @@
       "blocks": 1,
       "collectors": 10,
       "aperture": 23.3,
-      "gross": 25.5
+      "gross": 25.5,
+      "category": "konut"
     },
     {
       "title": "Merkez (beyceğiz) Mahallesi 1. Bölge 40 Adet Ofis, 16 Adet Dükkan, Merkez Dedebaba Ve Pınarbaşı Mahalleleri 2. Bölge 62 Adet Konut, 92 Adet Ofis Ve 52 Adet Dükkan İnşaatları İle Altyapı Ve Çevre Düzenlemesi İşleri",
@@ -3507,7 +3856,1944 @@
       "blocks": 1,
       "collectors": 10,
       "aperture": 23.3,
-      "gross": 25.5
+      "gross": 25.5,
+      "category": "konut"
+    },
+    {
+      "title": "ADIYAMAN ADLİYE LOJMANLARI",
+      "il": "ADIYAMAN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 16,
+      "aperture": 37.3,
+      "gross": 40.8,
+      "category": "adalet"
+    },
+    {
+      "title": "AKSARAY CEZA İNFAZ KURUMU",
+      "il": "AKSARAY",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 850,
+      "aperture": 1980.5,
+      "gross": 2167.5,
+      "category": "adalet"
+    },
+    {
+      "title": "ANKARA ADLİ TIP KURUMU",
+      "il": "ANKARA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 42,
+      "aperture": 97.9,
+      "gross": 107.1,
+      "category": "adalet"
+    },
+    {
+      "title": "MANAVGAT CEZA İNFAZ KURUMU",
+      "il": "ANTALYA",
+      "ilce": "MANAVGAT",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 186,
+      "aperture": 433.4,
+      "gross": 474.3,
+      "category": "adalet"
+    },
+    {
+      "title": "AKSEKİ CEZA İNFAZ KURUMU",
+      "il": "ANTALYA",
+      "ilce": "AKSEKİ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 250,
+      "aperture": 582.5,
+      "gross": 637.5,
+      "category": "adalet"
+    },
+    {
+      "title": "AYDIN ÇİNE CEZA İNFAZ KURUMU",
+      "il": "AYDIN",
+      "ilce": "ÇİNE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 791,
+      "aperture": 1843,
+      "gross": 2017.1,
+      "category": "adalet"
+    },
+    {
+      "title": "BATMAN CEZA İNFAZ KURUMU",
+      "il": "BATMAN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 250,
+      "aperture": 582.5,
+      "gross": 637.5,
+      "category": "adalet"
+    },
+    {
+      "title": "BAYBURT CEZA İNFAZ KURUMU",
+      "il": "BAYBURT",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 154,
+      "aperture": 358.8,
+      "gross": 392.7,
+      "category": "adalet"
+    },
+    {
+      "title": "BİTLİS AHLAT CEZA İNFAZ KURUMU",
+      "il": "BİTLİS",
+      "ilce": "AHLAT",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 316,
+      "aperture": 736.3,
+      "gross": 805.8,
+      "category": "adalet"
+    },
+    {
+      "title": "BURDUR CEZA İNFAZ KURUMU",
+      "il": "BURDUR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 114,
+      "aperture": 265.6,
+      "gross": 290.7,
+      "category": "adalet"
+    },
+    {
+      "title": "BURSA ADLİ TUP KURUMU",
+      "il": "BURSA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 42,
+      "aperture": 97.9,
+      "gross": 107.1,
+      "category": "adalet"
+    },
+    {
+      "title": "ÇORUM SUNGURLU CEZA İNFAZ KURUMU",
+      "il": "ÇORUM",
+      "ilce": "SUNGURLU",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 527,
+      "aperture": 1227.9,
+      "gross": 1343.9,
+      "category": "adalet"
+    },
+    {
+      "title": "EDİRNE CEZA İNFAZ KURUMU",
+      "il": "EDİRNE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 364,
+      "aperture": 848.1,
+      "gross": 928.2,
+      "category": "adalet"
+    },
+    {
+      "title": "ELAZIĞ ÇOCUK CEZA İNFAZ KURUMU",
+      "il": "ELAZIĞ",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 86,
+      "aperture": 200.4,
+      "gross": 219.3,
+      "category": "adalet"
+    },
+    {
+      "title": "ERZURUM CEZA İNFAZ KURUMU",
+      "il": "ERZURUM",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 526,
+      "aperture": 1225.6,
+      "gross": 1341.3,
+      "category": "adalet"
+    },
+    {
+      "title": "GAZİANTEP ADLİYE LOJMANI",
+      "il": "GAZİANTEP",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 5,
+      "aperture": 11.7,
+      "gross": 12.8,
+      "category": "adalet"
+    },
+    {
+      "title": "KAHRAMMANMARAŞ ADLİYE LOJMANI",
+      "il": "KAHRAMANMARAŞ",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 5,
+      "aperture": 11.7,
+      "gross": 12.8,
+      "category": "adalet"
+    },
+    {
+      "title": "GİRESUN ŞEBİN KARAHİSAR CEZA İNFAZ KUURUMU",
+      "il": "GİRESUN",
+      "ilce": "ŞEBİN KARAHİSAR",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 223,
+      "aperture": 519.6,
+      "gross": 568.7,
+      "category": "adalet"
+    },
+    {
+      "title": "HATAY SAMANDAĞ ADLİYE LOJMANI",
+      "il": "HATAY",
+      "ilce": "SAMANDAĞ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 14,
+      "aperture": 32.6,
+      "gross": 35.7,
+      "category": "adalet"
+    },
+    {
+      "title": "HATAY ERZİN ADLİYE LOJMANI",
+      "il": "HATAY",
+      "ilce": "ERZİN",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 10,
+      "aperture": 23.3,
+      "gross": 25.5,
+      "category": "adalet"
+    },
+    {
+      "title": "HATAY REYHANLI ADLİYE LOJMANI",
+      "il": "HATAY",
+      "ilce": "REYHANLI",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 13,
+      "aperture": 30.3,
+      "gross": 33.2,
+      "category": "adalet"
+    },
+    {
+      "title": "HATAY HASSA ADLİYE LOJMANI",
+      "il": "HATAY",
+      "ilce": "HASSA",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 8,
+      "aperture": 18.6,
+      "gross": 20.4,
+      "category": "adalet"
+    },
+    {
+      "title": "IĞDIR CEZA İNFAZ KURUMU",
+      "il": "IĞDIR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 349,
+      "aperture": 813.2,
+      "gross": 890,
+      "category": "adalet"
+    },
+    {
+      "title": "İSTANBUL SİLİVRİ CEZA İNFAZ KURUMU",
+      "il": "İSTANBUL",
+      "ilce": "SİLİVRİ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 176,
+      "aperture": 410.1,
+      "gross": 448.8,
+      "category": "adalet"
+    },
+    {
+      "title": "İZMİR ADLİ TIP KURUMU",
+      "il": "İZMİR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 34,
+      "aperture": 79.2,
+      "gross": 86.7,
+      "category": "adalet"
+    },
+    {
+      "title": "İZMİR FOÇA CEZA İNFAZ KURUMU",
+      "il": "İZMİR",
+      "ilce": "FOÇA",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 252,
+      "aperture": 587.2,
+      "gross": 642.6,
+      "category": "adalet"
+    },
+    {
+      "title": "KAHRAMANMARAŞ DULKADİROĞLU ADLİYE LOJMANLARI",
+      "il": "KAHRAMANMARAŞ",
+      "ilce": "DULKADİROĞLU",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 93,
+      "aperture": 216.7,
+      "gross": 237.2,
+      "category": "adalet"
+    },
+    {
+      "title": "KIRIKKALE DELİCE CEZA İNFAZ KURUMU",
+      "il": "KIRIKKALE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 170,
+      "aperture": 396.1,
+      "gross": 433.5,
+      "category": "adalet"
+    },
+    {
+      "title": "KIRŞEHİR CEZA İNFAZ KURUMU",
+      "il": "KIRŞEHİR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 353,
+      "aperture": 822.5,
+      "gross": 900.2,
+      "category": "adalet"
+    },
+    {
+      "title": "KONYA CEZA İNFAZ KURUMU",
+      "il": "KONYA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 974,
+      "aperture": 2269.4,
+      "gross": 2483.7,
+      "category": "adalet"
+    },
+    {
+      "title": "KONYA EREĞLİ CEZA İNFAZ KURUMU",
+      "il": "KONYA",
+      "ilce": "EREĞLİ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 543,
+      "aperture": 1265.2,
+      "gross": 1384.6,
+      "category": "adalet"
+    },
+    {
+      "title": "KÜTAHYA CEZA İNFAZ KURUMU",
+      "il": "KÜTAHYA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 418,
+      "aperture": 973.9,
+      "gross": 1065.9,
+      "category": "adalet"
+    },
+    {
+      "title": "KÜTAHYA DOMANİC CEZA İNFAZ KURUMU",
+      "il": "KÜTAHYA",
+      "ilce": "DOMANİC",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 75,
+      "aperture": 174.8,
+      "gross": 191.3,
+      "category": "adalet"
+    },
+    {
+      "title": "MALATYA AKÇADAĞ LOJMAN BİNASI",
+      "il": "MALATYA",
+      "ilce": "AKÇADAĞ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 5,
+      "aperture": 11.7,
+      "gross": 12.8,
+      "category": "adalet"
+    },
+    {
+      "title": "MALATYA DOĞANŞEHİR LOJMAN BİNASI",
+      "il": "MALATYA",
+      "ilce": "DOĞANŞEHİR",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 5,
+      "aperture": 11.7,
+      "gross": 12.8,
+      "category": "adalet"
+    },
+    {
+      "title": "MALATYA DOĞANŞEHİR CEZA İNFAZ KURUMU",
+      "il": "MALATYA",
+      "ilce": "DOĞANŞEHİR",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 397,
+      "aperture": 925,
+      "gross": 1012.4,
+      "category": "adalet"
+    },
+    {
+      "title": "MARDİN CEZA İNFAZ KURUMU KREŞ PROJESİ",
+      "il": "MARDİN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 6,
+      "aperture": 14,
+      "gross": 15.3,
+      "category": "adalet"
+    },
+    {
+      "title": "NİĞDE CEZA İNFAZ KURUMU",
+      "il": "NİĞDE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 334,
+      "aperture": 778.2,
+      "gross": 851.7,
+      "category": "adalet"
+    },
+    {
+      "title": "OSMANİYE KADİRLİ ADLİYE LOJMANI",
+      "il": "OSMANİYE",
+      "ilce": "KADİRLİ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 24,
+      "aperture": 55.9,
+      "gross": 61.2,
+      "category": "adalet"
+    },
+    {
+      "title": "SAKARYA CEZA İNFAZ KURUMU",
+      "il": "SAKARYA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 764,
+      "aperture": 1780.1,
+      "gross": 1948.2,
+      "category": "adalet"
+    },
+    {
+      "title": "SAMSUN ADLİ TIP HİZMET BİNASI",
+      "il": "SAMSUN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 14,
+      "aperture": 32.6,
+      "gross": 35.7,
+      "category": "adalet"
+    },
+    {
+      "title": "SAMSUN ÇARŞAMBA CEZA İNFAZ KURUMU",
+      "il": "SAMSUN",
+      "ilce": "ÇARŞAMBA",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 377,
+      "aperture": 878.4,
+      "gross": 961.4,
+      "category": "adalet"
+    },
+    {
+      "title": "SİİRT CEZA İNFAZ KURUMU",
+      "il": "SİİRT",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 314,
+      "aperture": 731.6,
+      "gross": 800.7,
+      "category": "adalet"
+    },
+    {
+      "title": "TEKİRDAĞ CEZA İNFAZ KURUMU",
+      "il": "TEKİRDAĞ",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 347,
+      "aperture": 808.5,
+      "gross": 884.9,
+      "category": "adalet"
+    },
+    {
+      "title": "TEKİRDAĞ ÇORLU CEZA İNFAZ KURUMU",
+      "il": "TEKİRDAĞ",
+      "ilce": "ÇORLU",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 586,
+      "aperture": 1365.4,
+      "gross": 1494.3,
+      "category": "adalet"
+    },
+    {
+      "title": "TOKAT AÇIK CEZA İNFAZ KURUMU",
+      "il": "TOKAT",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 137,
+      "aperture": 319.2,
+      "gross": 349.3,
+      "category": "adalet"
+    },
+    {
+      "title": "TUNCELİ CEZA İNFAZ KURUMU",
+      "il": "TUNCELİ",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 262,
+      "aperture": 610.5,
+      "gross": 668.1,
+      "category": "adalet"
+    },
+    {
+      "title": "BAYBURT 4'ÜNCÜ MOTORİZE PİYADE TUGAY KOMUTAN YARDIMCILIĞI BİNA ve TESİSLERİ İNŞAATI İLE ALTYAPI ve ÇEVRE DÜZENLEMESİ İŞİ",
+      "il": "BAYBURT",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 380,
+      "aperture": 885.4,
+      "gross": 969,
+      "category": "adalet"
+    },
+    {
+      "title": "ADANA GÖÇ İDARESİ",
+      "il": "ADANA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 44,
+      "aperture": 102.5,
+      "gross": 112.2,
+      "category": "ozel"
+    },
+    {
+      "title": "BALIKESİR GÖÇ İDARESİ",
+      "il": "BALIKESİR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 15,
+      "aperture": 35,
+      "gross": 38.3,
+      "category": "ozel"
+    },
+    {
+      "title": "CEYHAN NARLIK YANGIN İLK MÜDAHALE EKİP BİNASI",
+      "il": "ADANA",
+      "ilce": "CEYHAN",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 6,
+      "aperture": 14,
+      "gross": 15.3,
+      "category": "ozel"
+    },
+    {
+      "title": "AFYON MEYVE KURUTMA TESİSİ",
+      "il": "AFYONKARAHİSAR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 142,
+      "aperture": 330.9,
+      "gross": 362.1,
+      "category": "kamu"
+    },
+    {
+      "title": "ALTINDAĞ SPOR SALONU",
+      "il": "ANKARA",
+      "ilce": "ALTINDAĞ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 16,
+      "aperture": 37.3,
+      "gross": 40.8,
+      "category": "ozel"
+    },
+    {
+      "title": "ANKARA APART OTEL",
+      "il": "ANKARA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 14,
+      "aperture": 32.6,
+      "gross": 35.7,
+      "category": "ozel"
+    },
+    {
+      "title": "ANKARA ÇANKAYA ÖZEL İŞ",
+      "il": "ANKARA",
+      "ilce": "BEYTEPE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 4,
+      "aperture": 9.3,
+      "gross": 10.2,
+      "category": "ozel"
+    },
+    {
+      "title": "ANKARA ŞEKER FABRİKASI",
+      "il": "ANKARA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 130,
+      "aperture": 302.9,
+      "gross": 331.5,
+      "category": "ozel"
+    },
+    {
+      "title": "ANKARA TACETTİN DERGAHI",
+      "il": "ANKARA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 6,
+      "aperture": 14,
+      "gross": 15.3,
+      "category": "ozel"
+    },
+    {
+      "title": "ANKARA TCDD İŞLETME GENEL MÜDÜRLÜĞÜ",
+      "il": "ANKARA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 24,
+      "aperture": 55.9,
+      "gross": 61.2,
+      "category": "ozel"
+    },
+    {
+      "title": "GÖLBAŞI VİLLA PROJESİ",
+      "il": "ANKARA",
+      "ilce": "GÖLBAŞI",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 3,
+      "aperture": 7,
+      "gross": 7.7,
+      "category": "ozel"
+    },
+    {
+      "title": "JSGA PROJELER",
+      "il": "ANKARA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 110,
+      "aperture": 256.3,
+      "gross": 280.5,
+      "category": "ozel"
+    },
+    {
+      "title": "ROKETSAN",
+      "il": "ANKARA",
+      "ilce": "LALAHAN",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 22,
+      "aperture": 51.3,
+      "gross": 56.1,
+      "category": "ozel"
+    },
+    {
+      "title": "ANKARA OTOYOL PROJESİ",
+      "il": "ANKARA",
+      "ilce": "POLATLI",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 24,
+      "aperture": 55.9,
+      "gross": 61.2,
+      "category": "ozel"
+    },
+    {
+      "title": "TRT BİNASI",
+      "il": "ANKARA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 6,
+      "aperture": 14,
+      "gross": 15.3,
+      "category": "ozel"
+    },
+    {
+      "title": "ANTALYA MANAVGAT İŞÇİ KAMPI",
+      "il": "ANTALYA",
+      "ilce": "MANAVGAT",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 190,
+      "aperture": 442.7,
+      "gross": 484.5,
+      "category": "ozel"
+    },
+    {
+      "title": "AYDIN DİDİM FABRİKALAR",
+      "il": "AYDIN",
+      "ilce": "DİDİM",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 8,
+      "aperture": 18.6,
+      "gross": 20.4,
+      "category": "ozel"
+    },
+    {
+      "title": "BALIKESİR BİGADİÇ UYGULAMA OTELİ",
+      "il": "BALIKESİR",
+      "ilce": "BİGADİÇ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 27,
+      "aperture": 62.9,
+      "gross": 68.9,
+      "category": "ozel"
+    },
+    {
+      "title": "BURDUR ŞEKER FABRİKASI",
+      "il": "BURDUR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 69,
+      "aperture": 160.8,
+      "gross": 176,
+      "category": "ozel"
+    },
+    {
+      "title": "DİYARBAKIR ORDU EVİ",
+      "il": "DİYARBAKIR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 152,
+      "aperture": 354.2,
+      "gross": 387.6,
+      "category": "ozel"
+    },
+    {
+      "title": "FIRAT ÜNİVERSİTESİ",
+      "il": "ELAZIĞ",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 288,
+      "aperture": 671,
+      "gross": 734.4,
+      "category": "ozel"
+    },
+    {
+      "title": "ESKİŞEHİR TEPEBAŞI",
+      "il": "ESKİŞEHİR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 27,
+      "aperture": 62.9,
+      "gross": 68.9,
+      "category": "ozel"
+    },
+    {
+      "title": "KIRGIZİSTAN",
+      "il": "KIRGIZİSTAN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 126,
+      "aperture": 293.6,
+      "gross": 321.3,
+      "category": "ozel"
+    },
+    {
+      "title": "SÜLEYMAN DEMİREL ÜNİVERSİTESİ",
+      "il": "ISPARTA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 60,
+      "aperture": 139.8,
+      "gross": 153,
+      "category": "ozel"
+    },
+    {
+      "title": "3.HAVAALANI - İGA",
+      "il": "İSTANBUL",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 12,
+      "aperture": 28,
+      "gross": 30.6,
+      "category": "ozel"
+    },
+    {
+      "title": "EŞTER",
+      "il": "İSTANBUL",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 32,
+      "aperture": 74.6,
+      "gross": 81.6,
+      "category": "ozel"
+    },
+    {
+      "title": "GÖZTEPE SEMİHA ŞAKİR HUZUREVİ",
+      "il": "İSTANBUL",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 45,
+      "aperture": 104.9,
+      "gross": 114.7,
+      "category": "ozel"
+    },
+    {
+      "title": "İBB DARÜLACEZE",
+      "il": "İSTANBUL",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 12,
+      "aperture": 28,
+      "gross": 30.6,
+      "category": "ozel"
+    },
+    {
+      "title": "İNCİRBURNU",
+      "il": "İSTANBUL",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 15,
+      "aperture": 35,
+      "gross": 38.3,
+      "category": "ozel"
+    },
+    {
+      "title": "İTÜ",
+      "il": "İSTANBUL",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 42,
+      "aperture": 97.9,
+      "gross": 107.1,
+      "category": "ozel"
+    },
+    {
+      "title": "MEDRESE",
+      "il": "İSTANBUL",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 15,
+      "aperture": 35,
+      "gross": 38.3,
+      "category": "ozel"
+    },
+    {
+      "title": "YARDIMELİ - İSTANBUL BAŞAKŞEHİR YARDIMELİ DERNEĞİ",
+      "il": "İSTANBUL",
+      "ilce": "BAŞAKŞEHİR",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 108,
+      "aperture": 251.6,
+      "gross": 275.4,
+      "category": "ozel"
+    },
+    {
+      "title": "GEBZE ENGELSİZ YAŞAM",
+      "il": "KOCAELİ",
+      "ilce": "GEBZE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 39,
+      "aperture": 90.9,
+      "gross": 99.4,
+      "category": "kamu"
+    },
+    {
+      "title": "KARABÜK DSİ",
+      "il": "KARABÜK",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 31,
+      "aperture": 72.2,
+      "gross": 79.1,
+      "category": "ozel"
+    },
+    {
+      "title": "KARS ŞEKER FABRİKASI",
+      "il": "KARS",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 80,
+      "aperture": 186.4,
+      "gross": 204,
+      "category": "ozel"
+    },
+    {
+      "title": "KIBRIS TÜP BEBEK HASTANESİ",
+      "il": "KIBRIS",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 11,
+      "aperture": 25.6,
+      "gross": 28.1,
+      "category": "ozel"
+    },
+    {
+      "title": "KONYA HAYVAN HASTANESİ",
+      "il": "KONYA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 29,
+      "aperture": 67.6,
+      "gross": 73.9,
+      "category": "ozel"
+    },
+    {
+      "title": "KONYA ILGIN ŞEKER FABRİKASI",
+      "il": "KONYA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 210,
+      "aperture": 489.3,
+      "gross": 535.5,
+      "category": "ozel"
+    },
+    {
+      "title": "KÜTAHYA GGM",
+      "il": "KÜTAHYA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 34,
+      "aperture": 79.2,
+      "gross": 86.7,
+      "category": "ozel"
+    },
+    {
+      "title": "MALATYA HAVALİMANI MOBİLİZYON",
+      "il": "MALATYA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 16,
+      "aperture": 37.3,
+      "gross": 40.8,
+      "category": "ozel"
+    },
+    {
+      "title": "MALATYA GÖÇ İDARESİ",
+      "il": "MALATYA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 23,
+      "aperture": 53.6,
+      "gross": 58.7,
+      "category": "ozel"
+    },
+    {
+      "title": "ŞANLIURFA GÖÇ İDARESİ",
+      "il": "ŞANLIURFA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 25,
+      "aperture": 58.3,
+      "gross": 63.7,
+      "category": "kamu"
+    },
+    {
+      "title": "AKKUYU NÜKLEER ENERJİ",
+      "il": "MERSİN",
+      "ilce": "ANAMUR",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 30,
+      "aperture": 69.9,
+      "gross": 76.5,
+      "category": "ozel"
+    },
+    {
+      "title": "MERSİN ANADOLU İMAM HATİP",
+      "il": "MERSİN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 48,
+      "aperture": 111.8,
+      "gross": 122.4,
+      "category": "ozel"
+    },
+    {
+      "title": "MERSİN POLİS EVİ",
+      "il": "MERSİN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 40,
+      "aperture": 93.2,
+      "gross": 102,
+      "category": "ozel"
+    },
+    {
+      "title": "SİLİFKE OTEL PROJELERİ",
+      "il": "MERSİN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 10,
+      "aperture": 23.3,
+      "gross": 25.5,
+      "category": "ozel"
+    },
+    {
+      "title": "MARMARİS BELEDİYE BİNASI",
+      "il": "MUĞLA",
+      "ilce": "MARMARİS",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 7,
+      "aperture": 16.3,
+      "gross": 17.8,
+      "category": "ozel"
+    },
+    {
+      "title": "NİĞDE GÖÇ İDARESİ",
+      "il": "NİĞDE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 34,
+      "aperture": 79.2,
+      "gross": 86.7,
+      "category": "ozel"
+    },
+    {
+      "title": "OSMANİYE KADİRLİ KARAKOL BİNASI",
+      "il": "OSMANİYE",
+      "ilce": "KADİRLİ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 26,
+      "aperture": 60.6,
+      "gross": 66.3,
+      "category": "ozel"
+    },
+    {
+      "title": "RİZE KURAN KURSU",
+      "il": "RİZE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 6,
+      "aperture": 14,
+      "gross": 15.3,
+      "category": "ozel"
+    },
+    {
+      "title": "RİZE FINDIKLI OTEL",
+      "il": "RİZE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 18,
+      "aperture": 41.9,
+      "gross": 45.9,
+      "category": "ozel"
+    },
+    {
+      "title": "UŞAK ŞEKER FABRİKASI",
+      "il": "UŞAK",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 10,
+      "aperture": 23.3,
+      "gross": 25.5,
+      "category": "ozel"
+    },
+    {
+      "title": "SAFRANBOLU KARAYOLLARI LOJMANLARI",
+      "il": "ZONGULDAK",
+      "ilce": "SAFRANBOLU",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 10,
+      "aperture": 23.3,
+      "gross": 25.5,
+      "category": "ozel"
+    },
+    {
+      "title": "OSMANİYE TOPRAKKALE KARAKOL BİNASI",
+      "il": "OSMANİYE",
+      "ilce": "TOPRAKKALE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 15,
+      "aperture": 35,
+      "gross": 38.3,
+      "category": "ozel"
+    },
+    {
+      "title": "DÖRTYOL ORMAN İŞLETME MÜDÜRLÜĞÜ DARE BİNASI VE LOJMANLARI",
+      "il": "HATAY",
+      "ilce": "DÖRTYOL",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 25,
+      "aperture": 58.3,
+      "gross": 63.7,
+      "category": "kamu"
+    },
+    {
+      "title": "ELAZIĞ TARIM ORMAN BAKANLIĞI",
+      "il": "ELAZIĞ",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 122,
+      "aperture": 284.3,
+      "gross": 311.1,
+      "category": "kamu"
+    },
+    {
+      "title": "KAHRAMANMARAŞ TARIM ORMAN",
+      "il": "KAHRAMANMARAŞ",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 18,
+      "aperture": 41.9,
+      "gross": 45.9,
+      "category": "kamu"
+    },
+    {
+      "title": "İSKENDERUN ORMAN",
+      "il": "HATAY",
+      "ilce": "İSKENDERUN",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 24,
+      "aperture": 55.9,
+      "gross": 61.2,
+      "category": "kamu"
+    },
+    {
+      "title": "KİLİS ORMAN İŞLETME MÜDÜRLÜĞÜ İDARE BİNASI ve HİZMET EVİ",
+      "il": "KİLİS",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 13,
+      "aperture": 30.3,
+      "gross": 33.2,
+      "category": "kamu"
+    },
+    {
+      "title": "MALATYA ORMAN İŞLETME MÜDÜRLÜĞÜ TOPLU KORUMA EKİP BİNASI",
+      "il": "MALATYA",
+      "ilce": "BATTALGAZİ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 14,
+      "aperture": 32.6,
+      "gross": 35.7,
+      "category": "kamu"
+    },
+    {
+      "title": "OSMANİYE TARIM ORMAN BAKANLIĞI",
+      "il": "OSMANİYE",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 24,
+      "aperture": 55.9,
+      "gross": 61.2,
+      "category": "kamu"
+    },
+    {
+      "title": "HATAY ARSUSU TARIM VE ORMAN BAKANLIĞI LOJMAN",
+      "il": "HATAY",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 26,
+      "aperture": 60.6,
+      "gross": 66.3,
+      "category": "kamu"
+    },
+    {
+      "title": "AYDIN KUŞADASI VARDİYA YATAKHANESİ",
+      "il": "AYDIN",
+      "ilce": "KUŞADASI",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 22,
+      "aperture": 51.3,
+      "gross": 56.1,
+      "category": "emniyet"
+    },
+    {
+      "title": "DİYARBAKIR HAZRO EMNİYET LOJMANI",
+      "il": "DİYARBAKIR",
+      "ilce": "HAZRO",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 22,
+      "aperture": 51.3,
+      "gross": 56.1,
+      "category": "emniyet"
+    },
+    {
+      "title": "DİYARBAKIR VALİLİK VERGİ DAİRESİ",
+      "il": "DİYARBAKIR",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 9,
+      "aperture": 21,
+      "gross": 23,
+      "category": "emniyet"
+    },
+    {
+      "title": "ANTALYA AFAD",
+      "il": "ANTALYA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 30,
+      "aperture": 69.9,
+      "gross": 76.5,
+      "category": "afad"
+    },
+    {
+      "title": "BURDUR AFAD",
+      "il": "BURDUR",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 10,
+      "aperture": 23.3,
+      "gross": 25.5,
+      "category": "afad"
+    },
+    {
+      "title": "DENİZLİ AFAD",
+      "il": "DENİZLİ",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 12,
+      "aperture": 28,
+      "gross": 30.6,
+      "category": "afad"
+    },
+    {
+      "title": "GÜMÜŞHANE AFAD",
+      "il": "GÜMÜŞHANE",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 15,
+      "aperture": 35,
+      "gross": 38.3,
+      "category": "afad"
+    },
+    {
+      "title": "KASTAMONU AFAD",
+      "il": "KASTAMONU",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 13,
+      "aperture": 30.3,
+      "gross": 33.2,
+      "category": "afad"
+    },
+    {
+      "title": "KÜTAHYA AFAD",
+      "il": "KÜTAHYA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 18,
+      "aperture": 41.9,
+      "gross": 45.9,
+      "category": "afad"
+    },
+    {
+      "title": "MUĞLA AFAD",
+      "il": "MUĞLA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 15,
+      "aperture": 35,
+      "gross": 38.3,
+      "category": "afad"
+    },
+    {
+      "title": "MUŞ AFAD",
+      "il": "MUŞ",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 16,
+      "aperture": 37.3,
+      "gross": 40.8,
+      "category": "afad"
+    },
+    {
+      "title": "SİVAS AFAD",
+      "il": "SİVAS",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 16,
+      "aperture": 37.3,
+      "gross": 40.8,
+      "category": "afad"
+    },
+    {
+      "title": "TOKAT AFAD",
+      "il": "TOKAT",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 17,
+      "aperture": 39.6,
+      "gross": 43.3,
+      "category": "afad"
+    },
+    {
+      "title": "TRABZON AFAD",
+      "il": "TRABZON",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 12,
+      "aperture": 28,
+      "gross": 30.6,
+      "category": "afad"
+    },
+    {
+      "title": "YALOVA AFAD",
+      "il": "YALOVA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 26,
+      "aperture": 60.6,
+      "gross": 66.3,
+      "category": "afad"
+    },
+    {
+      "title": "ÜST KOMUTANLIĞI",
+      "il": "ADANA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 35,
+      "aperture": 81.6,
+      "gross": 89.3,
+      "category": "savunma"
+    },
+    {
+      "title": "AİLE SAĞLIĞI MERKEZİ BİNASI",
+      "il": "ADANA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 5,
+      "aperture": 11.7,
+      "gross": 12.8,
+      "category": "savunma"
+    },
+    {
+      "title": "İHA BAKIM HANGARI BİNASI",
+      "il": "ADANA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 2,
+      "aperture": 4.7,
+      "gross": 5.1,
+      "category": "savunma"
+    },
+    {
+      "title": "AFYON 8.ABFM",
+      "il": "AFYONKARAHİSAR",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 50,
+      "aperture": 116.5,
+      "gross": 127.5,
+      "category": "kamu"
+    },
+    {
+      "title": "ANKARA 5.ANABAKIM FABRİKA MÜDÜRLÜĞÜ",
+      "il": "ANKARA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 27,
+      "aperture": 62.9,
+      "gross": 68.9,
+      "category": "savunma"
+    },
+    {
+      "title": "ANKARA SIHIYE ALAYI",
+      "il": "ANKARA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 56,
+      "aperture": 130.5,
+      "gross": 142.8,
+      "category": "savunma"
+    },
+    {
+      "title": "ANKARA ELEKTRONİK HARP KOMUTANLIĞI",
+      "il": "ANKARA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 198,
+      "aperture": 461.3,
+      "gross": 504.9,
+      "category": "savunma"
+    },
+    {
+      "title": "AY YILDIZ",
+      "il": "ANKARA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 522,
+      "aperture": 1216.3,
+      "gross": 1331.1,
+      "category": "savunma"
+    },
+    {
+      "title": "ARTVİN SINIR KARAKOLU",
+      "il": "ARTVİN",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 26,
+      "aperture": 60.6,
+      "gross": 66.3,
+      "category": "savunma"
+    },
+    {
+      "title": "BALIKESİR LOJMANLAR",
+      "il": "BALIKESİR",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 32,
+      "aperture": 74.6,
+      "gross": 81.6,
+      "category": "savunma"
+    },
+    {
+      "title": "BATMAN HAVA MEYDAN KOMUTANLIĞI",
+      "il": "BATMAN",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 60,
+      "aperture": 139.8,
+      "gross": 153,
+      "category": "savunma"
+    },
+    {
+      "title": "BİNGÖL ADAKLI JANDARMA KARAKOL KOMUTANLIĞI 12 DAİRELİ LOJMAN",
+      "il": "BİNGÖL",
+      "ilce": "ADAKLI",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 16,
+      "aperture": 37.3,
+      "gross": 40.8,
+      "category": "savunma"
+    },
+    {
+      "title": "BİNGÖL ASKERİYE",
+      "il": "BİNGÖL",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 151,
+      "aperture": 351.8,
+      "gross": 385,
+      "category": "savunma"
+    },
+    {
+      "title": "1.HAVA BAKIM FABRİKA MÜDÜRLÜĞÜ BİRLİK ISITMA MERKEZLERİ VE ISITMA HATLARININ VE KAZANLARIN DOĞALGAZ SİSTEMİNE DÖNÜŞTÜRÜLMESİ",
+      "il": "ESKİŞEHİR",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 59,
+      "aperture": 137.5,
+      "gross": 150.5,
+      "category": "savunma"
+    },
+    {
+      "title": "1.HAVA BAKIM FABRİKA MÜDÜRLÜĞÜNE İŞÇİ YEMEKHANESİ YAPILMASI",
+      "il": "ESKİŞEHİR",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 60,
+      "aperture": 139.8,
+      "gross": 153,
+      "category": "savunma"
+    },
+    {
+      "title": "ESKİŞEHİR FİLO",
+      "il": "ESKİŞEHİR",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 36,
+      "aperture": 83.9,
+      "gross": 91.8,
+      "category": "savunma"
+    },
+    {
+      "title": "180 KİŞİLİK ERGAZİNOSU",
+      "il": "HATAY",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 36,
+      "aperture": 83.9,
+      "gross": 91.8,
+      "category": "savunma"
+    },
+    {
+      "title": "DZ.ULUÇINAR ÖLZ.EĞT.MRK.K.LIĞINDA DEPREM NEDENİYLE HASAR GÖREN TAŞINMAZLAR YERİNE İSKAN TESİSLERİ YAPIMI",
+      "il": "HATAY",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 44,
+      "aperture": 102.5,
+      "gross": 112.2,
+      "category": "savunma"
+    },
+    {
+      "title": "İSKENDERUN KARAGAH VE İSTİKHAM BİNALARI",
+      "il": "HATAY",
+      "ilce": "İSKENDERUN",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 103,
+      "aperture": 240,
+      "gross": 262.7,
+      "category": "savunma"
+    },
+    {
+      "title": "24 ÜNİTELİ VARDİYA YATAKHANESİ",
+      "il": "IĞDIR",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 21,
+      "aperture": 48.9,
+      "gross": 53.6,
+      "category": "savunma"
+    },
+    {
+      "title": "ISPARTA EĞDİR LOJMAN BÖLGESİ ASKERİ TESİSLER İNŞAATI İŞİ",
+      "il": "ISPARTA",
+      "ilce": "EĞDİR",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 244,
+      "aperture": 568.5,
+      "gross": 622.2,
+      "category": "savunma"
+    },
+    {
+      "title": "ISPARTA EĞDİR KARABURUN BÖLG ASKERİ TESİSLERİ",
+      "il": "ISPARTA",
+      "ilce": "EĞDİR",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 200,
+      "aperture": 466,
+      "gross": 510,
+      "category": "savunma"
+    },
+    {
+      "title": "MALTEPE MSB ESENKENT MAH NURETTİN BARANSEL KIŞLASI ASKERİ TESİSLER",
+      "il": "İSTANBUL",
+      "ilce": "MALTEPE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 522,
+      "aperture": 1216.3,
+      "gross": 1331.1,
+      "category": "savunma"
+    },
+    {
+      "title": "HAVA HARP OKULU BİNALARI 1.ETAP İNŞAATI İLE ALTYAPI VE ÇEVRE DÜZENLEME İŞİ",
+      "il": "İSTANBUL",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 56,
+      "aperture": 130.5,
+      "gross": 142.8,
+      "category": "savunma"
+    },
+    {
+      "title": "İSTANBUL İLİ MALTEPE İLÇESİ MSB GENERAL NURETTİN BARANSEL KIŞLASI",
+      "il": "İSTANBUL",
+      "ilce": "MALTEPE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 140,
+      "aperture": 326.2,
+      "gross": 357,
+      "category": "savunma"
+    },
+    {
+      "title": "İZMİR AKSAZ ÜS KOMUTANLIĞI",
+      "il": "İZMİR",
+      "ilce": "AKSAZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 219,
+      "aperture": 510.3,
+      "gross": 558.4,
+      "category": "savunma"
+    },
+    {
+      "title": "İZMİR MENEMEN 57.TOPÇU TUGAYI",
+      "il": "İZMİR",
+      "ilce": "MENEMEN",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 51,
+      "aperture": 118.8,
+      "gross": 130,
+      "category": "savunma"
+    },
+    {
+      "title": "İZMİR NARLI MSB YATAKHANE",
+      "il": "İZMİR",
+      "ilce": "NARLI",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 16,
+      "aperture": 37.3,
+      "gross": 40.8,
+      "category": "savunma"
+    },
+    {
+      "title": "İZMİR NARLIDERE",
+      "il": "İZMİR",
+      "ilce": "NARLIDERE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 93,
+      "aperture": 216.7,
+      "gross": 237.2,
+      "category": "savunma"
+    },
+    {
+      "title": "GİRNE 100 YATAKLI ASKER HASNESİ",
+      "il": "KIBRIS",
+      "ilce": "GİRNE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 28,
+      "aperture": 65.2,
+      "gross": 71.4,
+      "category": "savunma"
+    },
+    {
+      "title": "GAZİMAĞUSA ORDUEVİ SUBAY OTEL BİNASI KARŞISINDA YER ALAN",
+      "il": "KIBRIS",
+      "ilce": "MAĞUSA",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 19,
+      "aperture": 44.3,
+      "gross": 48.4,
+      "category": "savunma"
+    },
+    {
+      "title": "KİLİS AKÇAKOYUNLU ER PAVYONU",
+      "il": "KİLİS",
+      "ilce": "AKÇAKOYUNLU",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 71,
+      "aperture": 165.4,
+      "gross": 181,
+      "category": "savunma"
+    },
+    {
+      "title": "KİLİS GÜLBABA",
+      "il": "KİLİS",
+      "ilce": "GÜLBABA",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 71,
+      "aperture": 165.4,
+      "gross": 181,
+      "category": "savunma"
+    },
+    {
+      "title": "56.MÜH BAKIM MÜDÜRLÜĞÜ KONYA",
+      "il": "KONYA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 128,
+      "aperture": 298.2,
+      "gross": 326.4,
+      "category": "savunma"
+    },
+    {
+      "title": "KONYA 3.HAVA JET ÜSSÜ",
+      "il": "KONYA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 40,
+      "aperture": 93.2,
+      "gross": 102,
+      "category": "savunma"
+    },
+    {
+      "title": "KONYA KARAPINAR MSB",
+      "il": "KONYA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 45,
+      "aperture": 104.9,
+      "gross": 114.7,
+      "category": "savunma"
+    },
+    {
+      "title": "MALATYA 7.ANA JET ÜSSÜ",
+      "il": "MALATYA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 61,
+      "aperture": 142.1,
+      "gross": 155.5,
+      "category": "savunma"
+    },
+    {
+      "title": "MALAYA MSB 180 KİŞİLİK ER YATAKHANESİ",
+      "il": "MALATYA",
+      "ilce": "",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 24,
+      "aperture": 55.9,
+      "gross": 61.2,
+      "category": "savunma"
+    },
+    {
+      "title": "MANİSA AKHİSAR MSB",
+      "il": "MANİSA",
+      "ilce": "AKHİSAR",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 96,
+      "aperture": 223.7,
+      "gross": 244.8,
+      "category": "savunma"
+    },
+    {
+      "title": "MANİSA ASKERİYE",
+      "il": "MANİSA",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 88,
+      "aperture": 205,
+      "gross": 224.4,
+      "category": "savunma"
+    },
+    {
+      "title": "MERSİN BAKIM ONARIM KOMUTANLIĞI",
+      "il": "MERSİN",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 3,
+      "aperture": 7,
+      "gross": 7.7,
+      "category": "savunma"
+    },
+    {
+      "title": "DALAMAN MSB",
+      "il": "MUĞLA",
+      "ilce": "DALAMAN",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 47,
+      "aperture": 109.5,
+      "gross": 119.9,
+      "category": "savunma"
+    },
+    {
+      "title": "NİĞDE 7. ANA BAKIM",
+      "il": "NİĞDE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 15,
+      "aperture": 35,
+      "gross": 38.3,
+      "category": "savunma"
+    },
+    {
+      "title": "NİĞDE 21. ANA İKMAL",
+      "il": "NİĞDE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 54,
+      "aperture": 125.8,
+      "gross": 137.7,
+      "category": "savunma"
+    },
+    {
+      "title": "OSMANİYE MERKEZ GEBELİ MAHALLESİ LOJMAN",
+      "il": "OSMANİYE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 60,
+      "aperture": 139.8,
+      "gross": 153,
+      "category": "savunma"
+    },
+    {
+      "title": "OSMANİYE ISI MERKEZİ",
+      "il": "OSMANİYE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 132,
+      "aperture": 307.6,
+      "gross": 336.6,
+      "category": "savunma"
+    },
+    {
+      "title": "OSMANİYE 52 ÜNİTELİ YATAKHANE",
+      "il": "OSMANİYE",
+      "ilce": "MERKEZ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 20,
+      "aperture": 46.6,
+      "gross": 51,
+      "category": "savunma"
+    },
+    {
+      "title": "ŞIRNAK SİLOPİ ASKERİYE",
+      "il": "ŞIRNAK",
+      "ilce": "SİLOPİ",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 104,
+      "aperture": 242.3,
+      "gross": 265.2,
+      "category": "savunma"
+    },
+    {
+      "title": "VAN BAŞKALE",
+      "il": "VAN",
+      "ilce": "BAŞKALE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 24,
+      "aperture": 55.9,
+      "gross": 61.2,
+      "category": "savunma"
+    },
+    {
+      "title": "TAMER AYDIN HUDUT KARAKOLU",
+      "il": "VAN",
+      "ilce": "SARAY",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 22,
+      "aperture": 51.3,
+      "gross": 56.1,
+      "category": "savunma"
+    },
+    {
+      "title": "VAN BAŞKALE 52 ÜNİTELİ YATAKHANE",
+      "il": "VAN",
+      "ilce": "BAŞKALE",
+      "homes": 0,
+      "blocks": 0,
+      "collectors": 28,
+      "aperture": 65.2,
+      "gross": 71.4,
+      "category": "savunma"
     }
   ]
 }

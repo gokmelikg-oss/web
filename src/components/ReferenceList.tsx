@@ -9,6 +9,8 @@ const PAGE_SIZE = 24;
 export interface ReferenceListLabels {
   searchPlaceholder: string;
   allProvinces: string; // "Tüm iller"
+  allCategories: string; // "Tüm tipler"
+  categoryNames: Record<string, string>; // konut/adalet/... → görünen ad
   clear: string;
   proje: string;
   konut: string;
@@ -21,6 +23,7 @@ export interface ReferenceListLabels {
   noResults: string;
   noResultsHint: string;
   homesServed: string; // "{n} konutun sıcak su ihtiyacı güneş enerjisiyle karşılanıyor" — {n} önce eklenir
+  institutionLine: string; // konut sayısı olmayan (kurumsal) projeler için: "{n} kollektörlü güneş enerjili sıcak su sistemi"
   blockWord: string; // "blok"
   showMore: string; // "Daha fazla göster"
   selBefore: string;
@@ -40,6 +43,7 @@ export function ReferenceList({
 }) {
   const [query, setQuery] = useState('');
   const [province, setProvince] = useState<string | null>(null);
+  const [category, setCategory] = useState<string | null>(null);
   const [visible, setVisible] = useState(PAGE_SIZE);
 
   const nf = useMemo(() => new Intl.NumberFormat(intlLocale), [intlLocale]);
@@ -56,12 +60,25 @@ export function ReferenceList({
     return Object.values(map).sort((a, b) => b.collectors - a.collectors);
   }, [projects]);
 
+  /* Kategori özetleri — proje tipine göre (filtre menüsü için). */
+  const categorySummaries = useMemo(() => {
+    const map = projects.reduce<Record<string, number>>((acc, p) => {
+      const c = p.category || 'konut';
+      acc[c] = (acc[c] || 0) + 1;
+      return acc;
+    }, {});
+    return Object.entries(map)
+      .map(([id, count]) => ({ id, count }))
+      .sort((a, b) => b.count - a.count);
+  }, [projects]);
+
   /* Liste her zaman kollektör adedine göre büyükten küçüğe sıralanır. */
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase('tr-TR');
     return projects
       .filter((p) => {
         if (province && p.il !== province) return false;
+        if (category && (p.category || 'konut') !== category) return false;
         if (!q) return true;
         return (
           p.title.toLocaleLowerCase('tr-TR').includes(q) ||
@@ -70,7 +87,7 @@ export function ReferenceList({
         );
       })
       .sort((a, b) => b.collectors - a.collectors);
-  }, [query, province, projects]);
+  }, [query, province, category, projects]);
 
   /* Filtrelenen seçkinin toplamları — arama yapıldıkça canlı güncellenir. */
   const subtotal = useMemo(() => {
@@ -86,11 +103,12 @@ export function ReferenceList({
   }, [filtered]);
 
   const shown = filtered.slice(0, visible);
-  const hasFilter = Boolean(query || province);
+  const hasFilter = Boolean(query || province || category);
 
   function reset() {
     setQuery('');
     setProvince(null);
+    setCategory(null);
     setVisible(PAGE_SIZE);
   }
 
@@ -137,6 +155,28 @@ export function ReferenceList({
             className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 text-mist-400"
           />
         </div>
+        {categorySummaries.length > 1 && (
+          <div className="relative">
+            <select
+              value={category ?? ''}
+              onChange={(e) => {
+                setCategory(e.target.value || null);
+                setVisible(PAGE_SIZE);
+              }}
+              className="w-full appearance-none rounded-full border border-mist-900/12 bg-white py-3 pe-10 ps-5 text-sm font-medium outline-none transition-colors focus:border-volt-500 sm:w-52"
+            >
+              <option value="">
+                {labels.allCategories} ({categorySummaries.length})
+              </option>
+              {categorySummaries.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {labels.categoryNames[c.id] ?? c.id} ({c.count})
+                </option>
+              ))}
+            </select>
+            <ChevronDown size={16} className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 text-mist-400" />
+          </div>
+        )}
         {hasFilter && (
           <button
             type="button"
@@ -215,18 +255,27 @@ export function ReferenceList({
                 <span className="mt-0.5 shrink-0 font-tabular font-mono text-xs font-bold text-mist-400">
                   {nf.format(i + 1)}
                 </span>
-                <h3 className="text-balance font-display text-base font-bold leading-snug text-graphite-950">
-                  {p.title}
-                </h3>
+                <div className="min-w-0">
+                  <h3 className="text-balance font-display text-base font-bold leading-snug text-graphite-950">
+                    {p.title}
+                  </h3>
+                  {(labels.categoryNames[p.category || 'konut'] ?? '') && (
+                    <span className="mt-1.5 inline-flex items-center rounded-full bg-graphite-950/[0.06] px-2.5 py-0.5 text-[10px] font-semibold text-graphite-700">
+                      {labels.categoryNames[p.category || 'konut']}
+                    </span>
+                  )}
+                </div>
               </div>
 
-              <dl className="mt-4 grid grid-cols-3 gap-3 border-t border-mist-900/8 pt-3.5">
-                <div>
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">{labels.konut}</dt>
-                  <dd className="mt-0.5 font-tabular text-sm font-bold text-graphite-950">
-                    {nf.format(p.homes)}
-                  </dd>
-                </div>
+              <dl className={`mt-4 grid gap-3 border-t border-mist-900/8 pt-3.5 ${p.homes > 0 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+                {p.homes > 0 && (
+                  <div>
+                    <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">{labels.konut}</dt>
+                    <dd className="mt-0.5 font-tabular text-sm font-bold text-graphite-950">
+                      {nf.format(p.homes)}
+                    </dd>
+                  </div>
+                )}
                 <div>
                   <dt className="font-mono text-[9px] uppercase tracking-[0.12em] text-mist-500">{labels.isinim}</dt>
                   <dd className="mt-0.5 font-tabular text-sm font-bold text-graphite-950">
@@ -242,8 +291,16 @@ export function ReferenceList({
               </dl>
 
               <p className="mt-3 text-xs leading-relaxed text-mist-600">
-                {nf.format(p.homes)} {labels.homesServed}
-                {p.blocks > 0 && ` · ${nf.format(p.blocks)} ${labels.blockWord}`}.
+                {p.homes > 0 ? (
+                  <>
+                    {nf.format(p.homes)} {labels.homesServed}
+                    {p.blocks > 0 && ` · ${nf.format(p.blocks)} ${labels.blockWord}`}.
+                  </>
+                ) : (
+                  <>
+                    {nf.format(p.collectors)} {labels.institutionLine}
+                  </>
+                )}
               </p>
             </li>
           ))}
