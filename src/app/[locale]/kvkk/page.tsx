@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { LegalDoc, LegalSection } from '@/components/LegalDoc';
+import { Toc } from '@/components/Toc';
 import { pageMetadata } from '@/lib/seo';
 import { getLegalUi } from '@/lib/legalUi';
 import type { Locale } from '@/i18n/config';
@@ -25,8 +26,9 @@ export default async function KvkkPage({ params }: { params: Promise<{ locale: L
     <>
       <PageHero eyebrow={ui.eyebrow} title={doc.title} subtitle={doc.subtitle} />
       <LegalDoc updated={UPDATED} updatedLabel={ui.updatedLabel}>
-        {doc.sections.map((s) => (
-          <LegalSection key={s.title} title={s.title}>
+        <Toc title={ui.contents} items={doc.sections.map((s, i) => ({ id: `s-${i}`, label: s.title }))} />
+        {doc.sections.map((s, i) => (
+          <LegalSection key={s.title} id={`s-${i}`} title={s.title}>
             {s.paras.map((p, i) => (
               <p key={i}>
                 {p.label && <strong>{p.label}</strong>}

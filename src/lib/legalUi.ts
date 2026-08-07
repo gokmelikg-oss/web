@@ -22,6 +22,7 @@ export interface LegalDocText {
 export interface LegalUi {
   eyebrow: string;
   updatedLabel: string;
+  contents: string;
   privacy: LegalDocText;
   cookies: LegalDocText;
   kvkk: LegalDocText;
@@ -33,6 +34,7 @@ const DATA: Record<Locale, LegalUi> = {
   tr: {
     eyebrow: 'Yasal',
     updatedLabel: 'Son güncelleme',
+    contents: 'İçindekiler',
     privacy: {
       title: 'Gizlilik Politikası',
       subtitle:
@@ -98,6 +100,7 @@ const DATA: Record<Locale, LegalUi> = {
   en: {
     eyebrow: 'Legal',
     updatedLabel: 'Last updated',
+    contents: 'Contents',
     privacy: {
       title: 'Privacy Policy',
       subtitle: 'Explains the importance we place on the privacy and security of your personal data and the principles we apply.',
@@ -159,6 +162,7 @@ const DATA: Record<Locale, LegalUi> = {
   ar: {
     eyebrow: 'قانوني',
     updatedLabel: 'آخر تحديث',
+    contents: 'المحتويات',
     privacy: {
       title: 'سياسة الخصوصية',
       subtitle: 'توضّح الأهمية التي نوليها لخصوصية بياناتكم الشخصية وأمنها والمبادئ التي نطبّقها.',
@@ -220,6 +224,7 @@ const DATA: Record<Locale, LegalUi> = {
   el: {
     eyebrow: 'Νομικά',
     updatedLabel: 'Τελευταία ενημέρωση',
+    contents: 'Περιεχόμενα',
     privacy: {
       title: 'Πολιτική Απορρήτου',
       subtitle: 'Εξηγεί τη σημασία που δίνουμε στο απόρρητο και την ασφάλεια των προσωπικών σας δεδομένων και τις αρχές που εφαρμόζουμε.',

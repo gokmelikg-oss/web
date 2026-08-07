@@ -2,10 +2,12 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { ProvinceExplorer } from '@/components/ProvinceExplorer';
+import { RoofCheck } from '@/components/RoofCheck';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { Link } from '@/i18n/navigation';
 import { pageMetadata } from '@/lib/seo';
 import { getProvincesUi } from '@/lib/provincesUi';
+import { getRoofCheckUi } from '@/lib/roofCheckUi';
 import { PROVINCES_SORTED } from '@/data/provinces';
 import type { Locale } from '@/i18n/config';
 
@@ -22,6 +24,7 @@ export async function generateMetadata({
 export default async function SolarPotentialPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const ui = getProvincesUi(locale).list;
+  const roof = getRoofCheckUi(locale);
   return (
     <>
       <PageBreadcrumb items={[{ name: ui.crumb, path: '/gunes-potansiyeli' }]} />
@@ -70,6 +73,28 @@ export default async function SolarPotentialPage({ params }: { params: Promise<{
               ))}
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Çatınız uygun mu? — öz-değerlendirme */}
+      <section className="section-pad bg-mist-50">
+        <div className="container-page">
+          <Reveal>
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+                {roof.eyebrow}
+                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              </p>
+              <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+                {roof.title}
+              </h2>
+              <p className="mt-4 text-mist-700">{roof.subtitle}</p>
+            </div>
+          </Reveal>
+          <div className="mt-10">
+            <RoofCheck labels={roof} />
+          </div>
         </div>
       </section>
     </>

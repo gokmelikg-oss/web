@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight, Clock } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { ArticleJsonLd, PageBreadcrumb } from '@/components/JsonLd';
+import { Toc } from '@/components/Toc';
 import { pageMetadata } from '@/lib/seo';
 import { articles } from '@/data/news';
 import { getBlogList, getBlogPost } from '@/lib/blog';
@@ -99,9 +100,18 @@ export default async function ArticlePage({
             </Reveal>
           )}
 
-          {article.body.map((section) => (
-            <Reveal key={section.heading} className="mt-10 first:mt-0">
-              <h2 className="font-display text-xl font-bold text-graphite-950 sm:text-2xl">{section.heading}</h2>
+          <Reveal>
+            <Toc
+              title={ui.toc}
+              items={article.body.map((s, i) => ({ id: `s-${i}`, label: s.heading })).filter((x) => x.label)}
+            />
+          </Reveal>
+
+          {article.body.map((section, si) => (
+            <Reveal key={section.heading} className="mt-10">
+              <h2 id={`s-${si}`} className="scroll-mt-28 font-display text-xl font-bold text-graphite-950 sm:text-2xl">
+                {section.heading}
+              </h2>
               {section.paragraphs.map((p, i) => (
                 <p key={i} className="mt-4 leading-relaxed text-mist-700">
                   {p}

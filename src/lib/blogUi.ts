@@ -3,6 +3,7 @@ import type { Locale } from '@/i18n/config';
 /* Blog sayfalarının arayüz metinleri (başlık, etiketler) ve tarih biçimi — dört dilde. */
 export interface BlogUi {
   crumb: string;
+  toc: string;
   heroEyebrow: string;
   heroTitle: string;
   heroSubtitle: string;
@@ -20,6 +21,7 @@ export interface BlogUi {
 export const BLOG_UI: Record<Locale, BlogUi> = {
   tr: {
     crumb: 'Blog',
+    toc: 'İçindekiler',
     heroEyebrow: 'Blog & Bilgi Merkezi',
     heroTitle: 'Güneş enerjisinde bilgi ve rehberler',
     heroSubtitle:
@@ -37,6 +39,7 @@ export const BLOG_UI: Record<Locale, BlogUi> = {
   },
   en: {
     crumb: 'Blog',
+    toc: 'Contents',
     heroEyebrow: 'Blog & Knowledge Center',
     heroTitle: 'Knowledge and guides in solar energy',
     heroSubtitle:
@@ -54,6 +57,7 @@ export const BLOG_UI: Record<Locale, BlogUi> = {
   },
   ar: {
     crumb: 'المدونة',
+    toc: 'المحتويات',
     heroEyebrow: 'المدونة ومركز المعرفة',
     heroTitle: 'معرفة وأدلة في الطاقة الشمسية',
     heroSubtitle:
@@ -71,6 +75,7 @@ export const BLOG_UI: Record<Locale, BlogUi> = {
   },
   el: {
     crumb: 'Ιστολόγιο',
+    toc: 'Περιεχόμενα',
     heroEyebrow: 'Ιστολόγιο & Κέντρο Γνώσης',
     heroTitle: 'Γνώση και οδηγοί στην ηλιακή ενέργεια',
     heroSubtitle:

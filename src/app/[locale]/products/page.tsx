@@ -5,6 +5,9 @@ import { Package as PackageIcon } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { ProductsShowcase } from '@/components/ProductsShowcase';
 import { ProductCompare } from '@/components/ProductCompare';
+import { HowItWorks } from '@/components/HowItWorks';
+import { TrustStrip } from '@/components/TrustStrip';
+import { CapacityGuide } from '@/components/CapacityGuide';
 import { Reveal } from '@/components/Reveal';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { getContent } from '@/lib/content';
@@ -25,7 +28,8 @@ export async function generateMetadata({
   return pageMetadata({ locale, path: '/products', title: t('title'), description: t('subtitle') });
 }
 
-export default async function ProductsPage() {
+export default async function ProductsPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
   const t = await getTranslations('products.hero');
   const { products } = await getContent();
   const adminProducts = products.filter((p) => p.name);
@@ -34,6 +38,8 @@ export default async function ProductsPage() {
     <>
       <PageBreadcrumb items={[{ name: 'Ürünler', path: '/products' }]} />
       <PageHero eyebrow={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
+      <TrustStrip locale={locale} />
+      <HowItWorks locale={locale} className="bg-mist-50" />
       <section className="section-pad bg-white">
         <div className="container-page">
           <ProductsShowcase />
@@ -97,6 +103,7 @@ export default async function ProductsPage() {
       )}
 
       <ProductCompare />
+      <CapacityGuide locale={locale} className="bg-mist-50" />
     </>
   );
 }
