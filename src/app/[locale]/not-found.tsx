@@ -1,4 +1,4 @@
-import { Home, Package, Phone } from 'lucide-react';
+import { Home, Package, Phone, FileText, Calculator } from 'lucide-react';
 
 /* Markalı 404 sayfası. [locale] segmenti içinde render olur → Header/Footer korunur.
    Middleware her rotayı locale ile öneklediğinden bulunamayan tüm URL'ler buraya düşer.
@@ -35,6 +35,20 @@ export default function NotFound() {
           >
             <Package size={16} />
             Ürünler
+          </a>
+          <a
+            href="/tr/resources"
+            className="inline-flex items-center gap-2 rounded-full border border-graphite-950/15 px-6 py-3 text-sm font-semibold text-graphite-950 transition-colors hover:bg-mist-100"
+          >
+            <FileText size={16} />
+            Dökümanlar
+          </a>
+          <a
+            href="/tr/calculator"
+            className="inline-flex items-center gap-2 rounded-full border border-graphite-950/15 px-6 py-3 text-sm font-semibold text-graphite-950 transition-colors hover:bg-mist-100"
+          >
+            <Calculator size={16} />
+            Hesaplama
           </a>
           <a
             href="/tr/contact"
