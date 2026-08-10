@@ -127,34 +127,44 @@ export function AdminDashboard({
 
   return (
     <div className="flex h-screen overflow-hidden bg-mist-50 text-graphite-900">
-      {/* Rail */}
-      <nav className="flex w-[76px] shrink-0 flex-col items-center border-r border-mist-900/10 bg-white py-4">
-        <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-graphite-950 font-display text-xl font-bold text-volt-500">Ş</span>
-        <div className="flex flex-1 flex-col items-center gap-1.5">
+      {/* Sidebar */}
+      <aside className="flex w-60 shrink-0 flex-col bg-graphite-950 text-graphite-200">
+        <div className="flex items-center gap-2.5 border-b border-white/10 px-5 py-[18px]">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-volt-500 font-display text-lg font-bold text-graphite-950">Ş</span>
+          <div className="leading-tight">
+            <p className="font-display text-sm font-bold text-white">Şimşek Solar</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-volt-400">Yönetim</p>
+          </div>
+        </div>
+        <nav className="flex-1 overflow-y-auto p-3">
           {SECTIONS.map((s) => {
             const active = section === s.key;
+            const badge = s.key === 'products' ? products.length : s.key === 'posts' ? posts.length : s.key === 'references' ? refs.length : 0;
             return (
-              <button key={s.key} onClick={() => go(s.key)} title={s.label}
-                className={`group relative flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${active ? 'bg-volt-500 text-graphite-950' : 'text-mist-500 hover:bg-mist-100 hover:text-graphite-900'}`}>
-                <s.icon size={19} />
-                <span className="pointer-events-none absolute start-full z-20 ms-2 hidden whitespace-nowrap rounded-lg bg-graphite-950 px-2.5 py-1 text-xs font-medium text-white shadow-lg group-hover:block">{s.label}</span>
+              <button key={s.key} onClick={() => go(s.key)}
+                className={`mb-0.5 flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors ${active ? 'bg-volt-500 text-graphite-950' : 'text-graphite-300 hover:bg-white/5 hover:text-white'}`}>
+                <s.icon size={18} className="shrink-0" />
+                <span className="flex-1 truncate text-start">{s.label}</span>
+                {badge > 0 && (
+                  <span className={`rounded-full px-2 py-0.5 font-tabular text-[10px] font-bold ${active ? 'bg-graphite-950/20 text-graphite-950' : 'bg-white/10 text-graphite-200'}`}>{badge}</span>
+                )}
               </button>
             );
           })}
+        </nav>
+        <div className="border-t border-white/10 p-3">
+          <a href="/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-graphite-300 transition-colors hover:bg-white/5 hover:text-white"><Eye size={17} className="shrink-0" /> Siteyi görüntüle</a>
+          <button onClick={logout} className="flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-graphite-300 transition-colors hover:bg-white/5 hover:text-red-400"><LogOut size={17} className="shrink-0" /> Çıkış yap</button>
         </div>
-        <div className="flex flex-col items-center gap-1.5">
-          <a href="/" target="_blank" rel="noopener noreferrer" title="Siteyi önizle" className="flex h-11 w-11 items-center justify-center rounded-xl text-mist-500 hover:bg-mist-100 hover:text-graphite-900"><Eye size={19} /></a>
-          <button onClick={logout} title="Çıkış" className="flex h-11 w-11 items-center justify-center rounded-xl text-mist-500 hover:bg-mist-100 hover:text-red-600"><LogOut size={19} /></button>
-        </div>
-      </nav>
+      </aside>
 
       {/* Sağ kolon */}
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Üst çubuk */}
         <header className="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-mist-900/10 bg-white px-5 lg:px-7">
           <div className="min-w-0">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-mist-400">Yönetim Paneli</p>
             <h1 className="truncate font-display text-lg font-bold text-graphite-950">{meta.label}</h1>
-            <p className="hidden truncate text-xs text-mist-500 sm:block">{meta.desc}</p>
           </div>
           <div className="flex items-center gap-2">
             <span className={`hidden items-center gap-1.5 text-xs md:inline-flex ${dirty ? 'text-amber-600' : 'text-mist-400'}`}>
@@ -171,6 +181,7 @@ export function AdminDashboard({
               {saving ? <Loader2 size={15} className="animate-spin" /> : saved ? <Check size={15} /> : <Save size={15} />}
               {saved ? 'Kaydedildi' : 'Kaydet'}
             </button>
+            <span className="ms-1 hidden h-9 w-9 items-center justify-center rounded-full bg-graphite-950 font-tabular text-xs font-bold text-white sm:flex" title="Yönetici">ŞS</span>
           </div>
         </header>
 
@@ -209,40 +220,95 @@ export function AdminDashboard({
           {/* Editör / içerik */}
           <div className="min-w-0 flex-1 overflow-y-auto p-5 lg:p-8">
             <div className="mx-auto max-w-3xl">
-              {section === 'overview' && (
-                <div>
-                  <div className="rounded-3xl bg-graphite-gradient p-7 text-white sm:p-9">
-                    <h2 className="font-display text-2xl font-bold">Hoş geldiniz 👋</h2>
-                    <p className="mt-2 max-w-lg text-sm leading-relaxed text-graphite-200">Soldaki menüden bir bölüm seçin. Değişiklikten sonra sağ üstteki <strong className="text-volt-300">Kaydet</strong> yeterli.</p>
-                  </div>
-                  <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-                    {[
-                      { label: 'Ürün', value: products.length, icon: Package, tint: 'bg-volt-100 text-volt-700' },
-                      { label: 'Blog yazısı', value: posts.length, icon: Newspaper, tint: 'bg-sky-100 text-sky-700' },
-                      { label: 'Ek referans', value: refs.length, icon: MapPin, tint: 'bg-emerald-100 text-emerald-700' },
-                      { label: 'Gizli referans', value: hiddenRefs.length, icon: EyeOff, tint: 'bg-mist-200 text-graphite-700' },
-                    ].map((s) => (
-                      <div key={s.label} className="rounded-2xl border border-mist-900/10 bg-white p-5">
-                        <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${s.tint}`}><s.icon size={19} /></span>
-                        <p className="mt-3 font-display text-2xl font-bold text-graphite-950">{s.value}</p>
-                        <p className="mt-0.5 text-xs text-mist-600">{s.label}</p>
+              {section === 'overview' && (() => {
+                const stats = [
+                  { label: 'Ürünler', value: products.length, sub: `${products.length} kayıt`, icon: Package, tint: 'bg-volt-100 text-volt-700', to: 'products' as Tab },
+                  { label: 'Blog yazısı', value: posts.length, sub: `${posts.length} kayıt`, icon: Newspaper, tint: 'bg-sky-100 text-sky-700', to: 'posts' as Tab },
+                  { label: 'Ek referans', value: refs.length, sub: 'panelden eklenen', icon: MapPin, tint: 'bg-emerald-100 text-emerald-700', to: 'references' as Tab },
+                  { label: 'Gizli referans', value: hiddenRefs.length, sub: 'listede gizli', icon: EyeOff, tint: 'bg-mist-200 text-graphite-700', to: 'references' as Tab },
+                ];
+                const recent = [
+                  ...posts.filter((p) => p.title).map((p) => ({ id: p.id, title: p.title, kind: 'Blog yazısı', date: p.date ?? '', icon: Newspaper })),
+                  ...products.filter((p) => p.name).map((p) => ({ id: p.id, title: p.name, kind: 'Ürün', date: '', icon: Package })),
+                ].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 5);
+                const quick = [
+                  { label: 'Yeni ürün', desc: 'Ürün ekle', icon: Package, run: () => { setSection('products'); addProduct(); } },
+                  { label: 'Yeni yazı', desc: 'Blog içeriği oluştur', icon: Newspaper, run: () => { setSection('posts'); addPost(); } },
+                  { label: 'Sayfa metinleri', desc: 'Hero, iletişim, misyon', icon: Type, run: () => go('texts') },
+                ];
+                return (
+                  <div className="space-y-6">
+                    {/* Hoş geldin hero */}
+                    <div className="relative overflow-hidden rounded-3xl bg-graphite-gradient p-7 text-white sm:p-9">
+                      <div className="pointer-events-none absolute -end-16 -top-16 h-56 w-56 rounded-full bg-volt-500/15 blur-3xl" aria-hidden />
+                      <div className="relative flex flex-wrap items-start justify-between gap-5">
+                        <div>
+                          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-volt-400">Hoş geldiniz</p>
+                          <h2 className="mt-2 font-display text-2xl font-bold sm:text-3xl">İçerikleriniz kontrol altında.</h2>
+                          <p className="mt-2 max-w-lg text-sm leading-relaxed text-graphite-200">Yayın durumunu takip edin, içeriklerinizi hızlıca güncelleyin.</p>
+                        </div>
+                        <div className="inline-flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-2.5 backdrop-blur-sm">
+                          <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
+                          <div className="leading-tight">
+                            <p className="text-sm font-semibold text-white">Site yayında</p>
+                            {initial.updatedAt && <p className="font-mono text-[10px] text-graphite-300">Son güncelleme {new Date(initial.updatedAt).toLocaleDateString('tr-TR', { day: '2-digit', month: 'short', year: 'numeric' })}</p>}
+                          </div>
+                        </div>
                       </div>
-                    ))}
+                    </div>
+
+                    {/* İstatistik kartları — tıklayınca ilgili bölüme gider */}
+                    <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+                      {stats.map((s) => (
+                        <button key={s.label} onClick={() => go(s.to)} className="group rounded-2xl border border-mist-900/10 bg-white p-5 text-start transition-all hover:-translate-y-0.5 hover:border-volt-500/40 hover:shadow-card">
+                          <div className="flex items-start justify-between">
+                            <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${s.tint}`}><s.icon size={19} /></span>
+                            <ChevronRight size={16} className="text-mist-300 transition-all group-hover:translate-x-0.5 group-hover:text-volt-600" />
+                          </div>
+                          <p className="mt-3 font-tabular font-display text-3xl font-bold leading-none text-graphite-950">{s.value}</p>
+                          <p className="mt-1.5 text-sm font-semibold text-graphite-800">{s.label}</p>
+                          <p className="mt-0.5 text-[11px] text-mist-500">{s.sub}</p>
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Son güncellenenler + Hızlı işlemler */}
+                    <div className="grid gap-4 lg:grid-cols-[1.35fr_1fr]">
+                      <div className="rounded-2xl border border-mist-900/10 bg-white p-5">
+                        <p className="font-display text-sm font-bold text-graphite-950">Son güncellenenler</p>
+                        <p className="text-xs text-mist-500">İçerik hareketleri</p>
+                        <div className="mt-4 divide-y divide-mist-900/8">
+                          {recent.length === 0 && <p className="py-6 text-center text-sm text-mist-400">Henüz içerik yok.</p>}
+                          {recent.map((r) => (
+                            <div key={r.id} className="flex items-center gap-3 py-3">
+                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-mist-100 text-graphite-600"><r.icon size={16} /></span>
+                              <div className="min-w-0 flex-1">
+                                <p className="truncate text-sm font-semibold text-graphite-950">{r.title}</p>
+                                <p className="text-[11px] text-mist-500">{r.kind}</p>
+                              </div>
+                              {r.date && <span className="shrink-0 font-mono text-[11px] text-mist-400">{new Date(r.date).toLocaleDateString('tr-TR', { day: '2-digit', month: 'short', year: 'numeric' })}</span>}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="rounded-2xl border border-mist-900/10 bg-white p-5">
+                        <p className="font-display text-sm font-bold text-graphite-950">Hızlı işlemler</p>
+                        <p className="text-xs text-mist-500">Sık kullanılan araçlar</p>
+                        <div className="mt-4 space-y-2.5">
+                          {quick.map((q) => (
+                            <button key={q.label} onClick={q.run} className="group flex w-full items-center gap-3 rounded-xl border border-mist-900/10 bg-mist-50 p-3.5 text-start transition-all hover:border-volt-500/40 hover:bg-white">
+                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-volt-100 text-volt-700 transition-colors group-hover:bg-volt-500 group-hover:text-graphite-950"><q.icon size={16} /></span>
+                              <div className="min-w-0"><p className="text-sm font-semibold text-graphite-950">{q.label}</p><p className="text-[11px] text-mist-500">{q.desc}</p></div>
+                            </button>
+                          ))}
+                          {prev && <button onClick={restorePrev} className="inline-flex items-center gap-1.5 pt-1 text-xs font-semibold text-graphite-600 hover:text-graphite-950"><History size={13} /> Bir önceki kayda dön</button>}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                    {SECTIONS.filter((s) => s.key !== 'overview').map((s) => (
-                      <button key={s.key} onClick={() => go(s.key)} className="flex items-center gap-3 rounded-2xl border border-mist-900/10 bg-white p-4 text-start transition-all hover:-translate-y-0.5 hover:border-volt-500/40">
-                        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-mist-100 text-graphite-700"><s.icon size={18} /></span>
-                        <div><p className="font-semibold text-graphite-950">{s.label}</p><p className="text-xs text-mist-500">{s.desc}</p></div>
-                      </button>
-                    ))}
-                  </div>
-                  <div className="mt-6 flex flex-wrap items-center gap-3">
-                    {initial.updatedAt && <p className="text-xs text-mist-500">Son kayıt: {new Date(initial.updatedAt).toLocaleString('tr-TR')}</p>}
-                    {prev && <button onClick={restorePrev} className="inline-flex items-center gap-1.5 rounded-full border border-mist-900/15 px-3.5 py-1.5 text-xs font-semibold text-graphite-700 hover:border-graphite-950"><History size={13} /> Bir önceki kayda dön</button>}
-                  </div>
-                </div>
-              )}
+                );
+              })()}
 
               {section === 'texts' && (
                 <div className="space-y-5">
