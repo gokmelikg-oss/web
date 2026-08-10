@@ -34,10 +34,8 @@ export function ReferencesMapSection() {
       <div className="container-page">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-              <span className="h-px w-8 bg-volt-500" aria-hidden />
+            <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
               {tTeaser('eyebrow')}
-              <span className="h-px w-8 bg-volt-500" aria-hidden />
             </p>
             <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
               {t('title')}

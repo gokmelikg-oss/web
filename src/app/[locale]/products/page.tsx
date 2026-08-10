@@ -50,8 +50,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
         <section className="section-pad bg-mist-50">
           <div className="container-page">
             <Reveal>
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 Öne Çıkan Ürünler
               </p>
             </Reveal>

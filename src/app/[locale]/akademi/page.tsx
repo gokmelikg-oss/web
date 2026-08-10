@@ -232,8 +232,7 @@ export default async function AkademiPage({ params }: { params: Promise<{ locale
         <div className="container-page relative">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                 {c.tools.eyebrow}
               </p>
               <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">{c.tools.title}</h2>
@@ -273,8 +272,7 @@ export default async function AkademiPage({ params }: { params: Promise<{ locale
         <div className="container-page">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {c.trainings.eyebrow}
               </p>
               <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">{c.trainings.title}</h2>
@@ -310,8 +308,7 @@ export default async function AkademiPage({ params }: { params: Promise<{ locale
             <Reveal>
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div className="max-w-2xl">
-                  <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-                    <span className="h-px w-8 bg-volt-500" aria-hidden />
+                  <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                     {c.blog.eyebrow}
                   </p>
                   <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">{c.blog.title}</h2>

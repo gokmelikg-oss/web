@@ -246,8 +246,7 @@ export default async function ProductDetailPage({
         <section className="border-y border-mist-900/10 bg-white py-14">
           <div className="container-page">
             <Reveal>
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 Uygulama Alanları
               </p>
               <div className="mt-5 flex flex-wrap gap-2.5">

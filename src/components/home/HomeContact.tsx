@@ -21,8 +21,7 @@ export function HomeContact({ texts }: { texts?: Record<string, string> }) {
     <section id="iletisim" className="scroll-mt-20 bg-mist-50 py-20 sm:py-28">
       <div className="container-page">
         <Reveal>
-          <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-            <span className="h-px w-8 bg-volt-500" aria-hidden />
+          <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
             {t('hero.eyebrow')}
           </p>
           <h2 className="mt-3 max-w-xl text-balance font-display text-3xl font-bold tracking-tight text-graphite-700 sm:text-4xl">

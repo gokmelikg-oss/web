@@ -118,8 +118,7 @@ export function ProductCompare() {
       <div className="container-page">
         <Reveal>
           <div className="max-w-2xl">
-            <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-              <span className="h-px w-8 bg-volt-500" aria-hidden />
+            <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
               Ürün Karşılaştırma
             </p>
             <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">

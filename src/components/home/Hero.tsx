@@ -52,9 +52,7 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
           transition={{ duration: 0.7 }}
           className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-volt-400"
         >
-          <span className="h-px w-8 bg-volt-500" aria-hidden />
           {txt(texts, 'hero.eyebrow', t('eyebrow'))}
-          <span className="h-px w-8 bg-volt-500" aria-hidden />
         </motion.p>
 
         <motion.h1

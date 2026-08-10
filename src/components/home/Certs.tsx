@@ -32,8 +32,7 @@ export function Certs() {
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <div>
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                 {t('eyebrow')}
               </p>
               <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">

@@ -124,8 +124,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
           <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <Reveal>
               <div>
-                <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-400">
-                  <span className="h-px w-8 bg-emerald-500" aria-hidden />
+                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                   {ui.impact.eyebrow}
                 </p>
                 <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
@@ -214,8 +213,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         <div className="container-page">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {ui.listSection.eyebrow}
               </p>
               <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">

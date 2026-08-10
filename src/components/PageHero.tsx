@@ -16,8 +16,7 @@ export function PageHero({
       <div className="pointer-events-none absolute inset-0 bg-blueprint-dark opacity-40 fade-mask-b" aria-hidden />
       <div className="pointer-events-none absolute -start-24 -top-24 h-72 w-72 rounded-full bg-volt-500/15 blur-3xl" aria-hidden />
       <div className="container-page relative">
-        <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
-          <span className="h-px w-8 bg-volt-500" aria-hidden />
+        <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
           {eyebrow}
         </p>
         <h1 className="mt-6 max-w-2xl text-balance font-display text-4xl font-bold tracking-tight sm:text-5xl">

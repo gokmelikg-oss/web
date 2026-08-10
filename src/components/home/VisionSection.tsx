@@ -47,10 +47,8 @@ export function VisionSection() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8 }}
           className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-volt-400"
-        >
-          <span className="h-px w-8 bg-volt-500" aria-hidden />
-          {t('eyebrow')}
-          <span className="h-px w-8 bg-volt-500" aria-hidden />
+        >
+          {t('eyebrow')}
         </motion.p>
 
         <div className="mx-auto mt-12 max-w-4xl text-center">

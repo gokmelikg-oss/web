@@ -89,8 +89,7 @@ export default async function AboutPage() {
         <div className="container-page">
           <div className="mx-auto max-w-3xl">
             <Reveal>
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 Kurucumuzdan
               </p>
               <figure className="relative mt-6 rounded-3xl bg-graphite-gradient p-9 text-white sm:p-11">
@@ -173,8 +172,7 @@ export default async function AboutPage() {
         <div className="container-page">
           <Reveal>
             <div className="max-w-2xl">
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 Kalite Belgelerimiz
               </p>
               <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">

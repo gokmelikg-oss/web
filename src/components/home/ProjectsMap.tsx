@@ -23,8 +23,7 @@ export function ProjectsMap() {
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-end">
             <div>
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                 {t('eyebrow')}
               </p>
               <h2 className="mt-3 max-w-xl text-balance font-display text-2xl font-bold tracking-tight sm:text-3xl">

@@ -75,8 +75,7 @@ export function AnatomySection() {
           <div className="grid items-center gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
             {/* Metin + parça listesi */}
             <div>
-              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
-                <span className="h-px w-8 bg-volt-500" aria-hidden />
+              <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                 {t('eyebrow')}
               </p>
               <h2 className="mt-4 max-w-md text-balance font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">

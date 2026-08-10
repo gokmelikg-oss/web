@@ -36,8 +36,7 @@ export function WhyUs() {
 
       <div className="container-page relative">
         <Reveal>
-          <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-400">
-            <span className="h-px w-8 bg-volt-500" aria-hidden />
+          <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
             {t('eyebrow')}
           </p>
           <h2 className="mt-3 max-w-xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
