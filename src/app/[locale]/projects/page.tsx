@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
-import { Leaf, Zap, TreePine, Home, Building2, Grid3x3, MapPinned, Sun } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
+import { Leaf, Zap, TreePine, Home, Building2, Grid3x3, MapPinned, Sun, ArrowUpRight } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
+import { Link } from '@/i18n/navigation';
 import { ReferenceList } from '@/components/ReferenceList';
 import { CountUp } from '@/components/CountUp';
 import {
@@ -35,6 +37,7 @@ const SCALE_ICONS = [Grid3x3, MapPinned, Home, Building2, Sun, Grid3x3];
 export default async function ProjectsPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const ui = getReferencesUi(locale);
+  const tCta = await getTranslations('ctaBand');
   const nf = new Intl.NumberFormat(ui.intlLocale);
   const nf1 = new Intl.NumberFormat(ui.intlLocale, { maximumFractionDigits: 1 });
 
@@ -225,6 +228,25 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
           <div className="mt-10">
             <ReferenceList projects={allProjects} labels={ui.listLabels} intlLocale={ui.intlLocale} />
           </div>
+        </div>
+      </section>
+
+      {/* Kapanış CTA — bir sonraki proje sizinki olsun */}
+      <section className="section-pad bg-white">
+        <div className="container-page">
+          <Reveal>
+            <div className="flex flex-col items-center gap-4 rounded-3xl bg-graphite-gradient p-9 text-center text-white sm:p-14">
+              <h2 className="max-w-2xl text-balance font-display text-2xl font-bold sm:text-3xl">{tCta('title')}</h2>
+              <p className="max-w-xl text-sm leading-relaxed text-graphite-200">{tCta('subtitle')}</p>
+              <Link
+                href="/contact"
+                className="mt-2 inline-flex items-center gap-2 rounded-full bg-solar-gradient px-7 py-3.5 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
+              >
+                {tCta('cta')}
+                <ArrowUpRight size={15} />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>
