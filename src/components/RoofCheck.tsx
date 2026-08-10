@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Home, Compass, CloudSun, CheckCircle2, RotateCcw, ArrowUpRight, ArrowLeft } from 'lucide-react';
+import { Home, Compass, CloudSun, RotateCcw, ArrowUpRight, ArrowLeft } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { RoofCheckUi } from '@/lib/roofCheckUi';
 
@@ -43,6 +43,9 @@ export function RoofCheck({ labels }: { labels: RoofCheckUi }) {
   const QIcon = Q_ICONS[step];
   const vk = done ? verdictKey(total) : 'good';
   const verdict = labels.verdicts[vk];
+  const MAX_SCORE = 5.5; // Q1 1.5 + Q2 2 + Q3 2
+  const score = done ? Math.max(0, Math.min(100, Math.round((total / MAX_SCORE) * 100))) : 0;
+  const RING_C = 188.5; // 2πr, r=30
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -90,13 +93,26 @@ export function RoofCheck({ labels }: { labels: RoofCheckUi }) {
           </>
         ) : (
           <div className="text-center">
-            <span
-              className={`mx-auto flex h-16 w-16 items-center justify-center rounded-3xl ${
-                vk === 'survey' ? 'bg-mist-200 text-mist-600' : 'bg-volt-500 text-graphite-950'
-              }`}
-            >
-              <CheckCircle2 size={30} strokeWidth={1.9} />
-            </span>
+            {/* Güven skoru halkası — "göster, anlatma" */}
+            <div className="mx-auto flex flex-col items-center">
+              <div className="relative h-24 w-24">
+                <svg viewBox="0 0 72 72" className="h-24 w-24 -rotate-90">
+                  <circle cx="36" cy="36" r="30" fill="none" stroke="#eceef2" strokeWidth="6" />
+                  <circle
+                    cx="36" cy="36" r="30" fill="none"
+                    stroke={vk === 'survey' ? '#c7ccd6' : '#f6bc32'}
+                    strokeWidth="6" strokeLinecap="round"
+                    strokeDasharray={RING_C}
+                    strokeDashoffset={RING_C * (1 - score / 100)}
+                  />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="font-tabular font-display text-2xl font-bold leading-none text-graphite-950">{score}</span>
+                  <span className="mt-0.5 font-mono text-[9px] text-mist-400">/100</span>
+                </div>
+              </div>
+              <span className="mt-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-mist-500">{labels.scoreLabel}</span>
+            </div>
             <h3 className="mt-5 font-display text-2xl font-bold text-graphite-950">{verdict.title}</h3>
             <p className="mx-auto mt-3 max-w-md text-mist-700">{verdict.desc}</p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">

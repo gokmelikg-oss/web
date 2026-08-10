@@ -16,6 +16,7 @@ export interface RoofCheckUi {
   restart: string;
   ctaSurvey: string;
   stepOf: string; // "{a}/{b}"
+  scoreLabel: string; // "Uygunluk skoru"
 }
 
 const DATA: Record<Locale, RoofCheckUi> = {
@@ -37,6 +38,7 @@ const DATA: Record<Locale, RoofCheckUi> = {
     restart: 'Baştan başla',
     ctaSurvey: 'Ücretsiz keşif talebi',
     stepOf: '{a}/{b}',
+    scoreLabel: 'Uygunluk skoru',
   },
   en: {
     eyebrow: 'Is Your Roof Suitable?',
@@ -56,6 +58,7 @@ const DATA: Record<Locale, RoofCheckUi> = {
     restart: 'Start over',
     ctaSurvey: 'Request a free survey',
     stepOf: '{a}/{b}',
+    scoreLabel: 'Suitability score',
   },
   ar: {
     eyebrow: 'هل سطحكم مناسب؟',
@@ -75,6 +78,7 @@ const DATA: Record<Locale, RoofCheckUi> = {
     restart: 'ابدأوا من جديد',
     ctaSurvey: 'اطلبوا مسحاً مجانياً',
     stepOf: '{a}/{b}',
+    scoreLabel: 'درجة الملاءمة',
   },
   el: {
     eyebrow: 'Είναι Κατάλληλη η Στέγη σας;',
@@ -94,6 +98,7 @@ const DATA: Record<Locale, RoofCheckUi> = {
     restart: 'Ξεκινήστε ξανά',
     ctaSurvey: 'Αίτημα δωρεάν μελέτης',
     stepOf: '{a}/{b}',
+    scoreLabel: 'Βαθμός καταλληλότητας',
   },
 };
 
