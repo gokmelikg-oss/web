@@ -5,6 +5,7 @@ import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { ReferenceList } from '@/components/ReferenceList';
+import { TrustStrip } from '@/components/home/TrustStrip';
 import { CountUp } from '@/components/CountUp';
 import {
   referenceTotals,
@@ -83,6 +84,9 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
           nf.format(referenceTotals.homes)
         )}
       />
+
+      {/* Bize güvenen kurumlar — kayan referans şeridi (Tasfen/Lipus deseni) */}
+      <TrustStrip />
 
       {/* Ölçek — ince ayraçlı premium editoryal ızgara + dev index */}
       <section className="border-b border-mist-900/8 bg-white py-14">
