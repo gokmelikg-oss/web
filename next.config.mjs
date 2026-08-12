@@ -61,9 +61,9 @@ const nextConfig = {
         permanent: false,
       },
       {
-        // Bayilik iletişim sayfasına taşındı — eski /dealers rotası yönlendirilir.
+        // Bayilik artık kendi sayfasında — eski /dealers rotası oraya yönlendirilir.
         source: '/:locale(tr|en|ar|el)/dealers',
-        destination: '/:locale/contact#bayilik',
+        destination: '/:locale/bayi',
         permanent: true,
       },
       {

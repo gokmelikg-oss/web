@@ -100,6 +100,12 @@ export default async function ProductDetailPage({
         name={t(`items.${slug}.name`)}
         description={t(`items.${slug}.description`)}
         category={t(`categoryLabels.${product.category}`)}
+        model={product.model}
+        /* SKU olarak ürün slug'ı kullanılır — kararlı ve benzersizdir.
+           Gerçek stok kodları products.ts'e eklenirse buraya bağlanmalı.
+           GTIN bilinmediği için HİÇ gönderilmiyor. */
+        sku={slug}
+        specs={product.specs.map((s) => ({ label: t(`specsLabels.${s.key}`), value: s.value }))}
       />
       <BreadcrumbJsonLd
         items={[

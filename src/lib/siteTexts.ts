@@ -1,3 +1,5 @@
+import { FOUNDED_YEAR, experienceLabel } from './companyFacts';
+
 /* Site genelinde admin panelinden düzenlenebilir metinler.
    Her alanın bir anahtarı (key), grubu, etiketi ve VARSAYILAN metni vardır.
    Sayfalar `txt(texts, key)` ile önce override'a, yoksa varsayılana bakar. */
@@ -12,7 +14,7 @@ export interface TextField {
 
 export const TEXT_FIELDS: TextField[] = [
   // Ana sayfa hero
-  { key: 'hero.eyebrow', group: 'Ana Sayfa — Hero', label: 'Üst etiket', default: "1992'den beri — Mersin'den dünyaya" },
+  { key: 'hero.eyebrow', group: 'Ana Sayfa — Hero', label: 'Üst etiket', default: `${FOUNDED_YEAR}'den beri — Mersin'den dünyaya` },
   { key: 'hero.titleLine1', group: 'Ana Sayfa — Hero', label: 'Başlık — 1. satır', default: 'Enerjiyi doğadan alır,' },
   { key: 'hero.titleLine2', group: 'Ana Sayfa — Hero', label: 'Başlık — 2. satır (vurgulu)', default: 'geleceğe taşırız.' },
   {
@@ -21,7 +23,8 @@ export const TEXT_FIELDS: TextField[] = [
     label: 'Alt metin',
     multiline: true,
     default:
-      "Şimşek Solar; 35 yılı aşkın üretim birikimiyle güneş enerjisi sistemlerini Mersin'deki entegre tesislerinde tasarlar, üretir ve dünyanın dört bir yanına ulaştırır. Ar-Ge'den üretime, proje mühendisliğinden satış sonrası hizmetlere uzanan tüm değer zinciri tek çatı altında yönetilir.",
+      // Deneyim yılı kuruluş yılından hesaplanır; elle yazılırsa zamanla yanlışa döner.
+      `Şimşek Solar; ${experienceLabel()} yıllık üretim birikimiyle güneş enerjisi sistemlerini Mersin'deki entegre tesislerinde tasarlar, üretir ve dünyanın dört bir yanına ulaştırır. Ar-Ge'den üretime, proje mühendisliğinden satış sonrası hizmetlere uzanan tüm değer zinciri tek çatı altında yönetilir.`,
   },
 
   // Misyon & Vizyon

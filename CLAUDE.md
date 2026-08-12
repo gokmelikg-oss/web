@@ -36,6 +36,34 @@ Premium kurumsal pazarlama sitesi. **Şimşek Solar** (Mersin merkezli güneş t
 - Yeni metin eklerken **dört locale'e birden ekle** (TS `Record<Locale>` hepsini ister).
   Kullanıcı "Türkçe-öncelikli" derse: en/ar/el'e geçici Türkçe koy, sonra toplu çevir.
 
+## ⚠ Şirket künyesi TEK KAYNAKTAN gelir
+
+`src/lib/companyFacts.ts` → `FOUNDED_YEAR` ve `experienceLabel()`.
+Kuruluş yılı önceden üç yerde ayrı yazılıydı ve tutmuyordu (seo.ts 1992, hero
+metni "35 yılı aşkın" = 1991, dışarıdan gelen SEO raporu 1994). Artık
+`seo.ts → ORG.foundingDate` ve hero metinleri buradan türer.
+
+> **AÇIK SORU:** Kuruluş yılı 1992 mi 1994 mü? `FOUNDED_YEAR` şu an 1992.
+> Doğrusu neyse tek satır değiştirilir; site, llms.txt ve JSON-LD hizalanır.
+
+`COMPANY_FACTS` içindeki `exportCountries`, `annualCapacity`, `facilityAreaM2`,
+`employees`, `completedProjects` **bilinçli olarak undefined**. Doldurulmayan
+alan arayüzde hiç basılmaz — "0 ülke" gibi kutu oluşmaz. Kanıtlanamayan rakam
+yazılmaz.
+
+## Veri girilince açılan sayfalar
+
+`/sertifikalar` (`data/certificates.ts`) ve `/uretim` (`data/production.ts`)
+veri dosyaları **boşken**:
+- sayfa `ContentPending` boş durumunu gösterir,
+- `generateMetadata` **noindex** döner,
+- `sitemap.ts` bu yolları **hiç eklemez**.
+
+Veri girilir girilmez üçü de kendiliğinden düzelir. Gerekçe: boş sayfanın
+indekslenmesi "ince içerik" sinyalidir.
+
+`data/caseStudies.ts` de aynı mantıkla hazır bekliyor (henüz sayfası yok).
+
 ## Sayfa/rota haritası (`src/app/[locale]/`)
 - `page.tsx` ana sayfa (Hero, ürünler index, SystemWizard, anatomy, üretim, HomeContact).
 - `products/` (ProductsShowcase + ProductCompare + HowItWorks + TrustStrip + CapacityGuide).
@@ -46,6 +74,12 @@ Premium kurumsal pazarlama sitesi. **Şimşek Solar** (Mersin merkezli güneş t
 - `projects/` = Referanslar (ReferenceList: arama + il + ikon kategori filtresi + CTA).
 - `blog/` + `[slug]`, `sss/`, `contact/`, `about/`, `history/`, `founder/`,
   `grup-sirketleri/`, `kalite-politikasi/`, yasal: `kvkk/ gizlilik/ cerez-politikasi/`.
+- **`teklif-al/`** = Teklif Al (RFQ). B2B'de asıl dönüşüm sayfasıdır; header CTA
+  buraya gider (eskiden `/contact`'a gidiyordu). Form ülke + adet + proje tipi
+  taşır ve **dosya eki** kabul eder → `api/teklif` (multipart, Resend attachment).
+- **`ihracat/`** · **`oem/`** · **`bayi/`** = yetenek sayfaları, ortak
+  `CapabilityPage` bileşeniyle kurulur. `/dealers` artık `/bayi`'ye 308.
+- **`sertifikalar/`** · **`uretim/`** = veri dosyası dolunca açılır (yukarı bkz.).
 - 404 `not-found.tsx`, `error.tsx`, `opengraph-image.tsx`, `sitemap.ts`, `robots.ts`, `manifest.ts`.
 
 ## Admin (`src/app/admin/`)

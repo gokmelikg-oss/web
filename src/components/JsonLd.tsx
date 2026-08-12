@@ -115,12 +115,25 @@ export function ProductJsonLd({
   name,
   description,
   category,
+  sku,
+  gtin,
+  model,
+  specs,
 }: {
   locale: Locale;
   slug: string;
   name: string;
   description: string;
   category?: string;
+  /* Stok kodu — ürün verisinde tanımlıysa gönderilir. */
+  sku?: string;
+  /* Küresel ticari ürün numarası. YOKSA HİÇ GÖNDERİLMEZ —
+     uydurma bir GTIN yapısal veriyi geçersiz kılar. */
+  gtin?: string;
+  model?: string;
+  /* Teknik özellikler → additionalProperty. Ürün sayfasını hem Google hem
+     AI sistemleri için makine-okunur teknik künyeye dönüştürür. */
+  specs?: { label: string; value: string }[];
 }) {
   const data = {
     '@context': 'https://schema.org',
@@ -128,10 +141,22 @@ export function ProductJsonLd({
     name,
     description,
     ...(category ? { category } : {}),
+    ...(sku ? { sku } : {}),
+    ...(gtin ? { gtin } : {}),
+    ...(model ? { model } : {}),
     brand: { '@type': 'Brand', name: SITE_NAME },
     manufacturer: { '@id': `${SITE_URL}/#organization` },
     url: `${SITE_URL}/${locale}/products/${slug}`,
     image: `${SITE_URL}/products/${slug}.jpg`,
+    ...(specs?.length
+      ? {
+          additionalProperty: specs.map((s) => ({
+            '@type': 'PropertyValue',
+            name: s.label,
+            value: s.value,
+          })),
+        }
+      : {}),
   };
   return <JsonLd data={data} />;
 }

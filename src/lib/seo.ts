@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { FOUNDED_YEAR } from './companyFacts';
 import { locales, defaultLocale, type Locale } from '@/i18n/config';
 
 /* Yayın alan adı — tek kaynak. Gerçek alan adı farklıysa yalnızca burayı değiştirin. */
@@ -22,7 +23,7 @@ export const CONTACT_EMAIL = 'info@simseksolar.com.tr';
 
 export const ORG = {
   legalName: 'Şimşek Güneş Kollektörleri San. Tic. Ltd. Şti.',
-  foundingDate: '1992',
+  foundingDate: String(FOUNDED_YEAR),
   phone: '+90 324 324 12 35',
   email: 'info@simseksolar.com.tr',
   street: '2. Organize Sanayi Bölgesi Rasim Dokur Bulvarı No:32',

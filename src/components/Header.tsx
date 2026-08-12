@@ -18,11 +18,14 @@ const navItems = [
 ] as const;
 
 /* Kurumsal başlığı + alt menüsü — dört dilde. */
-const CORP: Record<Locale, { title: string; hakkimizda: string; tarihce: string; grup: string }> = {
-  tr: { title: 'Kurumsal', hakkimizda: 'Hakkımızda', tarihce: 'Tarihçe', grup: 'Grup Şirketleri' },
-  en: { title: 'Company', hakkimizda: 'About Us', tarihce: 'History', grup: 'Group Companies' },
-  ar: { title: 'الشركة', hakkimizda: 'من نحن', tarihce: 'التاريخ', grup: 'شركات المجموعة' },
-  el: { title: 'Εταιρεία', hakkimizda: 'Σχετικά', tarihce: 'Ιστορία', grup: 'Εταιρείες Ομίλου' },
+const CORP: Record<
+  Locale,
+  { title: string; hakkimizda: string; tarihce: string; grup: string; uretim: string; ihracat: string; oem: string; bayi: string }
+> = {
+  tr: { title: 'Kurumsal', hakkimizda: 'Hakkımızda', tarihce: 'Tarihçe', grup: 'Grup Şirketleri', uretim: 'Üretim', ihracat: 'İhracat', oem: 'OEM & Private Label', bayi: 'Bayilik' },
+  en: { title: 'Company', hakkimizda: 'About Us', tarihce: 'History', grup: 'Group Companies', uretim: 'Production', ihracat: 'Export', oem: 'OEM & Private Label', bayi: 'Become a Dealer' },
+  ar: { title: 'الشركة', hakkimizda: 'من نحن', tarihce: 'التاريخ', grup: 'شركات المجموعة', uretim: 'الإنتاج', ihracat: 'التصدير', oem: 'OEM والعلامة الخاصة', bayi: 'كن وكيلاً' },
+  el: { title: 'Εταιρεία', hakkimizda: 'Σχετικά', tarihce: 'Ιστορία', grup: 'Εταιρείες Ομίλου', uretim: 'Παραγωγή', ihracat: 'Εξαγωγές', oem: 'OEM & Private Label', bayi: 'Αντιπροσωπεία' },
 };
 
 export function Header() {
@@ -31,8 +34,12 @@ export function Header() {
   const corp = CORP[locale] ?? CORP.tr;
   const corporateItems = [
     { href: '/about', label: corp.hakkimizda },
+    { href: '/uretim', label: corp.uretim },
     { href: '/history', label: corp.tarihce },
     { href: '/grup-sirketleri', label: corp.grup },
+    { href: '/ihracat', label: corp.ihracat },
+    { href: '/oem', label: corp.oem },
+    { href: '/bayi', label: corp.bayi },
   ];
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -119,8 +126,9 @@ export function Header() {
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
           <LanguageSwitcher dark={dark} />
+          {/* B2B üreticide asıl dönüşüm "İletişim" değil "Teklif Al"dır. */}
           <Link
-            href="/contact"
+            href="/teklif-al"
             className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold transition-transform hover:scale-[1.03] xl:px-5 ${
               dark
                 ? 'bg-solar-gradient text-graphite-900 shadow-glow'
@@ -173,7 +181,7 @@ export function Header() {
             <div className="mt-2 flex items-center justify-between px-3">
               <LanguageSwitcher />
               <Link
-                href="/contact"
+                href="/teklif-al"
                 onClick={() => setMobileOpen(false)}
                 className="rounded-full bg-graphite-700 px-5 py-2.5 text-sm font-semibold text-white"
               >

@@ -4,6 +4,8 @@ import { localizedUrls } from '@/lib/seo';
 import { products } from '@/data/products';
 import { articles } from '@/data/news';
 import { PROVINCES } from '@/data/provinces';
+import { certificates } from '@/data/certificates';
+import { productionSteps } from '@/data/production';
 
 /* Tüm sayfaların her dildeki sürümü + hreflang alternatifleri. */
 const STATIC_PATHS = [
@@ -22,6 +24,11 @@ const STATIC_PATHS = [
   { path: '/history', priority: 0.5, changeFrequency: 'yearly' as const },
   { path: '/kalite-politikasi', priority: 0.4, changeFrequency: 'yearly' as const },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' as const },
+  // Ticari dönüşüm ve yetenek sayfaları
+  { path: '/teklif-al', priority: 0.9, changeFrequency: 'yearly' as const },
+  { path: '/ihracat', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/oem', priority: 0.7, changeFrequency: 'monthly' as const },
+  { path: '/bayi', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/kvkk', priority: 0.2, changeFrequency: 'yearly' as const },
   { path: '/gizlilik', priority: 0.2, changeFrequency: 'yearly' as const },
   { path: '/cerez-politikasi', priority: 0.2, changeFrequency: 'yearly' as const },
@@ -45,6 +52,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   };
 
   for (const p of STATIC_PATHS) push(p.path, p.priority, p.changeFrequency);
+  /* Sertifikalar ve Üretim yalnızca VERİSİ GİRİLDİĞİNDE sitemap'e girer.
+     Boş sayfayı sitemap'e koymak "ince içerik" sinyali üretir; sayfaların
+     kendisi de o durumda noindex'tir (bkz. generateMetadata). */
+  if (certificates.length) push('/sertifikalar', 0.8, 'monthly');
+  if (productionSteps.length) push('/uretim', 0.8, 'monthly');
   for (const product of products) push(`/products/${product.slug}`, 0.7, 'monthly');
   for (const article of articles) push(`/blog/${article.slug}`, 0.6, 'monthly');
   for (const province of PROVINCES) push(`/gunes-potansiyeli/${province.slug}`, 0.5, 'monthly');
