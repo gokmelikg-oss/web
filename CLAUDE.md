@@ -43,8 +43,9 @@ Kuruluş yılı önceden üç yerde ayrı yazılıydı ve tutmuyordu (seo.ts 199
 metni "35 yılı aşkın" = 1991, dışarıdan gelen SEO raporu 1994). Artık
 `seo.ts → ORG.foundingDate` ve hero metinleri buradan türer.
 
-> **AÇIK SORU:** Kuruluş yılı 1992 mi 1994 mü? `FOUNDED_YEAR` şu an 1992.
-> Doğrusu neyse tek satır değiştirilir; site, llms.txt ve JSON-LD hizalanır.
+> **KARARA BAĞLANDI (12.08.2026):** Kuruluş yılı **1992**. Dışarıdan gelen SEO
+> raporundaki "1994" yanlıştır. Deneyim ifadesi artık elle yazılmaz, yıldan
+> hesaplanır — "35 yılı aşkın" gibi zamanla yanlışa dönen metin kalmadı.
 
 `COMPANY_FACTS` içindeki `exportCountries`, `annualCapacity`, `facilityAreaM2`,
 `employees`, `completedProjects` **bilinçli olarak undefined**. Doldurulmayan

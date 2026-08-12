@@ -7,9 +7,9 @@
    ⚠ DOLDURULACAK ALANLAR aşağıda "// SORU:" ile işaretlidir. Doğrulanamayan
    hiçbir rakam yazılmamalıdır (bkz. CLAUDE.md → "içerik/rakam UYDURMA"). */
 
-/* SORU: Kuruluş yılı 1992 mi 1994 mü?
-   Sitede 1992 yazıyor, dışarıdan gelen SEO raporu 1994 diyordu.
-   Doğru değeri buraya yazın; site, llms.txt ve JSON-LD otomatik hizalanır. */
+/* Kuruluş yılı — kullanıcı tarafından 1992 olarak teyit edildi (12.08.2026).
+   Dışarıdan gelen SEO raporundaki "1994" bilgisi YANLIŞTIR, kullanılmaz.
+   Bu değeri değiştirirseniz site metinleri, llms.txt ve JSON-LD birlikte hizalanır. */
 export const FOUNDED_YEAR = 1992;
 
 /* Deneyim yılı metinden değil kuruluş yılından hesaplanır; böylece

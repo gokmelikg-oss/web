@@ -21,7 +21,7 @@ export function TrustStrip() {
     <section className="border-y border-mist-900/8 bg-white py-8" aria-label="Kurumsal referans alanları">
       <div className="container-page">
         <p className="text-center font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-mist-500">
-          35 yıldır tercih edilen kurumlar ve proje türleri
+          30 yılı aşkın süredir tercih edilen kurumlar ve proje türleri
         </p>
       </div>
 
