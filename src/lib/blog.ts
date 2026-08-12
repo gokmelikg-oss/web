@@ -1,5 +1,5 @@
 import { articles, getArticles } from '@/data/news';
-import { getContent, type AdminPost } from '@/lib/content';
+import { getContent, isPublished, type AdminPost } from '@/lib/content';
 
 export interface PostSection {
   heading: string;
@@ -96,7 +96,8 @@ export async function getBlogList(locale = 'tr'): Promise<PostSummary[]> {
   const source: PostSummary[] =
     posts.length > 0
       ? posts
-          .filter((p) => p.slug && p.title)
+          // Taslaklar sitede görünmez (published === false).
+          .filter((p) => p.slug && p.title && isPublished(p))
           .map((p) => ({
             slug: p.slug,
             title: p.title,
@@ -121,7 +122,8 @@ export async function getBlogList(locale = 'tr'): Promise<PostSummary[]> {
 export async function getBlogPost(slug: string, locale = 'tr'): Promise<PostFull | undefined> {
   const { posts } = await getContent();
   if (posts.length > 0) {
-    const m = posts.find((p) => p.slug === slug);
+    // Taslak yazının kendi sayfası da açılmaz.
+    const m = posts.find((p) => p.slug === slug && isPublished(p));
     return m ? adminToFull(m) : undefined;
   }
   const a = getArticles(locale).find((x) => x.slug === slug);

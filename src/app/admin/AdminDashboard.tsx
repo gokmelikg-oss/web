@@ -5,11 +5,13 @@ import {
   LayoutDashboard, Package, Newspaper, FileText, MapPin, Image as ImageIcon, Type,
   Plus, Trash2, Save, LogOut, Check, Loader2, Search, Eye, EyeOff,
   RotateCcw, History, ChevronRight, Users, Monitor, ScrollText, Cpu,
+  Menu, X, Upload, KeyRound, AlertTriangle, Globe,
 } from 'lucide-react';
+import { locales, type Locale } from '@/i18n/config';
 import type { SiteContent, DocLink, RefEntry, AdminProduct, AdminPost, ProductSpecItem } from '@/lib/content';
 import { TEXT_FIELDS, TEXT_GROUPS } from '@/lib/siteTexts';
 import { ROLE_LABELS, type AdminRole, type AdminSection } from '@/lib/adminAcl';
-import { UsersPanel, SessionsPanel, LogPanel, SystemPanel } from './AdminSystemPanels';
+import { UsersPanel, SessionsPanel, LogPanel, SystemPanel, VersionsPanel } from './AdminSystemPanels';
 
 type Tab = AdminSection;
 type StaticRef = { title: string; il: string; ilce?: string; collectors: number };
@@ -57,6 +59,139 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
   return (<label className="block"><span className={lbl}>{label}</span>{children}</label>);
 }
 
+const LOCALE_LABELS: Record<string, string> = { tr: 'Türkçe', en: 'English', ar: 'العربية', el: 'Ελληνικά' };
+
+/* Blog gövdesini önizleme için bölümlere ayırır.
+   Kural sitedeki `parseBody` ile aynıdır: "## " başlık, boş satır yeni paragraf. */
+function previewSections(body: string): { heading: string; paragraphs: string[] }[] {
+  const out: { heading: string; paragraphs: string[] }[] = [];
+  let cur = { heading: '', paragraphs: [] as string[] };
+  let buf: string[] = [];
+  const flushPara = () => { const t = buf.join(' ').trim(); if (t) cur.paragraphs.push(t); buf = []; };
+  const flushSection = () => { flushPara(); if (cur.heading || cur.paragraphs.length) out.push(cur); cur = { heading: '', paragraphs: [] }; };
+  for (const line of (body ?? '').split(/\r?\n/)) {
+    if (line.startsWith('## ')) { flushSection(); cur.heading = line.slice(3).trim(); }
+    else if (line.trim() === '') flushPara();
+    else buf.push(line.trim());
+  }
+  flushSection();
+  return out;
+}
+
+/* Görsel alanı: yol elle yazılabilir ya da dosya yüklenebilir.
+   Yükleme başarılıysa dönen yol alana yazılır ve küçük önizleme gösterilir. */
+function ImageField({
+  label, value, onChange, placeholder,
+}: { label: string; value: string; onChange: (v: string) => void; placeholder?: string }) {
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+
+  async function upload(file: File) {
+    setBusy(true); setErr('');
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      const res = await fetch('/api/admin/upload', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (data.ok) onChange(data.path);
+      else setErr(data.error ?? 'Yüklenemedi.');
+    } catch {
+      setErr('Yükleme sırasında bağlantı hatası.');
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="block">
+      <span className={lbl}>{label}</span>
+      <div className="flex gap-2">
+        <input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} className={inp} />
+        <label className="inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg border border-mist-900/15 px-3 text-xs font-semibold text-graphite-700 hover:border-graphite-950">
+          {busy ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
+          <span className="hidden sm:inline">Yükle</span>
+          <input type="file" accept="image/*" className="hidden" disabled={busy}
+            onChange={(e) => { const f = e.target.files?.[0]; if (f) void upload(f); e.target.value = ''; }} />
+        </label>
+      </div>
+      {err && <p className="mt-1.5 text-[11px] leading-relaxed text-red-600">{err}</p>}
+      {value && !err && (
+        // Panel içi küçük önizleme; next/image gerekmez (yerel yol, sabit boyut).
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={value} alt="" className="mt-2 h-16 w-16 rounded-lg border border-mist-900/10 object-cover" />
+      )}
+    </div>
+  );
+}
+
+/* Kullanıcının kendi şifresini değiştirmesi. Mevcut şifre sunucuda doğrulanır;
+   başarılı olursa diğer cihazlardaki oturumlar düşer, bu cihaz açık kalır. */
+function PasswordDialog({ onClose }: { onClose: () => void }) {
+  const [cur, setCur] = useState('');
+  const [next, setNext] = useState('');
+  const [again, setAgain] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+
+  async function submit() {
+    if (next !== again) { setMsg({ ok: false, text: 'Yeni şifreler birbiriyle uyuşmuyor.' }); return; }
+    setBusy(true); setMsg(null);
+    try {
+      const res = await fetch('/api/admin/account', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ currentPassword: cur, newPassword: next }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setMsg({ ok: true, text: 'Şifreniz değiştirildi. Diğer cihazlardaki oturumlarınız kapatıldı.' });
+        setCur(''); setNext(''); setAgain('');
+      } else {
+        setMsg({ ok: false, text: data.error ?? 'Değiştirilemedi.' });
+      }
+    } catch {
+      setMsg({ ok: false, text: 'Bağlantı hatası.' });
+    } finally { setBusy(false); }
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-graphite-950/50 p-4">
+      <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-lg">
+        <div className="mb-4 flex items-center justify-between">
+          <p className="font-display text-base font-bold text-graphite-950">Şifremi değiştir</p>
+          <button onClick={onClose} className="rounded-lg p-1.5 text-mist-400 hover:bg-mist-100"><X size={16} /></button>
+        </div>
+        <div className="space-y-3">
+          <Field label="Mevcut şifre"><input type="password" value={cur} onChange={(e) => setCur(e.target.value)} className={inp} autoComplete="current-password" /></Field>
+          <Field label="Yeni şifre (en az 6 karakter)"><input type="password" value={next} onChange={(e) => setNext(e.target.value)} className={inp} autoComplete="new-password" /></Field>
+          <Field label="Yeni şifre (tekrar)"><input type="password" value={again} onChange={(e) => setAgain(e.target.value)} className={inp} autoComplete="new-password" /></Field>
+        </div>
+        {msg && <p className={`mt-3 rounded-xl px-3.5 py-2.5 text-sm ${msg.ok ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-700'}`}>{msg.text}</p>}
+        <button onClick={submit} disabled={busy || !cur || !next} className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-graphite-950 px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-50">
+          {busy ? <Loader2 size={15} className="animate-spin" /> : <KeyRound size={15} />} Değiştir
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* Yayın durumu anahtarı — taslak içerik sitede görünmez. */
+function PublishToggle({ published, onChange }: { published: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <div className="flex items-center gap-2">
+      <button
+        onClick={() => onChange(!published)}
+        className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${
+          published ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-800'
+        }`}
+        title={published ? 'Sitede yayında — tıklayın taslağa alın' : 'Taslak — sitede görünmez'}
+      >
+        {published ? <Eye size={13} /> : <EyeOff size={13} />}
+        {published ? 'Yayında' : 'Taslak'}
+      </button>
+    </div>
+  );
+}
+
 export function AdminDashboard({
   initial, families, staticRefs, prev, session,
 }: {
@@ -82,16 +217,32 @@ export function AdminDashboard({
   const [hiddenRefs, setHiddenRefs] = useState<string[]>(initial.hiddenRefs ?? []);
   const [texts, setTexts] = useState<Record<string, string>>(initial.texts ?? {});
   const [images, setImages] = useState<Record<string, string>>(initial.groupImages);
+  const [textsByLocale, setTextsByLocale] = useState<Record<string, Record<string, string>>>(initial.textsByLocale ?? {});
+  const [textLocale, setTextLocale] = useState<Locale>('tr');
   const [refSearch, setRefSearch] = useState('');
   const [listSearch, setListSearch] = useState('');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [dirty, setDirty] = useState(false);
+  const [saveError, setSaveError] = useState('');
+  const [mobileNav, setMobileNav] = useState(false);
+  const [pwOpen, setPwOpen] = useState(false);
+  /* Düzenlemeye başladığımız sürümün damgası — çakışma tespiti için sunucuya geri gider. */
+  const [baseUpdatedAt, setBaseUpdatedAt] = useState(initial.updatedAt ?? '');
+
+  /* Seçili dilin metin haritası. tr eski `texts` alanını kullanır. */
+  const activeTexts = textLocale === 'tr' ? texts : (textsByLocale[textLocale] ?? {});
+  const setActiveText = (key: string, value: string) => {
+    touch();
+    if (textLocale === 'tr') setTexts({ ...texts, [key]: value });
+    else setTextsByLocale({ ...textsByLocale, [textLocale]: { ...(textsByLocale[textLocale] ?? {}), [key]: value } });
+  };
 
   const touch = () => setDirty(true);
 
   function go(next: Tab) {
     setSection(next);
+    setMobileNav(false);
     setListSearch('');
     setSel(next === 'products' && products.length ? 0 : next === 'posts' && posts.length ? 0 : null);
   }
@@ -104,14 +255,35 @@ export function AdminDashboard({
   function revertUnsaved() { if (dirty && !window.confirm('Kaydedilmemiş değişiklikler geri alınsın mı?')) return; loadFrom(initial, false); }
   function restorePrev() { if (!prev) return; if (!window.confirm('Bir önceki kaydedilmiş sürüme dönülsün mü?')) return; loadFrom(prev, true); }
 
-  async function save() {
-    setSaving(true); setSaved(false);
+  async function save(force = false) {
+    setSaving(true); setSaved(false); setSaveError('');
     try {
       const res = await fetch('/api/admin/content', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ documents: docs, references: refs, products, posts, hiddenRefs, texts, groupImages: images, updatedAt: '' }),
+        body: JSON.stringify({
+          documents: docs, references: refs, products, posts, hiddenRefs,
+          texts, textsByLocale, groupImages: images, updatedAt: '',
+          // force=true iken damga gönderilmez → sunucu çakışma kontrolü yapmaz.
+          ...(force ? {} : { baseUpdatedAt }),
+        }),
       });
-      if (res.ok) { setSaved(true); setDirty(false); setTimeout(() => setSaved(false), 2500); }
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 409) {
+        setSaveError(
+          'Siz düzenlerken başka biri kaydetti. Değişikliklerinizi kaybetmemek için ' +
+          'ya sayfayı yenileyip yeniden uygulayın ya da "Yine de kaydet" ile üzerine yazın.'
+        );
+        return;
+      }
+      if (res.ok && data.ok) {
+        setSaved(true); setDirty(false);
+        setBaseUpdatedAt(data.content?.updatedAt ?? '');
+        setTimeout(() => setSaved(false), 2500);
+      } else {
+        setSaveError(data.error === 'forbidden' ? 'Kaydetme yetkiniz yok.' : 'Kaydedilemedi.');
+      }
+    } catch {
+      setSaveError('Bağlantı hatası — kaydedilemedi.');
     } finally { setSaving(false); }
   }
   async function logout() { await fetch('/api/admin/logout', { method: 'POST' }); window.location.href = '/admin/login'; }
@@ -162,10 +334,48 @@ export function AdminDashboard({
 
   useEffect(() => { if (sel !== null && sel >= listItems.length) setSel(listItems.length ? 0 : null); }, [listItems.length, sel]);
 
+  /* Kaydedilmemiş değişiklik varken sekmeyi kapatmayı/yenilemeyi tarayıcı sorsun.
+     Tarayıcılar kendi standart metnini gösterir; preventDefault yeterlidir. */
+  useEffect(() => {
+    if (!dirty) return;
+    const warn = (e: BeforeUnloadEvent) => { e.preventDefault(); e.returnValue = ''; };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [dirty]);
+
+  /* Ctrl/Cmd + S ile kaydet. */
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        if (dirty && !saving && session.canWrite) void save();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+    // save/dirty dışındaki bağımlılıklar sabittir.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dirty, saving, session.canWrite]);
+
   return (
     <div className="flex h-screen overflow-hidden bg-mist-50 text-graphite-900">
-      {/* Sidebar */}
-      <aside className="flex w-60 shrink-0 flex-col bg-graphite-950 text-graphite-200">
+      {/* Mobilde menü açıkken arka planı karart */}
+      {mobileNav && (
+        <button
+          aria-label="Menüyü kapat"
+          onClick={() => setMobileNav(false)}
+          className="fixed inset-0 z-30 bg-graphite-950/50 md:hidden"
+        />
+      )}
+
+      {pwOpen && <PasswordDialog onClose={() => setPwOpen(false)} />}
+
+      {/* Sidebar — mobilde kayan panel, md üstünde sabit kolon */}
+      <aside
+        className={`fixed inset-y-0 start-0 z-40 flex w-60 shrink-0 flex-col bg-graphite-950 text-graphite-200 transition-transform md:static md:translate-x-0 ${
+          mobileNav ? 'translate-x-0' : '-translate-x-full rtl:translate-x-full'
+        }`}
+      >
         <div className="flex items-center gap-2.5 border-b border-white/10 px-5 py-[18px]">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-volt-500 font-display text-lg font-bold text-graphite-950">Ş</span>
           <div className="leading-tight">
@@ -203,6 +413,7 @@ export function AdminDashboard({
               <p className="truncate font-mono text-[10px] text-volt-400">{ROLE_LABELS[session.role]}</p>
             </div>
           </div>
+          <button onClick={() => { setPwOpen(true); setMobileNav(false); }} className="flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-graphite-300 transition-colors hover:bg-white/5 hover:text-white"><KeyRound size={17} className="shrink-0" /> Şifremi değiştir</button>
           <a href="/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-graphite-300 transition-colors hover:bg-white/5 hover:text-white"><Eye size={17} className="shrink-0" /> Siteyi görüntüle</a>
           <button onClick={logout} className="flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-graphite-300 transition-colors hover:bg-white/5 hover:text-red-400"><LogOut size={17} className="shrink-0" /> Çıkış yap</button>
         </div>
@@ -211,10 +422,19 @@ export function AdminDashboard({
       {/* Sağ kolon */}
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Üst çubuk */}
-        <header className="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-mist-900/10 bg-white px-5 lg:px-7">
-          <div className="min-w-0">
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-mist-400">Yönetim Paneli</p>
-            <h1 className="truncate font-display text-lg font-bold text-graphite-950">{meta.label}</h1>
+        <header className="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-mist-900/10 bg-white px-4 lg:px-7">
+          <div className="flex min-w-0 items-center gap-2">
+            <button
+              onClick={() => setMobileNav(true)}
+              className="-ms-1 shrink-0 rounded-lg p-2 text-graphite-700 hover:bg-mist-100 md:hidden"
+              aria-label="Menüyü aç"
+            >
+              <Menu size={20} />
+            </button>
+            <div className="min-w-0">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-mist-400">Yönetim Paneli</p>
+              <h1 className="truncate font-display text-base font-bold text-graphite-950 lg:text-lg">{meta.label}</h1>
+            </div>
           </div>
           <div className="flex items-center gap-2">
             {/* Kaydetme yalnızca içerik bölümlerinde ve yazma yetkisi olan rollerde görünür. */}
@@ -229,7 +449,7 @@ export function AdminDashboard({
                     <RotateCcw size={15} /> <span className="hidden sm:inline">Geri Al</span>
                   </button>
                 )}
-                <button onClick={save} disabled={saving}
+                <button onClick={() => save()} disabled={saving}
                   className={`inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-transform hover:scale-[1.02] disabled:opacity-60 ${dirty ? 'bg-volt-500 text-graphite-950 shadow-glow' : 'bg-graphite-950 text-white'}`}>
                   {saving ? <Loader2 size={15} className="animate-spin" /> : saved ? <Check size={15} /> : <Save size={15} />}
                   {saved ? 'Kaydedildi' : 'Kaydet'}
@@ -247,6 +467,25 @@ export function AdminDashboard({
             </span>
           </div>
         </header>
+
+        {/* Kaydetme hatası / eşzamanlı düzenleme çakışması */}
+        {saveError && (
+          <div className="flex flex-wrap items-center gap-3 border-b border-amber-200 bg-amber-50 px-4 py-3 lg:px-7">
+            <AlertTriangle size={16} className="shrink-0 text-amber-700" />
+            <p className="min-w-0 flex-1 text-sm text-amber-900">{saveError}</p>
+            {saveError.includes('başka biri kaydetti') && (
+              <>
+                <button onClick={() => window.location.reload()} className="rounded-full border border-amber-300 px-3.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100">
+                  Sayfayı yenile
+                </button>
+                <button onClick={() => save(true)} className="rounded-full bg-amber-600 px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-amber-700">
+                  Yine de kaydet
+                </button>
+              </>
+            )}
+            <button onClick={() => setSaveError('')} className="rounded-lg p-1 text-amber-700 hover:bg-amber-100" aria-label="Kapat"><X size={15} /></button>
+          </div>
+        )}
 
         {/* Gövde: liste + editör  ·  veya tek pano */}
         <div className="flex min-h-0 flex-1">
@@ -269,7 +508,12 @@ export function AdminDashboard({
                     <button key={(it as { id: string }).id} onClick={() => setSel(idx)}
                       className={`mb-1 flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-start transition-colors ${active ? 'bg-volt-50 ring-1 ring-volt-500/30' : 'hover:bg-mist-100'}`}>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-semibold text-graphite-950">{title || 'Adsız'}</p>
+                        <p className="truncate text-sm font-semibold text-graphite-950">
+                          {title || 'Adsız'}
+                          {(it as { published?: boolean }).published === false && (
+                            <span className="ms-1.5 rounded-full bg-amber-100 px-1.5 py-0.5 text-[9px] font-bold text-amber-800">TASLAK</span>
+                          )}
+                        </p>
                         <p className="truncate text-[11px] text-mist-500">{sub}</p>
                       </div>
                       <ChevronRight size={15} className={active ? 'text-volt-600' : 'text-mist-300'} />
@@ -287,7 +531,7 @@ export function AdminDashboard({
               {section === 'users' && <UsersPanel currentUser={session.username} />}
               {section === 'sessions' && <SessionsPanel />}
               {section === 'log' && <LogPanel />}
-              {section === 'system' && <SystemPanel />}
+              {section === 'system' && <><VersionsPanel /><div className="mt-8"><SystemPanel /></div></>}
 
               {section === 'overview' && (() => {
                 const stats = [
@@ -381,18 +625,51 @@ export function AdminDashboard({
 
               {section === 'texts' && (
                 <div className="space-y-5">
-                  <p className="rounded-xl border border-volt-500/30 bg-volt-50 px-4 py-2.5 text-xs text-graphite-700">Sitedeki gerçek metinler. Boş bırakılırsa varsayılan kullanılır.</p>
+                  {/* Dil sekmeleri — her dilin metni ayrı saklanır */}
+                  <div className="flex flex-wrap items-center gap-1.5 rounded-xl border border-mist-900/10 bg-white p-1.5">
+                    <Globe size={15} className="ms-1.5 shrink-0 text-mist-400" />
+                    {locales.map((loc) => {
+                      const filled = loc === 'tr'
+                        ? Object.keys(texts).length
+                        : Object.keys(textsByLocale[loc] ?? {}).length;
+                      return (
+                        <button key={loc} onClick={() => setTextLocale(loc)}
+                          className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${textLocale === loc ? 'bg-graphite-950 text-white' : 'text-graphite-600 hover:bg-mist-100'}`}>
+                          {LOCALE_LABELS[loc] ?? loc}
+                          {loc !== 'tr' && (
+                            <span className={`ms-1.5 font-tabular text-[10px] ${textLocale === loc ? 'text-graphite-300' : 'text-mist-400'}`}>{filled}</span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <p className="rounded-xl border border-volt-500/30 bg-volt-50 px-4 py-2.5 text-xs leading-relaxed text-graphite-700">
+                    {textLocale === 'tr'
+                      ? 'Sitedeki gerçek metinler. Boş bırakılırsa varsayılan kullanılır.'
+                      : `${LOCALE_LABELS[textLocale]} için girilen metin yalnızca o dilde görünür. Boş bırakılırsa o dilin kendi varsayılan çevirisi kullanılır — aşağıdaki gri metinler Türkçe varsayılanlardır, referans içindir.`}
+                  </p>
+
                   {TEXT_GROUPS.map((group) => (
                     <div key={group} className="rounded-2xl border border-mist-900/10 bg-white p-5">
                       <h3 className="font-display text-sm font-bold text-graphite-950">{group}</h3>
                       <div className="mt-4 space-y-4">
-                        {TEXT_FIELDS.filter((f) => f.group === group).map((f) => (
-                          <Field key={f.key} label={f.label}>
-                            {f.multiline
-                              ? <textarea value={texts[f.key] ?? f.default} onChange={(e) => { touch(); setTexts({ ...texts, [f.key]: e.target.value }); }} rows={3} className={inp} />
-                              : <input value={texts[f.key] ?? f.default} onChange={(e) => { touch(); setTexts({ ...texts, [f.key]: e.target.value }); }} className={inp} />}
-                          </Field>
-                        ))}
+                        {TEXT_FIELDS.filter((f) => f.group === group).map((f) => {
+                          // tr'de varsayılan doğrudan alana yazılır; diğer dillerde alan boş
+                          // kalır (boş = o dilin kendi çevirisi kullanılsın demektir).
+                          const value = textLocale === 'tr' ? (activeTexts[f.key] ?? f.default) : (activeTexts[f.key] ?? '');
+                          const common = {
+                            value,
+                            onChange: (e: { target: { value: string } }) => setActiveText(f.key, e.target.value),
+                            className: inp,
+                            ...(textLocale === 'tr' ? {} : { placeholder: f.default }),
+                          };
+                          return (
+                            <Field key={f.key} label={f.label}>
+                              {f.multiline ? <textarea {...common} rows={3} /> : <input {...common} />}
+                            </Field>
+                          );
+                        })}
                       </div>
                     </div>
                   ))}
@@ -403,15 +680,18 @@ export function AdminDashboard({
                 ? <Empty icon={Package} text="Soldan bir ürün seçin veya + ile yeni ekleyin." />
                 : (() => { const i = sel; const p = products[i]; return (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between"><h2 className="font-display text-lg font-bold text-graphite-950">{p.name || 'Yeni ürün'}</h2>
-                      <button onClick={() => { touch(); setProducts(products.filter((_, j) => j !== i)); setSel(null); }} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><Trash2 size={15} /> Sil</button></div>
+                    <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="font-display text-lg font-bold text-graphite-950">{p.name || 'Yeni ürün'}</h2>
+                      <div className="flex items-center gap-2">
+                        <PublishToggle published={p.published !== false} onChange={(v) => upProduct(i, { published: v })} />
+                        <button onClick={() => { touch(); setProducts(products.filter((_, j) => j !== i)); setSel(null); }} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><Trash2 size={15} /> Sil</button>
+                      </div></div>
                     <div className="grid gap-3 sm:grid-cols-[2fr_1fr_1fr]">
                       <Field label="Ürün adı"><input value={p.name} onChange={(e) => upProduct(i, { name: e.target.value })} className={inp} /></Field>
                       <Field label="Kategori"><select value={p.category} onChange={(e) => upProduct(i, { category: e.target.value })} className={inp}>{PRODUCT_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}</select></Field>
                       <Field label="Model"><input value={p.model ?? ''} onChange={(e) => upProduct(i, { model: e.target.value })} className={inp} /></Field>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
-                      <Field label="Görsel yolu"><input value={p.image ?? ''} onChange={(e) => upProduct(i, { image: e.target.value })} placeholder="/products/orion-500.jpg" className={inp} /></Field>
+                      <ImageField label="Görsel" value={p.image ?? ''} onChange={(v) => upProduct(i, { image: v })} placeholder="/products/orion-500.jpg" />
                       <Field label="Kısa açıklama"><input value={p.description ?? ''} onChange={(e) => upProduct(i, { description: e.target.value })} className={inp} /></Field>
                     </div>
                     <div>
@@ -435,8 +715,11 @@ export function AdminDashboard({
                 ? <Empty icon={Newspaper} text="Soldan bir yazı seçin veya + ile yeni ekleyin." />
                 : (() => { const i = sel; const p = posts[i]; return (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between"><h2 className="font-display text-lg font-bold text-graphite-950">{p.title || 'Yeni yazı'}</h2>
-                      <button onClick={() => { touch(); setPosts(posts.filter((_, j) => j !== i)); setSel(null); }} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><Trash2 size={15} /> Sil</button></div>
+                    <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="font-display text-lg font-bold text-graphite-950">{p.title || 'Yeni yazı'}</h2>
+                      <div className="flex items-center gap-2">
+                        <PublishToggle published={p.published !== false} onChange={(v) => upPost(i, { published: v })} />
+                        <button onClick={() => { touch(); setPosts(posts.filter((_, j) => j !== i)); setSel(null); }} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><Trash2 size={15} /> Sil</button>
+                      </div></div>
                     <div className="grid gap-3 sm:grid-cols-[2fr_1fr]">
                       <Field label="Başlık"><input value={p.title} onChange={(e) => { const v = e.target.value; upPost(i, { title: v, slug: p.slug ? p.slug : slugify(v) }); }} className={inp} /></Field>
                       <Field label="URL adresi"><input value={p.slug} onChange={(e) => upPost(i, { slug: slugify(e.target.value) })} className={inp} /></Field>
@@ -444,10 +727,31 @@ export function AdminDashboard({
                     <div className="grid gap-3 sm:grid-cols-3">
                       <Field label="Kategori"><select value={p.category ?? 'Rehber'} onChange={(e) => upPost(i, { category: e.target.value })} className={inp}>{POST_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}</select></Field>
                       <Field label="Tarih"><input type="date" value={p.date ?? ''} onChange={(e) => upPost(i, { date: e.target.value })} className={inp} /></Field>
-                      <Field label="Kapak"><input value={p.cover ?? ''} onChange={(e) => upPost(i, { cover: e.target.value })} placeholder="/products/..." className={inp} /></Field>
+                      <div className="sm:col-span-1"><ImageField label="Kapak" value={p.cover ?? ''} onChange={(v) => upPost(i, { cover: v })} placeholder="/products/..." /></div>
                     </div>
                     <Field label="Özet"><input value={p.excerpt ?? ''} onChange={(e) => upPost(i, { excerpt: e.target.value })} className={inp} /></Field>
-                    <Field label="İçerik ( ## başlık · boş satır = paragraf )"><textarea value={p.body ?? ''} onChange={(e) => upPost(i, { body: e.target.value })} rows={12} className={inp} /></Field>
+                    <div className="grid gap-3 lg:grid-cols-2">
+                      <Field label="İçerik ( ## başlık · boş satır = paragraf )">
+                        <textarea value={p.body ?? ''} onChange={(e) => upPost(i, { body: e.target.value })} rows={16} className={inp} />
+                      </Field>
+                      {/* Canlı önizleme — sitedeki ayrıştırma kurallarının aynısı */}
+                      <div>
+                        <span className={lbl}>Önizleme</span>
+                        <div className="max-h-[26rem] overflow-y-auto rounded-lg border border-mist-900/15 bg-white p-4">
+                          {p.title && <h1 className="font-display text-xl font-bold text-graphite-950">{p.title}</h1>}
+                          {p.excerpt && <p className="mt-2 text-sm leading-relaxed text-mist-600">{p.excerpt}</p>}
+                          {previewSections(p.body ?? '').map((sec, si) => (
+                            <div key={si} className="mt-4">
+                              {sec.heading && <h2 className="font-display text-base font-bold text-graphite-950">{sec.heading}</h2>}
+                              {sec.paragraphs.map((para, pi) => (
+                                <p key={pi} className="mt-2 text-sm leading-relaxed text-graphite-700">{para}</p>
+                              ))}
+                            </div>
+                          ))}
+                          {!p.title && !p.body && <p className="py-8 text-center text-sm text-mist-400">Yazmaya başlayın; önizleme burada görünecek.</p>}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ); })()
               )}

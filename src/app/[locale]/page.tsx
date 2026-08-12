@@ -9,13 +9,16 @@ import { HomeContact } from '@/components/home/HomeContact';
 import { SectionDots } from '@/components/home/SectionDots';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { SocialFeed } from '@/components/home/SocialFeed';
-import { getContent } from '@/lib/content';
+import { getContent, textsFor } from '@/lib/content';
+import type { Locale } from '@/i18n/config';
 
 // Admin metin düzenlemeleri için ISR.
 export const revalidate = 3600;
 
-export default async function HomePage() {
-  const { texts } = await getContent();
+export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  // Metin geçersiz kılmaları dile göre okunur (tr eski `texts` alanından).
+  const texts = textsFor(await getContent(), locale);
   return (
     <>
       <SectionDots />

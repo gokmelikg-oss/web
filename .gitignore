@@ -46,3 +46,8 @@ content/site.prev.json
 content/users.json
 content/sessions.json
 content/log.json
+content/versions.json
+
+# panelden yuklenen gorseller (klasor korunur, icerik girmez)
+public/uploads/*
+!public/uploads/.gitkeep

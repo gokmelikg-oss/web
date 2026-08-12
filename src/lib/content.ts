@@ -37,6 +37,8 @@ export interface AdminProduct {
   description?: string;
   image?: string; // /products/... yolu
   specs?: ProductSpecItem[]; // teknik özellikler (etiket + değer)
+  /* Yayın durumu. Tanımsız = yayında (eski kayıtlar bozulmasın diye). */
+  published?: boolean;
 }
 
 /* Admin panelinden eklenen blog yazısı. body düz metin; boş satır = yeni paragraf,
@@ -50,6 +52,13 @@ export interface AdminPost {
   date?: string; // YYYY-MM-DD
   cover?: string;
   body?: string;
+  /* Yayın durumu. Tanımsız = yayında (eski kayıtlar bozulmasın diye). */
+  published?: boolean;
+}
+
+/* Bir kayıt sitede görünmeli mi? published yoksa görünür sayılır. */
+export function isPublished(item: { published?: boolean }): boolean {
+  return item.published !== false;
 }
 
 export interface SiteContent {
@@ -58,9 +67,20 @@ export interface SiteContent {
   products: AdminProduct[];
   posts: AdminPost[];
   hiddenRefs: string[]; // gizlenecek statik referansların iş adları
+  /* Varsayılan dilin (tr) metin geçersiz kılmaları — geriye dönük uyumluluk için korunur. */
   texts: Record<string, string>; // site metin geçersiz kılmaları (key -> metin)
+  /* Diğer dillerin metin geçersiz kılmaları: locale -> (key -> metin).
+     Bir dilde karşılığı yoksa o dilin kendi mesaj dosyasındaki varsayılan kullanılır. */
+  textsByLocale?: Record<string, Record<string, string>>;
   groupImages: Record<string, string>; // familyId -> görsel yolu
   updatedAt: string;
+}
+
+/* Verilen dil için geçerli metin geçersiz kılmaları.
+   tr → `texts` (eski alan), diğer diller → `textsByLocale[locale]`. */
+export function textsFor(content: SiteContent, locale: string): Record<string, string> {
+  if (locale === 'tr') return content.texts ?? {};
+  return content.textsByLocale?.[locale] ?? {};
 }
 
 const FILE = path.join(process.cwd(), 'content', 'site.json');
@@ -75,6 +95,7 @@ const DEFAULT: SiteContent = {
   posts: [],
   hiddenRefs: [],
   texts: {},
+  textsByLocale: {},
   groupImages: {},
   updatedAt: '',
 };
@@ -107,11 +128,64 @@ export async function getContent(): Promise<SiteContent> {
   }
 }
 
-export async function saveContent(next: SiteContent): Promise<void> {
+/* Sürüm geçmişi: her kaydetmede bir öncekinin fotoğrafı saklanır.
+   En yeni başta; MAX_VERSIONS'tan eskiler düşer. */
+export interface ContentVersion {
+  at: string;
+  by: string;
+  summary: string;
+  content: SiteContent;
+}
+const VERSIONS_FILE = path.join(process.cwd(), 'content', 'versions.json');
+const KV_KEY_VERSIONS = 'site:content:versions';
+const MAX_VERSIONS = 10;
+
+export async function listVersions(): Promise<ContentVersion[]> {
+  if (kvEnabled()) {
+    try {
+      return (await (await kvClient()).get<ContentVersion[]>(KV_KEY_VERSIONS)) ?? [];
+    } catch {
+      return [];
+    }
+  }
+  try {
+    return JSON.parse(fs.readFileSync(VERSIONS_FILE, 'utf8')) as ContentVersion[];
+  } catch {
+    return [];
+  }
+}
+
+async function pushVersion(entry: ContentVersion): Promise<void> {
+  const next = [entry, ...(await listVersions())].slice(0, MAX_VERSIONS);
+  if (kvEnabled()) {
+    await (await kvClient()).set(KV_KEY_VERSIONS, next);
+    return;
+  }
+  const dir = path.dirname(VERSIONS_FILE);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(VERSIONS_FILE, JSON.stringify(next, null, 2), 'utf8');
+}
+
+export async function saveContent(
+  next: SiteContent,
+  meta?: { by: string; summary: string }
+): Promise<void> {
   const payload: SiteContent = { ...next, updatedAt: new Date().toISOString() };
+  const current = await getContent();
+
+  // Üzerine yazmadan önce mevcut sürümü geçmişe al (ilk kayıtta updatedAt boştur).
+  if (current.updatedAt) {
+    await pushVersion({
+      at: current.updatedAt,
+      by: meta?.by ?? '—',
+      summary: meta?.summary ?? '',
+      content: current,
+    });
+  }
+
   if (kvEnabled()) {
     const kv = await kvClient();
-    // Geri alma için mevcut sürümü "önceki" olarak sakla.
+    // Geri alma için mevcut sürümü "önceki" olarak da sakla (eski davranış korunur).
     const cur = await kv.get<SiteContent>(KV_KEY);
     if (cur) await kv.set(KV_KEY_PREV, cur);
     await kv.set(KV_KEY, payload);

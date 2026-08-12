@@ -10,7 +10,7 @@ import { TrustStrip } from '@/components/TrustStrip';
 import { CapacityGuide } from '@/components/CapacityGuide';
 import { Reveal } from '@/components/Reveal';
 import { PageBreadcrumb } from '@/components/JsonLd';
-import { getContent } from '@/lib/content';
+import { getContent, isPublished } from '@/lib/content';
 import { BLUR_DATA } from '@/lib/blur';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
@@ -32,7 +32,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   const t = await getTranslations('products.hero');
   const { products } = await getContent();
-  const adminProducts = products.filter((p) => p.name);
+  const adminProducts = products.filter((p) => p.name && isPublished(p));
 
   return (
     <>

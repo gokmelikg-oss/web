@@ -15,7 +15,7 @@ import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { PageBreadcrumb } from '@/components/JsonLd';
-import { getContent } from '@/lib/content';
+import { getContent, textsFor } from '@/lib/content';
 import { txt } from '@/lib/siteTexts';
 import { pageMetadata } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
@@ -47,10 +47,11 @@ const founderNotes = [
   'Solar termal sistemlerle attığımız ilk adım, markamızın Türkiye’de ve uluslararası pazarlarda çıkacağı yolculuğun güçlü bir işaretiydi. Yıllar içinde üretim kapasitemiz kadar etki alanımız da büyüdü; grup şirketlerimizle üretimden sahaya uzanan güçlü bir ekosistem kurduk.',
 ];
 
-export default async function AboutPage() {
+export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
   const t = await getTranslations('about');
   const tCerts = await getTranslations('certs');
-  const { texts } = await getContent();
+  const texts = textsFor(await getContent(), locale);
   const stats = t.raw('stats') as { value: string; label: string }[];
   const values = t.raw('values.items') as { title: string; desc: string }[];
   const certs = tCerts.raw('items') as Cert[];

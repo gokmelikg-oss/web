@@ -54,6 +54,7 @@ export default async function AdminHome() {
     posts: content.posts.length ? content.posts : staticPostsAsAdmin(),
     hiddenRefs: content.hiddenRefs ?? [],
     texts: textsSeed,
+    textsByLocale: content.textsByLocale ?? {},
   };
 
   const prev = await getPrevContent();

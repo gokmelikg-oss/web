@@ -25,7 +25,7 @@ import { Faq } from '@/components/home/Faq';
 import { FaqJsonLd } from '@/components/JsonLd';
 import { FACTORY_MAP_EMBED } from '@/components/home/HomeContact';
 import { getFaqItems } from '@/data/faq';
-import { getContent } from '@/lib/content';
+import { getContent, textsFor } from '@/lib/content';
 import { txt } from '@/lib/siteTexts';
 import { pageMetadata, ORG, WHATSAPP_NUMBER } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
@@ -320,7 +320,7 @@ export default async function ContactPage() {
   const locale = (await getLocale()) as Locale;
   const faq = getFaqItems(locale);
   const ce = CONTACT_EXTRA[locale] ?? CONTACT_EXTRA.tr;
-  const { texts } = await getContent();
+  const texts = textsFor(await getContent(), locale);
   const tel = `tel:${ORG.phone.replace(/\s/g, '')}`;
 
   const phone = txt(texts, 'contact.phone', t('info.phone'));

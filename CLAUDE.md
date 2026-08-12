@@ -90,6 +90,21 @@ Webmin Users / Module ACL / Login Sessions / Actions Log yapısı uyarlandı.
 > (`AdminSystemPanels.tsx` bir kez `adminLog.ts`'ten import edip `Can't resolve 'fs'`
 > hatasına düşürdü.)
 
+### İçerik düzenleme davranışları
+
+| Konu | Nasıl çalışır |
+|---|---|
+| **Çok dilli metin** | `texts` = tr (eski alan), `textsByLocale[locale]` = diğer diller. Sayfalar `textsFor(content, locale)` çağırır. Bir dilde alan boşsa o dilin kendi mesaj dosyası kullanılır. Panelde dil sekmeleri vardır. |
+| **Taslak / yayın** | `AdminProduct.published` · `AdminPost.published`. **Tanımsız = yayında** (eski kayıtlar bozulmaz). `isPublished()` tek kaynaktır; site listeleri ve `/blog/[slug]` bunu uygular — taslak yazının kendi sayfası 404 döner. |
+| **Eşzamanlı kaydetme** | İstemci `baseUpdatedAt` gönderir; sunucudaki `updatedAt` farklıysa **409** döner ve panel "yenile / yine de kaydet" sorar. Alan gönderilmezse kontrol yapılmaz (bilinçli "üzerine yaz"). |
+| **Sürüm geçmişi** | Her kaydetmede bir öncekinin fotoğrafı `content/versions.json` (veya `site:content:versions`) içine düşer, **son 10** tutulur. Satırdaki özet o sürümün ARDINDAN yapılan değişikliği anlatır. |
+| **İşlem kaydı detayı** | `contentDiff.ts` → `describeContentChange()` iki sürümü karşılaştırıp "ürün eklendi (1): Orion 435 · yazı düzenlendi (1): …" üretir. Saf fonksiyon. |
+| **Görsel yükleme** | `POST /api/admin/upload` → `public/uploads/`. Dosya adı SEO için sadeleştirilir (`Orion 435 Güneş Kollektörü.png` → `orion-435-gunes-kollektoru-<sonek>.png`). 5 MB sınırı, yalnız JPG/PNG/WebP/AVIF/SVG. |
+
+> ⚠ **Vercel'de yükleme çalışmaz** — sunucusuz dosya sistemi salt okunurdur. Uç bu durumu
+> yakalayıp (`EROFS/EACCES/EPERM`) Türkçe açıklama döner. Kalıcı çözüm Vercel Blob'dur.
+> `public/uploads/` içeriği gitignore'da; klasör `.gitkeep` ile korunur.
+
 ## Önemli veri dosyaları (`src/data/`)
 - `tokiProjects.json` — 526 referans projesi (`title,il,ilce,homes,blocks,collectors,aperture,gross,category`).
   `homes=0` kurumsal projeler (Adalet/Savunma/AFAD vb.); ışınım=koll×2.33, brüt=koll×2.55.

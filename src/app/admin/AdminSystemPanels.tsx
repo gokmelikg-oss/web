@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Loader2, Plus, Trash2, Save, ShieldCheck, Monitor, Cpu, HardDrive,
   AlertTriangle, RefreshCw, LogOut, Search, X, Copy, Lock, Unlock,
-  Download, Upload, Check, Network,
+  Download, Upload, Check, Network, RotateCcw,
 } from 'lucide-react';
 import {
   ADMIN_ONLY_SECTIONS, CONTENT_SECTIONS, ROLE_DESCRIPTIONS, ROLE_LABELS,
@@ -629,6 +629,93 @@ export function LogPanel() {
                 </td>
                 <td className="hidden px-4 py-2.5 text-xs text-mist-600 md:table-cell">{e.detail}</td>
                 <td className="hidden px-4 py-2.5 font-mono text-[11px] text-mist-500 lg:table-cell">{e.ip}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------- Sürüm geçmişi ---------------- */
+
+interface VersionRow {
+  index: number;
+  at: string;
+  by: string;
+  summary: string;
+  counts: { products: number; posts: number; references: number };
+}
+
+export function VersionsPanel() {
+  const [rows, setRows] = useState<VersionRow[]>([]);
+  const [busy, setBusy] = useState(true);
+  const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+
+  const load = useCallback(async () => {
+    setBusy(true);
+    try {
+      const res = await fetch('/api/admin/versions');
+      const data = await res.json();
+      if (data.ok) setRows(data.versions);
+    } finally { setBusy(false); }
+  }, []);
+  useEffect(() => { void load(); }, [load]);
+
+  async function restore(index: number, at: string) {
+    if (!window.confirm(`${dt(at)} sürümüne dönülsün mü? Mevcut içerik de geçmişe kaydedilir, geri alabilirsiniz.`)) return;
+    setBusy(true); setMsg(null);
+    try {
+      const res = await fetch('/api/admin/versions', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ index }),
+      });
+      const data = await res.json();
+      setMsg(data.ok
+        ? { ok: true, text: 'Sürüm geri yüklendi. Panel içeriğini görmek için sayfayı yenileyin.' }
+        : { ok: false, text: data.error ?? 'Geri yüklenemedi.' });
+      if (data.ok) await load();
+    } finally { setBusy(false); }
+  }
+
+  return (
+    <div className="space-y-4">
+      <PanelHeader title="Sürüm Geçmişi" desc="Son 10 kayıt. İstediğiniz sürüme tek tıkla dönebilirsiniz." onRefresh={load} busy={busy} />
+      {msg && (
+        <p className={`rounded-xl px-4 py-3 text-sm ${msg.ok ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-700'}`}>{msg.text}</p>
+      )}
+      <div className={`${card} p-0 overflow-hidden`}>
+        <table className="w-full text-sm">
+          <thead className="bg-mist-100 text-[11px] uppercase tracking-wide text-mist-500">
+            <tr>
+              <th className="px-4 py-3 text-start font-semibold">Tarih</th>
+              <th className="px-4 py-3 text-start font-semibold">Kaydeden</th>
+              {/* Özet, bu sürümün ARDINDAN yapılan değişikliği anlatır — geri dönüş
+                  noktası seçerken "neyi geri almış olacağım" sorusunun cevabıdır. */}
+              <th className="hidden px-4 py-3 text-start font-semibold md:table-cell">Bu sürümden sonra</th>
+              <th className="px-4 py-3 text-end font-semibold">İşlem</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.length === 0 && (
+              <tr><td colSpan={4} className="px-4 py-10 text-center text-mist-400">Henüz sürüm yok. İlk kaydetmeden sonra burada birikir.</td></tr>
+            )}
+            {rows.map((v) => (
+              <tr key={v.index} className="border-t border-mist-900/10">
+                <td className="whitespace-nowrap px-4 py-3 text-xs text-mist-600">{dt(v.at)}</td>
+                <td className="px-4 py-3 font-semibold text-graphite-950">{v.by}</td>
+                <td className="hidden px-4 py-3 text-xs text-mist-600 md:table-cell">
+                  {v.summary || '—'}
+                  <span className="block text-[10px] text-mist-400">
+                    {v.counts.products} ürün · {v.counts.posts} yazı · {v.counts.references} referans
+                  </span>
+                </td>
+                <td className="px-4 py-3 text-end">
+                  <button onClick={() => restore(v.index, v.at)} disabled={busy} className="inline-flex items-center gap-1.5 rounded-lg border border-mist-900/15 px-3 py-1.5 text-xs font-semibold hover:border-graphite-950 disabled:opacity-50">
+                    <RotateCcw size={13} /> Bu sürüme dön
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
