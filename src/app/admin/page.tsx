@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { isAuthed } from '@/lib/adminAuth';
+import { getSession } from '@/lib/adminAuth';
 import { getContent, getPrevContent, type AdminProduct } from '@/lib/content';
 import { staticPostsAsAdmin } from '@/lib/blog';
 import { TEXT_FIELDS } from '@/lib/siteTexts';
@@ -19,7 +19,8 @@ const FAMILIES = [
 ];
 
 export default async function AdminHome() {
-  if (!(await isAuthed())) redirect('/admin/login');
+  const session = await getSession();
+  if (!session) redirect('/admin/login');
   const content = await getContent();
   // /admin [locale] dışında olduğu için locale'i açıkça veriyoruz.
   const tp = await getTranslations({ locale: 'tr', namespace: 'products' });
@@ -57,5 +58,19 @@ export default async function AdminHome() {
 
   const prev = await getPrevContent();
 
-  return <AdminDashboard initial={initial} families={FAMILIES} staticRefs={staticRefs} prev={prev ?? null} />;
+  return (
+    <AdminDashboard
+      initial={initial}
+      families={FAMILIES}
+      staticRefs={staticRefs}
+      prev={prev ?? null}
+      session={{
+        username: session.username,
+        fullName: session.fullName,
+        role: session.role,
+        sections: session.sections,
+        canWrite: session.canWrite,
+      }}
+    />
+  );
 }

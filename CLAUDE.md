@@ -54,6 +54,42 @@ Premium kurumsal pazarlama sitesi. **Şimşek Solar** (Mersin merkezli güneş t
   (metinler/ürünler/blog/referans/döküman/görsel). API: `src/app/api/admin/*`.
 - Admin **yalnızca Türkçe** (bilinçli).
 
+### Kullanıcı girişi ve yetkilendirme (Webmin deseninden uyarlandı)
+Giriş artık tek şifre değil, **kullanıcı adı + şifre**. Webmin'in `acl` modülündeki
+Webmin Users / Module ACL / Login Sessions / Actions Log yapısı uyarlandı.
+
+| Katman | Dosya |
+|---|---|
+| Roller ve bölüm ACL'i (client-safe, node importu yok) | `src/lib/adminAcl.ts` |
+| Kullanıcı deposu, scrypt şifre özeti | `src/lib/adminUsers.ts` |
+| İmzalı oturum cookie'si (HMAC-SHA256) | `src/lib/adminAuth.ts` |
+| Oturum kayıtları + hatalı giriş kilidi | `src/lib/adminSessions.ts` |
+| İşlem kaydı (yazma) / tip+etiket (client) | `src/lib/adminLog.ts` · `adminLogShared.ts` |
+| KV-veya-dosya JSON deposu | `src/lib/adminStore.ts` |
+
+- **Roller:** `owner` (her şey + kullanıcı yönetimi) · `editor` (yetkili içerik bölümleri,
+  kaydedebilir) · `viewer` (salt okunur). Yönetici bölümleri (Kullanıcılar/Oturumlar/
+  İşlem Kaydı/Sistem Bilgisi) **yalnızca owner'a** açılır, ACL ile devredilemez.
+- **İlk kurulum:** kullanıcı kaydı yoksa `ADMIN_PASSWORD` ile `admin` hesabı otomatik açılır
+  (`ensureBootstrapUser`). Mevcut kurulumlar şifre değiştirmeden çalışmaya devam eder.
+- **Oturum sunucuda da tutulur** → bir oturum uzaktan kapatılabilir; şifre değişince veya
+  hesap kapanınca kullanıcının tüm oturumları düşer.
+- **Kilit:** 5 hatalı denemeden sonra kullanıcı+IP 15 dakika bloklanır. Oturumlar panelindeki
+  "Hatalı Giriş Denemeleri" tablosundan elle kaldırılabilir.
+- **Kullanıcı bazlı IP kısıtlaması** (`allowedIps`): boş = her yerden. Nokta ile biten değer
+  ön ektir (`192.168.1.` → tüm ofis ağı). Şifre doğru olsa bile geçilmez.
+- **İçerik yedeği:** `/api/admin/backup` GET indirir, POST geri yükler (yalnızca owner).
+  Yedek **site içeriğidir**; kullanıcı hesapları ve şifre özetleri yedeğe girmez.
+- `ADMIN_SECRET` tanımlıysa oturum imzası ondan türer; yoksa `ADMIN_PASSWORD`'dan türer
+  (şifre değişince tüm oturumlar düşer). Sistem Bilgisi paneli bunu uyarı olarak gösterir.
+- **Veriler `content/users.json` · `sessions.json` · `log.json`** (KV varsa `site:*`
+  anahtarları). Üçü de gitignore'da — şifre özeti içerir.
+
+> ⚠ `adminStore.ts` `fs` kullanır. Client bileşenleri **asla** ondan türeyen bir modülü
+> import etmemeli; etiket/tip gerekiyorsa `adminAcl.ts` veya `adminLogShared.ts` kullan.
+> (`AdminSystemPanels.tsx` bir kez `adminLog.ts`'ten import edip `Can't resolve 'fs'`
+> hatasına düşürdü.)
+
 ## Önemli veri dosyaları (`src/data/`)
 - `tokiProjects.json` — 526 referans projesi (`title,il,ilce,homes,blocks,collectors,aperture,gross,category`).
   `homes=0` kurumsal projeler (Adalet/Savunma/AFAD vb.); ışınım=koll×2.33, brüt=koll×2.55.

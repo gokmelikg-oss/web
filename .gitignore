@@ -40,3 +40,9 @@ D*K*MANLAR/
 .claude/settings.local.json
 .env.local
 content/site.json
+content/site.prev.json
+
+# panel kullanicilari, oturumlar ve islem kaydi (sifre ozetleri icerir)
+content/users.json
+content/sessions.json
+content/log.json

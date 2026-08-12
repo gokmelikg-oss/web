@@ -4,13 +4,24 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
   LayoutDashboard, Package, Newspaper, FileText, MapPin, Image as ImageIcon, Type,
   Plus, Trash2, Save, LogOut, Check, Loader2, Search, Eye, EyeOff,
-  RotateCcw, History, ChevronRight,
+  RotateCcw, History, ChevronRight, Users, Monitor, ScrollText, Cpu,
 } from 'lucide-react';
 import type { SiteContent, DocLink, RefEntry, AdminProduct, AdminPost, ProductSpecItem } from '@/lib/content';
 import { TEXT_FIELDS, TEXT_GROUPS } from '@/lib/siteTexts';
+import { ROLE_LABELS, type AdminRole, type AdminSection } from '@/lib/adminAcl';
+import { UsersPanel, SessionsPanel, LogPanel, SystemPanel } from './AdminSystemPanels';
 
-type Tab = 'overview' | 'texts' | 'products' | 'posts' | 'references' | 'documents' | 'images';
+type Tab = AdminSection;
 type StaticRef = { title: string; il: string; ilce?: string; collectors: number };
+
+/* Oturum sahibinin panel için gereken bilgileri (sunucudan gelir). */
+export interface PanelSession {
+  username: string;
+  fullName: string;
+  role: AdminRole;
+  sections: AdminSection[];
+  canWrite: boolean;
+}
 
 const rid = () => `id${Math.floor(performance.now() * 1000)}${Math.floor(1 + Math.random() * 998)}`;
 const slugify = (s: string) =>
@@ -32,22 +43,37 @@ const SECTIONS: { key: Tab; icon: typeof Package; label: string; desc: string }[
   { key: 'references', icon: MapPin, label: 'Referanslar', desc: 'Göster/gizle ve yeni ekle' },
   { key: 'documents', icon: FileText, label: 'Dökümanlar', desc: 'Katalog ve föy bağlantıları' },
   { key: 'images', icon: ImageIcon, label: 'Grup Görselleri', desc: 'Ürün grubu görselleri' },
+  // Yönetim bölümleri (yalnızca yönetici rolü görür)
+  { key: 'users', icon: Users, label: 'Kullanıcılar', desc: 'Panel hesapları ve bölüm yetkileri' },
+  { key: 'sessions', icon: Monitor, label: 'Oturumlar', desc: 'Açık oturumlar, uzaktan kapatma' },
+  { key: 'log', icon: ScrollText, label: 'İşlem Kaydı', desc: 'Kim neyi ne zaman değiştirdi' },
+  { key: 'system', icon: Cpu, label: 'Sistem Bilgisi', desc: 'Sunucu ve depo durumu' },
 ];
 const LIST_SECTIONS = new Set<Tab>(['products', 'posts']);
+/* İçerik kaydetme akışının dışında kalan, kendi verisini API'den çeken bölümler. */
+const SYSTEM_SECTIONS = new Set<Tab>(['users', 'sessions', 'log', 'system']);
 
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (<label className="block"><span className={lbl}>{label}</span>{children}</label>);
 }
 
 export function AdminDashboard({
-  initial, families, staticRefs, prev,
+  initial, families, staticRefs, prev, session,
 }: {
   initial: SiteContent;
   families: { id: string; label: string }[];
   staticRefs: StaticRef[];
   prev: SiteContent | null;
+  session: PanelSession;
 }) {
-  const [section, setSection] = useState<Tab>('overview');
+  // Yetkili olmayan bölümler menüde hiç görünmez.
+  const visibleSections = useMemo(
+    () => SECTIONS.filter((s) => session.sections.includes(s.key)),
+    [session.sections]
+  );
+  const [section, setSection] = useState<Tab>(
+    () => (session.sections.includes('overview') ? 'overview' : session.sections[0] ?? 'overview')
+  );
   const [sel, setSel] = useState<number | null>(null);
   const [docs, setDocs] = useState<DocLink[]>(initial.documents);
   const [refs, setRefs] = useState<RefEntry[]>(initial.references);
@@ -111,6 +137,17 @@ export function AdminDashboard({
 
   const meta = SECTIONS.find((s) => s.key === section)!;
   const isList = LIST_SECTIONS.has(section);
+  const isSystem = SYSTEM_SECTIONS.has(section);
+  const initials = useMemo(
+    () =>
+      session.fullName
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((w) => w[0]?.toLocaleUpperCase('tr-TR'))
+        .join('') || session.username.slice(0, 2).toLocaleUpperCase('tr-TR'),
+    [session.fullName, session.username]
+  );
   const listItems = section === 'products' ? products : section === 'posts' ? posts : [];
   const filteredList = useMemo(() => {
     const q = listSearch.trim().toLocaleLowerCase('tr-TR');
@@ -137,11 +174,15 @@ export function AdminDashboard({
           </div>
         </div>
         <nav className="flex-1 overflow-y-auto p-3">
-          {SECTIONS.map((s) => {
+          {visibleSections.map((s) => {
             const active = section === s.key;
             const badge = s.key === 'products' ? products.length : s.key === 'posts' ? posts.length : s.key === 'references' ? refs.length : 0;
             return (
-              <button key={s.key} onClick={() => go(s.key)}
+              <div key={s.key}>
+              {s.key === 'users' && (
+                <p className="mb-1 mt-4 px-3.5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-graphite-500">Yönetim</p>
+              )}
+              <button onClick={() => go(s.key)}
                 className={`mb-0.5 flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors ${active ? 'bg-volt-500 text-graphite-950' : 'text-graphite-300 hover:bg-white/5 hover:text-white'}`}>
                 <s.icon size={18} className="shrink-0" />
                 <span className="flex-1 truncate text-start">{s.label}</span>
@@ -149,10 +190,19 @@ export function AdminDashboard({
                   <span className={`rounded-full px-2 py-0.5 font-tabular text-[10px] font-bold ${active ? 'bg-graphite-950/20 text-graphite-950' : 'bg-white/10 text-graphite-200'}`}>{badge}</span>
                 )}
               </button>
+              </div>
             );
           })}
         </nav>
         <div className="border-t border-white/10 p-3">
+          {/* Oturum sahibi */}
+          <div className="mb-2 flex items-center gap-2.5 rounded-xl bg-white/5 px-3 py-2.5">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-volt-500 font-tabular text-[11px] font-bold text-graphite-950">{initials}</span>
+            <div className="min-w-0 leading-tight">
+              <p className="truncate text-xs font-semibold text-white">{session.fullName}</p>
+              <p className="truncate font-mono text-[10px] text-volt-400">{ROLE_LABELS[session.role]}</p>
+            </div>
+          </div>
           <a href="/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-graphite-300 transition-colors hover:bg-white/5 hover:text-white"><Eye size={17} className="shrink-0" /> Siteyi görüntüle</a>
           <button onClick={logout} className="flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-graphite-300 transition-colors hover:bg-white/5 hover:text-red-400"><LogOut size={17} className="shrink-0" /> Çıkış yap</button>
         </div>
@@ -167,21 +217,34 @@ export function AdminDashboard({
             <h1 className="truncate font-display text-lg font-bold text-graphite-950">{meta.label}</h1>
           </div>
           <div className="flex items-center gap-2">
-            <span className={`hidden items-center gap-1.5 text-xs md:inline-flex ${dirty ? 'text-amber-600' : 'text-mist-400'}`}>
-              <span className={`h-1.5 w-1.5 rounded-full ${dirty ? 'bg-amber-500' : 'bg-emerald-500'}`} />
-              {dirty ? 'Kaydedilmemiş' : 'Kayıtlı'}
-            </span>
-            {dirty && (
-              <button onClick={revertUnsaved} className="inline-flex items-center gap-1.5 rounded-full border border-mist-900/15 px-3.5 py-2 text-sm font-semibold text-graphite-700 hover:border-graphite-950" title="Değişiklikleri geri al">
-                <RotateCcw size={15} /> <span className="hidden sm:inline">Geri Al</span>
-              </button>
+            {/* Kaydetme yalnızca içerik bölümlerinde ve yazma yetkisi olan rollerde görünür. */}
+            {!isSystem && session.canWrite && (
+              <>
+                <span className={`hidden items-center gap-1.5 text-xs md:inline-flex ${dirty ? 'text-amber-600' : 'text-mist-400'}`}>
+                  <span className={`h-1.5 w-1.5 rounded-full ${dirty ? 'bg-amber-500' : 'bg-emerald-500'}`} />
+                  {dirty ? 'Kaydedilmemiş' : 'Kayıtlı'}
+                </span>
+                {dirty && (
+                  <button onClick={revertUnsaved} className="inline-flex items-center gap-1.5 rounded-full border border-mist-900/15 px-3.5 py-2 text-sm font-semibold text-graphite-700 hover:border-graphite-950" title="Değişiklikleri geri al">
+                    <RotateCcw size={15} /> <span className="hidden sm:inline">Geri Al</span>
+                  </button>
+                )}
+                <button onClick={save} disabled={saving}
+                  className={`inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-transform hover:scale-[1.02] disabled:opacity-60 ${dirty ? 'bg-volt-500 text-graphite-950 shadow-glow' : 'bg-graphite-950 text-white'}`}>
+                  {saving ? <Loader2 size={15} className="animate-spin" /> : saved ? <Check size={15} /> : <Save size={15} />}
+                  {saved ? 'Kaydedildi' : 'Kaydet'}
+                </button>
+              </>
             )}
-            <button onClick={save} disabled={saving}
-              className={`inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-transform hover:scale-[1.02] disabled:opacity-60 ${dirty ? 'bg-volt-500 text-graphite-950 shadow-glow' : 'bg-graphite-950 text-white'}`}>
-              {saving ? <Loader2 size={15} className="animate-spin" /> : saved ? <Check size={15} /> : <Save size={15} />}
-              {saved ? 'Kaydedildi' : 'Kaydet'}
-            </button>
-            <span className="ms-1 hidden h-9 w-9 items-center justify-center rounded-full bg-graphite-950 font-tabular text-xs font-bold text-white sm:flex" title="Yönetici">ŞS</span>
+            {!session.canWrite && (
+              <span className="hidden rounded-full bg-mist-200 px-3 py-1.5 text-xs font-semibold text-graphite-700 sm:inline">Salt okunur</span>
+            )}
+            <span
+              className="ms-1 hidden h-9 w-9 items-center justify-center rounded-full bg-graphite-950 font-tabular text-xs font-bold text-white sm:flex"
+              title={`${session.fullName} · ${ROLE_LABELS[session.role]}`}
+            >
+              {initials}
+            </span>
           </div>
         </header>
 
@@ -219,7 +282,13 @@ export function AdminDashboard({
 
           {/* Editör / içerik */}
           <div className="min-w-0 flex-1 overflow-y-auto p-5 lg:p-8">
-            <div className="mx-auto max-w-3xl">
+            <div className={`mx-auto ${isSystem ? 'max-w-5xl' : 'max-w-3xl'}`}>
+              {/* Yönetim bölümleri — kendi verisini API'den çeker */}
+              {section === 'users' && <UsersPanel currentUser={session.username} />}
+              {section === 'sessions' && <SessionsPanel />}
+              {section === 'log' && <LogPanel />}
+              {section === 'system' && <SystemPanel />}
+
               {section === 'overview' && (() => {
                 const stats = [
                   { label: 'Ürünler', value: products.length, sub: `${products.length} kayıt`, icon: Package, tint: 'bg-volt-100 text-volt-700', to: 'products' as Tab },

@@ -1,17 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { getContent, saveContent, type SiteContent } from '@/lib/content';
-import { isAuthed } from '@/lib/adminAuth';
+import { getSession, requestIp } from '@/lib/adminAuth';
+import { writeLog } from '@/lib/adminLog';
 
 export const runtime = 'nodejs';
 
 export async function GET() {
-  if (!(await isAuthed())) return NextResponse.json({ ok: false }, { status: 401 });
+  if (!(await getSession())) return NextResponse.json({ ok: false }, { status: 401 });
   return NextResponse.json({ ok: true, content: await getContent() });
 }
 
 export async function POST(req: NextRequest) {
-  if (!(await isAuthed())) return NextResponse.json({ ok: false }, { status: 401 });
+  const session = await getSession();
+  if (!session) return NextResponse.json({ ok: false }, { status: 401 });
+  // İzleyici rolü salt okurdur.
+  if (!session.canWrite) return NextResponse.json({ ok: false, error: 'forbidden' }, { status: 403 });
   let body: SiteContent;
   try {
     body = await req.json();
@@ -42,6 +46,12 @@ export async function POST(req: NextRequest) {
     ]) {
       revalidatePath(p, 'page');
     }
+    await writeLog({
+      username: session.username,
+      action: 'content_save',
+      detail: `${body.products?.length ?? 0} ürün · ${body.posts?.length ?? 0} yazı · ${body.references?.length ?? 0} referans`,
+      ip: await requestIp(),
+    });
     return NextResponse.json({ ok: true, content: await getContent() });
   } catch (err) {
     console.error('content save error', err);
