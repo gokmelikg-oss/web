@@ -44,8 +44,22 @@ metni "35 yılı aşkın" = 1991, dışarıdan gelen SEO raporu 1994). Artık
 `seo.ts → ORG.foundingDate` ve hero metinleri buradan türer.
 
 > **KARARA BAĞLANDI (12.08.2026):** Kuruluş yılı **1992**. Dışarıdan gelen SEO
-> raporundaki "1994" yanlıştır. Deneyim ifadesi artık elle yazılmaz, yıldan
-> hesaplanır — "35 yılı aşkın" gibi zamanla yanlışa dönen metin kalmadı.
+> raporundaki "1994" yanlıştır.
+
+### ⚠ "35 yıl" ifadesine DOKUNMA
+
+Site metinlerinde **"35 yıl"** geçer. 1992'ye göre aritmetik olarak 34 eder;
+bu bir tutarsızlık gibi görünür ve düzeltme dürtüsü yaratır — **düzeltmeyin.**
+
+**Kullanıcı kararı (12.08.2026):** "35 yıl" şirketin **çıkış sloganıdır**,
+kuruluş yılından hesaplanan bir veri değildir. Bilinçli olarak korunur.
+
+Bir kez "30 yılı aşkın" olarak değiştirilip geri alınmıştır. Geçtiği yerler:
+`messages/{tr,en,ar,el}.json` · `provincesUi.ts` · `akademi/page.tsx` ·
+`TrustStrip.tsx` · `siteTexts.ts`.
+
+`experienceLabel()` (kuruluş yılından hesaplar) **yalnızca `/ihracat` rakam
+kutusunda** kullanılır; slogan metinlerinde kullanılmaz.
 
 `COMPANY_FACTS` içindeki `exportCountries`, `annualCapacity`, `facilityAreaM2`,
 `employees`, `completedProjects` **bilinçli olarak undefined**. Doldurulmayan

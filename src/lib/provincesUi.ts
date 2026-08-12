@@ -75,7 +75,7 @@ const DATA: Record<Locale, ProvincesUi> = {
           body1:
             'Bu araç bölgesel ortalamalara dayalı bir ön fikir verir. İlinize, çatınıza ve tüketiminize özel doğru kapasiteyi belirlemek için mühendislik ekibimiz ücretsiz saha keşfi ve projelendirme yapar.',
           body2:
-            'Konut, toplu konut, kamu ve endüstriyel projelerde 30 yılı aşkın üretim ve saha tecrübemizle yanınızdayız.',
+            'Konut, toplu konut, kamu ve endüstriyel projelerde 35 yıllık üretim ve saha tecrübemizle yanınızdayız.',
         },
       ],
       allTitle: 'İl il güneş potansiyeli',
@@ -112,7 +112,7 @@ const DATA: Record<Locale, ProvincesUi> = {
       body1: (name, region, rad, sun, tierWord) =>
         `${name}, ${region} bölgesinde yer alır ve yıllık ortalama ${rad} kWh/m² güneş ışınımı alır. ${sun} saatlik güneşlenme süresiyle, güneş enerjili sıcak su sistemleri ${tierWord} verimle çalışır ve enerji faturasını önemli ölçüde azaltır.`,
       body2: (name) =>
-        `Konut, toplu konut, kamu ve endüstriyel projelerde 30 yılı aşkın üretim ve saha tecrübemizle ${name} ve çevresinde güneş enerjisi çözümleri sunuyoruz.`,
+        `Konut, toplu konut, kamu ve endüstriyel projelerde 35 yıllık üretim ve saha tecrübemizle ${name} ve çevresinde güneş enerjisi çözümleri sunuyoruz.`,
       recommendedTitle: 'Önerilen sistem',
       quoteButton: (name) => `${name} için teklif alın`,
       surveyButton: 'Keşif talebi',
@@ -177,7 +177,7 @@ const DATA: Record<Locale, ProvincesUi> = {
           body1:
             'This tool gives a preliminary idea based on regional averages. To determine the right capacity specific to your province, roof and consumption, our engineering team performs a free site survey and design.',
           body2:
-            'We stand by you with over 30 years of manufacturing and field experience in residential, mass-housing, public and industrial projects.',
+            'We stand by you with 35 years of manufacturing and field experience in residential, mass-housing, public and industrial projects.',
         },
       ],
       allTitle: 'Solar potential province by province',
@@ -214,7 +214,7 @@ const DATA: Record<Locale, ProvincesUi> = {
       body1: (name, region, rad, sun, tierWord) =>
         `${name} is located in the ${region} region and receives an annual average of ${rad} kWh/m² of solar irradiance. With ${sun} hours of sunshine, solar hot water systems run at ${tierWord} efficiency and significantly reduce the energy bill.`,
       body2: (name) =>
-        `With over 30 years of manufacturing and field experience in residential, mass-housing, public and industrial projects, we provide solar energy solutions in ${name} and its surroundings.`,
+        `With 35 years of manufacturing and field experience in residential, mass-housing, public and industrial projects, we provide solar energy solutions in ${name} and its surroundings.`,
       recommendedTitle: 'Recommended system',
       quoteButton: (name) => `Get a quote for ${name}`,
       surveyButton: 'Request a survey',
@@ -279,7 +279,7 @@ const DATA: Record<Locale, ProvincesUi> = {
           body1:
             'تعطي هذه الأداة فكرة أولية تستند إلى المتوسطات الإقليمية. لتحديد السعة المناسبة الخاصة بمحافظتكم وسطحكم واستهلاككم، يُجري فريقنا الهندسي مسحاً ميدانياً وتصميماً مجاناً.',
           body2:
-            'نقف إلى جانبكم بخبرة تتجاوز 30 عاماً في التصنيع والميدان في المشاريع السكنية والإسكان الجماعي والعامة والصناعية.',
+            'نقف إلى جانبكم بخبرة 35 عاماً في التصنيع والميدان في المشاريع السكنية والإسكان الجماعي والعامة والصناعية.',
         },
       ],
       allTitle: 'الإمكان الشمسي محافظةً محافظة',
@@ -316,7 +316,7 @@ const DATA: Record<Locale, ProvincesUi> = {
       body1: (name, region, rad, sun, tierWord) =>
         `تقع ${name} في منطقة ${region} وتتلقى متوسطاً سنوياً قدره ${rad} kWh/m² من الإشعاع الشمسي. وبـ${sun} ساعة سطوع، تعمل أنظمة الماء الساخن الشمسية بكفاءة ${tierWord} وتخفّض فاتورة الطاقة بشكل كبير.`,
       body2: (name) =>
-        `بخبرة تتجاوز 30 عاماً في التصنيع والميدان في المشاريع السكنية والإسكان الجماعي والعامة والصناعية، نقدّم حلول الطاقة الشمسية في ${name} وما حولها.`,
+        `بخبرة 35 عاماً في التصنيع والميدان في المشاريع السكنية والإسكان الجماعي والعامة والصناعية، نقدّم حلول الطاقة الشمسية في ${name} وما حولها.`,
       recommendedTitle: 'النظام الموصى به',
       quoteButton: (name) => `اطلبوا عرضاً لـ ${name}`,
       surveyButton: 'طلب مسح',
@@ -381,7 +381,7 @@ const DATA: Record<Locale, ProvincesUi> = {
           body1:
             'Αυτό το εργαλείο δίνει μια προκαταρκτική ιδέα βάσει περιφερειακών μέσων όρων. Για τον καθορισμό της σωστής χωρητικότητας ειδικά για την επαρχία, τη στέγη και την κατανάλωσή σας, η ομάδα μηχανικής μας πραγματοποιεί δωρεάν επιτόπια μελέτη και σχεδιασμό.',
           body2:
-            'Στεκόμαστε στο πλευρό σας με πάνω από 30 χρόνια εμπειρίας στην παραγωγή και το πεδίο σε οικιακά, μαζικής κατοικίας, δημόσια και βιομηχανικά έργα.',
+            'Στεκόμαστε στο πλευρό σας με 35 χρόνια εμπειρίας στην παραγωγή και το πεδίο σε οικιακά, μαζικής κατοικίας, δημόσια και βιομηχανικά έργα.',
         },
       ],
       allTitle: 'Ηλιακό δυναμικό επαρχία προς επαρχία',
@@ -418,7 +418,7 @@ const DATA: Record<Locale, ProvincesUi> = {
       body1: (name, region, rad, sun, tierWord) =>
         `Η ${name} βρίσκεται στην περιοχή ${region} και δέχεται ετήσιο μέσο όρο ${rad} kWh/m² ηλιακής ακτινοβολίας. Με ${sun} ώρες ηλιοφάνειας, τα ηλιακά συστήματα ζεστού νερού λειτουργούν με ${tierWord} απόδοση και μειώνουν σημαντικά τον λογαριασμό ενέργειας.`,
       body2: (name) =>
-        `Με πάνω από 30 χρόνια εμπειρίας στην παραγωγή και το πεδίο σε οικιακά, μαζικής κατοικίας, δημόσια και βιομηχανικά έργα, προσφέρουμε λύσεις ηλιακής ενέργειας στην ${name} και τη γύρω περιοχή.`,
+        `Με 35 χρόνια εμπειρίας στην παραγωγή και το πεδίο σε οικιακά, μαζικής κατοικίας, δημόσια και βιομηχανικά έργα, προσφέρουμε λύσεις ηλιακής ενέργειας στην ${name} και τη γύρω περιοχή.`,
       recommendedTitle: 'Προτεινόμενο σύστημα',
       quoteButton: (name) => `Ζητήστε προσφορά για ${name}`,
       surveyButton: 'Αίτημα μελέτης',

@@ -23,9 +23,9 @@ export const TEXT_FIELDS: TextField[] = [
     label: 'Alt metin',
     multiline: true,
     default:
-      // "30 yılı aşkın" ifadesi mesaj dosyalarıyla aynıdır ve 1992'ye göre doğrudur.
-      // Kesin sayı gereken yerlerde experienceLabel() kullanılır (bkz. /ihracat).
-      "Şimşek Solar; 30 yılı aşkın üretim birikimiyle güneş enerjisi sistemlerini Mersin'deki entegre tesislerinde tasarlar, üretir ve dünyanın dört bir yanına ulaştırır. Ar-Ge'den üretime, proje mühendisliğinden satış sonrası hizmetlere uzanan tüm değer zinciri tek çatı altında yönetilir.",
+      // ⚠ "35 yılı aşkın" MARKA SLOGANIDIR — kuruluş yılından hesaplanmaz.
+      // Kullanıcı kararı (12.08.2026): bilinçli korunur, "düzeltilmez".
+      "Şimşek Solar; 35 yılı aşkın üretim birikimiyle güneş enerjisi sistemlerini Mersin'deki entegre tesislerinde tasarlar, üretir ve dünyanın dört bir yanına ulaştırır. Ar-Ge'den üretime, proje mühendisliğinden satış sonrası hizmetlere uzanan tüm değer zinciri tek çatı altında yönetilir.",
   },
 
   // Misyon & Vizyon

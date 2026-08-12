@@ -52,7 +52,7 @@ const CONTENT: Record<Locale, AcademyText> = {
     trainings: {
       eyebrow: 'Eğitimler',
       title: 'Sahada işe yarayan, uygulamalı eğitimler',
-      body: '30 yılı aşkın üretim ve saha tecrübemizi; bayilerimize, iş ortaklarımıza ve mühendislere aktarıyoruz. Eğitimler tesisimizde veya sahada, teoriyle uygulamayı birleştirerek verilir.',
+      body: '35 yıllık üretim ve saha tecrübemizi; bayilerimize, iş ortaklarımıza ve mühendislere aktarıyoruz. Eğitimler tesisimizde veya sahada, teoriyle uygulamayı birleştirerek verilir.',
       items: [
         { title: 'Güneş Enerjisi Temel Eğitimi', desc: 'Termal güneş enerjisinin çalışma prensibi, sistem tipleri ve doğru ürün seçimi.' },
         { title: 'Montaj ve Kurulum Eğitimi', desc: 'Çatı, teras ve zemin uygulamaları; sehpa montajı, hidrolik bağlantı ve devreye alma.' },
@@ -94,7 +94,7 @@ const CONTENT: Record<Locale, AcademyText> = {
     trainings: {
       eyebrow: 'Training',
       title: 'Hands-on training that works in the field',
-      body: 'We pass on our over 30 years of manufacturing and field experience to our dealers, partners and engineers. Training is delivered at our facility or on-site, combining theory with practice.',
+      body: 'We pass on our 35 years of manufacturing and field experience to our dealers, partners and engineers. Training is delivered at our facility or on-site, combining theory with practice.',
       items: [
         { title: 'Solar Energy Fundamentals', desc: 'The working principle of solar thermal, system types and correct product selection.' },
         { title: 'Assembly and Installation', desc: 'Roof, terrace and ground applications; frame assembly, hydraulic connection and commissioning.' },
@@ -136,7 +136,7 @@ const CONTENT: Record<Locale, AcademyText> = {
     trainings: {
       eyebrow: 'التدريب',
       title: 'تدريب تطبيقي يفيد في الميدان',
-      body: 'ننقل خبرتنا في التصنيع والميدان الممتدة لأكثر من 30 عاماً إلى وكلائنا وشركائنا ومهندسينا. يُقدَّم التدريب في منشأتنا أو في الموقع، جامعاً بين النظرية والتطبيق.',
+      body: 'ننقل خبرتنا في التصنيع والميدان الممتدة 35 عاماً إلى وكلائنا وشركائنا ومهندسينا. يُقدَّم التدريب في منشأتنا أو في الموقع، جامعاً بين النظرية والتطبيق.',
       items: [
         { title: 'أساسيات الطاقة الشمسية', desc: 'مبدأ عمل الطاقة الشمسية الحرارية وأنواع الأنظمة واختيار المنتج الصحيح.' },
         { title: 'التجميع والتركيب', desc: 'تطبيقات السطح والتراس والأرض؛ تركيب القواعد والتوصيل الهيدروليكي والتشغيل.' },
@@ -178,7 +178,7 @@ const CONTENT: Record<Locale, AcademyText> = {
     trainings: {
       eyebrow: 'Εκπαίδευση',
       title: 'Πρακτική εκπαίδευση που λειτουργεί στο πεδίο',
-      body: 'Μεταφέρουμε τα πάνω από 30 χρόνια εμπειρίας μας στην παραγωγή και το πεδίο στους αντιπροσώπους, τους συνεργάτες και τους μηχανικούς μας. Η εκπαίδευση παρέχεται στις εγκαταστάσεις μας ή επιτόπου, συνδυάζοντας θεωρία με πράξη.',
+      body: 'Μεταφέρουμε τα 35 χρόνια εμπειρίας μας στην παραγωγή και το πεδίο στους αντιπροσώπους, τους συνεργάτες και τους μηχανικούς μας. Η εκπαίδευση παρέχεται στις εγκαταστάσεις μας ή επιτόπου, συνδυάζοντας θεωρία με πράξη.',
       items: [
         { title: 'Βασικές Αρχές Ηλιακής Ενέργειας', desc: 'Η αρχή λειτουργίας του ηλιακού θερμικού, οι τύποι συστημάτων και η σωστή επιλογή προϊόντος.' },
         { title: 'Συναρμολόγηση και Εγκατάσταση', desc: 'Εφαρμογές σε στέγη, ταράτσα και έδαφος· συναρμολόγηση βάσης, υδραυλική σύνδεση και θέση σε λειτουργία.' },
