@@ -20,6 +20,57 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   ozel: Briefcase,
 };
 
+/* Kategori düğmesi — ikon + ad + sayaç.
+   Dokunma hedefi en az 42px (mobilde parmakla isabet için) ve seçili durum
+   hem renk hem halka ile gösterilir; yalnızca renge güvenmek renk körlüğünde
+   ayırt edilemiyordu. */
+function FilterPill({
+  icon: Icon, label, count, active, onClick,
+}: {
+  icon: LucideIcon;
+  label: string;
+  count: number;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`inline-flex min-h-[42px] shrink-0 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition-all ${
+        active
+          ? 'border-volt-500 bg-volt-500 text-graphite-950 shadow-sm ring-2 ring-volt-500/25'
+          : 'border-mist-900/12 bg-white text-graphite-800 hover:border-volt-500/50 hover:bg-volt-50/50'
+      }`}
+    >
+      <Icon size={15} className="shrink-0" />
+      {label}
+      <span
+        className={`rounded-full px-1.5 py-0.5 font-tabular text-[10px] font-bold ${
+          active ? 'bg-graphite-950/15 text-graphite-900' : 'bg-mist-100 text-mist-600'
+        }`}
+      >
+        {count}
+      </span>
+    </button>
+  );
+}
+
+/* Uygulanan tek bir filtre — çarpıya basınca yalnızca o kalkar. */
+function FilterChip({ label, onRemove }: { label: string; onRemove: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onRemove}
+      className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full bg-graphite-950 px-3 text-xs font-semibold text-white transition-opacity hover:opacity-80"
+    >
+      {label}
+      <X size={13} className="shrink-0" />
+    </button>
+  );
+}
+
 export interface ReferenceListLabels {
   searchPlaceholder: string;
   allProvinces: string; // "Tüm iller"
@@ -128,7 +179,11 @@ export function ReferenceList({
 
   return (
     <div>
-      {/* Arama + il filtresi */}
+      {/* Filtre çubuğu — sayfa kaydırılırken başlığın altına yapışır.
+          526 kayıtlık listede aşağı inince filtreye dönmek için yukarı
+          kaydırmak gerekiyordu; yapışkan çubuk bunu ortadan kaldırır.
+          Header h-20 (80px) olduğu için top-20 ile onun hemen altına oturur. */}
+      <div className="sticky top-20 z-20 -mx-2 rounded-2xl bg-white/85 px-2 py-3 backdrop-blur-md supports-[backdrop-filter]:bg-white/70">
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
           <Search
@@ -181,40 +236,50 @@ export function ReferenceList({
         )}
       </div>
 
-      {/* Kategori filtre çubuğu — ikon bazlı (Lipus formatı) */}
+      {/* Kategori filtresi — mobilde satır satır sarmak yerine yatay kayar şerit.
+          7-8 kategori telefonda 4 satıra yayılıp ekranı yiyordu. */}
       {categorySummaries.length > 1 && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          <button
-            type="button"
+        <div className="-mx-2 mt-3 flex gap-2 overflow-x-auto px-2 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
+          <FilterPill
+            icon={LayoutGrid}
+            label={labels.allCategories}
+            count={projects.length}
+            active={category === null}
             onClick={() => { setCategory(null); setVisible(PAGE_SIZE); }}
-            className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
-              category === null ? 'border-graphite-950 bg-graphite-950 text-white' : 'border-mist-900/12 bg-white text-graphite-800 hover:border-graphite-950'
-            }`}
-          >
-            <LayoutGrid size={14} />
-            {labels.allCategories}
-            <span className={`font-tabular text-[11px] ${category === null ? 'text-graphite-300' : 'text-mist-400'}`}>{projects.length}</span>
-          </button>
-          {categorySummaries.map((c) => {
-            const Icon = CATEGORY_ICONS[c.id] ?? Building2;
-            const active = category === c.id;
-            return (
-              <button
-                key={c.id}
-                type="button"
-                onClick={() => { setCategory(active ? null : c.id); setVisible(PAGE_SIZE); }}
-                className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
-                  active ? 'border-volt-500 bg-volt-500 text-graphite-950' : 'border-mist-900/12 bg-white text-graphite-800 hover:border-volt-500/50'
-                }`}
-              >
-                <Icon size={14} />
-                {labels.categoryNames[c.id] ?? c.id}
-                <span className={`font-tabular text-[11px] ${active ? 'text-graphite-900/60' : 'text-mist-400'}`}>{c.count}</span>
-              </button>
-            );
-          })}
+          />
+          {categorySummaries.map((c) => (
+            <FilterPill
+              key={c.id}
+              icon={CATEGORY_ICONS[c.id] ?? Building2}
+              label={labels.categoryNames[c.id] ?? c.id}
+              count={c.count}
+              active={category === c.id}
+              onClick={() => { setCategory(category === c.id ? null : c.id); setVisible(PAGE_SIZE); }}
+            />
+          ))}
         </div>
       )}
+
+      {/* Uygulanan filtreler — tek tek kaldırılabilir.
+          Önceden yalnızca toplu "Temizle" vardı; kullanıcı ilden vazgeçip
+          kategoriyi korumak isteyince her şeyi sıfırlamak zorunda kalıyordu. */}
+      {hasFilter && (
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          {query && (
+            <FilterChip label={`“${query}”`} onRemove={() => { setQuery(''); setVisible(PAGE_SIZE); }} />
+          )}
+          {province && (
+            <FilterChip label={province} onRemove={() => { setProvince(null); setVisible(PAGE_SIZE); }} />
+          )}
+          {category && (
+            <FilterChip
+              label={labels.categoryNames[category] ?? category}
+              onRemove={() => { setCategory(null); setVisible(PAGE_SIZE); }}
+            />
+          )}
+        </div>
+      )}
+      </div>
 
       {/* Seçkinin canlı özeti */}
       <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl border border-mist-900/10 bg-mist-50 p-4 sm:grid-cols-4">
@@ -334,15 +399,29 @@ export function ReferenceList({
         </ul>
       )}
 
-      {visible < filtered.length && (
-        <div className="mt-8 flex justify-center">
-          <button
-            type="button"
-            onClick={() => setVisible((v) => v + PAGE_SIZE)}
-            className="rounded-full border border-graphite-950/15 px-7 py-3 text-sm font-semibold text-graphite-950 transition-colors hover:bg-graphite-950 hover:text-white"
-          >
-            {labels.showMore} ({nf.format(filtered.length - visible)})
-          </button>
+      {/* Yükleme ilerlemesi — 526 kayıtta "nerede kaldım" sorusunu cevaplar.
+          Önceden yalnızca kalan sayı yazıyordu; toplamın neresinde olunduğu
+          görünmüyordu. */}
+      {filtered.length > PAGE_SIZE && (
+        <div className="mt-8 flex flex-col items-center gap-3">
+          <div className="h-1 w-full max-w-xs overflow-hidden rounded-full bg-mist-200">
+            <div
+              className="h-full rounded-full bg-volt-500 transition-all duration-300"
+              style={{ width: `${Math.min(100, (Math.min(visible, filtered.length) / filtered.length) * 100)}%` }}
+            />
+          </div>
+          <p className="font-tabular font-mono text-[11px] text-mist-500">
+            {nf.format(Math.min(visible, filtered.length))} / {nf.format(filtered.length)}
+          </p>
+          {visible < filtered.length && (
+            <button
+              type="button"
+              onClick={() => setVisible((v) => v + PAGE_SIZE)}
+              className="min-h-[46px] rounded-full border border-graphite-950/15 px-7 text-sm font-semibold text-graphite-950 transition-colors hover:bg-graphite-950 hover:text-white"
+            >
+              {labels.showMore} ({nf.format(filtered.length - visible)})
+            </button>
+          )}
         </div>
       )}
     </div>
