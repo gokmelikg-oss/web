@@ -205,7 +205,17 @@ export function SolarCalculator({ labels }: { labels: CalculatorUi }) {
             {/* CTA */}
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
-                href="/contact"
+                /* Hesaplama sonucu teklif formuna taşınır: il, önerilen sistem ve
+                   adet. En yüksek niyetli kullanıcı burada; formu sıfırdan
+                   doldurtmak dönüşümü düşürür. */
+                href={
+                  `/teklif-al?konum=${encodeURIComponent(result.provinceName)}` +
+                  (result.central
+                    ? `&urun=${encodeURIComponent(labels.collectorsWord)}&adet=${encodeURIComponent(String(result.collectorCount))}`
+                    : result.packageModel
+                      ? `&urun=${encodeURIComponent(result.packageModel)}&adet=1`
+                      : '')
+                }
                 className="inline-flex items-center gap-2 rounded-full bg-graphite-950 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
               >
                 {labels.ctaQuote}

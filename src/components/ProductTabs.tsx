@@ -69,7 +69,8 @@ export function ProductTabs({ slug }: { slug: string }) {
               </ul>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
-                  href="/contact"
+                  /* Ürün adı teklif formuna taşınır. */
+                  href={`/teklif-al?urun=${encodeURIComponent(t(`items.${slug}.name`))}`}
                   className="inline-flex items-center gap-2 rounded-full bg-graphite-950 px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02]"
                 >
                   {t('requestQuote')}

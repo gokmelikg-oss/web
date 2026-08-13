@@ -91,7 +91,7 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
             <ArrowRight size={16} className="rtl:rotate-180" />
           </Link>
           <Link
-            href="/contact"
+            href="/teklif-al"
             className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
           >
             {t('ctaSecondary')}

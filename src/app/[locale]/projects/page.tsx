@@ -241,7 +241,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
               <h2 className="max-w-2xl text-balance font-display text-2xl font-bold sm:text-3xl">{tCta('title')}</h2>
               <p className="max-w-xl text-sm leading-relaxed text-graphite-200">{tCta('subtitle')}</p>
               <Link
-                href="/contact"
+                href="/teklif-al"
                 className="mt-2 inline-flex items-center gap-2 rounded-full bg-solar-gradient px-7 py-3.5 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
               >
                 {tCta('cta')}

@@ -121,7 +121,8 @@ export default async function ProvinceDetailPage({
                 <p className="mt-3 leading-relaxed text-mist-700">{ui.systemRec(data.radiation)}</p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
-                    href="/contact"
+                    /* İl adı proje lokasyonu olarak taşınır. */
+                    href={`/teklif-al?konum=${encodeURIComponent(data.name)}`}
                     className="inline-flex items-center gap-2 rounded-full bg-graphite-950 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
                   >
                     {ui.detail.quoteButton(data.name)}

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { QuoteForm, type QuoteFormLabels } from '@/components/QuoteForm';
@@ -46,6 +47,7 @@ const CONTENT: Record<Locale, QuoteText> = {
       notConfigured: 'Form gönderimi henüz yapılandırılmadı. Lütfen info@simseksolar.com.tr adresine yazın.',
       fileTooBig: 'Dosya 8 MB sınırını aşıyor. Daha küçük bir dosya ekleyin veya e-posta ile gönderin.',
       fileType: 'Bu dosya türü kabul edilmiyor. PDF, DWG, DXF, Excel, Word, görsel veya ZIP ekleyebilirsiniz.',
+      prefilledNote: 'Geldiğiniz sayfadaki bilgiler forma aktarıldı. Gerekirse değiştirebilirsiniz.',
     },
   },
   en: {
@@ -77,6 +79,7 @@ const CONTENT: Record<Locale, QuoteText> = {
       notConfigured: 'Form delivery is not configured yet. Please write to info@simseksolar.com.tr.',
       fileTooBig: 'The file exceeds the 8 MB limit. Please attach a smaller file or send it by e-mail.',
       fileType: 'This file type is not accepted. You can attach PDF, DWG, DXF, Excel, Word, image or ZIP.',
+      prefilledNote: 'Details from the page you came from have been filled in. You can change them if needed.',
     },
   },
   ar: {
@@ -108,6 +111,7 @@ const CONTENT: Record<Locale, QuoteText> = {
       notConfigured: 'لم يتم إعداد إرسال النموذج بعد. يرجى المراسلة على info@simseksolar.com.tr.',
       fileTooBig: 'حجم الملف يتجاوز 8 ميغابايت. يرجى إرفاق ملف أصغر أو إرساله بالبريد الإلكتروني.',
       fileType: 'نوع الملف غير مقبول. يمكنك إرفاق PDF أو DWG أو DXF أو Excel أو Word أو صورة أو ZIP.',
+      prefilledNote: 'تم نقل بيانات الصفحة التي جئت منها إلى النموذج. يمكنك تعديلها عند الحاجة.',
     },
   },
   el: {
@@ -139,6 +143,7 @@ const CONTENT: Record<Locale, QuoteText> = {
       notConfigured: 'Η αποστολή φόρμας δεν έχει ρυθμιστεί ακόμη. Γράψτε στο info@simseksolar.com.tr.',
       fileTooBig: 'Το αρχείο ξεπερνά το όριο των 8 MB. Επισυνάψτε μικρότερο αρχείο ή στείλτε το με e-mail.',
       fileType: 'Ο τύπος αρχείου δεν γίνεται δεκτός. Επισυνάψτε PDF, DWG, DXF, Excel, Word, εικόνα ή ZIP.',
+      prefilledNote: 'Τα στοιχεία από τη σελίδα προέλευσης συμπληρώθηκαν. Μπορείτε να τα αλλάξετε.',
     },
   },
 };
@@ -158,7 +163,11 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
       <PageBreadcrumb items={[{ name: c.crumb, path: '/teklif-al' }]} />
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle} />
       <section className="mx-auto max-w-3xl px-6 pb-24">
-        <QuoteForm labels={c.form} />
+        {/* Form sorgu parametrelerini istemcide okur (useSearchParams).
+            Suspense sınırı olmadan bu, sayfayı statik üretimden çıkarır. */}
+        <Suspense fallback={<div className="h-96 rounded-2xl border border-mist-900/8 bg-white" />}>
+          <QuoteForm labels={c.form} />
+        </Suspense>
       </section>
     </>
   );

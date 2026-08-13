@@ -38,7 +38,7 @@ export function MobileCtaBar() {
           </a>
 
           <Link
-            href="/contact"
+            href="/teklif-al"
             className="flex items-center justify-center gap-1.5 rounded-xl bg-graphite-950 px-4 text-sm font-semibold text-white transition-transform active:scale-[0.98]"
           >
             Teklif Al

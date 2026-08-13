@@ -253,7 +253,8 @@ export function TechnicalLibrary({ labels }: { labels: TechDocsUi }) {
           {/* Alt aksiyonlar */}
           <div className="flex flex-wrap gap-3 border-t border-mist-900/8 bg-mist-50 p-6 sm:px-8">
             <Link
-              href="/contact"
+              /* O an seçili ürün teklif formuna taşınır. */
+              href={`/teklif-al?urun=${encodeURIComponent(tProducts(`items.${product.slug}.name`))}`}
               className="inline-flex items-center gap-2 rounded-full bg-graphite-950 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
             >
               {labels.quote}

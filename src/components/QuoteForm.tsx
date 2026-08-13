@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { CheckCircle2, Loader2, Send, Paperclip } from 'lucide-react';
 import { trackEvent } from '@/lib/track';
 import { Honeypot } from '@/components/Honeypot';
@@ -31,6 +32,8 @@ export interface QuoteFormLabels {
   notConfigured: string;
   fileTooBig: string;
   fileType: string;
+  /* Sorgu parametresinden alan doldurulduğunda gösterilen bilgi notu. */
+  prefilledNote: string;
 }
 
 const field =
@@ -41,6 +44,28 @@ export function QuoteForm({ labels }: { labels: QuoteFormLabels }) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
   const [message, setMessage] = useState('');
   const [fileName, setFileName] = useState('');
+
+  /* Bağlam ön doldurma.
+     Ürün sayfasından, hesaplama aracından veya il sayfasından gelen kullanıcı
+     "ne için teklif istediğini" formda yeniden yazmak zorunda kalmasın diye
+     ilgili alanlar sorgu parametresinden doldurulur:
+       /teklif-al?urun=Orion 435&adet=120&konum=Mersin
+     Sayfa statik kalsın diye sunucuda değil, istemcide okunur (Suspense içinde). */
+  const params = useSearchParams();
+  const [product, setProduct] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [projectLocation, setProjectLocation] = useState('');
+  const [prefilled, setPrefilled] = useState(false);
+
+  useEffect(() => {
+    const u = params.get('urun') ?? '';
+    const a = params.get('adet') ?? '';
+    const k = params.get('konum') ?? '';
+    setProduct(u);
+    setQuantity(a);
+    setProjectLocation(k);
+    setPrefilled(Boolean(u || a || k));
+  }, [params]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -86,6 +111,14 @@ export function QuoteForm({ labels }: { labels: QuoteFormLabels }) {
       <Honeypot />
       <h2 className="font-display text-xl font-bold text-graphite-950 sm:col-span-2">{labels.title}</h2>
 
+      {/* Geldiği sayfadan taşınan bilgiyi görünür kıl — kullanıcı doğru
+          ürün/konum için form doldurduğunu görsün, gerekirse değiştirsin. */}
+      {prefilled && (
+        <p className="rounded-xl border border-volt-500/30 bg-volt-50 px-4 py-2.5 text-xs leading-relaxed text-graphite-700 sm:col-span-2">
+          {labels.prefilledNote}
+        </p>
+      )}
+
       <label className="block">
         <span className={label}>{labels.name} *</span>
         <input name="name" required autoComplete="name" className={field} />
@@ -111,16 +144,33 @@ export function QuoteForm({ labels }: { labels: QuoteFormLabels }) {
       </label>
       <label className="block">
         <span className={label}>{labels.product}</span>
-        <input name="product" placeholder={labels.productPlaceholder} className={field} />
+        <input
+          name="product"
+          value={product}
+          onChange={(e) => setProduct(e.target.value)}
+          placeholder={labels.productPlaceholder}
+          className={field}
+        />
       </label>
 
       <label className="block">
         <span className={label}>{labels.quantity}</span>
-        <input name="quantity" placeholder={labels.quantityPlaceholder} className={field} />
+        <input
+          name="quantity"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+          placeholder={labels.quantityPlaceholder}
+          className={field}
+        />
       </label>
       <label className="block">
         <span className={label}>{labels.projectLocation}</span>
-        <input name="projectLocation" className={field} />
+        <input
+          name="projectLocation"
+          value={projectLocation}
+          onChange={(e) => setProjectLocation(e.target.value)}
+          className={field}
+        />
       </label>
 
       <label className="block sm:col-span-2">

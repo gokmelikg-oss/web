@@ -160,7 +160,9 @@ export default async function ProductDetailPage({
 
                 <div className="mt-9 flex flex-wrap gap-3">
                   <Link
-                    href="/contact"
+                    /* Ürün adı teklif formuna taşınır; müşteri hangi ürün için
+                       yazdığını tekrar girmek zorunda kalmaz. */
+                    href={`/teklif-al?urun=${encodeURIComponent(t(`items.${slug}.name`))}`}
                     className="inline-flex items-center gap-2 rounded-full bg-solar-gradient px-7 py-3.5 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
                   >
                     {t('requestQuote')}

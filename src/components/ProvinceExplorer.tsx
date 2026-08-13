@@ -105,7 +105,8 @@ export function ProvinceExplorer({ labels = DEFAULT_LABELS }: { labels?: Explore
         {/* CTA */}
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
-            href="/contact"
+            /* İl adı proje lokasyonu olarak taşınır. */
+            href={`/teklif-al?konum=${encodeURIComponent(data.name)}`}
             className="inline-flex items-center gap-2 rounded-full bg-graphite-950 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
           >
             {labels.quoteButton.replace('{name}', data.name)}
