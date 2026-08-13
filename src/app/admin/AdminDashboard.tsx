@@ -320,7 +320,12 @@ export function AdminDashboard({
         .join('') || session.username.slice(0, 2).toLocaleUpperCase('tr-TR'),
     [session.fullName, session.username]
   );
-  const listItems = section === 'products' ? products : section === 'posts' ? posts : [];
+  /* useMemo ile sarmalı: koşullu ifade her render'da yeni bir dizi ([]) üretiyordu,
+     bu da aşağıdaki filteredList useMemo'sunu her seferinde yeniden çalıştırıyordu. */
+  const listItems = useMemo(
+    () => (section === 'products' ? products : section === 'posts' ? posts : []),
+    [section, products, posts]
+  );
   const filteredList = useMemo(() => {
     const q = listSearch.trim().toLocaleLowerCase('tr-TR');
     return listItems

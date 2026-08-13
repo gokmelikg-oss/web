@@ -21,7 +21,8 @@ Premium kurumsal pazarlama sitesi. **Şimşek Solar** (Mersin merkezli güneş t
   `.next` önbelleğini bozar (`Cannot find module './vendor-chunks/@formatjs.js'`, 500).
   Doğrusu: önce dev'i durdur (port 3000 PID'ini kill), `npm run build`, sonra dev'i yeniden başlat.
   Gerekirse `.next`'i sil.
-- Build hedefi: **~470 statik sayfa, temiz**. AdminDashboard'da bilinen tek zararsız lint uyarısı var.
+- Build hedefi: **~503 statik sayfa, temiz**. **Lint tamamen temiz** — uyarı yok.
+  (AdminDashboard'daki eski `listItems` uyarısı 13.08.2026'da giderildi.)
 
 ## i18n deseni (ÇOK ÖNEMLİ)
 İki kaynak var:
