@@ -14,6 +14,9 @@ interface QuoteText {
   crumb: string;
   hero: { eyebrow: string; title: string; subtitle: string };
   meta: { title: string; description: string };
+  /* Teklif sureci — form gonderildikten sonra ne olacagini anlatir.
+     B2B alicinin "gonderirsem ne olur" tereddudunu azaltir. */
+  process: { title: string; steps: { title: string; desc: string }[] };
   form: QuoteFormLabels;
 }
 
@@ -30,6 +33,16 @@ const CONTENT: Record<Locale, QuoteText> = {
       title: 'Teklif Al | Şimşek Solar',
       description:
         'Güneş kollektörü, boyler ve merkezi sıcak su sistemleri için fiyat teklifi alın. Proje dosyanızı ekleyerek teknik çözüm ve teklif talep edin.',
+    },
+    process: {
+      title: 'Teklif süreci nasıl işliyor?',
+      steps: [
+        { title: 'Talebinizi iletin', desc: 'Ürün, adet ve proje bilgilerini paylaşın. Çizim veya şartname varsa forma ekleyin.' },
+        { title: 'Teknik değerlendirme', desc: 'Mühendislik ekibimiz ihtiyacınızı inceler; gerekirse sistem boyutlandırması yapar.' },
+        { title: 'Fiyat teklifi', desc: 'Ürün listesi, miktar ve teslim koşullarını içeren yazılı teklifinizi hazırlarız.' },
+        { title: 'Görüşme ve revizyon', desc: 'Teklifi birlikte gözden geçiririz; kapsam veya miktar değişirse güncelleriz.' },
+        { title: 'Üretim ve sevkiyat', desc: 'Onay sonrası üretim planına alınır, paletli olarak sevkiyata hazırlanır.' },
+      ],
     },
     form: {
       title: 'Teklif talep formu',
@@ -63,6 +76,16 @@ const CONTENT: Record<Locale, QuoteText> = {
       description:
         'Request a quotation for solar thermal collectors, storage tanks and central hot water systems. Attach your project file for a technical proposal.',
     },
+    process: {
+      title: 'How the quotation process works',
+      steps: [
+        { title: 'Send your request', desc: 'Share product, quantity and project details. Attach drawings or specifications if you have them.' },
+        { title: 'Technical review', desc: 'Our engineering team reviews your requirement and sizes the system where needed.' },
+        { title: 'Price quotation', desc: 'We prepare a written offer covering the product list, quantities and delivery terms.' },
+        { title: 'Discussion and revision', desc: 'We go through the offer together and update it if the scope or quantity changes.' },
+        { title: 'Production and shipment', desc: 'Once approved, the order enters the production plan and is prepared palletised for shipment.' },
+      ],
+    },
     form: {
       title: 'Quotation request form',
       name: 'Full name', company: 'Company', country: 'Country', email: 'E-mail', phone: 'Phone',
@@ -95,6 +118,16 @@ const CONTENT: Record<Locale, QuoteText> = {
       description:
         'اطلب عرض سعر للمجمعات الشمسية الحرارية وخزانات المياه وأنظمة المياه الساخنة المركزية. أرفق ملف مشروعك للحصول على عرض فني.',
     },
+    process: {
+      title: 'كيف تسير عملية عرض السعر؟',
+      steps: [
+        { title: 'أرسل طلبك', desc: 'شارك المنتج والكمية وتفاصيل المشروع. أرفق المخططات أو المواصفات إن وجدت.' },
+        { title: 'المراجعة الفنية', desc: 'يراجع فريقنا الهندسي متطلباتك ويحدد أحجام النظام عند الحاجة.' },
+        { title: 'عرض السعر', desc: 'نعدّ عرضاً مكتوباً يشمل قائمة المنتجات والكميات وشروط التسليم.' },
+        { title: 'المناقشة والمراجعة', desc: 'نراجع العرض معاً ونحدّثه إذا تغيّر النطاق أو الكمية.' },
+        { title: 'الإنتاج والشحن', desc: 'بعد الموافقة يدخل الطلب خطة الإنتاج ويُجهَّز على منصات للشحن.' },
+      ],
+    },
     form: {
       title: 'نموذج طلب عرض السعر',
       name: 'الاسم الكامل', company: 'الشركة', country: 'الدولة', email: 'البريد الإلكتروني', phone: 'الهاتف',
@@ -126,6 +159,16 @@ const CONTENT: Record<Locale, QuoteText> = {
       title: 'Ζητήστε Προσφορά | Şimşek Solar',
       description:
         'Ζητήστε προσφορά για ηλιακούς θερμικούς συλλέκτες, δοχεία αποθήκευσης και κεντρικά συστήματα ζεστού νερού. Επισυνάψτε το αρχείο του έργου σας.',
+    },
+    process: {
+      title: 'Πώς λειτουργεί η διαδικασία προσφοράς',
+      steps: [
+        { title: 'Στείλτε το αίτημά σας', desc: 'Μοιραστείτε προϊόν, ποσότητα και στοιχεία έργου. Επισυνάψτε σχέδια ή προδιαγραφές.' },
+        { title: 'Τεχνικός έλεγχος', desc: 'Η ομάδα μηχανικών εξετάζει την ανάγκη σας και διαστασιολογεί το σύστημα όπου χρειάζεται.' },
+        { title: 'Προσφορά τιμής', desc: 'Ετοιμάζουμε γραπτή προσφορά με λίστα προϊόντων, ποσότητες και όρους παράδοσης.' },
+        { title: 'Συζήτηση και αναθεώρηση', desc: 'Εξετάζουμε μαζί την προσφορά και την ενημερώνουμε αν αλλάξει το αντικείμενο.' },
+        { title: 'Παραγωγή και αποστολή', desc: 'Μετά την έγκριση, η παραγγελία μπαίνει στο πρόγραμμα παραγωγής και ετοιμάζεται σε παλέτες.' },
+      ],
     },
     form: {
       title: 'Φόρμα αιτήματος προσφοράς',
@@ -162,7 +205,26 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
     <>
       <PageBreadcrumb items={[{ name: c.crumb, path: '/teklif-al' }]} />
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle} />
-      <section className="mx-auto max-w-3xl px-6 pb-24">
+      {/* Teklif süreci — formdan ÖNCE gelir: kullanıcı doldurmaya başlamadan
+          "gönderirsem ne olacak" sorusunun cevabını görür. */}
+      <section className="mx-auto max-w-5xl px-6 pt-16">
+        <h2 className="text-center font-display text-xl font-bold text-graphite-950 sm:text-2xl">
+          {c.process.title}
+        </h2>
+        <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {c.process.steps.map((step, i) => (
+            <li key={step.title} className="rounded-2xl border border-mist-900/10 bg-white p-5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-volt-500 font-tabular text-sm font-bold text-graphite-950">
+                {i + 1}
+              </span>
+              <h3 className="mt-3.5 font-display text-sm font-bold text-graphite-950">{step.title}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-mist-600">{step.desc}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 pb-24 pt-16">
         {/* Form sorgu parametrelerini istemcide okur (useSearchParams).
             Suspense sınırı olmadan bu, sayfayı statik üretimden çıkarır. */}
         <Suspense fallback={<div className="h-96 rounded-2xl border border-mist-900/8 bg-white" />}>
