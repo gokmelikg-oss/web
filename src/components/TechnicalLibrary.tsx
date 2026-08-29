@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { FileText, Ruler, LineChart, Table2, ArrowUpRight, Download } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { products, productImages, getProductDocuments, type Product } from '@/data/products';
+import { FilterPill, filterStripClass } from '@/components/FilterPill';
 import type { TechDocsUi } from '@/lib/techDocsUi';
 
 type TabId = 'data' | 'curve' | 'dim' | 'docs';
@@ -125,26 +126,17 @@ export function TechnicalLibrary({ labels }: { labels: TechDocsUi }) {
             </div>
           </div>
 
-          {/* Sekmeler */}
-          <div className="flex flex-wrap gap-1 border-b border-mist-900/8 px-4 pt-4 sm:px-6">
-            {tabs.map((id) => {
-              const Icon = tabMeta[id].icon;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => setTab(id)}
-                  className={`inline-flex items-center gap-1.5 rounded-t-lg border-b-2 px-3.5 py-2.5 text-sm font-semibold transition-colors ${
-                    activeTab === id
-                      ? 'border-volt-500 text-graphite-950'
-                      : 'border-transparent text-mist-500 hover:text-graphite-800'
-                  }`}
-                >
-                  <Icon size={15} />
-                  {tabMeta[id].label}
-                </button>
-              );
-            })}
+          {/* Sekmeler — site genelindeki filtre düğmeleriyle aynı bileşen. */}
+          <div className={`${filterStripClass} border-b border-mist-900/8 px-4 pb-3 pt-4 sm:px-6`}>
+            {tabs.map((id) => (
+              <FilterPill
+                key={id}
+                icon={tabMeta[id].icon}
+                label={tabMeta[id].label}
+                active={activeTab === id}
+                onClick={() => setTab(id)}
+              />
+            ))}
           </div>
 
           <div className="p-6 sm:p-8">

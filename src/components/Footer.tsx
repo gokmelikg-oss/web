@@ -5,7 +5,6 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { SOCIAL } from '@/lib/seo';
 import { certificates } from '@/data/certificates';
-import { productionSteps } from '@/data/production';
 import type { Locale } from '@/i18n/config';
 
 /* Footer sabit etiketleri — dört dilde (kolon başlıkları, link adları, yasal). */
@@ -24,10 +23,7 @@ const FOOTER_UI: Record<
     hesaplama: string;
     ilPotansiyeli: string;
     catiUygunluk: string;
-    uretim: string;
     sertifikalar: string;
-    ihracat: string;
-    oem: string;
     bayi: string;
     teklifAl: string;
     kvkk: string;
@@ -40,7 +36,7 @@ const FOOTER_UI: Record<
     tarihce: 'Tarihçe', grupSirketleri: 'Grup Şirketleri', kariyer: 'Kariyer',
     referanslar: 'Referanslar', satisSonrasi: 'Satış Sonrası Hizmet', blog: 'Blog',
     hesaplama: 'Hesaplama Aracı', ilPotansiyeli: 'İl Güneş Potansiyeli', catiUygunluk: 'Çatı Uygunluk',
-    uretim: 'Üretim', sertifikalar: 'Sertifikalar', ihracat: 'İhracat', oem: 'OEM & Private Label', bayi: 'Bayilik', teklifAl: 'Teklif Al',
+    sertifikalar: 'Sertifikalar', bayi: 'Bayilik', teklifAl: 'Teklif Al',
     kvkk: 'KVKK', gizlilik: 'Gizlilik Politikası', cerez: 'Çerez Politikası',
   },
   en: {
@@ -48,7 +44,7 @@ const FOOTER_UI: Record<
     tarihce: 'History', grupSirketleri: 'Group Companies', kariyer: 'Careers',
     referanslar: 'References', satisSonrasi: 'After-Sales Service', blog: 'Blog',
     hesaplama: 'Calculator', ilPotansiyeli: 'Solar Potential by Province', catiUygunluk: 'Roof Suitability',
-    uretim: 'Production', sertifikalar: 'Certificates', ihracat: 'Export', oem: 'OEM & Private Label', bayi: 'Become a Dealer', teklifAl: 'Request a Quote',
+    sertifikalar: 'Certificates', bayi: 'Become a Dealer', teklifAl: 'Request a Quote',
     kvkk: 'KVKK', gizlilik: 'Privacy Policy', cerez: 'Cookie Policy',
   },
   ar: {
@@ -56,7 +52,7 @@ const FOOTER_UI: Record<
     tarihce: 'التاريخ', grupSirketleri: 'شركات المجموعة', kariyer: 'الوظائف',
     referanslar: 'المراجع', satisSonrasi: 'خدمة ما بعد البيع', blog: 'المدونة',
     hesaplama: 'أداة الحساب', ilPotansiyeli: 'الإمكان الشمسي حسب المحافظة', catiUygunluk: 'ملاءمة السطح',
-    uretim: 'الإنتاج', sertifikalar: 'الشهادات', ihracat: 'التصدير', oem: 'OEM والعلامة الخاصة', bayi: 'كن وكيلاً', teklifAl: 'اطلب عرض سعر',
+    sertifikalar: 'الشهادات', bayi: 'كن وكيلاً', teklifAl: 'اطلب عرض سعر',
     kvkk: 'KVKK', gizlilik: 'سياسة الخصوصية', cerez: 'سياسة ملفات الارتباط',
   },
   el: {
@@ -64,7 +60,7 @@ const FOOTER_UI: Record<
     tarihce: 'Ιστορία', grupSirketleri: 'Εταιρείες Ομίλου', kariyer: 'Καριέρα',
     referanslar: 'Έργα Αναφοράς', satisSonrasi: 'Υποστήριξη Μετά την Πώληση', blog: 'Ιστολόγιο',
     hesaplama: 'Υπολογιστής', ilPotansiyeli: 'Ηλιακό Δυναμικό ανά Επαρχία', catiUygunluk: 'Καταλληλότητα Στέγης',
-    uretim: 'Παραγωγή', sertifikalar: 'Πιστοποιητικά', ihracat: 'Εξαγωγές', oem: 'OEM & Private Label', bayi: 'Αντιπροσωπεία', teklifAl: 'Ζητήστε Προσφορά',
+    sertifikalar: 'Πιστοποιητικά', bayi: 'Αντιπροσωπεία', teklifAl: 'Ζητήστε Προσφορά',
     kvkk: 'KVKK', gizlilik: 'Πολιτική Απορρήτου', cerez: 'Πολιτική Cookies',
   },
 };
@@ -134,16 +130,12 @@ export function Footer() {
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
             <li><Link href="/about" className="hover:text-white">{t('aboutLink')}</Link></li>
-            {/* Üretim ve Sertifikalar yalnızca verisi girildiğinde linklenir;
-                boş sayfaya yönlendirmemek için (o hâldeyken noindex'ler). */}
-            {productionSteps.length > 0 && (
-              <li><Link href="/uretim" className="hover:text-white">{f.uretim}</Link></li>
-            )}
+            {/* Sertifikalar yalnızca verisi girildiğinde linklenir; boş sayfaya
+                yönlendirmemek için (o hâldeyken sayfa noindex). */}
             {certificates.length > 0 && (
               <li><Link href="/sertifikalar" className="hover:text-white">{f.sertifikalar}</Link></li>
             )}
             <li><Link href="/history" className="hover:text-white">{f.tarihce}</Link></li>
-            <li><Link href="/grup-sirketleri" className="hover:text-white">{f.grupSirketleri}</Link></li>
             <li><Link href="/contact#kariyer" className="hover:text-white">{f.kariyer}</Link></li>
           </ul>
         </div>
@@ -155,8 +147,6 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
             <li><Link href="/products" className="hover:text-white">{tNav('products')}</Link></li>
             <li><Link href="/projects" className="hover:text-white">{f.referanslar}</Link></li>
-            <li><Link href="/ihracat" className="hover:text-white">{f.ihracat}</Link></li>
-            <li><Link href="/oem" className="hover:text-white">{f.oem}</Link></li>
             <li><Link href="/bayi" className="hover:text-white">{f.bayi}</Link></li>
             <li><Link href="/contact#servis" className="hover:text-white">{f.satisSonrasi}</Link></li>
             <li><Link href="/blog" className="hover:text-white">{f.blog}</Link></li>

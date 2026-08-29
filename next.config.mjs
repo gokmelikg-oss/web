@@ -67,6 +67,18 @@ const nextConfig = {
         permanent: true,
       },
       {
+        // Grup Şirketleri, Tarihçe sayfasıyla birleştirildi (13.08.2026).
+        source: '/:locale(tr|en|ar|el)/grup-sirketleri',
+        destination: '/:locale/history',
+        permanent: true,
+      },
+      {
+        // OEM, İhracat ve Üretim sayfaları kaldırıldı (13.08.2026).
+        source: '/:locale(tr|en|ar|el)/:kaldirilan(oem|ihracat|uretim)',
+        destination: '/:locale/about',
+        permanent: true,
+      },
+      {
         // Satış sonrası hizmet iletişim sayfasına taşındı.
         source: '/:locale(tr|en|ar|el)/service',
         destination: '/:locale/contact#servis',

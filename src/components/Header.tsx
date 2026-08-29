@@ -20,12 +20,12 @@ const navItems = [
 /* Kurumsal başlığı + alt menüsü — dört dilde. */
 const CORP: Record<
   Locale,
-  { title: string; hakkimizda: string; tarihce: string; grup: string; uretim: string; ihracat: string; oem: string; bayi: string }
+  { title: string; hakkimizda: string; tarihce: string; grup: string; bayi: string }
 > = {
-  tr: { title: 'Kurumsal', hakkimizda: 'Hakkımızda', tarihce: 'Tarihçe', grup: 'Grup Şirketleri', uretim: 'Üretim', ihracat: 'İhracat', oem: 'OEM & Private Label', bayi: 'Bayilik' },
-  en: { title: 'Company', hakkimizda: 'About Us', tarihce: 'History', grup: 'Group Companies', uretim: 'Production', ihracat: 'Export', oem: 'OEM & Private Label', bayi: 'Become a Dealer' },
-  ar: { title: 'الشركة', hakkimizda: 'من نحن', tarihce: 'التاريخ', grup: 'شركات المجموعة', uretim: 'الإنتاج', ihracat: 'التصدير', oem: 'OEM والعلامة الخاصة', bayi: 'كن وكيلاً' },
-  el: { title: 'Εταιρεία', hakkimizda: 'Σχετικά', tarihce: 'Ιστορία', grup: 'Εταιρείες Ομίλου', uretim: 'Παραγωγή', ihracat: 'Εξαγωγές', oem: 'OEM & Private Label', bayi: 'Αντιπροσωπεία' },
+  tr: { title: 'Kurumsal', hakkimizda: 'Hakkımızda', tarihce: 'Tarihçe', grup: 'Grup Şirketleri', bayi: 'Bayilik' },
+  en: { title: 'Company', hakkimizda: 'About Us', tarihce: 'History', grup: 'Group Companies', bayi: 'Become a Dealer' },
+  ar: { title: 'الشركة', hakkimizda: 'من نحن', tarihce: 'التاريخ', grup: 'شركات المجموعة', bayi: 'كن وكيلاً' },
+  el: { title: 'Εταιρεία', hakkimizda: 'Σχετικά', tarihce: 'Ιστορία', grup: 'Εταιρείες Ομίλου', bayi: 'Αντιπροσωπεία' },
 };
 
 export function Header() {
@@ -34,11 +34,8 @@ export function Header() {
   const corp = CORP[locale] ?? CORP.tr;
   const corporateItems = [
     { href: '/about', label: corp.hakkimizda },
-    { href: '/uretim', label: corp.uretim },
+    /* Tarihçe ve Grup Şirketleri tek sayfada birleştirildi (kullanıcı kararı). */
     { href: '/history', label: corp.tarihce },
-    { href: '/grup-sirketleri', label: corp.grup },
-    { href: '/ihracat', label: corp.ihracat },
-    { href: '/oem', label: corp.oem },
     { href: '/bayi', label: corp.bayi },
   ];
   const pathname = usePathname();

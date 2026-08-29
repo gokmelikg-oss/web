@@ -5,7 +5,6 @@ import { SystemWizard } from '@/components/home/SystemWizard';
 import { ProductIndex } from '@/components/home/ProductIndex';
 import { WhyUs } from '@/components/home/WhyUs';
 import { Certs } from '@/components/home/Certs';
-import { HomeContact } from '@/components/home/HomeContact';
 import { SectionDots } from '@/components/home/SectionDots';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { SocialFeed } from '@/components/home/SocialFeed';
@@ -31,7 +30,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
       <WhyUs />
       <GroupSection />
       <SocialFeed />
-      <HomeContact texts={texts} />
     </>
   );
 }

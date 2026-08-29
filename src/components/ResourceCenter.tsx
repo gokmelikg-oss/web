@@ -2,15 +2,24 @@
 
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Download, ShieldCheck, ArrowUpRight, FileText } from 'lucide-react';
+import { Download, ShieldCheck, ArrowUpRight, FileText, LayoutGrid, FileSpreadsheet, PencilRuler, BookOpen, type LucideIcon } from 'lucide-react';
 import { products, getProductDocuments, type ProductDocument } from '@/data/products';
 import { DocRow } from '@/components/DocRow';
+import { FilterPill, filterStripClass } from '@/components/FilterPill';
 
 type DocType = ProductDocument['type'];
 
 /* Ürün belgeleri üç başlıkta: teknik föy, teknik çizim (PDF), kurulum kılavuzu.
    Sertifikalar ve genel dökümanlar ayrı bölümlerde listelenir. */
 const filterTypes: (DocType | 'all')[] = ['all', 'datasheet', 'drawing', 'manual'];
+
+/* Filtre ikonlari — Referanslar sayfasiyla ayni gorsel dil. */
+const FILTER_ICONS: Record<string, LucideIcon> = {
+  all: LayoutGrid,
+  datasheet: FileSpreadsheet,
+  drawing: PencilRuler,
+  manual: BookOpen,
+};
 
 interface Row {
   id: string;
@@ -63,6 +72,17 @@ export function ResourceCenter({ adminDocs = [], hideProductDocs = false }: { ad
     });
   }
 
+  /* Her filtre icin belge sayisi — kullanici tiklamadan once kac sonuc
+     olduğunu görür (Referanslar sayfasindaki desenin aynisi). */
+  const typeCounts = useMemo(() => {
+    const all = productGroups.flatMap((g) => g.rows);
+    const counts: Record<string, number> = { all: all.length };
+    for (const t of filterTypes) {
+      if (t !== "all") counts[t] = all.filter((r) => r.type === t).length;
+    }
+    return counts;
+  }, [productGroups]);
+
   const filterRows = (rows: Row[]) => (active === 'all' ? rows : rows.filter((r) => r.type === active));
 
   return (
@@ -85,18 +105,16 @@ export function ResourceCenter({ adminDocs = [], hideProductDocs = false }: { ad
           </button>
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className={`${filterStripClass} mt-5`}>
           {filterTypes.map((f) => (
-            <button
+            <FilterPill
               key={f}
-              type="button"
+              icon={FILTER_ICONS[f]}
+              label={t(`filters.${f}`)}
+              count={typeCounts[f]}
+              active={active === f}
               onClick={() => setActive(f)}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                active === f ? 'bg-graphite-950 text-white' : 'bg-mist-100 text-graphite-950 hover:bg-mist-200'
-              }`}
-            >
-              {t(`filters.${f}`)}
-            </button>
+            />
           ))}
         </div>
 

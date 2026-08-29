@@ -5,6 +5,7 @@ import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { PageBreadcrumb } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/seo';
+import { GroupCompanies } from '@/components/GroupCompanies';
 import type { Locale } from '@/i18n/config';
 
 /* Dile bağımsız iskelet: dönem id/ikon ve kilometre taşı yılları (metin dilden gelir). */
@@ -361,6 +362,10 @@ export default async function HistoryPage({ params }: { params: Promise<{ locale
           </div>
         </div>
       </section>
+
+      {/* Grup Şirketleri — ayrı sayfa yerine burada (kullanıcı kararı 13.08.2026) */}
+      <GroupCompanies />
+
     </>
   );
 }

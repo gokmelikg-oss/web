@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import { getTranslations, getLocale } from 'next-intl/server';
-import Image from 'next/image';
-import { Sun, BatteryCharging, Wind, Layers, Mail, Globe, Phone, MapPin } from 'lucide-react';
-import { PageHero } from '@/components/PageHero';
-import { Reveal } from '@/components/Reveal';
-import { PageBreadcrumb } from '@/components/JsonLd';
-import { pageMetadata } from '@/lib/seo';
-import type { Locale } from '@/i18n/config';
+import { getTranslations, getLocale } from "next-intl/server";
+import Image from "next/image";
+import { Sun, BatteryCharging, Wind, Layers, Mail, Globe, Phone, MapPin } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import type { Locale } from "@/i18n/config";
+
+/* Grup şirketleri bölümü.
+   Önceden /grup-sirketleri kendi sayfasıydı; kullanıcı kararıyla (13.08.2026)
+   Tarihçe sayfasıyla birleştirildi ve tek başlık altında gösteriliyor. */
 
 interface GroupUi {
   crumb: string;
@@ -72,16 +72,6 @@ const GROUP_UI: Record<Locale, GroupUi> = {
   },
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const ui = GROUP_UI[locale] ?? GROUP_UI.tr;
-  return pageMetadata({ locale, path: '/grup-sirketleri', title: ui.meta.title, description: ui.meta.description });
-}
-
 interface Company {
   id: string;
   name: string;
@@ -104,17 +94,30 @@ const contact: Record<string, { email: string; web: string; webHref: string; pho
   smk: { email: 'info@smkaluminyum.com', web: 'smkaluminyum.com', webHref: 'https://smkaluminyum.com', phone: '+90 324 324 12 35', city: 'Mersin' },
 };
 
-export default async function GroupPage() {
-  const tGroup = await getTranslations('group');
+export async function GroupCompanies() {
+  const tGroup = await getTranslations("group");
   const locale = (await getLocale()) as Locale;
   const ui = GROUP_UI[locale] ?? GROUP_UI.tr;
-  const companies = tGroup.raw('companies') as Company[];
+  const companies = tGroup.raw("companies") as Company[];
 
   return (
     <>
-      <PageBreadcrumb items={[{ name: ui.crumb, path: '/grup-sirketleri' }]} />
-      <PageHero eyebrow={ui.eyebrow} title={ui.title} subtitle={ui.subtitle} />
-
+      {/* Bölüm başlığı — sayfa başlığı yerine bölüm başlığı olarak. */}
+      <section className="section-pad bg-mist-50 pb-0">
+        <div className="container-page">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
+                {ui.eyebrow}
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+                {ui.title}
+              </h2>
+              <p className="mt-4 text-balance leading-relaxed text-mist-700">{ui.subtitle}</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
       {/* Ana şirket bandı */}
       <section className="section-pad bg-white">
         <div className="container-page">
