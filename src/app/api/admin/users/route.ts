@@ -10,6 +10,18 @@ import { ADMIN_SECTIONS, type AdminRole, type AdminSection } from '@/lib/adminAc
 export const runtime = 'nodejs';
 
 /* Kullanıcı yönetimi yalnızca yöneticiye (owner) açıktır. */
+
+/* Hata mesajı sızıntısına karşı: yalnızca BİZİM attığımız Türkçe doğrulama
+   mesajları istemciye döner. Beklenmeyen hatalar (dosya sistemi, KV) genel
+   mesaja çevrilir ve ayrıntı yalnızca sunucu günlüğüne yazılır. */
+function safeError(err: unknown): string {
+  const msg = err instanceof Error ? err.message : '';
+  const known = msg.startsWith('Kullanıcı') || msg.startsWith('Şifre') || msg.startsWith('Bu kullanıcı') || msg.startsWith('Son yönetici');
+  if (known) return msg;
+  console.error('admin/users hatası', err);
+  return 'İşlem tamamlanamadı. Lütfen tekrar deneyin.';
+}
+
 async function requireOwner() {
   const session = await getSession();
   if (!session) return { error: NextResponse.json({ ok: false }, { status: 401 }) };
@@ -62,7 +74,7 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ ok: true, users: (await listUsers()).map(safeUser) });
   } catch (err) {
-    return NextResponse.json({ ok: false, error: (err as Error).message }, { status: 400 });
+    return NextResponse.json({ ok: false, error: safeError(err) }, { status: 400 });
   }
 }
 
@@ -84,7 +96,7 @@ export async function PATCH(req: NextRequest) {
     });
     return NextResponse.json({ ok: true, users: (await listUsers()).map(safeUser) });
   } catch (err) {
-    return NextResponse.json({ ok: false, error: (err as Error).message }, { status: 400 });
+    return NextResponse.json({ ok: false, error: safeError(err) }, { status: 400 });
   }
 }
 
@@ -106,6 +118,6 @@ export async function DELETE(req: NextRequest) {
     });
     return NextResponse.json({ ok: true, users: (await listUsers()).map(safeUser) });
   } catch (err) {
-    return NextResponse.json({ ok: false, error: (err as Error).message }, { status: 400 });
+    return NextResponse.json({ ok: false, error: safeError(err) }, { status: 400 });
   }
 }

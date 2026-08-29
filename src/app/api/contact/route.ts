@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { CONTACT_EMAIL, SITE_NAME } from '@/lib/seo';
+import { field, LIMITS, isEmail, allowRequest, clientIp } from '@/lib/formGuard';
 
 export const runtime = 'nodejs';
 
@@ -48,10 +49,31 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
+  /* Hız sınırı: aynı IP 10 dakikada en fazla 5 form gönderebilir. */
+  if (!allowRequest(`contact:${clientIp(req.headers)}`, 5)) {
+    return NextResponse.json({ ok: false, error: 'rate_limited' }, { status: 429 });
+  }
+
+  /* Alanlar uzunluk sınırıyla ve kontrol karakterleri temizlenerek alınır
+     (e-posta başlığı kırma ve aşırı büyük gövde girişimlerine karşı). */
+  data = {
+    formType: data.formType,
+    name: field(data.name, LIMITS.name),
+    email: field(data.email, LIMITS.email),
+    phone: field(data.phone, LIMITS.phone),
+    company: field(data.company, LIMITS.company),
+    city: field(data.city, LIMITS.projectLocation),
+    country: field(data.country, LIMITS.country),
+    subject: field(data.subject, LIMITS.subject),
+    serviceType: field(data.serviceType, LIMITS.serviceType),
+    volume: field(data.volume, LIMITS.volume),
+    message: field(data.message, LIMITS.message),
+  };
+
   const isNewsletter = data.formType === 'newsletter';
 
   // Basit doğrulama — bültende yalnızca e-posta, diğerlerinde ad + e-posta.
-  if (!data.email || !data.email.includes('@') || (!isNewsletter && !data.name)) {
+  if (!data.email || !isEmail(data.email) || (!isNewsletter && !data.name)) {
     return NextResponse.json({ ok: false, error: 'validation' }, { status: 422 });
   }
 

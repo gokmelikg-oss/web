@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { CONTACT_EMAIL, SITE_NAME } from '@/lib/seo';
+import { field, LIMITS, isEmail, allowRequest, clientIp } from '@/lib/formGuard';
 
 export const runtime = 'nodejs';
 
@@ -25,14 +26,20 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: 'invalid_body' }, { status: 400 });
   }
 
-  const get = (k: string) => (form.get(k) ?? '').toString().trim();
+  /* Her alan uzunluk sınırıyla ve kontrol karakterleri temizlenerek okunur. */
+  const get = (k: keyof typeof LIMITS) => field(form.get(k), LIMITS[k]);
 
   // Honeypot — gizli alan doluysa bot; başarı taklidi yapıp sessizce yut.
-  if (get('website') !== '') return NextResponse.json({ ok: true });
+  if (field(form.get('website'), 50) !== '') return NextResponse.json({ ok: true });
+
+  /* Hız sınırı: aynı IP 10 dakikada en fazla 5 teklif talebi gönderebilir. */
+  if (!allowRequest(`teklif:${clientIp(req.headers)}`, 5)) {
+    return NextResponse.json({ ok: false, error: 'rate_limited' }, { status: 429 });
+  }
 
   const name = get('name');
   const email = get('email');
-  if (!name || !email.includes('@')) {
+  if (!name || !isEmail(email)) {
     return NextResponse.json({ ok: false, error: 'validation' }, { status: 422 });
   }
 
