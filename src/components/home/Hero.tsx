@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion , useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { CountUp } from '@/components/CountUp';
@@ -11,6 +11,13 @@ import { txt } from '@/lib/siteTexts';
 const NUMBER_LOCALE: Record<string, string> = { tr: 'tr-TR', en: 'en-US', ar: 'ar-EG' };
 
 export function Hero({ texts }: { texts?: Record<string, string> }) {
+  /* Hareket azaltma tercihi: hero giriş animasyonunda kayma yapılmaz,
+     yalnızca kısa bir opaklık geçişi kalır (WCAG 2.3.3). */
+  const reduce = useReducedMotion();
+  const rise = (y: number, duration: number, delay = 0) =>
+    reduce
+      ? { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.2 } }
+      : { initial: { opacity: 0, y }, animate: { opacity: 1, y: 0 }, transition: { duration, delay } };
   const t = useTranslations('hero');
   const locale = useLocale();
   const stats = t.raw('stats') as { value: number; suffix: string; label: string }[];
@@ -47,18 +54,14 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
 
       <div className="container-page relative z-10 flex min-h-[calc(100vh)] flex-col items-center justify-center py-24 text-center sm:py-28">
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          {...rise(12, 0.7)}
           className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-volt-400"
         >
           {txt(texts, 'hero.eyebrow', t('eyebrow'))}
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          {...rise(24, 0.9, 0.15)}
           className="mt-7 max-w-4xl text-balance font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl"
         >
           {txt(texts, 'hero.titleLine1', t('titleLine1'))}
@@ -69,18 +72,14 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          {...rise(20, 0.8, 0.3)}
           className="mt-6 max-w-2xl text-balance text-base leading-relaxed text-graphite-300 sm:text-lg"
         >
           {txt(texts, 'hero.subtitle', t('subtitle'))}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.42 }}
+          {...rise(20, 0.8, 0.42)}
           className="mt-9 flex flex-wrap items-center justify-center gap-4"
         >
           <Link
@@ -100,9 +99,7 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          {...rise(24, 0.8, 0.6)}
           className="mt-16 grid w-full max-w-2xl grid-cols-3 divide-x divide-white/12 border border-white/12 bg-white/[0.03] backdrop-blur-sm rtl:divide-x-reverse"
         >
           {stats.map((s) => (
