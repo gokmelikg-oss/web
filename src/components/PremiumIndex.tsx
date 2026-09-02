@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   ArrowUpRight,
   GraduationCap,
@@ -62,6 +62,8 @@ export function PremiumIndex({
   ctaHref?: string;
   actionLabel?: string;
 }) {
+  /* Hareket azaltma tercihi: ölçek animasyonu yapılmaz. */
+  const reduce = useReducedMotion();
   const [active, setActive] = useState(0);
   const current = items[active];
   const CurrentIcon = ICONS[current.iconKey];
@@ -173,8 +175,8 @@ export function PremiumIndex({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={current.id}
-                    initial={{ opacity: 0, scale: 1.04 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 1.04 }}
+                    animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0"

@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { products, type ProductCategory } from '@/data/products';
 import { ProductCard } from '@/components/ProductCard';
 
 const filters: (ProductCategory | 'all')[] = ['all', 'collector', 'boiler', 'package', 'smart'];
 
 export function ProductsGrid() {
+  /* Hareket azaltma tercihi: ölçek animasyonu yapılmaz. */
+  const reduce = useReducedMotion();
   const t = useTranslations('products.filters');
   const [active, setActive] = useState<ProductCategory | 'all'>('all');
 
@@ -39,8 +41,8 @@ export function ProductsGrid() {
             <motion.div
               key={product.slug}
               layout
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.96 }}
+              animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.3 }}
             >

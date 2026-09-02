@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Sun, BatteryCharging, Wind, Layers } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
+import { useEntrance } from '@/lib/useEntrance';
 
 interface Company {
   id: string;
@@ -21,6 +22,8 @@ const companyVisual: Record<string, { logo?: string; icon: typeof Sun; accent: s
 };
 
 export function GroupSection() {
+  /* Hareket azaltma tercihini dinleyen ortak giriş animasyonu. */
+  const entrance = useEntrance();
   const t = useTranslations('group');
   const companies = t.raw('companies') as Company[];
 
@@ -30,8 +33,8 @@ export function GroupSection() {
       <div className="container-page">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
-              {t('eyebrow')}
+            <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
+              {t('eyebrow')}
             </p>
             <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight text-graphite-700 sm:text-5xl">
               {t('title')}
@@ -105,10 +108,7 @@ export function GroupSection() {
             return (
               <motion.div
                 key={c.id}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                {...entrance(28, 0.6, i * 0.12)}
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-graphite-700/10 bg-mist-50 p-7 shadow-card transition-all hover:-translate-y-1.5 hover:border-volt-500/50 hover:bg-white"
               >
                 <div className="flex items-start justify-between">

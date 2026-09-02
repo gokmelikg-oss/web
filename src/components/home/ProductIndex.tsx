@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, Sun, Droplets, Layers, Cable, Cpu } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -52,6 +52,8 @@ const META: Record<string, { icon: typeof Sun; accent: string; spec: string; tag
 };
 
 export function ProductIndex() {
+  /* Hareket azaltma tercihi: ölçek animasyonu yapılmaz. */
+  const reduce = useReducedMotion();
   const t = useTranslations('productsSection');
   const tc = useTranslations('catalog');
   const families = tc.raw('families') as CatalogFamily[];
@@ -190,8 +192,8 @@ export function ProductIndex() {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={current.id}
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 1.05 }}
+                    animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0"

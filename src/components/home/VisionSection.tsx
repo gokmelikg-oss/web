@@ -2,8 +2,11 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { useEntrance } from '@/lib/useEntrance';
 
 export function VisionSection() {
+  /* Hareket azaltma tercihini dinleyen ortak giriş animasyonu. */
+  const entrance = useEntrance();
   const t = useTranslations('vision');
   const lines = t.raw('lines') as string[];
 
@@ -47,18 +50,15 @@ export function VisionSection() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8 }}
           className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-volt-400"
-        >
-          {t('eyebrow')}
+        >
+          {t('eyebrow')}
         </motion.p>
 
         <div className="mx-auto mt-12 max-w-4xl text-center">
           {lines.map((line, i) => (
             <motion.p
               key={line}
-              initial={{ opacity: 0.12, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-120px' }}
-              transition={{ duration: 0.9, delay: i * 0.18, ease: [0.22, 1, 0.36, 1] }}
+              {...entrance(24, 0.9, i * 0.18)}
               className={`text-balance font-display font-bold leading-[1.15] tracking-tight ${
                 i === lines.length - 1
                   ? 'mt-6 bg-gradient-to-r from-volt-300 via-volt-500 to-volt-600 bg-clip-text text-transparent sm:mt-8'
