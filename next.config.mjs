@@ -84,6 +84,18 @@ const nextConfig = {
         destination: '/:locale/contact#servis',
         permanent: true,
       },
+      {
+        /* Kariyer içeriği iletişim sayfasındaki İK bölümündedir. İncelenen
+           ISO 500 firmalarının hepsinde "Kariyer" ayrı bir adres olduğu için
+           aday doğrudan /kariyer deniyor; aynı içeriği ikinci kez yazmak
+           yerine beklenen adres mevcut bölüme yönlendirilir.
+           ⚠ Açık pozisyon listesi geldiğinde burası GERÇEK bir sayfaya
+           dönmelidir; yönlendirme o zaman kaldırılır. Bu yüzden kalıcı
+           (308) değil geçici (307) yönlendirmedir. */
+        source: '/:locale(tr|en|ar|el)/kariyer',
+        destination: '/:locale/contact#kariyer',
+        permanent: false,
+      },
     ];
   },
 

@@ -24,6 +24,8 @@ const FOOTER_UI: Record<
     ilPotansiyeli: string;
     catiUygunluk: string;
     sertifikalar: string;
+    surdurulebilirlik: string;
+    basin: string;
     bayi: string;
     teklifAl: string;
     kvkk: string;
@@ -36,7 +38,7 @@ const FOOTER_UI: Record<
     tarihce: 'Tarihçe', grupSirketleri: 'Grup Şirketleri', kariyer: 'Kariyer',
     referanslar: 'Referanslar', satisSonrasi: 'Satış Sonrası Hizmet', blog: 'Blog',
     hesaplama: 'Hesaplama Aracı', ilPotansiyeli: 'İl Güneş Potansiyeli', catiUygunluk: 'Çatı Uygunluk',
-    sertifikalar: 'Sertifikalar', bayi: 'Bayilik', teklifAl: 'Teklif Al',
+    sertifikalar: 'Sertifikalar', surdurulebilirlik: 'Sürdürülebilirlik', basin: 'Basın Odası', bayi: 'Bayilik', teklifAl: 'Teklif Al',
     kvkk: 'KVKK', gizlilik: 'Gizlilik Politikası', cerez: 'Çerez Politikası',
   },
   en: {
@@ -44,7 +46,7 @@ const FOOTER_UI: Record<
     tarihce: 'History', grupSirketleri: 'Group Companies', kariyer: 'Careers',
     referanslar: 'References', satisSonrasi: 'After-Sales Service', blog: 'Blog',
     hesaplama: 'Calculator', ilPotansiyeli: 'Solar Potential by Province', catiUygunluk: 'Roof Suitability',
-    sertifikalar: 'Certificates', bayi: 'Become a Dealer', teklifAl: 'Request a Quote',
+    sertifikalar: 'Certificates', surdurulebilirlik: 'Sustainability', basin: 'Press Room', bayi: 'Become a Dealer', teklifAl: 'Request a Quote',
     kvkk: 'KVKK', gizlilik: 'Privacy Policy', cerez: 'Cookie Policy',
   },
   ar: {
@@ -52,7 +54,7 @@ const FOOTER_UI: Record<
     tarihce: 'التاريخ', grupSirketleri: 'شركات المجموعة', kariyer: 'الوظائف',
     referanslar: 'المراجع', satisSonrasi: 'خدمة ما بعد البيع', blog: 'المدونة',
     hesaplama: 'أداة الحساب', ilPotansiyeli: 'الإمكان الشمسي حسب المحافظة', catiUygunluk: 'ملاءمة السطح',
-    sertifikalar: 'الشهادات', bayi: 'كن وكيلاً', teklifAl: 'اطلب عرض سعر',
+    sertifikalar: 'الشهادات', surdurulebilirlik: 'الاستدامة', basin: 'الغرفة الصحفية', bayi: 'كن وكيلاً', teklifAl: 'اطلب عرض سعر',
     kvkk: 'KVKK', gizlilik: 'سياسة الخصوصية', cerez: 'سياسة ملفات الارتباط',
   },
   el: {
@@ -60,7 +62,7 @@ const FOOTER_UI: Record<
     tarihce: 'Ιστορία', grupSirketleri: 'Εταιρείες Ομίλου', kariyer: 'Καριέρα',
     referanslar: 'Έργα Αναφοράς', satisSonrasi: 'Υποστήριξη Μετά την Πώληση', blog: 'Ιστολόγιο',
     hesaplama: 'Υπολογιστής', ilPotansiyeli: 'Ηλιακό Δυναμικό ανά Επαρχία', catiUygunluk: 'Καταλληλότητα Στέγης',
-    sertifikalar: 'Πιστοποιητικά', bayi: 'Αντιπροσωπεία', teklifAl: 'Ζητήστε Προσφορά',
+    sertifikalar: 'Πιστοποιητικά', surdurulebilirlik: 'Βιωσιμότητα', basin: 'Γραφείο Τύπου', bayi: 'Αντιπροσωπεία', teklifAl: 'Ζητήστε Προσφορά',
     kvkk: 'KVKK', gizlilik: 'Πολιτική Απορρήτου', cerez: 'Πολιτική Cookies',
   },
 };
@@ -136,7 +138,13 @@ export function Footer() {
               <li><Link href="/sertifikalar" className="hover:text-white">{f.sertifikalar}</Link></li>
             )}
             <li><Link href="/history" className="hover:text-white">{f.tarihce}</Link></li>
-            <li><Link href="/contact#kariyer" className="hover:text-white">{f.kariyer}</Link></li>
+            {/* ISO 500 sanayi kuruluşlarının sitelerinde ana menü düzeyinde
+                standart olan iki başlık. */}
+            <li><Link href="/surdurulebilirlik" className="hover:text-white">{f.surdurulebilirlik}</Link></li>
+            <li><Link href="/basin" className="hover:text-white">{f.basin}</Link></li>
+            {/* /kariyer, next.config.mjs'te /contact#kariyer'e yönlenir —
+                aranabilir bir adres olsun diye (tekrar içerik yazılmaz). */}
+            <li><Link href="/kariyer" className="hover:text-white">{f.kariyer}</Link></li>
           </ul>
         </div>
 

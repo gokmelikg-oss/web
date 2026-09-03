@@ -21,6 +21,8 @@ const STATIC_PATHS = [
   { path: '/founder', priority: 0.5, changeFrequency: 'yearly' as const },
   { path: '/history', priority: 0.5, changeFrequency: 'yearly' as const },
   { path: '/kalite-politikasi', priority: 0.4, changeFrequency: 'yearly' as const },
+  { path: '/surdurulebilirlik', priority: 0.5, changeFrequency: 'monthly' as const },
+  { path: '/basin', priority: 0.4, changeFrequency: 'monthly' as const },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' as const },
   // Ticari dönüşüm ve yetenek sayfaları
   { path: '/teklif-al', priority: 0.9, changeFrequency: 'yearly' as const },

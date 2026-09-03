@@ -20,12 +20,22 @@ const navItems = [
 /* Kurumsal başlığı + alt menüsü — dört dilde. */
 const CORP: Record<
   Locale,
-  { title: string; hakkimizda: string; tarihce: string; grup: string; bayi: string }
+  {
+    title: string;
+    hakkimizda: string;
+    tarihce: string;
+    grup: string;
+    bayi: string;
+    /* İncelenen ISO 500 sanayi kuruluşlarının (Arçelik, Erdemir, Çimsa,
+       Şişecam) hepsinde sürdürülebilirlik ana menü düzeyinde bir başlık.
+       Bir güneş enerjisi üreticisinde bulunmaması bariz bir eksikti. */
+    surdurulebilirlik: string;
+  }
 > = {
-  tr: { title: 'Kurumsal', hakkimizda: 'Hakkımızda', tarihce: 'Tarihçe', grup: 'Grup Şirketleri', bayi: 'Bayilik' },
-  en: { title: 'Company', hakkimizda: 'About Us', tarihce: 'History', grup: 'Group Companies', bayi: 'Become a Dealer' },
-  ar: { title: 'الشركة', hakkimizda: 'من نحن', tarihce: 'التاريخ', grup: 'شركات المجموعة', bayi: 'كن وكيلاً' },
-  el: { title: 'Εταιρεία', hakkimizda: 'Σχετικά', tarihce: 'Ιστορία', grup: 'Εταιρείες Ομίλου', bayi: 'Αντιπροσωπεία' },
+  tr: { title: 'Kurumsal', hakkimizda: 'Hakkımızda', tarihce: 'Tarihçe', grup: 'Grup Şirketleri', bayi: 'Bayilik', surdurulebilirlik: 'Sürdürülebilirlik' },
+  en: { title: 'Company', hakkimizda: 'About Us', tarihce: 'History', grup: 'Group Companies', bayi: 'Become a Dealer', surdurulebilirlik: 'Sustainability' },
+  ar: { title: 'الشركة', hakkimizda: 'من نحن', tarihce: 'التاريخ', grup: 'شركات المجموعة', bayi: 'كن وكيلاً', surdurulebilirlik: 'الاستدامة' },
+  el: { title: 'Εταιρεία', hakkimizda: 'Σχετικά', tarihce: 'Ιστορία', grup: 'Εταιρείες Ομίλου', bayi: 'Αντιπροσωπεία', surdurulebilirlik: 'Βιωσιμότητα' },
 };
 
 export function Header() {
@@ -36,6 +46,7 @@ export function Header() {
     { href: '/about', label: corp.hakkimizda },
     /* Tarihçe ve Grup Şirketleri tek sayfada birleştirildi (kullanıcı kararı). */
     { href: '/history', label: corp.tarihce },
+    { href: '/surdurulebilirlik', label: corp.surdurulebilirlik },
     { href: '/bayi', label: corp.bayi },
   ];
   const pathname = usePathname();
