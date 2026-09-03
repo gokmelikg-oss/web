@@ -54,7 +54,7 @@ export function CapabilityPage({
           </div>
         )}
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((it) => (
             <Reveal key={it.title}>
               <article className="h-full rounded-2xl border border-mist-900/10 bg-white p-7">
@@ -71,7 +71,7 @@ export function CapabilityPage({
         <div className="mt-16 overflow-hidden rounded-3xl bg-graphite-gradient p-9 text-white sm:p-12">
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div className="max-w-xl">
-              <h2 className="font-display text-2xl font-bold sm:text-3xl">{ctaTitle}</h2>
+              <h2 className="font-display type-h2-sm font-bold">{ctaTitle}</h2>
               <p className="mt-3 leading-relaxed text-graphite-200">{ctaBody}</p>
             </div>
             <Link

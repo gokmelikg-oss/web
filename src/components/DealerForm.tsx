@@ -63,7 +63,7 @@ export function DealerForm() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onSubmit={handleSubmit}
-            className="grid gap-5 sm:grid-cols-2"
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2"
           >
             <Honeypot />
             <h2 className="font-display text-xl font-bold text-graphite-950 sm:col-span-2">{t('title')}</h2>

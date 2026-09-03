@@ -52,7 +52,12 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
         </div>
       </div>
 
-      <div className="container-page relative z-10 flex min-h-[calc(100vh)] flex-col items-center justify-center py-24 text-center sm:py-28">
+      {/* ⚠ Yükseklik `100vh` DEĞİL `100svh`: mobil tarayıcılarda 100vh adres
+          çubuğu dahil ölçülür, bu yüzden açılışta hero ekrandan taşıyor ve alt
+          bloklar kesiliyordu. `svh` en küçük görünür alanı baz alır.
+          Dikey boşluk da akışkan: sabit py-24 kısa ve yatay ekranlarda
+          içeriği taşırıyordu. */}
+      <div className="container-page relative z-10 flex min-h-[100svh] flex-col items-center justify-center py-[clamp(4.5rem,3rem+7vh,7rem)] text-center">
         <motion.p
           {...rise(12, 0.7)}
           className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-volt-400"
@@ -62,7 +67,7 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
 
         <motion.h1
           {...rise(24, 0.9, 0.15)}
-          className="mt-7 max-w-4xl text-balance font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl"
+          className="mt-7 max-w-4xl text-balance font-display type-hero font-bold leading-[1.08] tracking-tight"
         >
           {txt(texts, 'hero.titleLine1', t('titleLine1'))}
           <br />
@@ -73,25 +78,27 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
 
         <motion.p
           {...rise(20, 0.8, 0.3)}
-          className="mt-6 max-w-2xl text-balance text-base leading-relaxed text-graphite-300 sm:text-lg"
+          className="mt-6 max-w-2xl text-balance type-lead text-graphite-300"
         >
           {txt(texts, 'hero.subtitle', t('subtitle'))}
         </motion.p>
 
         <motion.div
           {...rise(20, 0.8, 0.42)}
-          className="mt-9 flex flex-wrap items-center justify-center gap-4"
+          className="mt-9 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:items-center sm:gap-4"
         >
+          {/* Telefonda iki düğme yan yana sıkışıp iki satıra bölünüyordu;
+              artık tam genişlikte alt alta durur (dokunma hedefi de büyür). */}
           <Link
             href="/products"
-            className="group inline-flex items-center gap-2 rounded-full bg-solar-gradient px-8 py-3.5 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
+            className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-solar-gradient px-8 py-3.5 text-sm font-semibold text-graphite-900 shadow-glow transition-transform hover:scale-[1.03]"
           >
             {t('ctaPrimary')}
             <ArrowRight size={16} className="rtl:rotate-180" />
           </Link>
           <Link
             href="/teklif-al"
-            className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+            className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/25 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
           >
             {t('ctaSecondary')}
             <ArrowUpRight size={16} />
@@ -100,11 +107,14 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
 
         <motion.div
           {...rise(24, 0.8, 0.6)}
-          className="mt-16 grid w-full max-w-2xl grid-cols-3 divide-x divide-white/12 border border-white/12 bg-white/[0.03] backdrop-blur-sm rtl:divide-x-reverse"
+          className="mt-[clamp(2.5rem,1.5rem+4vh,4rem)] grid w-full max-w-2xl grid-cols-3 divide-x divide-white/12 border border-white/12 bg-white/[0.03] backdrop-blur-sm rtl:divide-x-reverse"
         >
           {stats.map((s) => (
-            <div key={s.label} className="flex flex-col items-center justify-center px-4 py-3.5 text-center">
-              <p className="font-tabular font-display text-2xl font-bold text-white sm:text-3xl">
+            <div
+              key={s.label}
+              className="flex flex-col items-center justify-center px-[clamp(0.5rem,0.25rem+1vw,1rem)] py-3.5 text-center"
+            >
+              <p className="font-tabular font-display text-[clamp(1.25rem,1rem+1vw,1.875rem)] font-bold leading-tight text-white">
                 <CountUp value={s.value} suffix={s.suffix} locale={NUMBER_LOCALE[locale] ?? 'tr-TR'} />
               </p>
               <p className="mt-1.5 font-mono text-[9.5px] uppercase leading-tight tracking-[0.14em] text-graphite-400">
@@ -119,7 +129,11 @@ export function Hero({ texts }: { texts?: Record<string, string> }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.1 }}
-          className="mt-12 flex flex-col items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.26em] text-graphite-400 transition-colors hover:text-white"
+          aria-label={t('ctaPrimary')}
+          /* Tıklanabilir alan yalnızca 14×14 ikon kadardı; telefonda
+             isabet ettirmek neredeyse imkânsızdı. Kutu 44×44'e çıkarıldı
+             (WCAG 2.5.8), ikon aynı boyutta kaldı. */
+          className="mt-[clamp(1.5rem,1rem+2vh,3rem)] flex h-11 w-11 items-center justify-center text-graphite-400 transition-colors hover:text-white"
         >
           <ChevronDown size={14} className="animate-bounce" />
         </motion.a>

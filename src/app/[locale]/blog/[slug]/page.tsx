@@ -82,7 +82,7 @@ export default async function ArticlePage({
               <Clock size={11} /> {article.readMin} {ui.minRead}
             </span>
           </div>
-          <h1 className="mt-4 max-w-3xl text-balance font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-balance font-display type-h1 font-bold leading-tight tracking-tight">
             {article.title}
           </h1>
           <p className="mt-5 max-w-2xl text-balance text-mist-300">{article.excerpt}</p>
@@ -109,7 +109,7 @@ export default async function ArticlePage({
 
           {article.body.map((section, si) => (
             <Reveal key={section.heading} className="mt-10">
-              <h2 id={`s-${si}`} className="scroll-mt-28 font-display text-xl font-bold text-graphite-950 sm:text-2xl">
+              <h2 id={`s-${si}`} className="scroll-mt-28 font-display type-h3 font-bold text-graphite-950">
                 {section.heading}
               </h2>
               {section.paragraphs.map((p, i) => (
@@ -143,7 +143,7 @@ export default async function ArticlePage({
       <section className="section-pad bg-mist-50">
         <div className="container-page">
           <h2 className="font-display text-2xl font-bold text-graphite-950">{ui.otherPosts}</h2>
-          <div className="mt-8 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((a) => (
               <Link
                 key={a.slug}

@@ -235,12 +235,12 @@ export default async function AkademiPage({ params }: { params: Promise<{ locale
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                 {c.tools.eyebrow}
               </p>
-              <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">{c.tools.title}</h2>
+              <h2 className="mt-4 text-balance font-display type-h2 font-bold tracking-tight">{c.tools.title}</h2>
               <p className="mt-4 text-graphite-300">{c.tools.subtitle}</p>
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
             {TOOLS_BASE.map((tool, i) => {
               const Icon = tool.icon;
               const txt = c.tools.items[i];
@@ -275,12 +275,12 @@ export default async function AkademiPage({ params }: { params: Promise<{ locale
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {c.trainings.eyebrow}
               </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">{c.trainings.title}</h2>
+              <h2 className="mt-3 font-display type-h2 font-bold tracking-tight text-graphite-950">{c.trainings.title}</h2>
               <p className="mt-4 text-mist-700">{c.trainings.body}</p>
             </div>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
             {c.trainings.items.map((item, i) => {
               const Icon = TRAINING_ICONS[i];
               return (
@@ -311,7 +311,7 @@ export default async function AkademiPage({ params }: { params: Promise<{ locale
                   <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                     {c.blog.eyebrow}
                   </p>
-                  <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">{c.blog.title}</h2>
+                  <h2 className="mt-3 font-display type-h2 font-bold tracking-tight text-graphite-950">{c.blog.title}</h2>
                   <p className="mt-4 text-mist-700">{c.blog.subtitle}</p>
                 </div>
                 <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-semibold text-volt-700 hover:text-volt-800">
@@ -321,7 +321,7 @@ export default async function AkademiPage({ params }: { params: Promise<{ locale
               </div>
             </Reveal>
 
-            <div className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((a, i) => (
                 <Reveal key={a.slug} delay={i * 0.06}>
                   <Link
@@ -371,7 +371,7 @@ export default async function AkademiPage({ params }: { params: Promise<{ locale
         <div className="container-page">
           <Reveal>
             <div className="flex flex-col items-center gap-4 rounded-3xl bg-graphite-gradient p-9 text-center text-white sm:p-12">
-              <h3 className="font-display text-2xl font-bold sm:text-3xl">{c.cta.title}</h3>
+              <h3 className="font-display type-h2-sm font-bold">{c.cta.title}</h3>
               <p className="max-w-xl text-sm leading-relaxed text-graphite-200">{c.cta.body}</p>
               <Link
                 href="/contact"

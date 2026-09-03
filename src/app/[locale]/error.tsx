@@ -23,7 +23,7 @@ export default function Error({
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-volt-700">
           Bir şeyler ters gitti
         </p>
-        <h1 className="mt-6 max-w-lg text-balance font-display text-2xl font-bold text-graphite-950 sm:text-3xl">
+        <h1 className="mt-6 max-w-lg text-balance font-display type-h2-sm font-bold text-graphite-950">
           Sayfa yüklenirken beklenmeyen bir hata oluştu
         </h1>
         <p className="mt-4 max-w-md text-mist-700">

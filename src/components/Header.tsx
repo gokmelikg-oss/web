@@ -77,7 +77,10 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden min-w-0 items-center gap-6 lg:flex xl:gap-8">
+        {/* 1024–1200px arasında altı menü + dil seçici + "Teklif Al" yan yana
+            sığmıyordu (Yunanca ve Arapça etiketler daha uzun). Aralık artık
+            kademeli: lg'de dar, xl'de rahat. */}
+        <nav className="hidden min-w-0 items-center gap-4 lg:flex xl:gap-7">
           {/* Kurumsal dropdown */}
           <div className="relative" onMouseEnter={() => setCorpOpen(true)} onMouseLeave={() => setCorpOpen(false)}>
             <button
@@ -148,8 +151,11 @@ export function Header() {
         </button>
       </div>
 
+      {/* Menü, başlık yüksekliği düşüldükten sonra kalan ekranı geçemez ve
+          gerekirse kendi içinde kayar; alçak telefonlarda "Teklif Al"
+          düğmesi ekranın dışında kalıyordu. */}
       {mobileOpen && (
-        <div className="border-t border-graphite-700/10 bg-white lg:hidden">
+        <div className="max-h-[calc(100svh-5rem)] overflow-y-auto overscroll-contain border-t border-graphite-700/10 bg-white lg:hidden">
           <nav className="container-page flex flex-col gap-1 py-4">
             <p className="px-3 pt-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-mist-500">
               {corp.title}

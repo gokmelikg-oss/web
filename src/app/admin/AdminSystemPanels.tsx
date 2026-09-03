@@ -277,7 +277,7 @@ export function UsersPanel({ currentUser }: { currentUser: string }) {
             <button onClick={() => setDraft(null)} className="rounded-lg p-1.5 text-mist-400 hover:bg-mist-100"><X size={16} /></button>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className="block">
               <span className={lbl}>Kullanıcı adı</span>
               <input
@@ -304,7 +304,7 @@ export function UsersPanel({ currentUser }: { currentUser: string }) {
 
           <div className="mt-4">
             <span className={lbl}>Rol</span>
-            <div className="grid gap-2 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
               {(['owner', 'editor', 'viewer'] as AdminRole[]).map((r) => (
                 <button
                   key={r}
@@ -809,7 +809,7 @@ export function SystemPanel() {
         </p>
       ))}
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className={card}>
           <p className="mb-4 flex items-center gap-2 font-display text-sm font-bold text-graphite-950"><Cpu size={16} className="text-volt-600" /> Kaynak kullanımı</p>
           <div className="space-y-4">

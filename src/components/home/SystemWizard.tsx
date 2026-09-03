@@ -114,7 +114,7 @@ export function SystemWizard() {
           <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
             {t('eyebrow')}
           </p>
-          <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight text-graphite-700 sm:text-4xl">
+          <h2 className="mt-4 text-balance font-display type-h2 font-bold tracking-tight text-graphite-700">
             {t('title')}
           </h2>
           <p className="mt-4 text-balance text-mist-600">{t('body')}</p>
@@ -137,7 +137,7 @@ export function SystemWizard() {
             <AnimatePresence mode="wait">
               {step === 0 && (
                 <WizardStep key="segment" title={t('steps.segment')}>
-                  <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                     {(Object.keys(segments) as Segment[]).map((key) => {
                       const Icon = segmentIcons[key];
                       return (
@@ -156,7 +156,7 @@ export function SystemWizard() {
 
               {step === 1 && segment && (
                 <WizardStep key="size" title={t('steps.size')}>
-                  <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                     {sizes.map((opt) => (
                       <OptionCard
                         key={opt.id}
@@ -204,7 +204,7 @@ export function SystemWizard() {
                             ? (tProducts(`items.${rec.slug}.name`) as string)
                             : t('centralTitle')}
                         </p>
-                        <h3 className="mt-2 max-w-md font-display text-2xl font-bold sm:text-3xl">
+                        <h3 className="mt-2 max-w-md font-display type-h2-sm font-bold">
                           {rec.slug ? tProducts(`items.${rec.slug}.tagline`) : t('centralModel')}
                         </h3>
                       </div>
@@ -217,7 +217,7 @@ export function SystemWizard() {
                     </p>
 
                     {/* Sistem özet kartları */}
-                    <div className="mt-5 grid gap-2.5 sm:grid-cols-3">
+                    <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
                       {rec.specs.map((spec) => (
                         <div
                           key={spec.label}
@@ -300,7 +300,7 @@ function WizardStep({ title, children }: { title: string; children: React.ReactN
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
-      <h3 className="text-center font-display text-xl font-bold text-graphite-700 sm:text-2xl">{title}</h3>
+      <h3 className="text-center font-display type-h3 font-bold text-graphite-700">{title}</h3>
       <div className="mt-7">{children}</div>
     </motion.div>
   );

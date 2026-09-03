@@ -208,10 +208,10 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
       {/* Teklif süreci — formdan ÖNCE gelir: kullanıcı doldurmaya başlamadan
           "gönderirsem ne olacak" sorusunun cevabını görür. */}
       <section className="mx-auto max-w-5xl px-6 pt-16">
-        <h2 className="text-center font-display text-xl font-bold text-graphite-950 sm:text-2xl">
+        <h2 className="text-center font-display type-h3 font-bold text-graphite-950">
           {c.process.title}
         </h2>
-        <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {c.process.steps.map((step, i) => (
             <li key={step.title} className="rounded-2xl border border-mist-900/10 bg-white p-5">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-volt-500 font-tabular text-sm font-bold text-graphite-950">

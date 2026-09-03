@@ -40,7 +40,7 @@ export default async function SolarPotentialPage({ params }: { params: Promise<{
 
       {/* Bilgilendirme */}
       <section className="section-pad bg-mist-50">
-        <div className="container-page grid gap-10 lg:grid-cols-2">
+        <div className="container-page grid grid-cols-1 gap-10 lg:grid-cols-2">
           {ui.info.map((block, i) => (
             <Reveal key={block.title} delay={i * 0.05}>
               <div>
@@ -84,7 +84,7 @@ export default async function SolarPotentialPage({ params }: { params: Promise<{
               <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {roof.eyebrow}
               </p>
-              <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 text-balance font-display type-h2 font-bold tracking-tight text-graphite-950">
                 {roof.title}
               </h2>
               <p className="mt-4 text-mist-700">{roof.subtitle}</p>

@@ -29,13 +29,13 @@ export function Certs() {
       <div className="pointer-events-none absolute -start-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-volt-500/10 blur-3xl" aria-hidden />
 
       <div className="container-page relative">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
           <Reveal>
             <div>
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                 {t('eyebrow')}
               </p>
-              <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 text-balance font-display type-h2 font-bold tracking-tight">
                 {t('title')}
               </h2>
               <p className="mt-4 max-w-md leading-relaxed text-graphite-300">{t('subtitle')}</p>

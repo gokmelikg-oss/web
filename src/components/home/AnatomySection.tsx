@@ -72,13 +72,13 @@ export function AnatomySection() {
       <div className="pointer-events-none absolute inset-0 bg-blueprint-dark opacity-20" aria-hidden />
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="container-page w-full">
-          <div className="grid items-center gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12">
             {/* Metin + parça listesi */}
             <div>
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                 {t('eyebrow')}
               </p>
-              <h2 className="mt-4 max-w-md text-balance font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h2 className="mt-4 max-w-md text-balance font-display type-h2 font-bold tracking-tight text-white">
                 {t('title')}
               </h2>
               <p className="mt-4 hidden max-w-md leading-relaxed text-graphite-300 sm:block">{t('body')}</p>

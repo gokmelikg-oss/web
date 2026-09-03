@@ -112,7 +112,7 @@ export function Footer() {
 
   return (
     <footer className="bg-graphite-gradient text-graphite-100">
-      <div className="container-page grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.3fr] lg:py-20">
+      <div className="container-page grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.3fr)] lg:py-20">
         <div>
           <Image
             src="/brand/simsek-solar-white.png"
@@ -128,7 +128,7 @@ export function Footer() {
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-volt-400">
             {f.kurumsal}
           </h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
+          <ul className="footer-links mt-3 space-y-0.5 text-sm text-graphite-200">
             <li><Link href="/about" className="hover:text-white">{t('aboutLink')}</Link></li>
             {/* Sertifikalar yalnızca verisi girildiğinde linklenir; boş sayfaya
                 yönlendirmemek için (o hâldeyken sayfa noindex). */}
@@ -144,7 +144,7 @@ export function Footer() {
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-volt-400">
             {f.urunlerHizmet}
           </h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
+          <ul className="footer-links mt-3 space-y-0.5 text-sm text-graphite-200">
             <li><Link href="/products" className="hover:text-white">{tNav('products')}</Link></li>
             <li><Link href="/projects" className="hover:text-white">{f.referanslar}</Link></li>
             <li><Link href="/bayi" className="hover:text-white">{f.bayi}</Link></li>
@@ -163,7 +163,7 @@ export function Footer() {
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-volt-400">
             {f.araclar}
           </h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-graphite-200">
+          <ul className="footer-links mt-3 space-y-0.5 text-sm text-graphite-200">
             <li><Link href="/akademi" className="hover:text-white">{tNav('academy')}</Link></li>
             <li><Link href="/calculator" className="hover:text-white">{f.hesaplama}</Link></li>
             <li><Link href="/gunes-potansiyeli" className="hover:text-white">{f.ilPotansiyeli}</Link></li>
@@ -203,13 +203,13 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-graphite-200 transition-colors hover:border-volt-400 hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-graphite-200 transition-colors hover:border-volt-400 hover:text-white"
               >
                 <s.icon className="h-4 w-4" />
               </a>
             ))}
           </div>
-          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-graphite-300">
+          <nav className="footer-links flex flex-wrap items-center gap-x-5 text-xs text-graphite-300">
             {legalLinks.map((l) => (
               <Link key={l.href} href={l.href} className="hover:text-white">
                 {l.label}

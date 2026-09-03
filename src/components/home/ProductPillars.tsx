@@ -35,7 +35,7 @@ export function ProductPillars() {
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {t('eyebrow')}
               </p>
-              <h2 className="mt-3 max-w-xl text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 max-w-xl text-balance font-display type-h2 font-bold tracking-tight text-graphite-950">
                 {t('title')}
               </h2>
               <p className="mt-4 max-w-lg text-mist-700">{t('subtitle')}</p>

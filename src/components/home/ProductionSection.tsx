@@ -13,12 +13,12 @@ export function ProductionSection() {
   return (
     <section id="uretim" className="section-pad scroll-mt-20 bg-white">
       <div className="container-page">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr]">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <Reveal>
             <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
               {t('eyebrow')}
             </p>
-            <h2 className="mt-3 max-w-xl text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+            <h2 className="mt-3 max-w-xl text-balance font-display type-h2 font-bold tracking-tight text-graphite-950">
               {t('title')}
             </h2>
             <p className="mt-5 max-w-lg leading-relaxed text-mist-700">{t('body')}</p>
@@ -31,7 +31,7 @@ export function ProductionSection() {
                   <span className="absolute end-4 top-4 font-mono text-lg font-bold text-graphite-950/10 transition-colors group-hover:text-volt-600/40">
                     0{i + 1}
                   </span>
-                  <p className="font-tabular font-display text-2xl font-bold text-graphite-950 sm:text-3xl">
+                  <p className="font-tabular font-display type-h2-sm font-bold text-graphite-950">
                     {s.value}
                   </p>
                   <p className="mt-2 font-mono text-[10px] uppercase leading-snug tracking-[0.14em] text-mist-600">
@@ -51,7 +51,7 @@ export function ProductionSection() {
               <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {tProcess('eyebrow')}
               </p>
-              <h3 className="mt-4 text-balance font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">
+              <h3 className="mt-4 text-balance font-display type-h2-sm font-bold tracking-tight text-graphite-950">
                 {tProcess('title')}
               </h3>
             </div>
@@ -64,7 +64,7 @@ export function ProductionSection() {
               aria-hidden
             />
 
-            <ol className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
               {steps.map((step, i) => {
                 const Icon = stepIcons[i] ?? ClipboardList;
                 return (

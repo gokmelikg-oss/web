@@ -36,7 +36,7 @@ export function GroupSection() {
             <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
               {t('eyebrow')}
             </p>
-            <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight text-graphite-700 sm:text-5xl">
+            <h2 className="mt-4 text-balance font-display type-h1 font-bold tracking-tight text-graphite-700">
               {t('title')}
             </h2>
             <p className="mt-5 text-balance leading-relaxed text-mist-600">{t('body')}</p>
@@ -63,7 +63,7 @@ export function GroupSection() {
                   <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-volt-400">
                     {t('parentLabel')}
                   </span>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">Şimşek Grup</h3>
+                  <h3 className="mt-2 font-display type-h2-sm font-bold text-white">Şimşek Grup</h3>
                   <p className="mt-3 max-w-md text-sm leading-relaxed text-graphite-200">
                     Güneş enerjisinden akıllı ev teknolojilerine, yenilenebilir enerjiden alüminyum üretimine;
                     birbirini tamamlayan dört şirketi tek vizyon altında toplayan ana yapı.
@@ -101,7 +101,7 @@ export function GroupSection() {
           </div>
         </Reveal>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-0 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-0 lg:grid-cols-4">
           {companies.map((c, i) => {
             const visual = companyVisual[c.id] ?? companyVisual.smk;
             const Icon = visual.icon;

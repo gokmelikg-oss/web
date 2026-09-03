@@ -78,7 +78,7 @@ export function PremiumIndex({
                 <span className="h-px w-8 bg-volt-400" aria-hidden />
                 {eyebrow}
               </p>
-              <h2 className="mt-4 max-w-2xl text-balance font-display text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl">
+              <h2 className="mt-4 max-w-2xl text-balance font-display type-h1 font-bold leading-[1.02] tracking-tight">
                 {title}
               </h2>
             </div>
@@ -94,7 +94,7 @@ export function PremiumIndex({
           </div>
         </Reveal>
 
-        <div className="mt-4 grid gap-10 lg:mt-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="mt-4 grid grid-cols-1 gap-10 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
           {/* SOL — dev interaktif liste */}
           <ul className="order-2 lg:order-1">
             {items.map((item, i) => {
@@ -117,7 +117,7 @@ export function PremiumIndex({
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between gap-4">
                           <h3
-                            className="font-display text-2xl font-bold tracking-tight transition-colors duration-300 sm:text-3xl lg:text-[2.4rem] lg:leading-[1.06]"
+                            className="font-display type-h2-sm font-bold tracking-tight transition-colors duration-300 lg:leading-[1.06]"
                             style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.55)' }}
                           >
                             {item.title}

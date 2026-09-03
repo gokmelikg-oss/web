@@ -43,7 +43,7 @@ export default async function ResourcesPage({ params }: { params: Promise<{ loca
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {tech.browseEyebrow}
               </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 font-display type-h2 font-bold tracking-tight text-graphite-950">
                 {tech.browseTitle}
               </h2>
               <p className="mt-4 text-mist-700">{tech.browseSubtitle}</p>

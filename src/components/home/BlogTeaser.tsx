@@ -19,7 +19,7 @@ export function BlogTeaser() {
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 Bilgi Merkezi
               </p>
-              <h2 className="mt-3 max-w-xl text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 max-w-xl text-balance font-display type-h2 font-bold tracking-tight text-graphite-950">
                 Güneş enerjisinde rehberler ve içerikler
               </h2>
             </div>
@@ -33,7 +33,7 @@ export function BlogTeaser() {
           </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {latest.map((a, i) => (
             <Reveal key={a.slug} delay={i * 0.06}>
               <Link

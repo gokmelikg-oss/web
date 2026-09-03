@@ -72,7 +72,7 @@ export function Faq({
               <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {header?.eyebrow ?? 'Sık Sorulan Sorular'}
               </p>
-              <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 text-balance font-display type-h2 font-bold tracking-tight text-graphite-950">
                 {header?.title ?? 'Güneş enerjili sıcak su hakkında merak edilenler'}
               </h2>
               <p className="mt-4 text-mist-700">

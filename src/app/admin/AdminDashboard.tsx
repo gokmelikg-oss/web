@@ -562,7 +562,7 @@ export function AdminDashboard({
                       <div className="relative flex flex-wrap items-start justify-between gap-5">
                         <div>
                           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-volt-400">Hoş geldiniz</p>
-                          <h2 className="mt-2 font-display text-2xl font-bold sm:text-3xl">İçerikleriniz kontrol altında.</h2>
+                          <h2 className="mt-2 font-display type-h2-sm font-bold">İçerikleriniz kontrol altında.</h2>
                           <p className="mt-2 max-w-lg text-sm leading-relaxed text-graphite-200">Yayın durumunu takip edin, içeriklerinizi hızlıca güncelleyin.</p>
                         </div>
                         <div className="inline-flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-2.5 backdrop-blur-sm">
@@ -591,7 +591,7 @@ export function AdminDashboard({
                     </div>
 
                     {/* Son güncellenenler + Hızlı işlemler */}
-                    <div className="grid gap-4 lg:grid-cols-[1.35fr_1fr]">
+                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
                       <div className="rounded-2xl border border-mist-900/10 bg-white p-5">
                         <p className="font-display text-sm font-bold text-graphite-950">Son güncellenenler</p>
                         <p className="text-xs text-mist-500">İçerik hareketleri</p>
@@ -690,12 +690,12 @@ export function AdminDashboard({
                         <PublishToggle published={p.published !== false} onChange={(v) => upProduct(i, { published: v })} />
                         <button onClick={() => { touch(); setProducts(products.filter((_, j) => j !== i)); setSel(null); }} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><Trash2 size={15} /> Sil</button>
                       </div></div>
-                    <div className="grid gap-3 sm:grid-cols-[2fr_1fr_1fr]">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
                       <Field label="Ürün adı"><input value={p.name} onChange={(e) => upProduct(i, { name: e.target.value })} className={inp} /></Field>
                       <Field label="Kategori"><select value={p.category} onChange={(e) => upProduct(i, { category: e.target.value })} className={inp}>{PRODUCT_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}</select></Field>
                       <Field label="Model"><input value={p.model ?? ''} onChange={(e) => upProduct(i, { model: e.target.value })} className={inp} /></Field>
                     </div>
-                    <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                       <ImageField label="Görsel" value={p.image ?? ''} onChange={(v) => upProduct(i, { image: v })} placeholder="/products/orion-500.jpg" />
                       <Field label="Kısa açıklama"><input value={p.description ?? ''} onChange={(e) => upProduct(i, { description: e.target.value })} className={inp} /></Field>
                     </div>
@@ -703,7 +703,7 @@ export function AdminDashboard({
                       <p className={lbl}>Teknik özellikler</p>
                       <div className="space-y-2">
                         {(p.specs ?? []).map((sp, si) => (
-                          <div key={si} className="grid gap-2 sm:grid-cols-[1fr_1.4fr_auto]">
+                          <div key={si} className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_auto]">
                             <input value={sp.label} onChange={(e) => upProduct(i, { specs: (p.specs ?? []).map((s, k) => (k === si ? { ...s, label: e.target.value } : s)) })} placeholder="Özellik" className={inp} />
                             <input value={sp.value} onChange={(e) => upProduct(i, { specs: (p.specs ?? []).map((s, k) => (k === si ? { ...s, value: e.target.value } : s)) })} placeholder="Değer" className={inp} />
                             <button onClick={() => upProduct(i, { specs: (p.specs ?? []).filter((_, k) => k !== si) })} className="inline-flex items-center justify-center rounded-lg border border-mist-900/15 px-2.5 text-mist-500 hover:border-red-300 hover:text-red-600"><Trash2 size={15} /></button>
@@ -725,17 +725,17 @@ export function AdminDashboard({
                         <PublishToggle published={p.published !== false} onChange={(v) => upPost(i, { published: v })} />
                         <button onClick={() => { touch(); setPosts(posts.filter((_, j) => j !== i)); setSel(null); }} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><Trash2 size={15} /> Sil</button>
                       </div></div>
-                    <div className="grid gap-3 sm:grid-cols-[2fr_1fr]">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
                       <Field label="Başlık"><input value={p.title} onChange={(e) => { const v = e.target.value; upPost(i, { title: v, slug: p.slug ? p.slug : slugify(v) }); }} className={inp} /></Field>
                       <Field label="URL adresi"><input value={p.slug} onChange={(e) => upPost(i, { slug: slugify(e.target.value) })} className={inp} /></Field>
                     </div>
-                    <div className="grid gap-3 sm:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                       <Field label="Kategori"><select value={p.category ?? 'Rehber'} onChange={(e) => upPost(i, { category: e.target.value })} className={inp}>{POST_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}</select></Field>
                       <Field label="Tarih"><input type="date" value={p.date ?? ''} onChange={(e) => upPost(i, { date: e.target.value })} className={inp} /></Field>
                       <div className="sm:col-span-1"><ImageField label="Kapak" value={p.cover ?? ''} onChange={(v) => upPost(i, { cover: v })} placeholder="/products/..." /></div>
                     </div>
                     <Field label="Özet"><input value={p.excerpt ?? ''} onChange={(e) => upPost(i, { excerpt: e.target.value })} className={inp} /></Field>
-                    <div className="grid gap-3 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
                       <Field label="İçerik ( ## başlık · boş satır = paragraf )">
                         <textarea value={p.body ?? ''} onChange={(e) => upPost(i, { body: e.target.value })} rows={16} className={inp} />
                       </Field>
@@ -794,12 +794,12 @@ export function AdminDashboard({
                       {refs.map((r, i) => (
                         <div key={r.id} className="rounded-2xl border border-mist-900/10 bg-white p-4">
                           <div className="mb-3 flex justify-end"><button onClick={() => { touch(); setRefs(refs.filter((_, j) => j !== i)); }} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-2.5 py-1.5 text-xs text-red-600 hover:bg-red-50"><Trash2 size={14} /> Sil</button></div>
-                          <div className="grid gap-3 sm:grid-cols-[2fr_1fr_1fr]">
+                          <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
                             <Field label="İş adı"><input value={r.title} onChange={(e) => upRef(i, { title: e.target.value })} className={inp} /></Field>
                             <Field label="İl"><input value={r.il} onChange={(e) => upRef(i, { il: e.target.value })} className={inp} /></Field>
                             <Field label="İlçe"><input value={r.ilce ?? ''} onChange={(e) => upRef(i, { ilce: e.target.value })} className={inp} /></Field>
                           </div>
-                          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                          <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                             <Field label="Konut"><input type="number" value={r.homes ?? ''} onChange={(e) => upRef(i, { homes: Number(e.target.value) })} className={inp} /></Field>
                             <Field label="Kollektör"><input type="number" value={r.collectors ?? ''} onChange={(e) => upRef(i, { collectors: Number(e.target.value) })} className={inp} /></Field>
                           </div>
@@ -817,7 +817,7 @@ export function AdminDashboard({
                   <div className="space-y-3">
                     {docs.length === 0 && <Empty icon={FileText} text="Döküman eklemek için “Ekle” deyin." />}
                     {docs.map((d, i) => (
-                      <div key={d.id} className="grid gap-3 rounded-2xl border border-mist-900/10 bg-white p-4 sm:grid-cols-[1fr_1fr_auto]">
+                      <div key={d.id} className="grid grid-cols-1 gap-3 rounded-2xl border border-mist-900/10 bg-white p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]">
                         <input value={d.name} onChange={(e) => upDoc(i, { name: e.target.value })} placeholder="Döküman adı" className={inp} />
                         <input value={d.url} onChange={(e) => upDoc(i, { url: e.target.value })} placeholder="/docs/... veya https://..." className={inp} />
                         <button onClick={() => { touch(); setDocs(docs.filter((_, j) => j !== i)); }} className="inline-flex items-center justify-center rounded-lg border border-red-200 px-3 text-red-600 hover:bg-red-50"><Trash2 size={16} /></button>
@@ -830,7 +830,7 @@ export function AdminDashboard({
               {section === 'images' && (
                 <div className="space-y-3">
                   {families.map((f) => (
-                    <div key={f.id} className="grid items-center gap-3 rounded-2xl border border-mist-900/10 bg-white p-4 sm:grid-cols-[180px_1fr]">
+                    <div key={f.id} className="grid grid-cols-1 items-center gap-3 rounded-2xl border border-mist-900/10 bg-white p-4 sm:grid-cols-[180px_minmax(0,1fr)]">
                       <span className="font-semibold text-graphite-950">{f.label}</span>
                       <input value={images[f.id] ?? ''} onChange={(e) => { touch(); setImages({ ...images, [f.id]: e.target.value }); }} placeholder="/products/..." className={inp} />
                     </div>

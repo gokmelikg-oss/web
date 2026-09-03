@@ -19,7 +19,7 @@ export function PageHero({
         <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
           {eyebrow}
         </p>
-        <h1 className="mt-6 max-w-2xl text-balance font-display text-4xl font-bold tracking-tight sm:text-5xl">
+        <h1 className="mt-6 max-w-2xl text-balance font-display type-h1 font-bold tracking-tight">
           {title}
         </h1>
         {subtitle && <p className="mt-5 max-w-xl text-balance text-mist-300">{subtitle}</p>}

@@ -129,7 +129,7 @@ export default async function ProductDetailPage({
             {t('backToProducts')}
           </Link>
 
-          <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+          <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14">
             {/* Metin */}
             <Reveal>
               <div>
@@ -137,7 +137,7 @@ export default async function ProductDetailPage({
                   <Icon size={13} />
                   {t(`categoryLabels.${product.category}`)} · {product.model}
                 </span>
-                <h1 className="mt-5 text-balance font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
+                <h1 className="mt-5 text-balance font-display type-h1 font-bold leading-[1.08] tracking-tight">
                   {t(`items.${slug}.name`)}
                 </h1>
                 <p className="mt-4 max-w-lg text-balance leading-relaxed text-graphite-300">
@@ -229,11 +229,11 @@ export default async function ProductDetailPage({
         <section className="section-pad bg-white">
           <div className="container-page">
             <Reveal>
-              <h2 className="font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">
+              <h2 className="font-display type-h2-sm font-bold tracking-tight text-graphite-950">
                 Öne çıkan özellikler
               </h2>
             </Reveal>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {features.map((f, i) => (
                 <Reveal key={f} delay={i * 0.06}>
                   <div className="flex h-full items-start gap-4 rounded-2xl border border-mist-900/10 bg-mist-50 p-6 transition-colors hover:border-volt-500/40 hover:bg-white">
@@ -288,7 +288,7 @@ export default async function ProductDetailPage({
           <Reveal>
             <h2 className="font-display text-2xl font-bold text-graphite-950">{t('relatedTitle')}</h2>
           </Reveal>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {relatedFallback.map((p, i) => (
               <Reveal key={p.slug} delay={i * 0.08}>
                 <ProductCard product={p} />

@@ -123,7 +123,7 @@ export default async function CertificatesPage({ params }: { params: Promise<{ l
         {certificates.length === 0 ? (
           <ContentPending title={c.pending.title} body={c.pending.body} ctaLabel={c.pending.cta} />
         ) : (
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {certificates.map((cert) => {
               const rows: [typeof Hash, string, string | undefined][] = [
                 [Building2, c.labels.issuer, cert.issuer],

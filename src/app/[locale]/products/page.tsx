@@ -54,7 +54,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
                 Öne Çıkan Ürünler
               </p>
             </Reveal>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {adminProducts.map((p, i) => (
                 <Reveal key={p.id} delay={i * 0.06}>
                   <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-mist-900/10 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-card">

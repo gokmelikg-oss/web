@@ -277,7 +277,7 @@ export function ReferenceList({
           <p className="mt-1.5 text-sm text-mist-600">{labels.noResultsHint}</p>
         </div>
       ) : (
-        <ul className="mt-6 grid gap-3 lg:grid-cols-2">
+        <ul className="mt-6 grid grid-cols-1 gap-3 lg:grid-cols-2">
           {shown.map((p, i) => (
             <li
               key={`${p.il}-${p.ilce}-${p.title}-${i}`}

@@ -340,9 +340,9 @@ export default async function ContactPage() {
       <PageHero eyebrow={t('hero.eyebrow')} title={t('hero.title')} subtitle={t('hero.subtitle')} />
 
       <section className="section-pad bg-white">
-        <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.1fr]">
+        <div className="container-page grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           <div>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {channels.map((c, i) => {
                 const inner = (
                   <>
@@ -416,7 +416,7 @@ export default async function ContactPage() {
               <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {ce.process.eyebrow}
               </p>
-              <h2 className="mt-4 text-balance font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">
+              <h2 className="mt-4 text-balance font-display type-h2-sm font-bold tracking-tight text-graphite-950">
                 {ce.process.title}
               </h2>
             </div>
@@ -427,7 +427,7 @@ export default async function ContactPage() {
               className="pointer-events-none absolute inset-x-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-volt-500/45 to-transparent lg:block"
               aria-hidden
             />
-            <ol className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
               {ce.process.steps.map((step, i) => {
                 const Icon = PROCESS_ICONS[i];
                 return (
@@ -458,16 +458,16 @@ export default async function ContactPage() {
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {ce.service.eyebrow}
               </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 font-display type-h2 font-bold tracking-tight text-graphite-950">
                 {ce.service.title}
               </h2>
               <p className="mt-4 text-mist-700">{ce.service.body}</p>
             </div>
           </Reveal>
 
-          <div className="mt-10 grid gap-14 lg:grid-cols-[1fr_1.05fr]">
+          <div className="mt-10 grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
             <div>
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 {ce.service.benefits.map((b, i) => {
                   const Icon = SERVICE_ICONS[i];
                   return (
@@ -526,12 +526,12 @@ export default async function ContactPage() {
       {/* Kariyer — İnsan Kaynakları iletişim ile birleştirildi */}
       <section id="kariyer" className="scroll-mt-24 bg-mist-50 py-16 sm:py-20">
         <div className="container-page">
-          <div className="grid items-center gap-10 rounded-3xl bg-graphite-gradient p-9 text-white sm:p-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid grid-cols-1 items-center gap-10 rounded-3xl bg-graphite-gradient p-9 text-white sm:p-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
             <div>
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                 {ce.career.eyebrow}
               </p>
-              <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">{ce.career.title}</h2>
+              <h2 className="mt-4 font-display type-h2-sm font-bold">{ce.career.title}</h2>
               <p className="mt-4 max-w-lg leading-relaxed text-graphite-200">{ce.career.body}</p>
             </div>
             <div className="flex flex-col items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-7">

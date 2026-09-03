@@ -310,7 +310,7 @@ export default async function HistoryPage({ params }: { params: Promise<{ locale
                         <Icon size={22} strokeWidth={1.75} />
                       </span>
                       <div>
-                        <h2 className="font-display text-xl font-bold text-graphite-950 sm:text-2xl">{era.label}</h2>
+                        <h2 className="font-display type-h3 font-bold text-graphite-950">{era.label}</h2>
                         <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-volt-700">
                           {era.range}
                         </p>
@@ -348,7 +348,7 @@ export default async function HistoryPage({ params }: { params: Promise<{ locale
             <Reveal delay={0.1}>
               <div className="mt-14 rounded-3xl bg-graphite-gradient p-9 text-white sm:p-11">
                 <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-volt-400">{c.today.eyebrow}</p>
-                <h2 className="mt-3 font-display text-2xl font-bold sm:text-3xl">{c.today.title}</h2>
+                <h2 className="mt-3 font-display type-h2-sm font-bold">{c.today.title}</h2>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-graphite-200">{c.today.body}</p>
                 <Link
                   href="/about#grup-sirketleri"

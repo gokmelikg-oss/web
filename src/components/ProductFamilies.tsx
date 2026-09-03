@@ -87,7 +87,7 @@ export function ProductFamilies() {
                   <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ color: accent }}>
                     {count} {t('seriesLabel')}
                   </p>
-                  <h2 className="mt-1 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-5xl">
+                  <h2 className="mt-1 font-display type-h1 font-bold tracking-tight text-graphite-950">
                     {family.title}
                   </h2>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist-700 sm:text-base">

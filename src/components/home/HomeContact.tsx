@@ -24,13 +24,13 @@ export function HomeContact({ texts }: { texts?: Record<string, string> }) {
           <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
             {t('hero.eyebrow')}
           </p>
-          <h2 className="mt-3 max-w-xl text-balance font-display text-3xl font-bold tracking-tight text-graphite-700 sm:text-4xl">
+          <h2 className="mt-3 max-w-xl text-balance font-display type-h2 font-bold tracking-tight text-graphite-700">
             {t('hero.title')}
           </h2>
           <p className="mt-4 max-w-lg text-mist-600">{t('hero.subtitle')}</p>
         </Reveal>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
           <div className="space-y-7">
             {infoItems.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08} className="flex gap-4">

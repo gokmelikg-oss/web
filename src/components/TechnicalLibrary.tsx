@@ -71,7 +71,7 @@ export function TechnicalLibrary({ labels }: { labels: TechDocsUi }) {
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[300px_1fr] lg:gap-8">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-8">
       {/* Ürün seçici */}
       <aside className="lg:sticky lg:top-28 lg:self-start">
         <div className="rounded-2xl border border-mist-900/10 bg-white p-3">
@@ -196,7 +196,7 @@ export function TechnicalLibrary({ labels }: { labels: TechDocsUi }) {
 
             {/* Boyutlar */}
             {activeTab === 'dim' && (
-              <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
                 <div>
                   <p className="font-display text-base font-bold text-graphite-950">{labels.dimTab}</p>
                   <p className="mt-2 font-tabular text-lg font-bold text-volt-700" dir="ltr">{dims}</p>

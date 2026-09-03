@@ -23,7 +23,7 @@ export function SolarCalculator({ labels }: { labels: CalculatorUi }) {
     'w-full rounded-xl border border-mist-900/15 bg-white px-4 py-3 text-sm font-medium text-graphite-950 outline-none focus:border-volt-500';
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
       {/* Girdi paneli */}
       <div className="lg:sticky lg:top-28 lg:self-start">
         <div className="rounded-3xl border border-mist-900/10 bg-white p-6 shadow-card sm:p-8">

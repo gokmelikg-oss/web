@@ -63,7 +63,7 @@ export function VisionSection() {
                 i === lines.length - 1
                   ? 'mt-6 bg-gradient-to-r from-volt-300 via-volt-500 to-volt-600 bg-clip-text text-transparent sm:mt-8'
                   : 'mt-4 text-white sm:mt-5'
-              } text-3xl sm:text-5xl lg:text-[3.4rem]`}
+              } type-h1`}
             >
               {line}
             </motion.p>

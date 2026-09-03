@@ -56,7 +56,7 @@ export function ProductTabs({ slug }: { slug: string }) {
 
       <div className="pt-8">
         {tab === 'overview' && (
-          <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr]">
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
             <div>
               <p className="text-balance leading-relaxed text-mist-700">{t(`items.${slug}.description`)}</p>
               <ul className="mt-8 space-y-4">

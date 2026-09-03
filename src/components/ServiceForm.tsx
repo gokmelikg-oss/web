@@ -89,7 +89,7 @@ export function ServiceForm({ labels = DEFAULT_LABELS }: { labels?: ServiceFormL
             <p className="mt-5 max-w-sm text-balance text-mist-800">{labels.success}</p>
           </motion.div>
         ) : (
-          <motion.form key="form" onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
+          <motion.form key="form" onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <Honeypot />
             <h2 className="font-display text-xl font-bold text-graphite-950 sm:col-span-2">{labels.title}</h2>
 

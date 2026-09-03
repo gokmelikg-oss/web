@@ -39,13 +39,13 @@ export function WhyUs() {
           <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
             {t('eyebrow')}
           </p>
-          <h2 className="mt-3 max-w-xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="mt-3 max-w-xl text-balance font-display type-h2 font-bold tracking-tight">
             {t('title')}
           </h2>
         </Reveal>
 
         {/* Premium editoryal ızgara — ince ayraç çizgileri + dev index numaraları */}
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, i) => {
             const Icon = icons[i] ?? Factory;
             return (

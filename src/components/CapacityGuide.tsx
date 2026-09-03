@@ -95,7 +95,7 @@ export function CapacityGuide({ locale, className = 'bg-white' }: { locale: Loca
             <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
               {c.eyebrow}
             </p>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">{c.title}</h2>
+            <h2 className="mt-3 font-display type-h2 font-bold tracking-tight text-graphite-950">{c.title}</h2>
             <p className="mt-4 text-mist-700">{c.subtitle}</p>
           </div>
         </Reveal>
@@ -110,7 +110,7 @@ export function CapacityGuide({ locale, className = 'bg-white' }: { locale: Loca
             </div>
             <ul className="divide-y divide-mist-900/8">
               {c.rows.map((r) => (
-                <li key={r.people} className="grid grid-cols-1 gap-2 px-6 py-4 sm:grid-cols-[1fr_1fr_1.4fr] sm:items-center sm:gap-4">
+                <li key={r.people} className="grid grid-cols-1 gap-2 px-6 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.4fr)] sm:items-center sm:gap-4">
                   <span className="flex items-center gap-2 font-display text-base font-bold text-graphite-950">
                     <Users size={16} className="text-volt-600" />
                     {r.people}

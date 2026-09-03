@@ -34,7 +34,7 @@ export function ProductsSection() {
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {t('eyebrow')}
               </p>
-              <h2 className="mt-3 max-w-xl text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 max-w-xl text-balance font-display type-h2 font-bold tracking-tight text-graphite-950">
                 {t('title')}
               </h2>
               <p className="mt-4 max-w-lg text-mist-700">{t('subtitle')}</p>
@@ -58,7 +58,7 @@ export function ProductsSection() {
               <Reveal key={family.id} delay={i * 0.05}>
                 <Link
                   href={`/products#${family.id}`}
-                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b border-mist-900/10 py-6 transition-colors hover:bg-mist-50 sm:gap-8 sm:py-7"
+                  className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-5 border-b border-mist-900/10 py-6 transition-colors hover:bg-mist-50 sm:gap-8 sm:py-7"
                 >
                   {/* Numara + ikon */}
                   <div className="flex items-center gap-4 ps-1 sm:ps-3">
@@ -76,7 +76,7 @@ export function ProductsSection() {
                   {/* Başlık + açıklama */}
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <h3 className="font-display text-xl font-bold text-graphite-950 transition-colors group-hover:text-volt-700 sm:text-2xl">
+                      <h3 className="font-display type-h3 font-bold text-graphite-950 transition-colors group-hover:text-volt-700">
                         {family.title}
                       </h3>
                       <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-500">

@@ -106,7 +106,7 @@ export function QuoteForm({ labels }: { labels: QuoteFormLabels }) {
     <form
       onSubmit={handleSubmit}
       encType="multipart/form-data"
-      className="grid gap-5 rounded-2xl border border-mist-900/8 bg-white p-8 shadow-sm sm:grid-cols-2 sm:p-10"
+      className="grid grid-cols-1 gap-5 rounded-2xl border border-mist-900/8 bg-white p-8 shadow-sm sm:grid-cols-2 sm:p-10"
     >
       <Honeypot />
       <h2 className="font-display text-xl font-bold text-graphite-950 sm:col-span-2">{labels.title}</h2>

@@ -104,7 +104,7 @@ export function ProductsShowcase() {
                     <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ color: accent }}>
                       {count} {t('seriesLabel')}
                     </p>
-                    <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">
+                    <h2 className="mt-2 font-display type-h2-sm font-bold tracking-tight text-graphite-950">
                       {family.title}
                     </h2>
                     <p className="mt-3 leading-relaxed text-mist-700">{family.desc}</p>

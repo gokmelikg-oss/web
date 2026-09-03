@@ -121,7 +121,7 @@ export function ProductCompare() {
             <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
               Ürün Karşılaştırma
             </p>
-            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-graphite-950 sm:text-3xl">
+            <h2 className="mt-3 font-display type-h2-sm font-bold tracking-tight text-graphite-950">
               Ürünleri yan yana karşılaştırın
             </h2>
             <p className="mt-3 text-mist-700">

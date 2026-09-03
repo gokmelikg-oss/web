@@ -10,10 +10,10 @@ export default function NotFound() {
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-volt-700">
           Sayfa bulunamadı
         </p>
-        <p className="mt-6 font-display text-7xl font-bold leading-none text-graphite-950 sm:text-8xl">
+        <p className="mt-6 font-display type-display font-bold leading-none text-graphite-950">
           404
         </p>
-        <h1 className="mt-6 max-w-lg text-balance font-display text-2xl font-bold text-graphite-950 sm:text-3xl">
+        <h1 className="mt-6 max-w-lg text-balance font-display type-h2-sm font-bold text-graphite-950">
           Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.
         </h1>
         <p className="mt-4 max-w-md text-mist-700">

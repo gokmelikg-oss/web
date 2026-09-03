@@ -164,7 +164,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
             <Reveal>
               <figure className="relative rounded-3xl bg-graphite-gradient p-9 text-white sm:p-12">
                 <Quote size={40} className="absolute -top-5 start-8 rounded-2xl bg-volt-500 p-2 text-graphite-950" aria-hidden />
-                <blockquote className="mt-2 font-display text-xl font-semibold leading-relaxed sm:text-2xl">
+                <blockquote className="mt-2 font-display type-h3 font-semibold leading-relaxed">
                   &ldquo;{c.quote}&rdquo;
                 </blockquote>
               </figure>
@@ -182,7 +182,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
             {/* Kapanış vurgusu */}
             <Reveal delay={0.1}>
               <div className="mt-12 border-s-2 border-volt-500 ps-6">
-                <p className="font-display text-xl font-bold leading-relaxed text-graphite-950 sm:text-2xl">
+                <p className="font-display type-h3 font-bold leading-relaxed text-graphite-950">
                   {c.closingTitle}
                 </p>
                 <p className="mt-5 text-mist-700">{c.closingLine1}</p>

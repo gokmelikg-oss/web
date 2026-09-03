@@ -27,7 +27,7 @@ export function LegalDoc({
 export function LegalSection({ title, id, children }: { title: string; id?: string; children: ReactNode }) {
   return (
     <section id={id} className="mt-10 scroll-mt-28 first:mt-0">
-      <h2 className="font-display text-xl font-bold text-graphite-950 sm:text-2xl">{title}</h2>
+      <h2 className="font-display type-h3 font-bold text-graphite-950">{title}</h2>
       <div className="mt-3 space-y-3 leading-relaxed text-mist-700">{children}</div>
     </section>
   );

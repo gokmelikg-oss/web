@@ -36,7 +36,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: L
 
       <section className="section-pad bg-mist-50">
         <div className="container-page">
-          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {sorted.map((a, i) => (
               <Reveal key={a.slug} delay={i * 0.06}>
                 <Link

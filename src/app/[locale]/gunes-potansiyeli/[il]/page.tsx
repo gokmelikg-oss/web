@@ -82,7 +82,7 @@ export default async function ProvinceDetailPage({
               <Reveal key={s.label} delay={i * 0.05}>
                 <div className="h-full rounded-2xl border border-mist-900/10 bg-mist-50 p-6">
                   <s.icon size={18} className="text-volt-600" strokeWidth={1.9} />
-                  <p className="mt-3 font-tabular font-display text-2xl font-bold leading-none text-graphite-950 sm:text-3xl">
+                  <p className="mt-3 font-tabular font-display type-h2-sm font-bold leading-none text-graphite-950">
                     {s.value}
                     <span className="ms-1 text-xs font-semibold text-mist-500">{s.unit}</span>
                   </p>
@@ -97,7 +97,7 @@ export default async function ProvinceDetailPage({
           <p className="mt-5 font-mono text-[11px] leading-relaxed text-mist-500">{ui.gepaNote}</p>
 
           {/* Bilgilendirme + öneri */}
-          <div className="mt-12 grid gap-10 lg:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
             <Reveal>
               <div>
                 <h2 className="font-display text-2xl font-bold text-graphite-950">
@@ -145,7 +145,7 @@ export default async function ProvinceDetailPage({
       {/* SSS */}
       <section className="section-pad bg-mist-50">
         <div className="container-page max-w-3xl">
-          <h2 className="font-display text-2xl font-bold text-graphite-950 sm:text-3xl">
+          <h2 className="font-display type-h2-sm font-bold text-graphite-950">
             {ui.detail.faqTitle(data.name)}
           </h2>
           <div className="mt-8 divide-y divide-mist-900/10 border-y border-mist-900/10">

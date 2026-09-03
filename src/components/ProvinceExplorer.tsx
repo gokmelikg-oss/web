@@ -47,7 +47,7 @@ export function ProvinceExplorer({ labels = DEFAULT_LABELS }: { labels?: Explore
   const stats = labels.statLabels.map((s, i) => ({ icon: STAT_ICONS[i], value: values[i], unit: s.unit, label: s.label }));
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
       {/* Seçici */}
       <div className="lg:sticky lg:top-28 lg:self-start">
         <label className="flex flex-col gap-2">
@@ -80,7 +80,7 @@ export function ProvinceExplorer({ labels = DEFAULT_LABELS }: { labels?: Explore
       {/* Sonuç */}
       <div>
         <div className="flex items-baseline justify-between gap-4">
-          <h2 className="font-display text-2xl font-bold text-graphite-950 sm:text-3xl">
+          <h2 className="font-display type-h2-sm font-bold text-graphite-950">
             {labels.title.replace('{name}', data.name)}
           </h2>
         </div>
@@ -89,7 +89,7 @@ export function ProvinceExplorer({ labels = DEFAULT_LABELS }: { labels?: Explore
           {stats.map((s) => (
             <div key={s.label} className="rounded-2xl border border-mist-900/10 bg-white p-5 shadow-sm">
               <s.icon size={18} className="text-volt-600" strokeWidth={1.9} />
-              <p className="mt-3 font-tabular font-display text-2xl font-bold leading-none text-graphite-950 sm:text-3xl">
+              <p className="mt-3 font-tabular font-display type-h2-sm font-bold leading-none text-graphite-950">
                 {s.value}
                 <span className="ms-1 text-xs font-semibold text-mist-500">{s.unit}</span>
               </p>

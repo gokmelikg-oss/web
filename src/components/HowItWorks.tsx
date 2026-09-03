@@ -91,7 +91,7 @@ export function HowItWorks({ locale, className = 'bg-white' }: { locale: Locale;
             <p className="flex items-center justify-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
               {c.eyebrow}
             </p>
-            <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+            <h2 className="mt-3 text-balance font-display type-h2 font-bold tracking-tight text-graphite-950">
               {c.title}
             </h2>
             <p className="mt-4 text-mist-700">{c.subtitle}</p>
@@ -99,7 +99,7 @@ export function HowItWorks({ locale, className = 'bg-white' }: { locale: Locale;
         </Reveal>
 
         {/* Akış — 4 adım */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
           {c.steps.map((s, i) => {
             const Icon = STEP_ICONS[i];
             return (

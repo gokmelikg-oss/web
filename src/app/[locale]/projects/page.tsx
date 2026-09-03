@@ -125,13 +125,13 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         />
 
         <div className="container-page relative">
-          <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
             <Reveal>
               <div>
                 <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">
                   {ui.impact.eyebrow}
                 </p>
-                <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
+                <h2 className="mt-4 text-balance font-display type-h2 font-bold tracking-tight">
                   {ui.impact.title}
                 </h2>
                 <p className="mt-4 max-w-md leading-relaxed text-graphite-300">
@@ -147,7 +147,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
               </div>
             </Reveal>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Reveal delay={0.05}>
                 <div className="flex h-full flex-col justify-between rounded-3xl border border-emerald-500/25 bg-emerald-500/10 p-7 backdrop-blur-sm">
                   <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500 text-graphite-950">
@@ -220,7 +220,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
               <p className="flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mist-500">
                 {ui.listSection.eyebrow}
               </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 font-display type-h2 font-bold tracking-tight text-graphite-950">
                 {ui.listSection.title}
               </h2>
               <p className="mt-4 text-mist-700">{ui.listSection.subtitle}</p>
@@ -238,7 +238,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         <div className="container-page">
           <Reveal>
             <div className="flex flex-col items-center gap-4 rounded-3xl bg-graphite-gradient p-9 text-center text-white sm:p-14">
-              <h2 className="max-w-2xl text-balance font-display text-2xl font-bold sm:text-3xl">{tCta('title')}</h2>
+              <h2 className="max-w-2xl text-balance font-display type-h2-sm font-bold">{tCta('title')}</h2>
               <p className="max-w-xl text-sm leading-relaxed text-graphite-200">{tCta('subtitle')}</p>
               <Link
                 href="/teklif-al"

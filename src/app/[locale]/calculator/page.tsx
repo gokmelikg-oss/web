@@ -34,7 +34,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
           </span>
           <div className="min-w-0">
             <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-graphite-300">{ui.hero.eyebrow}</p>
-            <h1 className="mt-2 text-balance font-display text-2xl font-bold tracking-tight sm:text-3xl">{ui.hero.title}</h1>
+            <h1 className="mt-2 text-balance font-display type-h2-sm font-bold tracking-tight">{ui.hero.title}</h1>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-graphite-300">{ui.hero.subtitle}</p>
           </div>
         </div>

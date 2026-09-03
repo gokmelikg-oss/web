@@ -154,7 +154,7 @@ export function ResourceCenter({ adminDocs = [], hideProductDocs = false }: { ad
       <div>
         <h2 className="font-display text-xl font-bold text-graphite-950">{t('certsTitle')}</h2>
         <p className="mt-1.5 max-w-lg text-sm text-mist-700">{t('certsSubtitle')}</p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {certs.map((cert) => {
             const inner = (
               <>

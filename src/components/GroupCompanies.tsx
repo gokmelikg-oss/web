@@ -110,7 +110,7 @@ export async function GroupCompanies() {
               <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-volt-700">
                 {ui.eyebrow}
               </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-graphite-950 sm:text-4xl">
+              <h2 className="mt-3 font-display type-h2 font-bold tracking-tight text-graphite-950">
                 {ui.title}
               </h2>
               <p className="mt-4 text-balance leading-relaxed text-mist-700">{ui.subtitle}</p>
@@ -145,7 +145,7 @@ export async function GroupCompanies() {
               const ci = contact[c.id];
               return (
                 <Reveal key={c.id} delay={i * 0.06}>
-                  <div className="grid gap-6 rounded-3xl border border-graphite-700/10 bg-mist-50 p-8 transition-colors hover:border-volt-500/40 hover:bg-white sm:grid-cols-[200px_1fr] sm:p-9">
+                  <div className="grid grid-cols-1 gap-6 rounded-3xl border border-graphite-700/10 bg-mist-50 p-8 transition-colors hover:border-volt-500/40 hover:bg-white sm:grid-cols-[200px_minmax(0,1fr)] sm:p-9">
                     <div className="flex h-16 items-center">
                       {v.logo ? (
                         <Image src={v.logo} alt={c.name} width={400} height={120} className="h-11 w-auto object-contain object-left rtl:object-right" />
