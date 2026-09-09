@@ -11,6 +11,9 @@ import type { Locale } from '@/i18n/config';
 /* Ana menü sırası: Kurumsal · Ürünler · Dökümanlar · Akademi · Referanslar · İletişim. */
 const navItems = [
   { href: '/products', key: 'products' },
+  /* Yapi tipine gore giris yolu — incelenen rakiplerin ucunde var,
+     bizde hic yoktu (bkz. lib/segments.ts). */
+  { href: '/uygulamalar', key: 'applications' },
   { href: '/resources', key: 'resources' },
   { href: '/akademi', key: 'academy' },
   { href: '/projects', key: 'projects' },

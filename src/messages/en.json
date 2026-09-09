@@ -15,7 +15,8 @@
     "service": "Service",
     "dealers": "Dealership",
     "contact": "Contact",
-    "getQuote": "Get a Quote"
+    "getQuote": "Get a Quote",
+    "applications": "Applications"
   },
   "hero": {
     "eyebrow": "Since 1990 — 35th year",

@@ -5,6 +5,7 @@ import { products } from '@/data/products';
 import { articles } from '@/data/news';
 import { PROVINCES } from '@/data/provinces';
 import { certificates } from '@/data/certificates';
+import { allSegments } from '@/lib/segments';
 
 /* Tüm sayfaların her dildeki sürümü + hreflang alternatifleri. */
 const STATIC_PATHS = [
@@ -27,6 +28,7 @@ const STATIC_PATHS = [
   // Ticari dönüşüm ve yetenek sayfaları
   { path: '/teklif-al', priority: 0.9, changeFrequency: 'yearly' as const },
   { path: '/bayi', priority: 0.7, changeFrequency: 'monthly' as const },
+  { path: '/uygulamalar', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/kvkk', priority: 0.2, changeFrequency: 'yearly' as const },
   { path: '/gizlilik', priority: 0.2, changeFrequency: 'yearly' as const },
   { path: '/cerez-politikasi', priority: 0.2, changeFrequency: 'yearly' as const },
@@ -58,6 +60,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const product of products) push(`/products/${product.slug}`, 0.7, 'monthly');
   for (const article of articles) push(`/blog/${article.slug}`, 0.6, 'monthly');
   for (const province of PROVINCES) push(`/gunes-potansiyeli/${province.slug}`, 0.5, 'monthly');
+  /* Uygulama alanları — yalnızca GERÇEKTEN projesi olan segmentler.
+     allSegments() boş segmentleri zaten eler. */
+  for (const seg of allSegments()) push(`/uygulamalar/${seg.key}`, 0.7, 'monthly');
 
   return entries;
 }
