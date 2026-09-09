@@ -25,7 +25,12 @@ export interface PanelSession {
   canWrite: boolean;
 }
 
-const rid = () => `id${Math.floor(performance.now() * 1000)}${Math.floor(1 + Math.random() * 998)}`;
+/* Yeni kayıtlara (ürün, yazı, referans) verilen kimlik.
+   Eskiden performance.now() + Math.random() ile üretiliyordu: rastgele kısım
+   yalnızca 998 değer alabildiği için aynı anda eklenen iki kayıt çakışabilir
+   ve kimlik tahmin edilebilirdi. crypto.randomUUID tarayıcıda standarttır ve
+   kriptografik rastgelelik kullanır. */
+const rid = () => `id-${crypto.randomUUID()}`;
 const slugify = (s: string) =>
   s.toLocaleLowerCase('tr-TR')
     .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')

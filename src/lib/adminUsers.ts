@@ -1,6 +1,7 @@
 import { randomBytes, scryptSync, timingSafeEqual } from 'crypto';
 import { readStore, writeStore } from './adminStore';
 import { defaultSections, type AdminRole, type AdminSection } from './adminAcl';
+import { checkPasswordStrength } from './passwordPolicy';
 
 /* Panel kullanıcıları — Webmin'in "Webmin Users" modülünden uyarlandı.
    Şifreler scrypt ile saklanır; düz metin hiçbir yerde tutulmaz. */
@@ -41,18 +42,72 @@ export function safeUser(u: AdminUser): SafeUser {
 
 /* ---- şifre ---- */
 
+/* scrypt maliyet parametreleri.
+   Eskiden Node varsayılanları kullanılıyordu (N=16384). OWASP'ın güncel
+   asgarisi N=2^17'dir; kaba kuvvetle kırma maliyeti 8 kat artar.
+
+   ⚠ maxmem AÇIKÇA verilmelidir: Node'un varsayılan 32 MB sınırı N=131072'de
+   aşılır ve scrypt "memory limit exceeded" hatası fırlatır.
+   Gereken bellek ≈ 128 · N · r = 128 · 131072 · 8 ≈ 134 MB. */
+const SCRYPT = { N: 131072, r: 8, p: 1, keylen: 64, maxmem: 192 * 1024 * 1024 } as const;
+
+/* Özet biçimi SÜRÜMLÜDÜR: `scrypt2$N$r$p$salt$hash`.
+   Parametreler özetin içinde durduğu için ileride maliyet yükseltilse bile
+   eski şifreler doğrulanmaya devam eder — kimse panelden kilitlenmez. */
 export function hashPassword(password: string): string {
   const salt = randomBytes(16).toString('hex');
-  const hash = scryptSync(password, salt, 64).toString('hex');
-  return `scrypt$${salt}$${hash}`;
+  const hash = scryptSync(password, salt, SCRYPT.keylen, {
+    N: SCRYPT.N,
+    r: SCRYPT.r,
+    p: SCRYPT.p,
+    maxmem: SCRYPT.maxmem,
+  }).toString('hex');
+  return `scrypt2$${SCRYPT.N}$${SCRYPT.r}$${SCRYPT.p}$${salt}$${hash}`;
 }
 
 export function verifyPassword(password: string, stored: string): boolean {
-  const [scheme, salt, hash] = stored.split('$');
-  if (scheme !== 'scrypt' || !salt || !hash) return false;
-  const expected = Buffer.from(hash, 'hex');
-  const actual = scryptSync(password, salt, expected.length);
-  return expected.length === actual.length && timingSafeEqual(expected, actual);
+  const parts = stored.split('$');
+
+  /* Eski biçim: `scrypt$salt$hash` (Node varsayılan parametreleri).
+     Geriye dönük okunur; kullanıcı şifresini değiştirdiğinde yeni biçime geçer. */
+  if (parts[0] === 'scrypt' && parts.length === 3) {
+    const [, salt, hash] = parts;
+    if (!salt || !hash) return false;
+    const expected = Buffer.from(hash, 'hex');
+    const actual = scryptSync(password, salt, expected.length);
+    return expected.length === actual.length && timingSafeEqual(expected, actual);
+  }
+
+  if (parts[0] === 'scrypt2' && parts.length === 6) {
+    const [, n, r, p, salt, hash] = parts;
+    const N = Number(n);
+    const R = Number(r);
+    const P = Number(p);
+    if (!Number.isSafeInteger(N) || !Number.isSafeInteger(R) || !Number.isSafeInteger(P)) return false;
+    // Depodan gelen parametreler saçmaysa hesaplamaya hiç girme (DoS koruması).
+    if (N < 16384 || N > 1 << 21 || R < 1 || R > 32 || P < 1 || P > 16) return false;
+    if (!salt || !hash) return false;
+    const expected = Buffer.from(hash, 'hex');
+    let actual: Buffer;
+    try {
+      actual = scryptSync(password, salt, expected.length, {
+        N,
+        r: R,
+        p: P,
+        maxmem: SCRYPT.maxmem,
+      });
+    } catch {
+      return false;
+    }
+    return expected.length === actual.length && timingSafeEqual(expected, actual);
+  }
+
+  return false;
+}
+
+/* Özet eski biçimdeyse true döner — başarılı girişte sessizce yükseltmek için. */
+export function needsRehash(stored: string): boolean {
+  return stored.startsWith('scrypt$');
 }
 
 /* ---- depo ---- */
@@ -81,6 +136,18 @@ export async function ensureBootstrapUser(): Promise<AdminUser | undefined> {
   if (users.length) return undefined;
   const pw = process.env.ADMIN_PASSWORD;
   if (!pw) return undefined;
+
+  /* İlk yönetici hesabı da güç politikasına tabidir. Zayıf bir ADMIN_PASSWORD
+     ile hesap AÇILMAZ: panelin zayıf şifreyle açık olmasındansa hiç açılmaması
+     yeğdir (fail-closed). Günlüğe neden açılmadığı yazılır. */
+  const strength = checkPasswordStrength(pw, ['admin', 'yonetici']);
+  if (!strength.ok) {
+    console.error(
+      `[güvenlik] ADMIN_PASSWORD şifre politikasını karşılamadığı için ilk yönetici hesabı oluşturulmadı: ${strength.error}`
+    );
+    return undefined;
+  }
+
   const admin: AdminUser = {
     username: 'admin',
     fullName: 'Yönetici',
@@ -110,9 +177,11 @@ export async function createUser(input: UserInput): Promise<AdminUser> {
   if (!/^[a-z0-9._-]{3,32}$/.test(username)) {
     throw new Error('Kullanıcı adı 3-32 karakter olmalı; harf, rakam, nokta, tire ve alt çizgi kullanılabilir.');
   }
-  if (!input.password || input.password.length < 6) {
-    throw new Error('Şifre en az 6 karakter olmalıdır.');
-  }
+  /* Şifre gücü SUNUCUDA denetlenir — arayüzdeki kontrol yalnızca kolaylıktır,
+     istek doğrudan API'ye de gönderilebilir. */
+  const password = input.password ?? '';
+  const strength = checkPasswordStrength(password, [username, input.fullName ?? '', input.email ?? '']);
+  if (!strength.ok) throw new Error(`Şifre: ${strength.error}`);
   const users = await listUsers();
   if (users.some((u) => u.username === username)) {
     throw new Error('Bu kullanıcı adı zaten kayıtlı.');
@@ -124,7 +193,7 @@ export async function createUser(input: UserInput): Promise<AdminUser> {
     role: input.role,
     sections: input.role === 'owner' ? defaultSections('owner') : input.sections,
     allowedIps: input.allowedIps?.filter(Boolean),
-    passwordHash: hashPassword(input.password),
+    passwordHash: hashPassword(password),
     active: input.active,
     createdAt: new Date().toISOString(),
   };
@@ -147,8 +216,13 @@ export async function updateUser(username: string, input: Partial<UserInput>): P
   if (losingOwner && owners.length <= 1) {
     throw new Error('Son yönetici hesabının rolü değiştirilemez veya kapatılamaz.');
   }
-  if (input.password !== undefined && input.password !== '' && input.password.length < 6) {
-    throw new Error('Şifre en az 6 karakter olmalıdır.');
+  if (input.password !== undefined && input.password !== '') {
+    const strength = checkPasswordStrength(input.password, [
+      cur.username,
+      input.fullName ?? cur.fullName,
+      input.email ?? cur.email ?? '',
+    ]);
+    if (!strength.ok) throw new Error(`Şifre: ${strength.error}`);
   }
 
   const next: AdminUser = {

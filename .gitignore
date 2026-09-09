@@ -51,3 +51,27 @@ content/versions.json
 # panelden yuklenen gorseller (klasor korunur, icerik girmez)
 public/uploads/*
 !public/uploads/.gitkeep
+
+# ---------------------------------------------------------------------------
+# GİZLİ BİLGİ — genel yakalayıcı
+# Yukarıda ".env*.local" ve ".env.local" zaten vardı, ama ".env",
+# ".env.production" ve ".env.backup" gibi adlar AÇIKTA kalıyordu; bir kez
+# commit edilen sır git geçmişinden kolay kolay silinmez.
+# Kural: .env ile başlayan her şey yok sayılır, tek istisna .env.example.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# Anahtar ve sertifika dosyaları
+*.key
+*.p12
+*.pfx
+*.jks
+id_rsa*
+*.crt
+
+# Yedek ve döküm dosyaları (sır ya da müşteri verisi taşıyabilir)
+*.bak
+*.dump
+*.sql

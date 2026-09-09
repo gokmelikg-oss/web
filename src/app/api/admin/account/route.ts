@@ -4,6 +4,7 @@ import { findUser, hashPassword, verifyPassword } from '@/lib/adminUsers';
 import { readStore, writeStore } from '@/lib/adminStore';
 import { createSession, endUserSessions } from '@/lib/adminSessions';
 import { writeLog } from '@/lib/adminLog';
+import { checkPasswordStrength } from '@/lib/passwordPolicy';
 import type { AdminUser } from '@/lib/adminUsers';
 
 export const runtime = 'nodejs';
@@ -19,8 +20,11 @@ export async function POST(req: NextRequest) {
     .json()
     .catch(() => ({ currentPassword: '', newPassword: '' }));
 
-  if (String(newPassword).length < 6) {
-    return NextResponse.json({ ok: false, error: 'Yeni şifre en az 6 karakter olmalıdır.' }, { status: 400 });
+  /* Şifre gücü burada da denetlenir. Kullanıcı yönetimiyle (api/admin/users)
+     AYNI politika kullanılır; aksi hâlde bu uçtan zayıf şifre sızardı. */
+  const strength = checkPasswordStrength(String(newPassword), [session.username, session.fullName]);
+  if (!strength.ok) {
+    return NextResponse.json({ ok: false, error: strength.error }, { status: 400 });
   }
 
   const user = await findUser(session.username);

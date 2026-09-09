@@ -1,3 +1,4 @@
+import { randomBytes } from 'crypto';
 import { readStore, writeStore } from './adminStore';
 import type { LogEntry } from './adminLogShared';
 
@@ -19,7 +20,11 @@ export async function writeLog(entry: Omit<LogEntry, 'id' | 'at'>): Promise<void
   const entries = await listLog();
   const next: LogEntry = {
     ...entry,
-    id: `${Date.now().toString(36)}${Math.floor(Math.random() * 1e6).toString(36)}`,
+    /* ⚠ Math.random() KULLANILMAZ: kriptografik değildir ve iç durumu birkaç
+       çıktıdan geri hesaplanabilir. Kimlik üreten her yerde randomBytes
+       tercih edilir — böylece bu alışkanlık ileride oturum veya sıfırlama
+       işareti üreten bir yere sızmaz. Zaman öneki sıralamayı okunur tutar. */
+    id: `${Date.now().toString(36)}-${randomBytes(6).toString('hex')}`,
     at: new Date().toISOString(),
   };
   // En yeni başta; kayıt sayısı sınırlanır.

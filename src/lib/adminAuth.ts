@@ -25,8 +25,34 @@ export interface AdminSessionUser {
   sid: string;
 }
 
+/* ⚠ OTURUM İMZALAMA ANAHTARI — ÜRETİMDE ASLA VARSAYILANA DÜŞMEZ.
+
+   Eskiden son çare olarak sabit bir metin ('simsek-solar-dev-secret')
+   kullanılıyordu. ADMIN_SECRET ve ADMIN_PASSWORD üretimde tanımsız kalsaydı,
+   bu değer kaynak kodda açık olduğu için HERKES geçerli bir yönetici oturum
+   cookie'si imzalayabilirdi: şifre bilmeden, doğrudan tam yetkiyle panele
+   giriş. Depo herkese açık olduğu için bu teorik bir risk değildi.
+
+   Artık üretimde anahtar yoksa istek hata verir (fail-closed): panelin
+   şifresiz açık kalmasındansa hiç açılmaması yeğdir. Geliştirmede sabit
+   değer sürer, çünkü orada dışarı açık bir yüzey yoktur. */
+const DEV_SECRET = 'simsek-solar-dev-secret';
+const MIN_SECRET_LENGTH = 16;
+
 function secret(): string {
-  return process.env.ADMIN_SECRET || process.env.ADMIN_PASSWORD || 'simsek-solar-dev-secret';
+  const configured = process.env.ADMIN_SECRET || process.env.ADMIN_PASSWORD;
+  if (configured && configured.length >= MIN_SECRET_LENGTH) return configured;
+
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(
+      `ADMIN_SECRET tanımlı değil veya ${MIN_SECRET_LENGTH} karakterden kısa. ` +
+        'Yönetim paneli oturumları imzalanamadığı için kapatıldı. Vercel → Settings → ' +
+        'Environment Variables altına rastgele ve uzun bir ADMIN_SECRET ekleyin.'
+    );
+  }
+
+  // Üretim dışında: kısa da olsa verilmiş bir değer varsa onu kullan.
+  return configured || DEV_SECRET;
 }
 
 function sign(data: string): string {

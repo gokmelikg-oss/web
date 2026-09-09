@@ -3,14 +3,32 @@ import { SITE_URL, SITE_NAME, ORG } from '@/lib/seo';
 import type { Locale } from '@/i18n/config';
 
 /* Yapısal veri (JSON-LD). Arama motorları ve AI botları için makine-okunur künye.
-   dangerouslySetInnerHTML script enjeksiyonu SEO'da standarttır; içerik statiktir. */
+   JSON-LD'nin dangerouslySetInnerHTML ile basılması SEO'da standarttır.
+
+   ⚠ AMA JSON.stringify TEK BAŞINA YETMEZ.
+   JSON.stringify çıktısında `<` karakteri kaçırılmaz. İçerikte `</script>`
+   geçerse tarayıcı script etiketini ORADA kapatır ve kalan metni HTML olarak
+   yorumlar:
+
+       {"name": "</script><img src=x onerror=alert(1)>"}
+
+   Bu sayfaların bir kısmı yönetim panelinden düzenlenebilen metinleri
+   (ürün adı, yazı başlığı, referans) yapısal veriye koyduğu için içerik
+   tamamen "statik" değildir. Kaçış olmadan, panele yazma yetkisi olan bir
+   hesap sitenin her ziyaretçisinde kod çalıştırabilirdi.
+
+   Çözüm: `<`, `>` ve `&` karakterlerini JSON'un kendi \uXXXX kaçışına
+   çevirmek. JSON çözümlemesi aynı metni verir — veri bozulmaz — ama HTML
+   ayrıştırıcısı artık etiket başlangıcı görmez. */
+function safeJsonLd(data: Record<string, unknown>): string {
+  return JSON.stringify(data)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026');
+}
+
 function JsonLd({ data }: { data: Record<string, unknown> }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(data) }} />;
 }
 
 export function OrgJsonLd({ locale }: { locale: Locale }) {

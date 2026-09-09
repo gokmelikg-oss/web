@@ -9,7 +9,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/'],
+        /* Yönetim paneli ve API taramaya kapalı.
+           ⚠ Bu bir GÜVENLİK önlemi DEĞİLDİR — robots.txt herkese açıktır ve
+           bağlayıcı değildir; saldırgana adres listesi bile verir. Asıl koruma
+           sunucu tarafındaki oturum denetimi (getSession) ve /admin
+           başlıklarındaki noindex'tir. Buradaki amaç yalnızca panelin arama
+           sonuçlarında görünmesini engellemektir. */
+        disallow: ['/api/', '/admin'],
       },
       // Yapay zeka tarayıcılarına açık erişim
       { userAgent: 'GPTBot', allow: '/' },

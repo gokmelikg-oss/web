@@ -3,11 +3,61 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 /**
- * Güvenlik başlıkları — tüm rotalara uygulanır. SEO güven sinyali + XSS/clickjacking koruması.
- * CSP burada bilinçli olarak tanımlanmadı (GA/Pixel/harita inline script'leri kırılmasın diye);
- * gerekirse rapor-only olarak ayrıca eklenebilir.
+ * İÇERİK GÜVENLİĞİ POLİTİKASI (CSP)
+ * =================================
+ * Önceden CSP bilinçli olarak YOKTU ("GA/Pixel/harita inline script'leri
+ * kırılmasın diye"). Sonuç: sayfaya bir şekilde script sokulabilirse
+ * (depolanmış XSS, üçüncü taraf betiğin ele geçirilmesi, bağımlılık zinciri)
+ * tarayıcı tarafında onu durduracak hiçbir şey yoktu.
+ *
+ * Aşağıdaki politika, siteyi kırmadan gerçek saldırı yollarını kapatır:
+ *
+ *   script-src   → yalnızca kendi alan adımız + bilinen analitik sunucuları.
+ *                  Saldırganın kendi sunucusundan betik YÜKLEYEMEZ.
+ *   object-src   → 'none'. <object>/<embed> ile Flash/PDF taşıyıcı yükü biter.
+ *   base-uri     → 'self'. <base href="//saldirgan"> ile tüm göreli
+ *                  bağlantıların kaçırılması engellenir.
+ *   form-action  → 'self'. Enjekte edilen bir <form> veriyi dışarı POST edemez.
+ *   frame-ancestors → 'self'. Tıklama hırsızlığı (clickjacking); X-Frame-Options'ın
+ *                  modern ve daha güçlü karşılığı.
+ *   connect-src  → veri yalnızca kendimize ve analitik uçlarına gidebilir;
+ *                  çalınan veriyi dışarı sızdırma yolu daraltılır.
+ *
+ * ⚠ BİLİNEN SINIR: script-src içinde 'unsafe-inline' var. Next.js App Router
+ * hidrasyon için satır içi script üretir; nonce'suz kaldırılamaz. Bu yüzden
+ * satır içi enjeksiyon hâlâ mümkündür — ama yükü DIŞARIDAN getirmek ve
+ * çalınan veriyi DIŞARIYA göndermek engellendiği için saldırının işe yarar
+ * kısmı büyük ölçüde kapanır. Sonraki adım nonce tabanlı CSP'dir
+ * (middleware'de nonce üretip her script'e geçirmek gerekir).
+ */
+const ANALYTICS = [
+  'https://www.googletagmanager.com',
+  'https://www.google-analytics.com',
+  'https://connect.facebook.net',
+];
+
+const csp = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${ANALYTICS.join(' ')}`,
+  // Tailwind ve framer-motion satır içi stil üretir; stil enjeksiyonu düşük risklidir.
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com data:",
+  // data:/blob: → next/image ve harita katmanları; https: → CDN'deki ürün görselleri.
+  "img-src 'self' data: blob: https:",
+  `connect-src 'self' ${ANALYTICS.join(' ')} https://www.facebook.com`,
+  "frame-src 'self' https://www.youtube-nocookie.com https://www.google.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  'upgrade-insecure-requests',
+].join('; ');
+
+/**
+ * Güvenlik başlıkları — tüm rotalara uygulanır.
  */
 const securityHeaders = [
+  { key: 'Content-Security-Policy', value: csp },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
@@ -20,6 +70,21 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()',
   },
+  /* Çapraz kaynak izolasyonu: başka bir sitenin bu sayfaya pencere referansı
+     tutmasını ve kaynaklarımızı kendi belgesine gömmesini engeller. */
+  { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+  { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
+];
+
+/**
+ * Yönetim paneline ve API'ye özel ek başlıklar.
+ * Panel sayfaları hiçbir koşulda önbelleğe alınmamalı ve indekslenmemelidir:
+ * ara katman (CDN/proxy) bir yönetici yanıtını önbelleğe alıp başkasına
+ * sunarsa oturum içeriği sızar.
+ */
+const privateHeaders = [
+  { key: 'Cache-Control', value: 'no-store, no-cache, must-revalidate, private' },
+  { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' },
 ];
 
 /** @type {import('next').NextConfig} */
@@ -105,6 +170,26 @@ const nextConfig = {
         // Tüm sayfalara güvenlik başlıkları.
         source: '/:path*',
         headers: securityHeaders,
+      },
+      {
+        // Yönetim paneli ve API: önbelleğe alınmaz, indekslenmez.
+        source: '/admin/:path*',
+        headers: privateHeaders,
+      },
+      {
+        source: '/api/:path*',
+        headers: privateHeaders,
+      },
+      {
+        /* Panelden yüklenen dosyalar.
+           Doğrudan adresine gidildiğinde belge olarak çalışmasınlar diye en
+           sıkı politika uygulanır. <img src="..."> ile gömülmeyi etkilemez —
+           CSP yalnızca belge olarak gezinildiğinde devreye girer. */
+        source: '/uploads/:path*',
+        headers: [
+          { key: 'Content-Security-Policy', value: "default-src 'none'; sandbox" },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+        ],
       },
       {
         // public/ altındaki statik marka/ürün görselleri: 1 yıl immutable cache.
