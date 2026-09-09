@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { FileDown, ArrowUpRight, CheckCircle2, Download } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { getProduct, getProductDocuments } from '@/data/products';
@@ -15,6 +15,8 @@ export function ProductTabs({ slug }: { slug: string }) {
   const product = getProduct(slug);
   const [tab, setTab] = useState<TabKey>('overview');
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  /* ⚠ Erken return'den ONCE: kancalar kosullu cagrilamaz. */
+  const reduce = useReducedMotion();
 
   if (!product) return null;
 
@@ -47,8 +49,17 @@ export function ProductTabs({ slug }: { slug: string }) {
             }`}
           >
             {t(`tabs.${key}`)}
+            {/* Etkin sekmenin altındaki çizgi.
+                ⚠ `layoutId` sekmeler arasında KAYAN bir geçiş üretir; bu
+                framer-motion'ın satır içi transform'u olduğu için CSS'teki
+                prefers-reduced-motion kurallarından etkilenmiyordu. Tercih
+                açıkken layoutId hiç verilmez: çizgi kaymadan doğrudan yeni
+                sekmede belirir — gösterge aynı, hareket yok. */}
             {tab === key && (
-              <motion.span layoutId="product-tab-underline" className="absolute inset-x-0 -bottom-px h-0.5 bg-volt-500" />
+              <motion.span
+                {...(reduce ? {} : { layoutId: 'product-tab-underline' })}
+                className="absolute inset-x-0 -bottom-px h-0.5 bg-volt-500"
+              />
             )}
           </button>
         ))}

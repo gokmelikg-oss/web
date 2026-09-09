@@ -31,6 +31,7 @@ export function Reveal({
   if (reduce) {
     return (
       <motion.div
+        data-reveal
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: '-80px' }}
@@ -44,6 +45,7 @@ export function Reveal({
 
   return (
     <motion.div
+      data-reveal
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}

@@ -215,6 +215,34 @@ body {
     .animate-marquee {
       animation: none;
     }
+
+    /* ============================================================
+       GİRİŞ ANİMASYONLARININ KAYMASINI SIFIRLA
+       ============================================================
+       Bu kural JS'teki `useReducedMotion()` dallanmasının KAPATAMADIĞI
+       bir boşluğu kapatır. Gerçek tarayıcı ölçümüyle bulundu.
+
+       Sorun: framer-motion'ın `useReducedMotion()` kancası SUNUCU
+       render'ında ve ilk istemci render'ında her zaman `false` döner —
+       medya sorgusu ancak hidrasyondan sonra çözülür. framer-motion ise
+       `initial` değerini yalnızca ÖGE BAĞLANIRKEN okur. Sonuç:
+       `initial={{ opacity: 0, y: 24 }}` ögeye yazılıyor, kanca sonradan
+       `true` dönse bile o transform geri alınamıyordu.
+
+       Üstüne `MotionConfig reducedMotion="user"` transform animasyonlarını
+       atladığı için y hiç 0'a çekilmiyor ve öge KALICI olarak 24px kaymış
+       kalıyordu. Ölçüm: /tr/bayi sayfasında opaklık 1, translateY 24 —
+       yani içerik görünür ama yerinden oynamış.
+
+       CSS medya sorgusu ilk boyamada zaten doğrudur ve hidrasyonu
+       beklemez; bu yüzden düzeltme buraya ait. Kural yalnızca kendi giriş
+       sarmalayıcılarımızı hedefler (`data-reveal`), böylece üründeki
+       meşru transform'lar (hover büyütme, SVG çizimler, kayan şerit)
+       etkilenmez.
+       ============================================================ */
+    [data-reveal] {
+      transform: none !important;
+    }
   }
 
   /* Yatay kayan alanlarda sert kesim yerine kenarlarda yumuşak solma. */

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAppear } from '@/lib/useEntrance';
 import {
   Home,
   Hotel,
@@ -85,6 +86,8 @@ function recommend(segment: Segment, size: Size): Recommendation {
 }
 
 export function SystemWizard() {
+  /* Adım geçişleri hareket azaltma tercihini dinler (WCAG 2.3.3). */
+  const appear = useAppear();
   const t = useTranslations('wizard');
   const tProducts = useTranslations('products');
   const [segment, setSegment] = useState<Segment | null>(null);
@@ -173,10 +176,7 @@ export function SystemWizard() {
               {step === 2 && rec && (
                 <motion.div
                   key="result"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  {...appear(16)}
                 >
                   <p className="text-center font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-volt-700">
                     {t('resultEyebrow')}
@@ -293,13 +293,9 @@ export function SystemWizard() {
 }
 
 function WizardStep({ title, children }: { title: string; children: React.ReactNode }) {
+  const appear = useAppear();
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12 }}
-      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <motion.div {...appear(16)}>
       <h3 className="text-center font-display type-h3 font-bold text-graphite-700">{title}</h3>
       <div className="mt-7">{children}</div>
     </motion.div>

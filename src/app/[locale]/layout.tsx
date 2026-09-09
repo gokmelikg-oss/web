@@ -13,6 +13,7 @@ import { OrgJsonLd } from '@/components/JsonLd';
 import { Analytics } from '@/components/Analytics';
 import { CookieBanner } from '@/components/CookieBanner';
 import { SmoothScroll } from '@/components/SmoothScroll';
+import { MotionProvider } from '@/components/MotionProvider';
 import '../globals.css';
 
 const poppins = Poppins({
@@ -139,12 +140,16 @@ export default async function LocaleLayout({
           İçeriğe geç
         </a>
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <WhatsAppButton />
-          <MobileCtaBar />
-          <CookieBanner />
+          {/* Hareket azaltma tercihi kütüphane düzeyinde uygulanır —
+              gerekçesi MotionProvider.tsx içinde yazılı. */}
+          <MotionProvider>
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+            <MobileCtaBar />
+            <CookieBanner />
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

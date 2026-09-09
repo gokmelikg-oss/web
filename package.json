@@ -9,7 +9,8 @@
     "lint": "next lint",
     "audit:security": "node scripts/security-audit.mjs && tsx scripts/security-behaviour.ts",
     "audit:deps": "npm audit --omit=dev",
-    "verify": "tsc --noEmit && next lint && node scripts/security-audit.mjs && tsx scripts/security-behaviour.ts"
+    "verify": "tsc --noEmit && next lint && node scripts/security-audit.mjs && tsx scripts/security-behaviour.ts",
+    "check:motion": "node scripts/check-reduced-motion.js http://localhost:3005 /tr /tr/products /tr/contact /tr/uygulamalar /tr/akademi /tr/bayi /tr/projects /tr/history"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.111.0",

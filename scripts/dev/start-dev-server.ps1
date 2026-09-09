@@ -46,9 +46,19 @@ if ($listening) {
 }
 
 $cmd = "`"C:\Program Files\nodejs\node.exe`" `"$repo\node_modules\next\dist\bin\next`" dev -p $port"
+
+# ⚠ PENCERE GİZLENİR.
+# Win32_Process.Create varsayılan olarak GÖRÜNÜR bir konsol penceresi açar;
+# masaüstünde sürekli duran, içinde "GET /tr 200" gibi istek kayıtları akan
+# siyah bir pencere kalıyordu (kullanıcı bildirdi). ProcessStartupInformation
+# ile ShowWindow = 0 (SW_HIDE) verilince süreç arka planda çalışır.
+# Süreç yine WmiPrvSE altında doğduğu için Ctrl+C ile ölmez.
+$startup = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ ShowWindow = [uint16]0 }
+
 $result = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{
-    CommandLine      = $cmd
-    CurrentDirectory = $repo
+    CommandLine               = $cmd
+    CurrentDirectory          = $repo
+    ProcessStartupInformation = $startup
 }
 
 if ($result.ReturnValue -eq 0) {

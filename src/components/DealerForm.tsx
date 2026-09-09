@@ -3,11 +3,14 @@
 import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAppear } from '@/lib/useEntrance';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
 import { trackLead } from '@/lib/track';
 import { Honeypot } from '@/components/Honeypot';
 
 export function DealerForm() {
+  /* Hareket azaltma tercihini dinleyen belirme geçişi (WCAG 2.3.3). */
+  const appear = useAppear();
   const t = useTranslations('dealers.form');
   const tc = useTranslations('contact.form');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
@@ -50,8 +53,7 @@ export function DealerForm() {
         {status === 'done' ? (
           <motion.div
             key="success"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...appear(8)}
             className="flex flex-col items-center py-10 text-center"
           >
             <CheckCircle2 size={44} className="text-volt-600" />
