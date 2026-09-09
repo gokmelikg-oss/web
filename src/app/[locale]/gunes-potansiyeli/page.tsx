@@ -14,15 +14,15 @@ import type { Locale } from '@/i18n/config';
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const ui = getProvincesUi(locale).list;
   return pageMetadata({ locale, path: '/gunes-potansiyeli', title: ui.meta.title, description: ui.meta.description });
 }
 
-export default async function SolarPotentialPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function SolarPotentialPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const ui = getProvincesUi(locale).list;
   const roof = getRoofCheckUi(locale);
   return (

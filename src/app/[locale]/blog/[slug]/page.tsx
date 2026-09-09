@@ -23,9 +23,9 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { locale, slug } = (await params) as { locale: Locale; slug: string };
   const article = await getBlogPost(slug, locale);
   if (!article) return {};
   return pageMetadata({
@@ -40,9 +40,9 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: Promise<{ locale: Locale; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = await params;
+  const { locale, slug } = (await params) as { locale: Locale; slug: string };
   const ui = getBlogUi(locale);
   const nf = new Intl.DateTimeFormat(ui.intlLocale, { day: 'numeric', month: 'long', year: 'numeric' });
   const article = await getBlogPost(slug, locale);

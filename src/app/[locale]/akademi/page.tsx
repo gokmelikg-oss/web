@@ -206,15 +206,15 @@ export const revalidate = 3600;
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale] ?? CONTENT.tr;
   return pageMetadata({ locale, path: '/akademi', title: c.meta.title, description: c.meta.description });
 }
 
-export default async function AkademiPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function AkademiPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale] ?? CONTENT.tr;
   const ui = getBlogUi(locale);
   const nf = new Intl.DateTimeFormat(ui.intlLocale, { day: 'numeric', month: 'long', year: 'numeric' });

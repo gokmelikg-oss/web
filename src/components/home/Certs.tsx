@@ -81,7 +81,13 @@ export function Certs() {
                 'group relative flex h-full items-center gap-3.5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-volt-500/50 hover:bg-white/[0.08]';
 
               return (
-                <Reveal key={item.label} delay={i * 0.04}>
+                /* ⚠ Anahtar SADECE etikete dayanamaz.
+                   "Solar Keymark" üç ayrı belgede geçiyor; belgeleri ayıran
+                   `scope` alanı (Orion 400 Ultrasonik / Orion 400 Lazer /
+                   Orion 600 Ultrasonik). Aynı anahtarla React kartlardan
+                   birini atlayabiliyordu — sahip olduğumuz bir belge sitede
+                   hiç görünmeyebilirdi. Dosya yolu belge başına benzersizdir. */
+                <Reveal key={item.file ?? `${item.label}-${item.scope ?? ''}-${i}`} delay={i * 0.04}>
                   {item.file ? (
                     <a
                       href={item.file}

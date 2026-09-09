@@ -54,9 +54,9 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = await params;
+  const { locale, slug } = (await params) as { locale: Locale; slug: string };
   const product = getProduct(slug);
   if (!product) return {};
   const t = await getTranslations({ locale, namespace: 'products' });
@@ -72,9 +72,9 @@ export async function generateMetadata({
 export default async function ProductDetailPage({
   params,
 }: {
-  params: Promise<{ locale: Locale; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = await params;
+  const { locale, slug } = (await params) as { locale: Locale; slug: string };
   const product = getProduct(slug);
   if (!product) notFound();
 

@@ -102,14 +102,14 @@ const CONTENT: Record<Locale, Text> = {
   },
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale];
   return pageMetadata({ locale, path: '/bayi', title: c.meta.title, description: c.meta.description });
 }
 
-export default async function DealerPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function DealerPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale];
   return (
     <>

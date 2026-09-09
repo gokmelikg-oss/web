@@ -155,7 +155,7 @@ export function ResourceCenter({ adminDocs = [], hideProductDocs = false }: { ad
         <h2 className="font-display text-xl font-bold text-graphite-950">{t('certsTitle')}</h2>
         <p className="mt-1.5 max-w-lg text-sm text-mist-700">{t('certsSubtitle')}</p>
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {certs.map((cert) => {
+          {certs.map((cert, certIndex) => {
             const inner = (
               <>
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-volt-100 text-volt-700 transition-colors group-hover:bg-volt-500 group-hover:text-graphite-950">
@@ -182,11 +182,11 @@ export function ResourceCenter({ adminDocs = [], hideProductDocs = false }: { ad
             const cls =
               'group flex h-full items-center gap-3.5 rounded-2xl border border-mist-900/10 bg-white px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-volt-500/50 hover:shadow-card';
             return cert.file ? (
-              <a key={cert.label} href={cert.file} target="_blank" rel="noopener noreferrer" className={cls}>
+              <a key={cert.file ?? `${cert.label}-${cert.scope ?? ''}-${certIndex}`} href={cert.file} target="_blank" rel="noopener noreferrer" className={cls}>
                 {inner}
               </a>
             ) : (
-              <div key={cert.label} className={cls}>
+              <div key={`${cert.label}-${cert.scope ?? ''}-${certIndex}`} className={cls}>
                 {inner}
               </div>
             );
@@ -221,8 +221,8 @@ export function ResourceCenter({ adminDocs = [], hideProductDocs = false }: { ad
                 </span>
               </a>
             ))}
-          {generalDocs.map((doc) => (
-            <div key={doc.name} className="flex items-center gap-3.5 px-5 py-4">
+          {generalDocs.map((doc, docIndex) => (
+            <div key={`${doc.name}-${docIndex}`} className="flex items-center gap-3.5 px-5 py-4">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-mist-100 text-mist-600">
                 <FileText size={16} strokeWidth={1.75} />
               </span>

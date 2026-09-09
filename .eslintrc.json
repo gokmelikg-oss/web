@@ -1,3 +1,13 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    // no-html-link-for-pages PAGES ROUTER kuralidir; bu proje App Router kullanir.
+    // Next 15'e gecerken uc yerde hatali pozitif uretip build'i durdurdu:
+    //   1) not-found.tsx ve error.tsx — hata sinirlarinda bilerek TAM SAYFA
+    //      yenileme istenir; next/link orada bozuk bir gecmis birakabilir.
+    //   2) /api/admin/backup — bu bir SAYFA degil, dosya indirme ucudur;
+    //      next/link ile gezilemez.
+    // Gercek gezinme baglantilari zaten @/i18n/navigation'daki Link ile yapiliyor.
+    "@next/next/no-html-link-for-pages": "off"
+  }
 }

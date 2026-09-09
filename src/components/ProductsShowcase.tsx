@@ -120,9 +120,16 @@ export function ProductsShowcase() {
                             </p>
                           )}
                           <ul className={group.title ? 'mt-2' : ''}>
-                            {group.items.map((item) => (
+                            {/* ⚠ Anahtar SADECE ada dayanamaz.
+                                "Merkezi Sistem Teras Çatı Galvaniz Sehpa" iki kez
+                                geçiyor; ürünleri ayıran şey `note` alanı (2 mm ve
+                                3 mm). Aynı anahtarla React satırlardan birini
+                                atlayabiliyor ya da çoğaltabiliyordu — yani
+                                listede yanlış kalınlık görünebilirdi.
+                                Ad + not + sıra birlikte benzersizdir. */}
+                            {group.items.map((item, itemIndex) => (
                               <li
-                                key={item.name}
+                                key={`${item.name}-${item.note ?? ''}-${itemIndex}`}
                                 className="flex items-baseline justify-between gap-3 border-b border-mist-900/8 py-2 text-sm last:border-0"
                               >
                                 <span className="flex items-center gap-2 font-medium text-graphite-900">

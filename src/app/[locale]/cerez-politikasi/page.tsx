@@ -11,15 +11,15 @@ const UPDATED = '29.07.2026';
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const doc = getLegalUi(locale).cookies;
   return pageMetadata({ locale, path: '/cerez-politikasi', title: doc.meta.title, description: doc.meta.description });
 }
 
-export default async function CerezPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function CerezPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const ui = getLegalUi(locale);
   const doc = ui.cookies;
   return (

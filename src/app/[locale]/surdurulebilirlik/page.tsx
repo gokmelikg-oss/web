@@ -255,9 +255,9 @@ const CONTENT: Record<Locale, SustainabilityText> = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale] ?? CONTENT.tr;
   return pageMetadata({
     locale,
@@ -270,9 +270,9 @@ export async function generateMetadata({
 export default async function SustainabilityPage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale] ?? CONTENT.tr;
 
   return (

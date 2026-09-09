@@ -21,15 +21,15 @@ export const revalidate = 3600;
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const t = await getTranslations({ locale, namespace: 'products.hero' });
   return pageMetadata({ locale, path: '/products', title: t('title'), description: t('subtitle') });
 }
 
-export default async function ProductsPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const t = await getTranslations('products.hero');
   const { products } = await getContent();
   const adminProducts = products.filter((p) => p.name && isPublished(p));

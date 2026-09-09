@@ -19,9 +19,9 @@ const STAT_ICONS = [Sun, Clock, Zap, Leaf];
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale; il: string }>;
+  params: Promise<{ locale: string; il: string }>;
 }): Promise<Metadata> {
-  const { locale, il } = await params;
+  const { locale, il } = (await params) as { locale: Locale; il: string };
   const data = getProvinceData(il);
   if (!data) return {};
   const ui = getProvincesUi(locale);
@@ -37,9 +37,9 @@ export async function generateMetadata({
 export default async function ProvinceDetailPage({
   params,
 }: {
-  params: Promise<{ locale: Locale; il: string }>;
+  params: Promise<{ locale: string; il: string }>;
 }) {
-  const { locale, il } = await params;
+  const { locale, il } = (await params) as { locale: Locale; il: string };
   const data = getProvinceData(il);
   if (!data) notFound();
 

@@ -14,8 +14,8 @@ import type { Locale } from '@/i18n/config';
 // Admin metin düzenlemeleri için ISR.
 export const revalidate = 3600;
 
-export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   // Metin geçersiz kılmaları dile göre okunur (tr eski `texts` alanından).
   const texts = textsFor(await getContent(), locale);
   return (

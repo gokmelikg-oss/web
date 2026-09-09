@@ -9,15 +9,15 @@ import type { Locale } from '@/i18n/config';
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const ui = getCalculatorUi(locale);
   return pageMetadata({ locale, path: '/calculator', title: ui.hero.title, description: ui.hero.subtitle });
 }
 
-export default async function CalculatorPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function CalculatorPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const ui = getCalculatorUi(locale);
 
   return (

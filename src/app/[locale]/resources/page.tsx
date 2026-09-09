@@ -16,15 +16,15 @@ export const revalidate = 3600;
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const t = await getTranslations({ locale, namespace: 'resources.hero' });
   return pageMetadata({ locale, path: '/resources', title: t('title'), description: t('subtitle') });
 }
 
-export default async function ResourcesPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function ResourcesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const t = await getTranslations('resources.hero');
   const tNav = await getTranslations('nav');
   const tech = getTechDocsUi(locale);

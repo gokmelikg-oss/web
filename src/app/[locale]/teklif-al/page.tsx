@@ -191,14 +191,14 @@ const CONTENT: Record<Locale, QuoteText> = {
   },
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale];
   return pageMetadata({ locale, path: '/teklif-al', title: c.meta.title, description: c.meta.description });
 }
 
-export default async function QuotePage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function QuotePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale];
 
   return (

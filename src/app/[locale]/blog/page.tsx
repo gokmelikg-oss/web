@@ -16,15 +16,15 @@ export const revalidate = 3600;
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const ui = getBlogUi(locale);
   return pageMetadata({ locale, path: '/blog', title: ui.metaTitle, description: ui.metaDescription });
 }
 
-export default async function BlogPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const ui = getBlogUi(locale);
   const nf = new Intl.DateTimeFormat(ui.intlLocale, { day: 'numeric', month: 'long', year: 'numeric' });
   const sorted = await getBlogList(locale);

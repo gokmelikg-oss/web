@@ -247,15 +247,15 @@ const CONTENT: Record<Locale, PressText> = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale] ?? CONTENT.tr;
   return pageMetadata({ locale, path: '/basin', title: c.meta.title, description: c.meta.description });
 }
 
-export default async function PressPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function PressPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale] ?? CONTENT.tr;
 
   return (

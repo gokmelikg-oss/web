@@ -63,14 +63,14 @@ const META: Record<Locale, { title: string; description: string }> = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   return pageMetadata({ locale, path: '/sss', ...(META[locale] ?? META.tr) });
 }
 
-export default async function SssPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function SssPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const hero = HERO[locale] ?? HERO.tr;
   const items = getFaqItems(locale);
   return (

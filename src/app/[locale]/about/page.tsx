@@ -26,9 +26,9 @@ export const revalidate = 3600;
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const t = await getTranslations({ locale, namespace: 'about.hero' });
   return pageMetadata({ locale, path: '/about', title: t('title'), description: t('subtitle') });
 }
@@ -47,8 +47,8 @@ const founderNotes = [
   'Solar termal sistemlerle attığımız ilk adım, markamızın Türkiye’de ve uluslararası pazarlarda çıkacağı yolculuğun güçlü bir işaretiydi. Yıllar içinde üretim kapasitemiz kadar etki alanımız da büyüdü; grup şirketlerimizle üretimden sahaya uzanan güçlü bir ekosistem kurduk.',
 ];
 
-export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const t = await getTranslations('about');
   const tCerts = await getTranslations('certs');
   const texts = textsFor(await getContent(), locale);

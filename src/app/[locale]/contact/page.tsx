@@ -281,9 +281,9 @@ const CONTACT_EXTRA: Record<Locale, ContactExtra> = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const t = await getTranslations({ locale, namespace: 'contact.hero' });
   return pageMetadata({ locale, path: '/contact', title: t('title'), description: t('subtitle') });
 }

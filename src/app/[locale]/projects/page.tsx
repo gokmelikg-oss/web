@@ -26,17 +26,17 @@ export const revalidate = 3600;
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const ui = getReferencesUi(locale);
   return pageMetadata({ locale, path: '/projects', title: ui.meta.title, description: ui.meta.description });
 }
 
 const SCALE_ICONS = [Grid3x3, MapPinned, Home, Building2, Sun, Grid3x3];
 
-export default async function ProjectsPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function ProjectsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const ui = getReferencesUi(locale);
   const tCta = await getTranslations('ctaBand');
   const nf = new Intl.NumberFormat(ui.intlLocale);

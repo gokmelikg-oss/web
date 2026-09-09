@@ -95,8 +95,8 @@ const CONTENT: Record<Locale, CertText> = {
   },
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale];
   const base = pageMetadata({ locale, path: '/sertifikalar', title: c.meta.title, description: c.meta.description });
   // Veri girilene kadar indekslenmesin — boş sayfa "ince içerik" sayılır.
@@ -110,8 +110,8 @@ function fmtDate(iso: string | undefined, locale: Locale): string | undefined {
   });
 }
 
-export default async function CertificatesPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = await params;
+export default async function CertificatesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = (await params) as { locale: Locale };
   const c = CONTENT[locale];
 
   return (
