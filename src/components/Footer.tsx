@@ -27,6 +27,7 @@ const FOOTER_UI: Record<
     surdurulebilirlik: string;
     basin: string;
     bayi: string;
+    bayiBul: string;
     teklifAl: string;
     kvkk: string;
     gizlilik: string;
@@ -39,7 +40,7 @@ const FOOTER_UI: Record<
     tarihce: 'Tarihçe', grupSirketleri: 'Grup Şirketleri', kariyer: 'Kariyer',
     referanslar: 'Referanslar', satisSonrasi: 'Satış Sonrası Hizmet', blog: 'Blog',
     hesaplama: 'Hesaplama Aracı', ilPotansiyeli: 'İl Güneş Potansiyeli', catiUygunluk: 'Çatı Uygunluk',
-    sertifikalar: 'Sertifikalar', surdurulebilirlik: 'Sürdürülebilirlik', basin: 'Basın Odası', bayi: 'Bayilik', teklifAl: 'Teklif Al',
+    sertifikalar: 'Sertifikalar', surdurulebilirlik: 'Sürdürülebilirlik', basin: 'Basın Odası', bayi: 'Bayilik', bayiBul: 'Bayi Bul', teklifAl: 'Teklif Al',
     kvkk: 'KVKK', gizlilik: 'Gizlilik Politikası', cerez: 'Çerez Politikası', sartlar: 'Şartlar ve Koşullar',
   },
   en: {
@@ -47,7 +48,7 @@ const FOOTER_UI: Record<
     tarihce: 'History', grupSirketleri: 'Group Companies', kariyer: 'Careers',
     referanslar: 'References', satisSonrasi: 'After-Sales Service', blog: 'Blog',
     hesaplama: 'Calculator', ilPotansiyeli: 'Solar Potential by Province', catiUygunluk: 'Roof Suitability',
-    sertifikalar: 'Certificates', surdurulebilirlik: 'Sustainability', basin: 'Press Room', bayi: 'Become a Dealer', teklifAl: 'Request a Quote',
+    sertifikalar: 'Certificates', surdurulebilirlik: 'Sustainability', basin: 'Press Room', bayi: 'Become a Dealer', bayiBul: 'Find a Dealer', teklifAl: 'Request a Quote',
     kvkk: 'KVKK', gizlilik: 'Privacy Policy', cerez: 'Cookie Policy', sartlar: 'Terms and Conditions',
   },
   ar: {
@@ -55,7 +56,7 @@ const FOOTER_UI: Record<
     tarihce: 'التاريخ', grupSirketleri: 'شركات المجموعة', kariyer: 'الوظائف',
     referanslar: 'المراجع', satisSonrasi: 'خدمة ما بعد البيع', blog: 'المدونة',
     hesaplama: 'أداة الحساب', ilPotansiyeli: 'الإمكان الشمسي حسب المحافظة', catiUygunluk: 'ملاءمة السطح',
-    sertifikalar: 'الشهادات', surdurulebilirlik: 'الاستدامة', basin: 'الغرفة الصحفية', bayi: 'كن وكيلاً', teklifAl: 'اطلب عرض سعر',
+    sertifikalar: 'الشهادات', surdurulebilirlik: 'الاستدامة', basin: 'الغرفة الصحفية', bayi: 'كن وكيلاً', bayiBul: 'ابحث عن وكيل', teklifAl: 'اطلب عرض سعر',
     kvkk: 'KVKK', gizlilik: 'سياسة الخصوصية', cerez: 'سياسة ملفات الارتباط', sartlar: 'الشروط والأحكام',
   },
   el: {
@@ -63,7 +64,7 @@ const FOOTER_UI: Record<
     tarihce: 'Ιστορία', grupSirketleri: 'Εταιρείες Ομίλου', kariyer: 'Καριέρα',
     referanslar: 'Έργα Αναφοράς', satisSonrasi: 'Υποστήριξη Μετά την Πώληση', blog: 'Ιστολόγιο',
     hesaplama: 'Υπολογιστής', ilPotansiyeli: 'Ηλιακό Δυναμικό ανά Επαρχία', catiUygunluk: 'Καταλληλότητα Στέγης',
-    sertifikalar: 'Πιστοποιητικά', surdurulebilirlik: 'Βιωσιμότητα', basin: 'Γραφείο Τύπου', bayi: 'Αντιπροσωπεία', teklifAl: 'Ζητήστε Προσφορά',
+    sertifikalar: 'Πιστοποιητικά', surdurulebilirlik: 'Βιωσιμότητα', basin: 'Γραφείο Τύπου', bayi: 'Αντιπροσωπεία', bayiBul: 'Βρείτε Αντιπρόσωπο', teklifAl: 'Ζητήστε Προσφορά',
     kvkk: 'KVKK', gizlilik: 'Πολιτική Απορρήτου', cerez: 'Πολιτική Cookies', sartlar: 'Όροι και Προϋποθέσεις',
   },
 };
@@ -158,6 +159,7 @@ export function Footer() {
             <li><Link href="/products" className="hover:text-white">{tNav('products')}</Link></li>
             <li><Link href="/projects" className="hover:text-white">{f.referanslar}</Link></li>
             <li><Link href="/bayi" className="hover:text-white">{f.bayi}</Link></li>
+            <li><Link href="/bayi-bul" className="hover:text-white">{f.bayiBul}</Link></li>
             <li><Link href="/contact#servis" className="hover:text-white">{f.satisSonrasi}</Link></li>
             <li><Link href="/blog" className="hover:text-white">{f.blog}</Link></li>
             {/* Dönüşüm bağlantısı vurgulu — footer'da da teklif yolu açık kalsın. */}

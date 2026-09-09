@@ -29,6 +29,7 @@ const STATIC_PATHS = [
   { path: '/teklif-al', priority: 0.9, changeFrequency: 'yearly' as const },
   { path: '/bayi', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/uygulamalar', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/bayi-bul', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/kvkk', priority: 0.2, changeFrequency: 'yearly' as const },
   { path: '/gizlilik', priority: 0.2, changeFrequency: 'yearly' as const },
   { path: '/cerez-politikasi', priority: 0.2, changeFrequency: 'yearly' as const },
