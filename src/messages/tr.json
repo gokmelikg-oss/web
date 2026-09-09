@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Şimşek Solar — Güneş Enerjisi Sistemleri | Bir Şimşek Grup Kuruluşu",
-    "description": "35 yıldır Mersin'den dünyaya: Orion kolektörler, Aquarious emayeli boylerler, Helios paket sistemler ve akıllı izleme çözümleri. Üretimden saha uygulamasına tek çatı altında mühendislik."
+    "title": "Güneş Enerjili Sıcak Su Sistemleri | Şimşek Solar",
+    "description": "35 yıldır Mersin’den dünyaya: Orion güneş kollektörleri, Aquarious emayeli boylerler ve Helios paket sistemler. Üretimden saha uygulamasına tek çatı altında."
   },
   "nav": {
     "brand": "Şimşek Solar",
@@ -744,7 +744,11 @@
         "type": "manual"
       }
     ],
-    "selectAll": "Tümünü seç"
+    "selectAll": "Tümünü seç",
+    "meta": {
+      "title": "Teknik Dökümanlar ve Sertifikalar",
+      "description": "Proje mühendisleri ve bayiler için ürün katalogları, CAD çizimleri, montaj kılavuzları ve kalite sertifikaları — tek arşivde, indirmeye hazır."
+    }
   },
   "products": {
     "hero": {

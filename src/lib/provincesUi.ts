@@ -82,9 +82,9 @@ const DATA: Record<Locale, ProvincesUi> = {
       allSubtitle:
         'İlinizin detaylı güneş enerjisi potansiyelini, tahmini üretimini ve öneriler ile sık sorulan soruları görmek için seçin.',
       meta: {
-        title: 'İllere Göre Güneş Enerjisi Potansiyeli — Türkiye Haritası',
+        title: 'İllere Göre Güneş Enerjisi Potansiyeli',
         description:
-          'İlinizi seçin; yıllık güneş ışınımı, güneşlenme süresi ve güneş enerjisiyle sıcak su sisteminizin tahmini üretimini görün. Türkiye’nin 81 ili için GEPA verilerine dayalı güneş potansiyeli rehberi.',
+          'Türkiye’nin 81 ili için GEPA verilerine dayalı rehber: yıllık güneş ışınımı, güneşlenme süresi ve sıcak su sisteminizin tahmini üretimi.',
       },
     },
     tier: (r) => (r >= 1380 ? 'çok yüksek' : r >= 1280 ? 'yüksek' : r >= 1150 ? 'iyi' : 'uygun'),

@@ -69,8 +69,8 @@ const CONTENT: Record<Locale, AcademyText> = {
     },
     cta: { title: 'Eğitim veya mühendislik desteği alın', body: 'Eğitim talepleriniz, projelendirme ve mühendislik hizmetleri için ekibimizle iletişime geçin.', button: 'Talep oluştur' },
     meta: {
-      title: 'Şimşek Akademi — Hesaplama Araçları, Eğitim ve Rehberler',
-      description: 'İnteraktif hesaplama araçları, il bazlı güneş potansiyeli, çatı uygunluk kontrolü, uygulamalı eğitimler ve güneş enerjisi rehberleri tek çatı altında: Şimşek Akademi.',
+      title: 'Şimşek Akademi — Araçlar ve Rehberler',
+      description: 'Hesaplama araçları, il bazlı güneş potansiyeli, çatı uygunluk kontrolü, uygulamalı eğitimler ve güneş enerjisi rehberleri tek çatı altında.',
     },
   },
   en: {

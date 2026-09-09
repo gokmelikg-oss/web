@@ -97,7 +97,7 @@ const CONTENT: Record<Locale, SustainabilityText> = {
     meta: {
       title: 'Sürdürülebilirlik',
       description:
-        'Şimşek Solar sürdürülebilirlik yaklaşımı: güneş enerjili su ısıtmanın yerine geçtiği enerji, geri dönüştürülebilir malzemeler, uzun ömürlü ve servis edilebilir sistem tasarımı, belgeli üretim.',
+        'Güneş enerjili su ısıtmanın yerine geçtiği enerji, geri dönüştürülebilir malzemeler, uzun ömürlü ve servis edilebilir sistem tasarımı, belgeli üretim.',
     },
   },
   en: {

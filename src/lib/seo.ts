@@ -72,8 +72,19 @@ export function pageMetadata({
     el: 'el_GR',
   };
 
+  /* ⚠ Marka adı BİR KEZ yazılır.
+     layout.tsx'te `title.template = "%s | Şimşek Solar"` tanımlıdır. Sayfa
+     kendi başlığına markayı da eklerse sonuç
+     "Bayilik | Şimşek Solar | Şimşek Solar" oluyordu — /bayi ve /teklif-al'da
+     gerçekten böyleydi. Sayfaları tek tek düzeltmek yerine burada kesiliyor
+     ki hata bir daha oluşamasın.
+     openGraph ve twitter şablonu UYGULAMAZ; markayı onlara açıkça ekliyoruz. */
+  const pageTitle =
+    title.replace(new RegExp(`\\s*[|·—-]\\s*${SITE_NAME}\\s*$`, 'i'), '').trim() || title;
+  const socialTitle = `${pageTitle} | ${SITE_NAME}`;
+
   return {
-    title,
+    title: pageTitle,
     description,
     alternates: {
       canonical,
@@ -84,13 +95,13 @@ export function pageMetadata({
       siteName: SITE_NAME,
       locale: ogLocale[locale],
       url: canonical,
-      title,
+      title: socialTitle,
       description,
       ...(images ? { images } : {}),
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: socialTitle,
       description,
       ...(images ? { images } : {}),
     },

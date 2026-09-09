@@ -19,8 +19,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = (await params) as { locale: Locale };
-  const t = await getTranslations({ locale, namespace: 'resources.hero' });
-  return pageMetadata({ locale, path: '/resources', title: t('title'), description: t('subtitle') });
+  /* ⚠ SEO başlığı H1'den AYRIDIR.
+     Önceden hero.title hem H1 hem arama başlığıydı; H1 olarak iyi ama marka
+     eki ile 66 karaktere çıkıp arama sonucunda kesiliyordu. Artık kendi
+     kısa meta başlığını kullanıyor, H1 olduğu gibi kalıyor. */
+  const t = await getTranslations({ locale, namespace: 'resources.meta' });
+  return pageMetadata({ locale, path: '/resources', title: t('title'), description: t('description') });
 }
 
 export default async function ResourcesPage({ params }: { params: Promise<{ locale: string }> }) {

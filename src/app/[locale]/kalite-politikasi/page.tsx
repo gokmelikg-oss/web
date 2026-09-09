@@ -46,7 +46,7 @@ const CONTENT: Record<Locale, QualityText> = {
     meta: {
       title: 'Kalite Politikamız',
       description:
-        'Şimşek Solar kalite politikası: müşteri memnuniyeti, sürekli iyileştirme, standartlara uygunluk ve çevreye duyarlı üretim ilkeleri. CE, TSE ve Solar Keymark sertifikalı üretim.',
+        'Müşteri memnuniyeti, sürekli iyileştirme, standartlara uygunluk ve çevreye duyarlı üretim ilkelerimiz. CE, TSE ve Solar Keymark sertifikalı üretim.',
     },
   },
   en: {

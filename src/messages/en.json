@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Şimşek Solar — Solar Thermal Systems | A Şimşek Group Company",
-    "description": "35 years from Mersin to the world: Orion collectors, Aquarious enameled boilers, Helios package systems and smart monitoring. Engineering under one roof, from production to field installation."
+    "title": "Solar Water Heating Systems | Şimşek Solar",
+    "description": "35 years from Mersin to the world: Orion solar collectors, Aquarious enamelled boilers and Helios packaged systems. Engineering under one roof."
   },
   "nav": {
     "brand": "Şimşek Solar",
@@ -673,7 +673,11 @@
     "certsTitle": "Our certificates",
     "certsSubtitle": "All our product and management-system documents are available as PDFs.",
     "productDocsSubtitle": "Technical data sheet, dimensioned technical drawing (PDF) and installation guide for every product.",
-    "generalDocsSubtitle": "Corporate profile, brand-usage and after-sales documents."
+    "generalDocsSubtitle": "Corporate profile, brand-usage and after-sales documents.",
+    "meta": {
+      "title": "Technical Documents and Certificates",
+      "description": "Product catalogues, CAD drawings, installation manuals and quality certificates for project engineers and dealers — one archive, ready to download."
+    }
   },
   "products": {
     "hero": {

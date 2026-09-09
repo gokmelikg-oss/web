@@ -31,6 +31,7 @@ const FOOTER_UI: Record<
     kvkk: string;
     gizlilik: string;
     cerez: string;
+    sartlar: string;
   }
 > = {
   tr: {
@@ -39,7 +40,7 @@ const FOOTER_UI: Record<
     referanslar: 'Referanslar', satisSonrasi: 'Satış Sonrası Hizmet', blog: 'Blog',
     hesaplama: 'Hesaplama Aracı', ilPotansiyeli: 'İl Güneş Potansiyeli', catiUygunluk: 'Çatı Uygunluk',
     sertifikalar: 'Sertifikalar', surdurulebilirlik: 'Sürdürülebilirlik', basin: 'Basın Odası', bayi: 'Bayilik', teklifAl: 'Teklif Al',
-    kvkk: 'KVKK', gizlilik: 'Gizlilik Politikası', cerez: 'Çerez Politikası',
+    kvkk: 'KVKK', gizlilik: 'Gizlilik Politikası', cerez: 'Çerez Politikası', sartlar: 'Şartlar ve Koşullar',
   },
   en: {
     kurumsal: 'Company', urunlerHizmet: 'Products & Service', araclar: 'Tools',
@@ -47,7 +48,7 @@ const FOOTER_UI: Record<
     referanslar: 'References', satisSonrasi: 'After-Sales Service', blog: 'Blog',
     hesaplama: 'Calculator', ilPotansiyeli: 'Solar Potential by Province', catiUygunluk: 'Roof Suitability',
     sertifikalar: 'Certificates', surdurulebilirlik: 'Sustainability', basin: 'Press Room', bayi: 'Become a Dealer', teklifAl: 'Request a Quote',
-    kvkk: 'KVKK', gizlilik: 'Privacy Policy', cerez: 'Cookie Policy',
+    kvkk: 'KVKK', gizlilik: 'Privacy Policy', cerez: 'Cookie Policy', sartlar: 'Terms and Conditions',
   },
   ar: {
     kurumsal: 'الشركة', urunlerHizmet: 'المنتجات والخدمة', araclar: 'الأدوات',
@@ -55,7 +56,7 @@ const FOOTER_UI: Record<
     referanslar: 'المراجع', satisSonrasi: 'خدمة ما بعد البيع', blog: 'المدونة',
     hesaplama: 'أداة الحساب', ilPotansiyeli: 'الإمكان الشمسي حسب المحافظة', catiUygunluk: 'ملاءمة السطح',
     sertifikalar: 'الشهادات', surdurulebilirlik: 'الاستدامة', basin: 'الغرفة الصحفية', bayi: 'كن وكيلاً', teklifAl: 'اطلب عرض سعر',
-    kvkk: 'KVKK', gizlilik: 'سياسة الخصوصية', cerez: 'سياسة ملفات الارتباط',
+    kvkk: 'KVKK', gizlilik: 'سياسة الخصوصية', cerez: 'سياسة ملفات الارتباط', sartlar: 'الشروط والأحكام',
   },
   el: {
     kurumsal: 'Εταιρεία', urunlerHizmet: 'Προϊόντα & Υπηρεσία', araclar: 'Εργαλεία',
@@ -63,7 +64,7 @@ const FOOTER_UI: Record<
     referanslar: 'Έργα Αναφοράς', satisSonrasi: 'Υποστήριξη Μετά την Πώληση', blog: 'Ιστολόγιο',
     hesaplama: 'Υπολογιστής', ilPotansiyeli: 'Ηλιακό Δυναμικό ανά Επαρχία', catiUygunluk: 'Καταλληλότητα Στέγης',
     sertifikalar: 'Πιστοποιητικά', surdurulebilirlik: 'Βιωσιμότητα', basin: 'Γραφείο Τύπου', bayi: 'Αντιπροσωπεία', teklifAl: 'Ζητήστε Προσφορά',
-    kvkk: 'KVKK', gizlilik: 'Πολιτική Απορρήτου', cerez: 'Πολιτική Cookies',
+    kvkk: 'KVKK', gizlilik: 'Πολιτική Απορρήτου', cerez: 'Πολιτική Cookies', sartlar: 'Όροι και Προϋποθέσεις',
   },
 };
 
@@ -110,6 +111,7 @@ export function Footer() {
     { href: '/kvkk', label: f.kvkk },
     { href: '/gizlilik', label: f.gizlilik },
     { href: '/cerez-politikasi', label: f.cerez },
+    { href: '/sartlar', label: f.sartlar },
   ];
 
   return (

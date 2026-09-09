@@ -30,6 +30,7 @@ const STATIC_PATHS = [
   { path: '/kvkk', priority: 0.2, changeFrequency: 'yearly' as const },
   { path: '/gizlilik', priority: 0.2, changeFrequency: 'yearly' as const },
   { path: '/cerez-politikasi', priority: 0.2, changeFrequency: 'yearly' as const },
+  { path: '/sartlar', priority: 0.2, changeFrequency: 'yearly' as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -26,6 +26,9 @@ export interface LegalUi {
   privacy: LegalDocText;
   cookies: LegalDocText;
   kvkk: LegalDocText;
+  /* Sartlar & Kosullar — sitenin kullanimina dair kosullar.
+     ⚠ Satis sozlesmesi DEGILDIR; satis kosullari teklif belgesinde tanimlanir. */
+  terms: LegalDocText;
 }
 
 const A = `${ORG.street}, ${ORG.district}, ${ORG.city}`;
@@ -96,6 +99,73 @@ const DATA: Record<Locale, LegalUi> = {
         ] },
       ],
     },
+    terms: {
+      title: 'Şartlar ve Koşullar',
+      subtitle:
+        'Bu web sitesini kullanarak aşağıdaki koşulları kabul etmiş olursunuz. Lütfen dikkatle okuyun.',
+      sections: [
+        {
+          title: 'Kapsam',
+          paras: [
+            { text: `Bu koşullar ${SITE_NAME} tarafından işletilen bu web sitesinin kullanımını düzenler. Siteyi ziyaret ederek ve içeriğini kullanarak bu koşulları kabul etmiş sayılırsınız. Koşulları kabul etmiyorsanız siteyi kullanmamanızı rica ederiz.` },
+            { label: 'İşletmeci:', text: `${ORG.legalName}, ${A}. İletişim: ${ORG.email} · ${ORG.phone}` },
+          ],
+        },
+        {
+          title: 'Sitenin amacı',
+          paras: [
+            { text: 'Bu site kurumsal tanıtım ve bilgilendirme amacıyla yayımlanır. Site üzerinden çevrimiçi satış yapılmaz; ürünler teklif ve sözleşme süreciyle satılır.' },
+            { label: 'Teklifler bağlayıcı değildir.', text: 'Sitedeki hiçbir bilgi, fiyat teklifi veya icap sayılmaz. Bağlayıcı olan yalnızca tarafımızca düzenlenip imzalanmış yazılı tekliflerdir.' },
+          ],
+        },
+        {
+          title: 'Ürün bilgileri ve görseller',
+          paras: [
+            { text: 'Teknik veriler, kapasiteler ve ölçüler ürün geliştirme sürecinde önceden haber verilmeksizin değişebilir. Bağlayıcı teknik değerler, teklif ekindeki güncel teknik dokümanda yer alanlardır.' },
+            { label: 'Görseller temsilîdir.', text: 'Fotoğraf ve çizimler ürünü tanıtma amaçlıdır; renk, ölçü ve detaylarda gerçek ürüne göre farklılık gösterebilir.' },
+            { label: 'Hesaplama araçları.', text: 'Sitedeki hesaplama ve boyutlandırma araçları ön fikir vermek içindir. Sonuçlar tahmindir; proje bazlı kesin boyutlandırma mühendislik değerlendirmesi gerektirir ve garanti teşkil etmez.' },
+          ],
+        },
+        {
+          title: 'Fikrî mülkiyet',
+          paras: [
+            { text: `Sitedeki metin, görsel, çizim, video, yazılım ve tasarımlar ile "${SITE_NAME}", "Orion", "Aquarious" ve "Helios" adları ve logolar korunmaktadır. İzinsiz kopyalanamaz, çoğaltılamaz veya ticari amaçla kullanılamaz.` },
+            { label: 'İstisna:', text: 'Basın odası sayfasında indirmeye açılan logolar ve şirket tanıtım metni, haber ve tanıtım amacıyla değiştirilmeden kullanılabilir.' },
+          ],
+        },
+        {
+          title: 'Sorumluluğun sınırlandırılması',
+          paras: [
+            { text: 'Site içeriği özenle hazırlanır; ancak kesintisiz, hatasız veya güncel olacağı taahhüt edilmez. Sitenin kullanımından doğabilecek dolaylı zararlardan sorumluluk kabul edilmez.' },
+            { label: 'Dış bağlantılar.', text: 'Site üçüncü taraf sitelere bağlantı verebilir. Bu sitelerin içeriğinden ve gizlilik uygulamalarından sorumlu değiliz.' },
+          ],
+        },
+        {
+          title: 'Kullanıcının yükümlülükleri',
+          paras: [
+            { text: 'Formlar aracılığıyla ilettiğiniz bilgilerin doğru ve size ait olmasından siz sorumlusunuz. Siteye zarar verecek, hizmeti aksatacak veya yetkisiz erişim sağlamaya yönelik girişimlerde bulunulamaz.' },
+          ],
+        },
+        {
+          title: 'Kişisel veriler',
+          paras: [
+            { text: 'Kişisel verilerin işlenmesi Gizlilik Politikası, KVKK Aydınlatma Metni ve Çerez Politikası kapsamında yürütülür. Bu metinler bu koşulların ayrılmaz parçasıdır.' },
+          ],
+        },
+        {
+          title: 'Değişiklikler ve uygulanacak hukuk',
+          paras: [
+            { text: 'Bu koşullar önceden haber verilmeksizin güncellenebilir; yürürlük tarihi sayfanın başında belirtilir. Siteyi kullanmaya devam etmeniz güncel koşulları kabul ettiğiniz anlamına gelir.' },
+            { label: 'Uygulanacak hukuk:', text: 'Türkiye Cumhuriyeti hukuku uygulanır. Uyuşmazlıklarda Mersin Mahkemeleri ve İcra Daireleri yetkilidir.' },
+          ],
+        },
+      ],
+      meta: {
+        title: 'Şartlar ve Koşullar',
+        description:
+          'Şimşek Solar web sitesi kullanım şartları: sitenin amacı, ürün bilgileri ve görsellerin niteliği, fikrî mülkiyet, sorumluluk sınırları ve uygulanacak hukuk.',
+      },
+    },
   },
   en: {
     eyebrow: 'Legal',
@@ -157,6 +227,72 @@ const DATA: Record<Locale, LegalUi> = {
           { text: `To exercise these rights, you can send your requests to ${ORG.email}.` },
         ] },
       ],
+    },
+    terms: {
+      title: 'Terms and Conditions',
+      subtitle: 'By using this website you accept the terms below. Please read them carefully.',
+      sections: [
+        {
+          title: 'Scope',
+          paras: [
+            { text: `These terms govern the use of this website operated by ${SITE_NAME}. By visiting the site and using its content you are deemed to accept them. If you do not accept them, please do not use the site.` },
+            { label: 'Operator:', text: `${ORG.legalName}, ${A}, Türkiye. Contact: ${ORG.email} · ${ORG.phone}` },
+          ],
+        },
+        {
+          title: 'Purpose of the site',
+          paras: [
+            { text: 'This site is published for corporate presentation and information. No online sales are made through the site; products are sold through a quotation and contract process.' },
+            { label: 'Quotations are not binding.', text: 'No information on this site constitutes a price quotation or an offer. Only written quotations issued and signed by us are binding.' },
+          ],
+        },
+        {
+          title: 'Product information and images',
+          paras: [
+            { text: 'Technical data, capacities and dimensions may change without prior notice as products are developed. Binding technical values are those in the current technical document attached to the quotation.' },
+            { label: 'Images are illustrative.', text: 'Photographs and drawings are for presentation; colour, dimensions and details may differ from the actual product.' },
+            { label: 'Calculation tools.', text: 'The calculation and sizing tools on this site are intended to give an initial indication. Results are estimates; definitive project sizing requires engineering assessment and constitutes no guarantee.' },
+          ],
+        },
+        {
+          title: 'Intellectual property',
+          paras: [
+            { text: `The text, images, drawings, video, software and designs on this site, together with the names "${SITE_NAME}", "Orion", "Aquarious" and "Helios" and the logos, are protected. They may not be copied, reproduced or used commercially without permission.` },
+            { label: 'Exception:', text: 'The logos and company boilerplate offered for download on the press room page may be used unmodified for news and publicity purposes.' },
+          ],
+        },
+        {
+          title: 'Limitation of liability',
+          paras: [
+            { text: 'Site content is prepared with care; however no undertaking is given that it will be uninterrupted, error-free or up to date. No liability is accepted for indirect damages arising from use of the site.' },
+            { label: 'External links.', text: 'The site may link to third-party sites. We are not responsible for their content or privacy practices.' },
+          ],
+        },
+        {
+          title: 'User obligations',
+          paras: [
+            { text: 'You are responsible for the accuracy and ownership of the information you submit through forms. No attempt may be made to damage the site, disrupt the service or gain unauthorised access.' },
+          ],
+        },
+        {
+          title: 'Personal data',
+          paras: [
+            { text: 'Processing of personal data is carried out under the Privacy Policy, the KVKK Disclosure Text and the Cookie Policy. Those texts form an integral part of these terms.' },
+          ],
+        },
+        {
+          title: 'Changes and governing law',
+          paras: [
+            { text: 'These terms may be updated without prior notice; the effective date is stated at the top of the page. Continued use of the site means you accept the current terms.' },
+            { label: 'Governing law:', text: 'The laws of the Republic of Türkiye apply. The Courts and Execution Offices of Mersin have jurisdiction.' },
+          ],
+        },
+      ],
+      meta: {
+        title: 'Terms and Conditions',
+        description:
+          'Şimşek Solar website terms of use: purpose of the site, nature of product information and images, intellectual property, limitation of liability and governing law.',
+      },
     },
   },
   ar: {
@@ -220,6 +356,72 @@ const DATA: Record<Locale, LegalUi> = {
         ] },
       ],
     },
+    terms: {
+      title: 'الشروط والأحكام',
+      subtitle: 'باستخدامكم هذا الموقع فإنكم توافقون على الشروط أدناه. يُرجى قراءتها بعناية.',
+      sections: [
+        {
+          title: 'النطاق',
+          paras: [
+            { text: `تنظّم هذه الشروط استخدام هذا الموقع الذي تديره ${SITE_NAME}. بزيارتكم الموقع واستخدام محتواه تُعدّون موافقين عليها. إذا لم توافقوا عليها، نرجو عدم استخدام الموقع.` },
+            { label: 'المشغّل:', text: `${ORG.legalName}، ${A}، تركيا. للتواصل: ${ORG.email} · ${ORG.phone}` },
+          ],
+        },
+        {
+          title: 'الغرض من الموقع',
+          paras: [
+            { text: 'يُنشر هذا الموقع للتعريف المؤسسي والإعلام. لا تُجرى مبيعات إلكترونية عبر الموقع؛ تُباع المنتجات عبر عملية عرض سعر وعقد.' },
+            { label: 'عروض الأسعار غير مُلزِمة.', text: 'لا تُعدّ أي معلومة في هذا الموقع عرض سعر أو إيجاباً. المُلزِم فقط هو عروض الأسعار الخطية الصادرة والموقّعة من قِبلنا.' },
+          ],
+        },
+        {
+          title: 'معلومات المنتجات والصور',
+          paras: [
+            { text: 'قد تتغيّر البيانات الفنية والسعات والأبعاد دون إشعار مسبق مع تطوير المنتجات. القيم الفنية المُلزِمة هي الواردة في الوثيقة الفنية المرفقة بعرض السعر.' },
+            { label: 'الصور توضيحية.', text: 'الصور والرسومات لغرض العرض؛ وقد تختلف الألوان والأبعاد والتفاصيل عن المنتج الفعلي.' },
+            { label: 'أدوات الحساب.', text: 'أدوات الحساب وتحديد المقاسات في الموقع تهدف إلى إعطاء فكرة أولية. النتائج تقديرية؛ ويتطلب التحديد النهائي للمشروع تقييماً هندسياً ولا يشكّل ضماناً.' },
+          ],
+        },
+        {
+          title: 'الملكية الفكرية',
+          paras: [
+            { text: `النصوص والصور والرسومات والفيديو والبرمجيات والتصاميم في هذا الموقع، إضافة إلى أسماء "${SITE_NAME}" و"Orion" و"Aquarious" و"Helios" والشعارات، محمية. لا يجوز نسخها أو استنساخها أو استخدامها تجارياً دون إذن.` },
+            { label: 'استثناء:', text: 'يمكن استخدام الشعارات والنبذة التعريفية المتاحة للتنزيل في صفحة الغرفة الصحفية دون تعديل لأغراض الأخبار والتعريف.' },
+          ],
+        },
+        {
+          title: 'حدود المسؤولية',
+          paras: [
+            { text: 'يُعدّ محتوى الموقع بعناية؛ غير أننا لا نتعهّد بأن يكون متواصلاً أو خالياً من الأخطاء أو محدّثاً. لا نتحمّل المسؤولية عن الأضرار غير المباشرة الناشئة عن استخدام الموقع.' },
+            { label: 'الروابط الخارجية.', text: 'قد يتضمّن الموقع روابط إلى مواقع أطراف ثالثة. لسنا مسؤولين عن محتواها أو ممارسات الخصوصية فيها.' },
+          ],
+        },
+        {
+          title: 'التزامات المستخدم',
+          paras: [
+            { text: 'أنتم مسؤولون عن صحة المعلومات التي ترسلونها عبر النماذج وعن عائديتها لكم. لا يجوز القيام بأي محاولة للإضرار بالموقع أو تعطيل الخدمة أو الوصول غير المصرّح به.' },
+          ],
+        },
+        {
+          title: 'البيانات الشخصية',
+          paras: [
+            { text: 'تُعالَج البيانات الشخصية وفق سياسة الخصوصية ونص الإفصاح KVKK وسياسة ملفات الارتباط. وتشكّل تلك النصوص جزءاً لا يتجزأ من هذه الشروط.' },
+          ],
+        },
+        {
+          title: 'التعديلات والقانون الواجب التطبيق',
+          paras: [
+            { text: 'قد تُحدَّث هذه الشروط دون إشعار مسبق؛ ويُذكر تاريخ النفاذ في أعلى الصفحة. استمراركم في استخدام الموقع يعني قبولكم الشروط السارية.' },
+            { label: 'القانون الواجب التطبيق:', text: 'تُطبَّق قوانين جمهورية تركيا. وتختص محاكم ودوائر التنفيذ في مرسين بالنظر في المنازعات.' },
+          ],
+        },
+      ],
+      meta: {
+        title: 'الشروط والأحكام',
+        description:
+          'شروط استخدام موقع شيمشك سولار: الغرض من الموقع، وطبيعة معلومات المنتجات والصور، والملكية الفكرية، وحدود المسؤولية، والقانون الواجب التطبيق.',
+      },
+    },
   },
   el: {
     eyebrow: 'Νομικά',
@@ -281,6 +483,72 @@ const DATA: Record<Locale, LegalUi> = {
           { text: `Για να ασκήσετε αυτά τα δικαιώματα, μπορείτε να στείλετε τα αιτήματά σας στο ${ORG.email}.` },
         ] },
       ],
+    },
+    terms: {
+      title: 'Όροι και Προϋποθέσεις',
+      subtitle: 'Χρησιμοποιώντας αυτόν τον ιστότοπο αποδέχεστε τους παρακάτω όρους. Παρακαλούμε διαβάστε τους προσεκτικά.',
+      sections: [
+        {
+          title: 'Πεδίο εφαρμογής',
+          paras: [
+            { text: `Οι παρόντες όροι διέπουν τη χρήση του ιστότοπου που λειτουργεί η ${SITE_NAME}. Επισκεπτόμενοι τον ιστότοπο και χρησιμοποιώντας το περιεχόμενό του θεωρείται ότι τους αποδέχεστε. Αν δεν τους αποδέχεστε, παρακαλούμε μην χρησιμοποιείτε τον ιστότοπο.` },
+            { label: 'Φορέας εκμετάλλευσης:', text: `${ORG.legalName}, ${A}, Τουρκία. Επικοινωνία: ${ORG.email} · ${ORG.phone}` },
+          ],
+        },
+        {
+          title: 'Σκοπός του ιστότοπου',
+          paras: [
+            { text: 'Ο ιστότοπος δημοσιεύεται για εταιρική παρουσίαση και ενημέρωση. Δεν πραγματοποιούνται ηλεκτρονικές πωλήσεις· τα προϊόντα πωλούνται μέσω διαδικασίας προσφοράς και σύμβασης.' },
+            { label: 'Οι προσφορές δεν είναι δεσμευτικές.', text: 'Καμία πληροφορία του ιστότοπου δεν συνιστά προσφορά τιμής ή πρόταση. Δεσμευτικές είναι μόνο οι έγγραφες προσφορές που εκδίδουμε και υπογράφουμε.' },
+          ],
+        },
+        {
+          title: 'Πληροφορίες προϊόντων και εικόνες',
+          paras: [
+            { text: 'Τα τεχνικά δεδομένα, οι αποδόσεις και οι διαστάσεις ενδέχεται να μεταβληθούν χωρίς προειδοποίηση κατά την εξέλιξη των προϊόντων. Δεσμευτικές είναι οι τιμές του επίκαιρου τεχνικού εγγράφου που συνοδεύει την προσφορά.' },
+            { label: 'Οι εικόνες είναι ενδεικτικές.', text: 'Οι φωτογραφίες και τα σχέδια έχουν σκοπό την παρουσίαση· χρώματα, διαστάσεις και λεπτομέρειες ενδέχεται να διαφέρουν από το πραγματικό προϊόν.' },
+            { label: 'Εργαλεία υπολογισμού.', text: 'Τα εργαλεία υπολογισμού και διαστασιολόγησης δίνουν αρχική ένδειξη. Τα αποτελέσματα είναι εκτιμήσεις· η οριστική διαστασιολόγηση απαιτεί μηχανική αξιολόγηση και δεν συνιστά εγγύηση.' },
+          ],
+        },
+        {
+          title: 'Πνευματική ιδιοκτησία',
+          paras: [
+            { text: `Τα κείμενα, οι εικόνες, τα σχέδια, τα βίντεο, το λογισμικό και οι σχεδιασμοί του ιστότοπου, καθώς και οι ονομασίες "${SITE_NAME}", "Orion", "Aquarious" και "Helios" και τα λογότυπα, προστατεύονται. Δεν επιτρέπεται η αντιγραφή, αναπαραγωγή ή εμπορική χρήση τους χωρίς άδεια.` },
+            { label: 'Εξαίρεση:', text: 'Τα λογότυπα και το εταιρικό κείμενο που διατίθενται προς λήψη στη σελίδα του Γραφείου Τύπου μπορούν να χρησιμοποιηθούν αναλλοίωτα για ειδησεογραφικούς και ενημερωτικούς σκοπούς.' },
+          ],
+        },
+        {
+          title: 'Περιορισμός ευθύνης',
+          paras: [
+            { text: 'Το περιεχόμενο ετοιμάζεται με επιμέλεια· ωστόσο δεν παρέχεται εγγύηση ότι θα είναι αδιάλειπτο, χωρίς σφάλματα ή επίκαιρο. Δεν αναλαμβάνεται ευθύνη για έμμεσες ζημίες από τη χρήση του ιστότοπου.' },
+            { label: 'Εξωτερικοί σύνδεσμοι.', text: 'Ο ιστότοπος ενδέχεται να παραπέμπει σε ιστότοπους τρίτων. Δεν ευθυνόμαστε για το περιεχόμενο ή τις πρακτικές απορρήτου τους.' },
+          ],
+        },
+        {
+          title: 'Υποχρεώσεις χρήστη',
+          paras: [
+            { text: 'Ευθύνεστε για την ακρίβεια και την κυριότητα των στοιχείων που υποβάλλετε μέσω των φορμών. Δεν επιτρέπεται καμία απόπειρα πρόκλησης βλάβης, διατάραξης της υπηρεσίας ή μη εξουσιοδοτημένης πρόσβασης.' },
+          ],
+        },
+        {
+          title: 'Προσωπικά δεδομένα',
+          paras: [
+            { text: 'Η επεξεργασία προσωπικών δεδομένων διενεργείται βάσει της Πολιτικής Απορρήτου, του κειμένου ενημέρωσης KVKK και της Πολιτικής Cookies. Τα κείμενα αυτά αποτελούν αναπόσπαστο μέρος των παρόντων όρων.' },
+          ],
+        },
+        {
+          title: 'Τροποποιήσεις και εφαρμοστέο δίκαιο',
+          paras: [
+            { text: 'Οι όροι ενδέχεται να επικαιροποιηθούν χωρίς προειδοποίηση· η ημερομηνία ισχύος αναγράφεται στην αρχή της σελίδας. Η συνέχιση της χρήσης σημαίνει αποδοχή των ισχυόντων όρων.' },
+            { label: 'Εφαρμοστέο δίκαιο:', text: 'Εφαρμόζεται το δίκαιο της Δημοκρατίας της Τουρκίας. Αρμόδια είναι τα Δικαστήρια και οι Υπηρεσίες Αναγκαστικής Εκτέλεσης της Μερσίνας.' },
+          ],
+        },
+      ],
+      meta: {
+        title: 'Όροι και Προϋποθέσεις',
+        description:
+          'Όροι χρήσης του ιστότοπου Şimşek Solar: σκοπός του ιστότοπου, φύση των πληροφοριών και εικόνων προϊόντων, πνευματική ιδιοκτησία, περιορισμός ευθύνης και εφαρμοστέο δίκαιο.',
+      },
     },
   },
 };
