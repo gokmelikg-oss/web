@@ -29,7 +29,7 @@ const META: Record<string, { icon: typeof Sun; accent: string; spec: string; tag
     icon: Droplets,
     accent: '#22c9e6',
     spec: '93–500 litre · Emaye kaplama',
-    tags: ['Aquarious', 'Sirius', 'Açık / Kapalı devre'],
+    tags: ['Aquarius', 'Sirius', 'Açık / Kapalı devre'],
   },
   sehpalar: {
     icon: Layers,

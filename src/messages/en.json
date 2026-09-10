@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Solar Water Heating Systems | Şimşek Solar",
-    "description": "35 years from Mersin to the world: Orion solar collectors, Aquarious enamelled boilers and Helios packaged systems. Engineering under one roof."
+    "description": "35 years from Mersin to the world: Orion solar collectors, Aquarius enamelled boilers and Helios packaged systems. Engineering under one roof."
   },
   "nav": {
     "brand": "Şimşek Solar",
@@ -53,7 +53,7 @@
         "id": "solar",
         "name": "Şimşek Solar",
         "tag": "Solar Thermal Systems",
-        "desc": "One of Türkiye's most established solar thermal manufacturers with over 35 years of expertise. Orion collectors, Aquarious boilers and Helios package systems — end-to-end engineering from R&D and production to projects and after-sales."
+        "desc": "One of Türkiye's most established solar thermal manufacturers with over 35 years of expertise. Orion collectors, Aquarius boilers and Helios package systems — end-to-end engineering from R&D and production to projects and after-sales."
       },
       {
         "id": "lipus",
@@ -181,7 +181,7 @@
   "productsSection": {
     "eyebrow": "Product Range",
     "title": "A complete range from collectors to automation",
-    "subtitle": "Orion collectors, Aquarious and Sirius boilers, central and package system mounting frames, automation and connection equipment.",
+    "subtitle": "Orion collectors, Aquarius and Sirius boilers, central and package system mounting frames, automation and connection equipment.",
     "viewAll": "View all products"
   },
   "collectorMatrix": {
@@ -258,20 +258,20 @@
       {
         "id": "boylerler",
         "title": "Boiler Series",
-        "desc": "Aquarious and Sirius series boilers; open and closed loop options, capacities from 93 to 500 liters.",
+        "desc": "Aquarius and Sirius series boilers; open and closed loop options, capacities from 93 to 500 liters.",
         "groups": [
           {
             "items": [
               {
-                "name": "Aquarious 500 Series",
+                "name": "Aquarius 500 Series",
                 "note": "93 L · 120 L · 150 L · 170 L"
               },
               {
-                "name": "Aquarious 540 Series — Closed Loop",
+                "name": "Aquarius 540 Series — Closed Loop",
                 "note": "150 L · 200 L · 300 L"
               },
               {
-                "name": "Aquarious 540 Series — Open Loop",
+                "name": "Aquarius 540 Series — Open Loop",
                 "note": "150 L · 200 L · 300 L"
               },
               {
@@ -279,7 +279,7 @@
                 "note": "200 L · 300 L"
               },
               {
-                "name": "Aquarious 740 Series — Closed Loop",
+                "name": "Aquarius 740 Series — Closed Loop",
                 "note": "500 L"
               }
             ]
@@ -501,10 +501,10 @@
     "results": {
       "helios-200l": "The most balanced solution for a standard household: boiler + two collectors, turnkey package.",
       "helios-300l": "Extended capacity for high demand: pressurized package with three collectors.",
-      "central": "At this scale we engineer an Orion series collector field + Aquarious central boiler combination; our team prepares a quote with the capacity calculation."
+      "central": "At this scale we engineer an Orion series collector field + Aquarius central boiler combination; our team prepares a quote with the capacity calculation."
     },
     "centralTitle": "Central System (Engineered)",
-    "centralModel": "ORION × N + AQUARIOUS"
+    "centralModel": "ORION × N + AQUARIUS"
   },
   "whyUs": {
     "eyebrow": "Why Şimşek",
@@ -684,7 +684,7 @@
     "hero": {
       "eyebrow": "Product Catalog",
       "title": "Collectors, boilers, mounting frames and automation",
-      "subtitle": "Orion collector series, Aquarious and Sirius boilers, central and package system frames, automation panels and connection equipment."
+      "subtitle": "Orion collector series, Aquarius and Sirius boilers, central and package system frames, automation panels and connection equipment."
     },
     "filters": {
       "all": "All",
@@ -735,10 +735,10 @@
           "Proven durability on military and hotel installations"
         ]
       },
-      "aquarious-500": {
-        "name": "Aquarious 500 Series Enameled Boiler",
+      "aquarius-500": {
+        "name": "Aquarius 500 Series Enameled Boiler",
         "tagline": "Dual-coil 500-liter boiler for central systems",
-        "description": "The Aquarious 500 features a DIN 4753-compliant vitrified enamel interior that resists corrosion for the long term. Its dual-coil design lets solar energy and a backup heat source work together.",
+        "description": "The Aquarius 500 features a DIN 4753-compliant vitrified enamel interior that resists corrosion for the long term. Its dual-coil design lets solar energy and a backup heat source work together.",
         "features": [
           "Vitrified enamel interior with superior corrosion resistance",
           "Dual coil: solar plus backup heat source",
@@ -746,10 +746,10 @@
           "60mm PU foam insulation for low standby loss"
         ]
       },
-      "aquarious-600": {
-        "name": "Aquarious 600 Series Enameled Boiler",
+      "aquarius-600": {
+        "name": "Aquarius 600 Series Enameled Boiler",
         "tagline": "600-liter boiler for high-capacity facilities",
-        "description": "The Aquarious 600 is a high-capacity dual-coil boiler built for military facilities, hotels, and housing developments with heavy hot water demand.",
+        "description": "The Aquarius 600 is a high-capacity dual-coil boiler built for military facilities, hotels, and housing developments with heavy hot water demand.",
         "features": [
           "600-liter capacity for high consumption",
           "Dual coil with flexible heat-source combinations",
@@ -847,7 +847,7 @@
     "items": {
       "incirlik-sosyal-yasam-merkezi": {
         "title": "İncirlik 10th Tanker Base Command Social Life Center",
-        "description": "A centralized solar-assisted hot water system for the social life center of a military facility; Aquarious series boilers were chosen for the high usage intensity."
+        "description": "A centralized solar-assisted hot water system for the social life center of a military facility; Aquarius series boilers were chosen for the high usage intensity."
       },
       "alasehir-egitim-tabur-komutanligi": {
         "title": "Alaşehir 1st Transportation Training Battalion Command",
@@ -954,7 +954,7 @@
     "subtitle": "A smart assistant grounded in our documents and manuals",
     "placeholder": "Type your question...",
     "send": "Send",
-    "greeting": "Hi, I'm Şimşek.ai! I answer from our product manuals and technical documents. Ask me about Orion, Aquarious, Helios, or our smart systems.",
+    "greeting": "Hi, I'm Şimşek.ai! I answer from our product manuals and technical documents. Ask me about Orion, Aquarius, Helios, or our smart systems.",
     "quickSuggestions": {
       "dealer": "Become a distributor",
       "products": "Explore our products",

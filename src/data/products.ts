@@ -17,8 +17,8 @@ export interface Product {
 export const productImages: Record<string, string | undefined> = {
   'orion-300': '/products/orion-300.jpg',
   'orion-500': '/products/orion-500.jpg',
-  'aquarious-500': '/products/aquarious-500.jpg',
-  'aquarious-600': '/products/aquarious-740.jpg',
+  'aquarius-500': '/products/aquarius-500.jpg',
+  'aquarius-600': '/products/aquarius-740.jpg',
   'helios-200l': '/products/helios-200l.jpg',
   'helios-300l': '/products/helios-300l.jpg',
   'simsek-track': undefined,
@@ -63,9 +63,9 @@ export const products: Product[] = [
     ],
   },
   {
-    slug: 'aquarious-500',
+    slug: 'aquarius-500',
     category: 'boiler',
-    model: 'AQUARIOUS-500',
+    model: 'AQUARIUS-500',
     gradient: 'from-mist-400 via-volt-700 to-graphite-950',
     specs: [
       { key: 'capacity', value: '500 L' },
@@ -79,9 +79,9 @@ export const products: Product[] = [
     ],
   },
   {
-    slug: 'aquarious-600',
+    slug: 'aquarius-600',
     category: 'boiler',
-    model: 'AQUARIOUS-600',
+    model: 'AQUARIUS-600',
     gradient: 'from-mist-400 via-volt-700 to-graphite-950',
     specs: [
       { key: 'capacity', value: '600 L' },

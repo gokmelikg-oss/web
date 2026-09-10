@@ -18,7 +18,7 @@ interface GuideText {
 }
 
 /* Model/litre dilden bağımsız; kişi aralığı ve etiketler çevrilir. */
-const MODELS = ['Helios 150 · 200L', 'Helios 200 · 300L', 'Aquarious 300L', 'Aquarious 500L / Merkezi'];
+const MODELS = ['Helios 150 · 200L', 'Helios 200 · 300L', 'Aquarius 300L', 'Aquarius 500L / Merkezi'];
 const LITERS = ['150–200 L', '200–300 L', '300 L', '500 L+'];
 
 const CONTENT: Record<Locale, GuideText> = {

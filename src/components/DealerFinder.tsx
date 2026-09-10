@@ -106,19 +106,30 @@ export function DealerFinder({ labels }: { labels: DealerFinderLabels }) {
                     className="rounded-2xl border border-mist-900/10 bg-white p-5"
                   >
                     <p className="font-display font-bold text-graphite-950">{d.title}</p>
+                    {/* Yetkili kişi — müşteri aramadan önce kime soracağını görsün. */}
+                    {d.contact ? (
+                      <p className="mt-0.5 text-sm text-mist-500">{d.contact}</p>
+                    ) : null}
                     <p className="mt-1 flex items-center gap-1.5 text-sm text-mist-600">
                       <MapPin size={14} className="shrink-0 text-volt-600" />
                       {d.ilce ? `${d.ilce} / ${d.il}` : d.il}
                     </p>
-                    {/* Telefon YALNIZCA doğrulanmışsa basılır (bkz. data/dealers.ts). */}
+                    {/* Telefon YALNIZCA doğrulanmışsa basılır (bkz. data/dealers.ts).
+                        Sabit ve cep AYRI bağlantıdır: `tel:` tek numara kabul eder,
+                        birleştirilirse hiçbiri aranamaz. */}
                     {d.phone ? (
-                      <a
-                        href={`tel:${d.phone.replace(/\s/g, '')}`}
-                        className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-graphite-950/15 px-5 text-sm font-semibold text-graphite-950 transition-colors hover:bg-graphite-950 hover:text-white"
-                      >
-                        <Phone size={15} />
-                        {d.phone}
-                      </a>
+                      <span className="mt-3 flex flex-wrap gap-2">
+                        {[d.phone, d.phone2].filter(Boolean).map((tel) => (
+                          <a
+                            key={tel}
+                            href={`tel:${tel!.replace(/\s/g, '')}`}
+                            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-graphite-950/15 px-5 text-sm font-semibold text-graphite-950 transition-colors hover:bg-graphite-950 hover:text-white"
+                          >
+                            <Phone size={15} />
+                            {tel}
+                          </a>
+                        ))}
+                      </span>
                     ) : (
                       <Link
                         href="/contact"

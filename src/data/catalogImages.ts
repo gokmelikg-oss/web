@@ -13,11 +13,11 @@ export const catalogImages: Record<string, (string | null)[]> = {
     null,
   ],
   'boylerler-0': [
-    '/products/aquarious-500.jpg',
-    '/products/aquarious-540.jpg',
+    '/products/aquarius-500.jpg',
+    '/products/aquarius-540.jpg',
     null,
     null,
-    '/products/aquarious-740.jpg',
+    '/products/aquarius-740.jpg',
   ],
   'sehpalar-0': [
     '/products/sehpa-merkezi-2li.jpg',
@@ -61,7 +61,7 @@ export const catalogImages: Record<string, (string | null)[]> = {
 /* One representative photo per family for overview cards. */
 export const familyImages: Record<string, string> = {
   kolektorler: '/products/orion-500.jpg',
-  boylerler: '/products/aquarious-740.jpg',
+  boylerler: '/products/aquarius-740.jpg',
   sehpalar: '/products/sehpa-merkezi-3lu.jpg',
   baglanti: '/products/solar-vana.jpg',
   otomasyon: '/products/otomasyon-pano.svg',

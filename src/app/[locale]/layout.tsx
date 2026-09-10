@@ -90,7 +90,7 @@ export async function generateMetadata({
       'yurt sıcak su sistemi',
       'Adalet Bakanlığı güneş enerjisi',
       'Orion kollektör',
-      'Aquarious boyler',
+      'Aquarius boyler',
       'Şimşek Solar',
       'Mersin güneş enerjisi',
       'Solar Keymark kollektör',

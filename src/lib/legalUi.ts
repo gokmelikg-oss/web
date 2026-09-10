@@ -129,7 +129,7 @@ const DATA: Record<Locale, LegalUi> = {
         {
           title: 'Fikrî mülkiyet',
           paras: [
-            { text: `Sitedeki metin, görsel, çizim, video, yazılım ve tasarımlar ile "${SITE_NAME}", "Orion", "Aquarious" ve "Helios" adları ve logolar korunmaktadır. İzinsiz kopyalanamaz, çoğaltılamaz veya ticari amaçla kullanılamaz.` },
+            { text: `Sitedeki metin, görsel, çizim, video, yazılım ve tasarımlar ile "${SITE_NAME}", "Orion", "Aquarius" ve "Helios" adları ve logolar korunmaktadır. İzinsiz kopyalanamaz, çoğaltılamaz veya ticari amaçla kullanılamaz.` },
             { label: 'İstisna:', text: 'Basın odası sayfasında indirmeye açılan logolar ve şirket tanıtım metni, haber ve tanıtım amacıyla değiştirilmeden kullanılabilir.' },
           ],
         },
@@ -257,7 +257,7 @@ const DATA: Record<Locale, LegalUi> = {
         {
           title: 'Intellectual property',
           paras: [
-            { text: `The text, images, drawings, video, software and designs on this site, together with the names "${SITE_NAME}", "Orion", "Aquarious" and "Helios" and the logos, are protected. They may not be copied, reproduced or used commercially without permission.` },
+            { text: `The text, images, drawings, video, software and designs on this site, together with the names "${SITE_NAME}", "Orion", "Aquarius" and "Helios" and the logos, are protected. They may not be copied, reproduced or used commercially without permission.` },
             { label: 'Exception:', text: 'The logos and company boilerplate offered for download on the press room page may be used unmodified for news and publicity purposes.' },
           ],
         },
@@ -385,7 +385,7 @@ const DATA: Record<Locale, LegalUi> = {
         {
           title: 'الملكية الفكرية',
           paras: [
-            { text: `النصوص والصور والرسومات والفيديو والبرمجيات والتصاميم في هذا الموقع، إضافة إلى أسماء "${SITE_NAME}" و"Orion" و"Aquarious" و"Helios" والشعارات، محمية. لا يجوز نسخها أو استنساخها أو استخدامها تجارياً دون إذن.` },
+            { text: `النصوص والصور والرسومات والفيديو والبرمجيات والتصاميم في هذا الموقع، إضافة إلى أسماء "${SITE_NAME}" و"Orion" و"Aquarius" و"Helios" والشعارات، محمية. لا يجوز نسخها أو استنساخها أو استخدامها تجارياً دون إذن.` },
             { label: 'استثناء:', text: 'يمكن استخدام الشعارات والنبذة التعريفية المتاحة للتنزيل في صفحة الغرفة الصحفية دون تعديل لأغراض الأخبار والتعريف.' },
           ],
         },
@@ -513,7 +513,7 @@ const DATA: Record<Locale, LegalUi> = {
         {
           title: 'Πνευματική ιδιοκτησία',
           paras: [
-            { text: `Τα κείμενα, οι εικόνες, τα σχέδια, τα βίντεο, το λογισμικό και οι σχεδιασμοί του ιστότοπου, καθώς και οι ονομασίες "${SITE_NAME}", "Orion", "Aquarious" και "Helios" και τα λογότυπα, προστατεύονται. Δεν επιτρέπεται η αντιγραφή, αναπαραγωγή ή εμπορική χρήση τους χωρίς άδεια.` },
+            { text: `Τα κείμενα, οι εικόνες, τα σχέδια, τα βίντεο, το λογισμικό και οι σχεδιασμοί του ιστότοπου, καθώς και οι ονομασίες "${SITE_NAME}", "Orion", "Aquarius" και "Helios" και τα λογότυπα, προστατεύονται. Δεν επιτρέπεται η αντιγραφή, αναπαραγωγή ή εμπορική χρήση τους χωρίς άδεια.` },
             { label: 'Εξαίρεση:', text: 'Τα λογότυπα και το εταιρικό κείμενο που διατίθενται προς λήψη στη σελίδα του Γραφείου Τύπου μπορούν να χρησιμοποιηθούν αναλλοίωτα για ειδησεογραφικούς και ενημερωτικούς σκοπούς.' },
           ],
         },

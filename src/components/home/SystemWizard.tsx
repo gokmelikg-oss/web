@@ -78,7 +78,7 @@ function recommend(segment: Segment, size: Size): Recommendation {
     slug: null,
     key: 'central',
     specs: [
-      { icon: LayoutGrid, label: 'Sistem tipi', value: 'Orion × N + Aquarious' },
+      { icon: LayoutGrid, label: 'Sistem tipi', value: 'Orion × N + Aquarius' },
       { icon: Droplets, label: 'Kapasite', value: 'Projeye özel hesap' },
       { icon: Thermometer, label: 'Ölçek', value: scaleSpec[size] },
     ],

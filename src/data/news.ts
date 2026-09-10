@@ -53,7 +53,7 @@ const META: { slug: string; date: string; readMin: number; cover?: string; keywo
     slug: 'dogru-boyler-kapasitesi-nasil-secilir',
     date: '2026-06-10',
     readMin: 3,
-    cover: '/products/aquarious-740.jpg',
+    cover: '/products/aquarius-740.jpg',
     keywords: ['boyler kapasitesi', 'emayeli boyler', 'sıcak su boyleri', 'boyler seçimi'],
   },
   {

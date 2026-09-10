@@ -17,7 +17,7 @@ const posts: Post[] = [
   { image: '/projects/saha-3.jpg' },
   { image: '/products/fabrika-1.jpg' },
   { image: '/projects/saha-4.jpg' },
-  { image: '/products/aquarious-740.jpg' },
+  { image: '/products/aquarius-740.jpg' },
   { image: '/projects/saha-2.jpg' },
 ];
 

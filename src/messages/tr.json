@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Güneş Enerjili Sıcak Su Sistemleri | Şimşek Solar",
-    "description": "35 yıldır Mersin’den dünyaya: Orion güneş kollektörleri, Aquarious emayeli boylerler ve Helios paket sistemler. Üretimden saha uygulamasına tek çatı altında."
+    "description": "35 yıldır Mersin’den dünyaya: Orion güneş kollektörleri, Aquarius emayeli boylerler ve Helios paket sistemler. Üretimden saha uygulamasına tek çatı altında."
   },
   "nav": {
     "brand": "Şimşek Solar",
@@ -181,7 +181,7 @@
   "productsSection": {
     "eyebrow": "01 · Ürün Ailesi",
     "title": "Kolektörden otomasyona eksiksiz ürün gamı",
-    "subtitle": "Orion kolektörler, Aquarious ve Sirius boylerler, merkezi ve paket sistem sehpaları, otomasyon ve bağlantı ekipmanları.",
+    "subtitle": "Orion kolektörler, Aquarius ve Sirius boylerler, merkezi ve paket sistem sehpaları, otomasyon ve bağlantı ekipmanları.",
     "viewAll": "Tüm ürünleri gör"
   },
   "collectorMatrix": {
@@ -258,20 +258,20 @@
       {
         "id": "boylerler",
         "title": "Boyler Serisi",
-        "desc": "Aquarious ve Sirius serisi boylerler; açık ve kapalı devre seçenekleri, 93 litreden 500 litreye kapasite.",
+        "desc": "Aquarius ve Sirius serisi boylerler; açık ve kapalı devre seçenekleri, 93 litreden 500 litreye kapasite.",
         "groups": [
           {
             "items": [
               {
-                "name": "Aquarious 500 Serisi",
+                "name": "Aquarius 500 Serisi",
                 "note": "93 Litre · 120 Litre · 150 Litre · 170 Litre"
               },
               {
-                "name": "Aquarious 540 Serisi — Kapalı Devre",
+                "name": "Aquarius 540 Serisi — Kapalı Devre",
                 "note": "150 Litre · 200 Litre · 300 Litre"
               },
               {
-                "name": "Aquarious 540 Serisi — Açık Devre",
+                "name": "Aquarius 540 Serisi — Açık Devre",
                 "note": "150 Litre · 200 Litre · 300 Litre"
               },
               {
@@ -279,7 +279,7 @@
                 "note": "200 Litre · 300 Litre"
               },
               {
-                "name": "Aquarious 740 Serisi — Kapalı Devre",
+                "name": "Aquarius 740 Serisi — Kapalı Devre",
                 "note": "500 Litre"
               }
             ]
@@ -506,10 +506,10 @@
     "results": {
       "helios-200l": "Standart bir hane için en dengeli çözüm: boyler + iki kolektör, anahtar teslim paket.",
       "helios-300l": "Yüksek tüketim için genişletilmiş kapasite: üç kolektörlü basınçlı paket.",
-      "central": "Bu ölçek için Orion serisi kolektör tarlası + Aquarious merkezi boyler kombinasyonu projelendirilir; mühendislik ekibimiz kapasite hesabıyla birlikte teklif hazırlar."
+      "central": "Bu ölçek için Orion serisi kolektör tarlası + Aquarius merkezi boyler kombinasyonu projelendirilir; mühendislik ekibimiz kapasite hesabıyla birlikte teklif hazırlar."
     },
     "centralTitle": "Merkezi Sistem (Projeli)",
-    "centralModel": "ORION × N + AQUARIOUS"
+    "centralModel": "ORION × N + AQUARIUS"
   },
   "whyUs": {
     "eyebrow": "06 · Neden Şimşek",
@@ -755,7 +755,7 @@
     "hero": {
       "eyebrow": "Ürün Kataloğu",
       "title": "Kolektörler, boylerler, sehpalar ve otomasyon",
-      "subtitle": "Orion kolektör serileri, Aquarious ve Sirius boylerler, merkezi ve paket sistem sehpaları, otomasyon panoları ve bağlantı ekipmanları."
+      "subtitle": "Orion kolektör serileri, Aquarius ve Sirius boylerler, merkezi ve paket sistem sehpaları, otomasyon panoları ve bağlantı ekipmanları."
     },
     "filters": {
       "all": "Tümü",
@@ -804,10 +804,10 @@
           "Askeri tesis ve otel projelerinde kanıtlanmış dayanıklılık"
         ]
       },
-      "aquarious-500": {
-        "name": "Aquarious 500 Serisi Emayeli Boyler",
+      "aquarius-500": {
+        "name": "Aquarius 500 Serisi Emayeli Boyler",
         "tagline": "Merkezi sistemler için çift serpantinli 500 litre boyler",
-        "description": "Aquarious 500, DIN 4753 standardına uygun cam emaye kaplı iç yüzeyi ile korozyona karşı uzun ömürlü koruma sağlar. Çift serpantin tasarımı güneş enerjisi ve destek ısıtma kaynağının birlikte kullanılmasına imkân tanır.",
+        "description": "Aquarius 500, DIN 4753 standardına uygun cam emaye kaplı iç yüzeyi ile korozyona karşı uzun ömürlü koruma sağlar. Çift serpantin tasarımı güneş enerjisi ve destek ısıtma kaynağının birlikte kullanılmasına imkân tanır.",
         "features": [
           "Cam emaye iç kaplama, korozyona karşı üstün direnç",
           "Çift serpantin: güneş + destek ısıtma kaynağı",
@@ -815,10 +815,10 @@
           "60 mm PU köpük yalıtım, düşük bekleme kaybı"
         ]
       },
-      "aquarious-600": {
-        "name": "Aquarious 600 Serisi Emayeli Boyler",
+      "aquarius-600": {
+        "name": "Aquarius 600 Serisi Emayeli Boyler",
         "tagline": "Yüksek kapasiteli tesisler için 600 litre boyler",
-        "description": "Aquarious 600, yüksek sıcak su tüketimi olan askeri tesisler, oteller ve toplu konut projeleri için geliştirilmiş yüksek kapasiteli çift serpantinli boylerdir.",
+        "description": "Aquarius 600, yüksek sıcak su tüketimi olan askeri tesisler, oteller ve toplu konut projeleri için geliştirilmiş yüksek kapasiteli çift serpantinli boylerdir.",
         "features": [
           "600 litre kapasite ile yüksek tüketime uygun",
           "Çift serpantin, esnek ısı kaynağı kombinasyonu",
@@ -918,7 +918,7 @@
     "items": {
       "incirlik-sosyal-yasam-merkezi": {
         "title": "İncirlik 10. Tanker Üs Komutanlığı Sosyal Yaşam Merkezi",
-        "description": "Askeri tesis bünyesindeki sosyal yaşam merkezi için merkezi güneş enerjisi destekli sıcak su sistemi kuruldu; yüksek kullanım yoğunluğuna uygun Aquarious serisi boylerler tercih edildi."
+        "description": "Askeri tesis bünyesindeki sosyal yaşam merkezi için merkezi güneş enerjisi destekli sıcak su sistemi kuruldu; yüksek kullanım yoğunluğuna uygun Aquarius serisi boylerler tercih edildi."
       },
       "alasehir-egitim-tabur-komutanligi": {
         "title": "Alaşehir 1. Ulaştırma Eğitim Tabur Komutanlığı",
@@ -1025,7 +1025,7 @@
     "subtitle": "Döküman ve kılavuzlarımızdan beslenen akıllı asistan",
     "placeholder": "Sorunuzu yazın...",
     "send": "Gönder",
-    "greeting": "Merhaba, ben Şimşek.ai! Ürün kılavuzlarımız ve teknik dökümanlarımızdan beslenerek yanıt veririm. Orion, Aquarious, Helios veya akıllı sistemlerle ilgili sorunuzu yazın.",
+    "greeting": "Merhaba, ben Şimşek.ai! Ürün kılavuzlarımız ve teknik dökümanlarımızdan beslenerek yanıt veririm. Orion, Aquarius, Helios veya akıllı sistemlerle ilgili sorunuzu yazın.",
     "quickSuggestions": {
       "dealer": "Bayi olmak istiyorum",
       "products": "Ürünleri keşfet",

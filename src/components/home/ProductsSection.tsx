@@ -13,7 +13,7 @@ interface CatalogFamily {
 
 const familyVisual: Record<string, { icon: typeof Sun; image: string; accent: string }> = {
   kolektorler: { icon: Sun, image: '/products/orion-300.jpg', accent: '#f6bc32' },
-  boylerler: { icon: Droplets, image: '/products/aquarious-540.jpg', accent: '#02b7d4' },
+  boylerler: { icon: Droplets, image: '/products/aquarius-540.jpg', accent: '#02b7d4' },
   sehpalar: { icon: Layers, image: '/products/sehpa-merkezi-3lu.jpg', accent: '#2da8ff' },
   baglanti: { icon: Cable, image: '/products/solar-vana.jpg', accent: '#10b981' },
   otomasyon: { icon: Cpu, image: '/products/merkezi-sistem-saha.jpg', accent: '#3a4d97' },

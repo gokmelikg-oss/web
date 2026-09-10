@@ -13,7 +13,7 @@
 
 ## Ürün Aileleri
 - Kolektörler: Orion serisi düz yüzeyli güneş kollektörleri (100–900 serisi)
-- Boyler Serisi: Aquarious ve Sirius emayeli boylerler (93–500 litre)
+- Boyler Serisi: Aquarius ve Sirius emayeli boylerler (93–500 litre)
 - Sehpalar: Merkezi ve paket sistem sehpaları (galvaniz, alüminyum, OEM)
 - Bağlantı Ekipmanları: Fleks bağlantılar, vanalar, emniyet kitleri, solar transfer sıvısı
 - Otomasyon Sistemleri: Uzaktan izleme ve otomasyon panoları
